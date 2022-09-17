@@ -9,79 +9,80 @@ using UnityEditor;
 using UnityEditor.SceneManagement;
 using UnityEngine;
 
-//[CustomEditor(typeof(AnimationData))]
+[CustomEditor(typeof(AnimationData))]
 public class ScreenShooter : Editor
 {
+    private Animator animator;
+    private Camera cam;
+    private AnimationData data;
+    public override void OnInspectorGUI()
+    {
+        data = (AnimationData)target;
+        if (!cam)
+            cam = GameObject.FindGameObjectWithTag("ScreenCamera").GetComponent<Camera>();
 
-    //private Animator animator;
-    //private Camera cam;
-    //private AnimationData data;
-    //public override void OnInspectorGUI()
-    //{
-    //    data = (AnimationData)target;
-    //    if (!cam)
-    //        cam = GameObject.FindGameObjectWithTag("ScreenCamera").GetComponent<Camera>();
+        var Sprites = serializedObject.FindProperty("sprites");
+        var Path = serializedObject.FindProperty("relativePath");
+        EditorGUILayout.PropertyField(Path);
+        EditorGUILayout.PropertyField(Sprites);
 
-    //    var Sprites = serializedObject.FindProperty("sprites");
-    //    EditorGUILayout.PropertyField(Sprites);
+        if (cam)
+            if (GUILayout.Button("Create Shop Image One"))
+            {
+                List<Sprite> sp = data.Sprites;
+                sp.Add(ToTexture2D(cam, "Frame" + data.Sprites.Count));
+                data.Sprites = sp;
+            }
+            else if (GUILayout.Button("Create Shop Image Two"))
+            {
 
-    //    if (cam)
-    //        if (GUILayout.Button("Create Shop Image One"))
-    //        {
-    //            List<Sprite> sp = data.Sprites;
-    //            sp.Add(ToTexture2D(cam, "Frame" + data.Sprites.Count));
-    //            data.Sprites = sp;
-    //        }
-    //        else if (GUILayout.Button("Create Shop Image Two"))
-    //        {
+            }
+        serializedObject.ApplyModifiedProperties();
+    }
+    public void Save(GameObject o)
+    {
+        EditorUtility.SetDirty(data);
+        EditorSceneManager.MarkSceneDirty(o.scene);
+    }
 
-    //        }
-    //    serializedObject.ApplyModifiedProperties();
-    //}
-    //public void Save(GameObject o)
-    //{
-    //    EditorUtility.SetDirty(data);
-    //    EditorSceneManager.MarkSceneDirty(o.scene);
-    //}
+    public Sprite ToTexture2D(Camera cam, string name)
+    {
+        RenderTexture rTex = cam.targetTexture;
+        RenderTexture currentActiveRT = RenderTexture.active;
+        RenderTexture.active = rTex;
+        cam.Render();
+        Rect rect = new Rect(0, 0, rTex.width, rTex.height);
+        Texture2D tex = new Texture2D(rTex.width, rTex.height);
+        tex.ReadPixels(rect, 0, 0);
+        tex.Apply();
+        RenderTexture.active = currentActiveRT;
+        Sprite s = Sprite.Create(tex, rect, new Vector2(0.5f, 0.5f));
 
-    //public Sprite ToTexture2D(Camera cam, string name)
-    //{
-    //    RenderTexture rTex = cam.targetTexture;
-    //    RenderTexture currentActiveRT = RenderTexture.active;
-    //    RenderTexture.active = rTex;
-    //    cam.Render();
-    //    Rect rect = new Rect(0, 0, rTex.width, rTex.height);
-    //    Texture2D tex = new Texture2D(rTex.width, rTex.height);
-    //    tex.ReadPixels(rect, 0, 0);
-    //    tex.Apply();
-    //    RenderTexture.active = currentActiveRT;
-    //    Sprite s = Sprite.Create(tex, rect, new Vector2(0.5f, 0.5f));
-
-    //    return SaveSpriteToEditorPath(s, "Animations/Editor/" + name + ".png");
-    //}
+        return SaveSpriteToEditorPath(s, "Animations/Editor/" + name + ".png");
+    }
 
 
-    //// proj_path should be relative to the Assets folder.
-    //Sprite SaveSpriteToEditorPath(Sprite sprite, string proj_path)
-    //{
-    //    var abs_path = Path.Combine(Application.dataPath, proj_path);
-    //    proj_path = Path.Combine("Assets", proj_path);
+    // proj_path should be relative to the Assets folder.
+    Sprite SaveSpriteToEditorPath(Sprite sprite, string proj_path)
+    {
+        var abs_path = Path.Combine(Application.dataPath, proj_path);
+        proj_path = Path.Combine("Assets", proj_path);
 
-    //    Directory.CreateDirectory(Path.GetDirectoryName(abs_path));
-    //    File.WriteAllBytes(abs_path, ImageConversion.EncodeToPNG(sprite.texture));
+        Directory.CreateDirectory(Path.GetDirectoryName(abs_path));
+        File.WriteAllBytes(abs_path, ImageConversion.EncodeToPNG(sprite.texture));
 
-    //    AssetDatabase.Refresh();
+        AssetDatabase.Refresh();
 
-    //    var ti = AssetImporter.GetAtPath(proj_path) as TextureImporter;
-    //    ti.spritePixelsPerUnit = sprite.pixelsPerUnit;
-    //    ti.mipmapEnabled = false;
-    //    ti.textureType = TextureImporterType.Sprite;
+        var ti = AssetImporter.GetAtPath(proj_path) as TextureImporter;
+        ti.spritePixelsPerUnit = sprite.pixelsPerUnit;
+        ti.mipmapEnabled = false;
+        ti.textureType = TextureImporterType.Sprite;
 
-    //    EditorUtility.SetDirty(ti);
-    //    ti.SaveAndReimport();
+        EditorUtility.SetDirty(ti);
+        ti.SaveAndReimport();
 
-    //    return AssetDatabase.LoadAssetAtPath<Sprite>(proj_path);
-    //}
+        return AssetDatabase.LoadAssetAtPath<Sprite>(proj_path);
+    }
 }
 public static class SerializedPropertyExtensions
 {
