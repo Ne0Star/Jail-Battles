@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
+#if UNITY_EDITOR
 public class AutoLayers : MonoBehaviour
 {
     [SerializeField] private TilemapRenderer[] renderers;
@@ -28,3 +27,4 @@ public class AutoLayers : MonoBehaviour
     }
 
 }
+#endif
