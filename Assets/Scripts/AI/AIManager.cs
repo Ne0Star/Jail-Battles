@@ -2,7 +2,9 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-
+/// <summary>
+/// Нужен для динамической смены AI во время игры
+/// </summary>
 public class AIManager : MonoBehaviour
 {
 

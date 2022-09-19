@@ -2,6 +2,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.AI;
 
 public enum AIType
 {
@@ -104,7 +105,9 @@ public struct AIPressset
 }
 public class AI : MonoBehaviour
 {
-    [SerializeField] private AIPressset presset;
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected AIPressset presset;
+
 
     public void SetPresset(AIPressset presset)
     {

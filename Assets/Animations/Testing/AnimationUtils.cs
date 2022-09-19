@@ -93,10 +93,9 @@ public class AnimationData : ScriptableObject
 
 public class AnimationUtils : MonoBehaviour
 {
-    [SerializeField] private List<string> test;
-
-    [SerializeField] private bool startRecord = false;
-    [SerializeField] private bool block = false;
+    [SerializeField] private bool createSreenShoot = false;
+     private bool startRecord = false;
+    private bool block = false;
     [SerializeField] private Camera screenCamera;
     [SerializeField] private List<Sprite> results = new List<Sprite>();
 
@@ -104,15 +103,15 @@ public class AnimationUtils : MonoBehaviour
     [SerializeField] private string fileName;
     [Header("Путь относительно папки Assets, если указана несуществующая папка она будет создана")]
     [SerializeField] private string relativePath;
-
-
     [Header("Анимация для раскадровки: ")]
     [Space(1)]
     [Header("Название анимации в Animator")]
     [SerializeField] private string stateName;
     [Header("Animator")]
     [SerializeField] private Animator animator;
-
+    [Range(0.02f, 1f)]
+    [SerializeField] private float frameStep;
+     private bool isRecording = false;
     private void Awake()
     {
         if(!animator)
@@ -131,9 +130,7 @@ public class AnimationUtils : MonoBehaviour
         yield return new WaitUntil(() => animator.GetCurrentAnimatorStateInfo(0).IsName("empty"));
         StopRecord();
     }
-    [Range(0.02f, 1f)]
-    [SerializeField] private float frameStep;
-    [SerializeField] private bool isRecording = false;
+
 
     private IEnumerator Recording()
     {
@@ -225,6 +222,11 @@ public class AnimationUtils : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!screenCamera) screenCamera = GameObject.FindGameObjectWithTag("ScreenCamera").GetComponent<Camera>();
+        if(createSreenShoot)
+        {
+            StartCoroutine(ToTexture2D(screenCamera, (s) => SaveSpriteToEditorPath(s, relativePath + "/" + fileName + "_" + "screenshot" + ".png")));
+            createSreenShoot = false;
+        }
     }
 
 }

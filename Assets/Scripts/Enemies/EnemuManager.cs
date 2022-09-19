@@ -8,6 +8,9 @@ using UnityEngine;
 /// </summary>
 public class EnemuManager : MonoBehaviour
 {
+
+    [SerializeField] private float enemuLifeTime;
+
     [SerializeField] private Enemu[] allEnemies = null;
 
     public Enemu[] AllEnemies { get => allEnemies; }
@@ -15,6 +18,22 @@ public class EnemuManager : MonoBehaviour
     private void Awake()
     {
         allEnemies = FindObjectsOfType<Enemu>();
+
+    }
+    private void Start()
+    {
+        StartCoroutine(Life());
+    }
+
+    private IEnumerator Life()
+    {
+        foreach (Enemu e in allEnemies)
+        {
+            e.EnemuUpdate();
+        }
+
+        yield return new WaitForSeconds(enemuLifeTime);
+        StartCoroutine(Life());
     }
 
     ///// <summary>

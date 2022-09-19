@@ -39,9 +39,9 @@ public class Enemu : Entity
     }
 
     int last, current;
-    [SerializeField] private int on, tw;
+     private int on, tw;
 
-    [SerializeField] private bool oneContainsTwo = false;
+     [SerializeField]private bool oneContainsTwo = false;
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

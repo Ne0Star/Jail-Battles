@@ -5,7 +5,7 @@ using UnityEngine;
 public static class GameUtils
 {
     /// <summary>
-    /// whom поворачивается в сторону where, с оффестом offset
+    /// whom поворачивается в сторону where, с смещением offset
     /// </summary>
     /// <param name="whom"></param>
     /// <param name="where"></param>
@@ -24,8 +24,4 @@ public interface IAI
 {
     void Initial();
     void DebugCheck();
-}
-public interface IStandartAi : IAI
-{
-
 }

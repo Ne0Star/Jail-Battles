@@ -57,21 +57,7 @@ public struct EntityAnimationPresset
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
-
-    public AnimationController AnimationController { get => animationController; }
-    public SpriteRenderer SpriteRenderer { get => spriteRenderer; }
-    [SerializeField] private SpriteRenderer spriteRenderer;
-    [SerializeField] private AnimationController animationController;
-    [SerializeField] private float health;
-
-
-    [System.Serializable]
-    public class OnDied : UnityEngine.Events.UnityEvent<Entity> { }
-
-    [SerializeField] private OnDied onDied;
-
-    //[SerializeField] protected EntityAnimationPresset animationPresset;
-    //[SerializeField] protected Animator animator;
+    [SerializeField] protected NavMeshAgent agent;
 
 
     protected virtual void TakeDamage(float damage)

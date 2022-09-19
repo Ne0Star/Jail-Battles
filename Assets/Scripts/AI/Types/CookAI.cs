@@ -6,7 +6,9 @@ public class CookAI : AI, IAI
 {
     public void DebugCheck()
     {
-
+#if UNITY_EDITOR
+        Debug.Log("DebugCheck(): " + gameObject.name);
+#endif
     }
 
     public void Initial()
