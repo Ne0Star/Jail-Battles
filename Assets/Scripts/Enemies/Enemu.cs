@@ -13,11 +13,18 @@ public class Enemu : Entity
     [SerializeField] private AIType aiType;
     [SerializeField] protected AI ai;
 
-    private void OnEnable()
-    {
-        ChangeAi();
 
+    protected override void Enable()
+    {
+        if (agent)
+        {
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+        }
+
+        ChangeAi();
     }
+
 
     public virtual void EnemuUpdate()
     {
@@ -29,19 +36,23 @@ public class Enemu : Entity
 
             last = current;
         }
+        if (ai)
+        {
+            ai.CustomUpdate();
+        }
     }
 
     protected void ChangeAi()
     {
         if (ai != null)
-            LevelManager.Instance.AiManager.ChangeAI(ref ai, aiPresset, aiType);
-        else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(transform, aiPresset, aiType);
+            LevelManager.Instance.AiManager.ChangeAI(this, ref ai, aiPresset, aiType);
+        else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(this, aiPresset, aiType);
     }
 
     int last, current;
-     private int on, tw;
+    private int on, tw;
 
-     [SerializeField]private bool oneContainsTwo = false;
+    [SerializeField] private bool oneContainsTwo = false;
 
 #if UNITY_EDITOR
     private void OnDrawGizmos()

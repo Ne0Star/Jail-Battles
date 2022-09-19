@@ -10,9 +10,17 @@ public class CookAI : AI, IAI
         Debug.Log("DebugCheck(): " + gameObject.name);
 #endif
     }
-
-    public void Initial()
+    private void Update()
+    {
+                if(Input.GetMouseButtonDown(0))
+        agent.SetDestination((Vector2)Camera.main.ScreenToWorldPoint(Input.mousePosition));
+    }
+    public override void CustomUpdate()
     {
 
+    }
+    public void Initial()
+    {
+        Debug.Log("initial");
     }
 }

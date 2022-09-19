@@ -108,9 +108,14 @@ public class AI : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected AIPressset presset;
 
+    public virtual void CustomUpdate()
+    {
 
-    public void SetPresset(AIPressset presset)
+    }
+
+    public void SetPresset(AIPressset presset, NavMeshAgent agent)
     {
         this.presset = presset;
+        this.agent = agent;
     }
 }

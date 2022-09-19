@@ -59,7 +59,26 @@ public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
 
+    public NavMeshAgent Agent { get => agent; }
 
+    private void OnEnable()
+    {
+        Enable();
+        if(!agent)
+        agent = gameObject.AddComponent<NavMeshAgent>();
+    }
+    private void OnDisable()
+    {
+        Disable();
+    }
+    protected virtual void Enable()
+    {
+
+    }
+    protected virtual void Disable()
+    {
+
+    }
     protected virtual void TakeDamage(float damage)
     {
 

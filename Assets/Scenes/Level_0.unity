@@ -235,7 +235,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 308275626}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 2.0998998, y: 0.008800268, z: 10.000006}
+  m_LocalPosition: {x: 2.0998998, y: 0.008800268, z: 0}
   m_LocalScale: {x: 0.35347107, y: 0.353471, z: 0.353471}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -595,7 +595,7 @@ Camera:
   far clip plane: 1000
   field of view: 60
   orthographic: 1
-  orthographic size: 5
+  orthographic size: 7.4723563
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -619,7 +619,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 642462177}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9, y: -1.51, z: -10}
+  m_LocalPosition: {x: 6.96, y: 5.3, z: -10}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -808,7 +808,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1263799342}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 1.9, y: -1.51, z: -1.5099993}
+  m_LocalPosition: {x: 1.9, y: -1.51, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
@@ -4585,7 +4585,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_AgentTypeID: 0
-  m_CollectObjects: 2
+  m_CollectObjects: 0
   m_Size: {x: 32.966816, y: 10, z: 19.916073}
   m_Center: {x: 1.5101967, y: 2, z: 4.0860634}
   m_LayerMask:
@@ -4602,7 +4602,7 @@ MonoBehaviour:
   m_OverrideTileSize: 0
   m_TileSize: 256
   m_OverrideVoxelSize: 0
-  m_VoxelSize: 0.06666667
+  m_VoxelSize: 0.23333333
   m_BuildHeightMesh: 0
   m_HideEditorLogs: 0
   m_NavMeshData: {fileID: 23800000, guid: 02f355807394b694683c81108b6956a0, type: 2}
@@ -4934,7 +4934,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1473979427}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 4.0236, y: -2.1891015, z: 0.00000023841858}
+  m_LocalPosition: {x: 4.0236, y: -2.1891015, z: 0}
   m_LocalScale: {x: 0.3908307, y: 0.39083076, z: 1.1165293}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6349,6 +6349,7 @@ GameObject:
   - component: {fileID: 2013750642}
   - component: {fileID: 2013750643}
   - component: {fileID: 2013750641}
+  - component: {fileID: 2013750644}
   m_Layer: 0
   m_Name: "\u041F\u043E\u0432\u0430\u0440\u0438\u0445\u0430"
   m_TagString: Untagged
@@ -6368,15 +6369,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b0f8a6315510f48927f218300dc422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  agent: {fileID: 0}
+  agent: {fileID: 2013750644}
   aiPresset:
     targetTypes: 0
     ignoreTypes: 0
     trigger: {fileID: 0}
   aiType: 6
   ai: {fileID: 0}
-  on: 7
-  tw: 0
   oneContainsTwo: 1
 --- !u!4 &2013750642
 Transform:
@@ -6385,8 +6384,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2013750640}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.49, y: 3.17, z: -9.634467}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 1.82, y: 2.4600005, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -6433,7 +6432,7 @@ SpriteRenderer:
   m_LightmapParameters: {fileID: 0}
   m_SortingLayerID: 0
   m_SortingLayer: 0
-  m_SortingOrder: 0
+  m_SortingOrder: 2
   m_Sprite: {fileID: 21300000, guid: a35286d0c2a018f4f886824534d73cc9, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
@@ -6445,3 +6444,25 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!195 &2013750644
+NavMeshAgent:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2013750640}
+  m_Enabled: 1
+  m_AgentTypeID: 0
+  m_Radius: 0.805
+  m_Speed: 3.5
+  m_Acceleration: 8
+  avoidancePriority: 50
+  m_AngularSpeed: 0.82
+  m_StoppingDistance: 0
+  m_AutoTraverseOffMeshLink: 1
+  m_AutoBraking: 1
+  m_AutoRepath: 1
+  m_Height: 1.68
+  m_BaseOffset: 0.84
+  m_WalkableMask: 4294967295
+  m_ObstacleAvoidanceType: 4

@@ -22,6 +22,4 @@ public static class GameUtils
 
 public interface IAI
 {
-    void Initial();
-    void DebugCheck();
 }
