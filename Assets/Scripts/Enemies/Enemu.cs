@@ -8,7 +8,6 @@ public class Enemu : Entity
     private bool check = false;
     public bool Check { get => check; set => check = value; }
     public AIType AiType { get => aiType; }
-
     [SerializeField] private AIPressset aiPresset;
     [SerializeField] private AIType aiType;
     [SerializeField] protected AI ai;
@@ -21,10 +20,8 @@ public class Enemu : Entity
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
-
         ChangeAi();
     }
-
 
     public virtual void EnemuUpdate()
     {
@@ -38,6 +35,7 @@ public class Enemu : Entity
         }
         if (ai)
         {
+            if(ai.Free)
             ai.CustomUpdate();
         }
     }
@@ -50,21 +48,4 @@ public class Enemu : Entity
     }
 
     int last, current;
-    private int on, tw;
-
-    [SerializeField] private bool oneContainsTwo = false;
-
-#if UNITY_EDITOR
-    private void OnDrawGizmos()
-    {
-        on = (int)aiType + 1;
-        tw = (int)aiPresset.TargetTypes;
-
-        if (aiPresset.TargetTypes.HasFlag((AITypes)System.Enum.Parse(typeof(AITypes), aiType.ToString())))
-        {
-            oneContainsTwo = true;
-        }
-
-    }
-#endif
 }

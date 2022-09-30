@@ -14,9 +14,9 @@ public class LevelManager : OneSingleton<LevelManager>
 
     private void Awake()
     {
-        if(!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
-        if(!aiManager) aiManager = FindObjectOfType<AIManager>();
         LevelManager.Instance = this;
+        if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
+        if (!aiManager) aiManager = FindObjectOfType<AIManager>();
     }
 
 }
