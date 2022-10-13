@@ -5,6 +5,7 @@ using UnityEngine.Events;
 
 public class MoveToTarget : AIAction
 {
+    [SerializeField] private bool pursue;
     [SerializeField] private float currentDistance;
     [SerializeField] private float exitDistance;
     [SerializeField] private Transform target;
@@ -40,14 +41,23 @@ public class MoveToTarget : AIAction
         OnStart(executor);
 
 
-        
+        Vector3 endPosition = target.transform.position;
+        if(!pursue)
+        {
+            executor.Agent.SetDestination(endPosition);
+        }
         currentDistance = float.MaxValue;
         while (currentDistance > exitDistance)
         {
-executor.Agent.SetDestination((Vector2)target.transform.position);
-            executor.Source.pitch = Random.Range(1f, 1.3f);
+            if (pursue)
+            {
+                endPosition = target.transform.position;
+                executor.Agent.SetDestination(endPosition);
+            }
 
-            currentDistance = Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
+            //executor.Source.pitch = Random.Range(1f, 1.3f);
+
+            currentDistance = Vector2.Distance(new Vector2(endPosition.x, endPosition.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
 
 
 

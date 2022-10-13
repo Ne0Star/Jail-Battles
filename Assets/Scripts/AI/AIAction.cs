@@ -44,19 +44,9 @@ public abstract class AIAction : AIEvents
     public float Duration { get => duration; }
     public ActionStates States { get => states; }
 
-
-
-
-    /// <summary>
-    /// Блокирует данное действие для всех 
-    /// </summary>
-    public void Block()
-    {
-        free = false;
-    }
-
     private void End()
     {
+        free = true;
         if (onEnd != null)
             foreach (System.Action e in onEnd)
             {
@@ -72,6 +62,7 @@ public abstract class AIAction : AIEvents
     /// <param name="onComplete">Сработает когда действие будет завершено</param>
     public void StartAction(AI executor, System.Action onComplete)
     {
+        free = false;
         if (onStart != null)
             foreach (System.Action<AI> e in onStart)
             {

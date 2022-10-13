@@ -123,7 +123,7 @@ using UnityEngine.Events;
 /// </summary>
 public class AIConsistency : AIEvents
 {
-
+    [SerializeField] private bool findChild = false;
     [SerializeField] private AITypes applyTypes;
     /// <summary>
     /// Типы AI которые могут принять данный сценарий
@@ -140,6 +140,16 @@ public class AIConsistency : AIEvents
     /// Свободен ли данный сценарий для выполнения
     /// </summary>
     public bool Free { get => CheckFree(); set => free = value; }
+
+
+    private void Awake()
+    {
+        if(findChild)
+        {
+            actions.Clear();
+            actions.AddRange(transform.GetComponentsInChildren<AIAction>());
+        }
+    }
 
 
     private bool CheckFree()
@@ -160,13 +170,16 @@ public class AIConsistency : AIEvents
     private void SetFree(bool val)
     {
         free = val;
-        foreach (AIAction action in actions)
-        {
-            if (!val)
-            {
-                action.Block();
-            }
-        }
+        //foreach (AIAction action in actions)
+        //{
+        //    if (!val)
+        //    {
+        //        action.SetBlock(true);
+        //    } else
+        //    {
+        //        action.SetBlock(false);
+        //    }
+        //}
     }
 
     /// <summary>

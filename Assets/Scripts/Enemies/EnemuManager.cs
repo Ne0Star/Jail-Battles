@@ -30,6 +30,7 @@ public class EnemuManager : MonoBehaviour
         foreach (Enemu e in allEnemies)
         {
             e.EnemuUpdate();
+            e.Agent.avoidancePriority = Random.Range(0, 100);
         }
 
         yield return new WaitForSeconds(enemuLifeTime);

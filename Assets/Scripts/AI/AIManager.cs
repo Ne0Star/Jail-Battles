@@ -41,6 +41,29 @@ public class AIManager : MonoBehaviour
         }
         return result;
     }
+    /// <summary>
+    /// Возвращает свободный сценарий для переданного типа AI
+    /// </summary>
+    /// <returns></returns>
+    public AIConsistency GetConsistency(AI sourcess)
+    {
+        foreach (AIConsistency consistency in allConsistencies)
+        {
+            if (consistency.ApplyTypes.Contains(sourcess.Type))
+            {
+                //Debug.Log("Содержит");
+                if (consistency.Free)
+                {
+                    return consistency;
+                    //    Debug.Log("Свободен");
+                }
+            }
+        }
+        return null;
+    }
+
+
+
 
     /// <summary>
     /// Возвращает все действия для указанного типа Ai
@@ -80,7 +103,7 @@ public class AIManager : MonoBehaviour
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
         allAi.Add(result);
-        result.SetPresset(presset, sources.Agent, sources.Animator,sources.Source, type);
+        result.SetPresset(presset, sources.Agent, sources.Animator, sources.Source, type);
         return result;
     }
     private AI AddAI<T>(ref Entity sources, AIPressset presset, AIType type, string name) where T : Component
