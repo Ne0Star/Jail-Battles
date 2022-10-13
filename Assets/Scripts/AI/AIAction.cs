@@ -7,15 +7,11 @@ using UnityEngine.Events;
 public struct ActionState
 {
     public string animationName;
-    public AudioClip sound;
+    public SoundPresset presset;
 }
 [System.Serializable]
 public struct ActionStates
 {
-    public float startSoundValue;
-    public float startSoundPitch;
-    public bool repearStartSound;
-
     public ActionState onStart;
     public ActionState onComplete;
 }

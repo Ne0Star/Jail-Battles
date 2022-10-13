@@ -15,14 +15,13 @@ public class MoveToTarget : AIAction
     private void OnStart(AI executor)
     {
         executor.Animator?.Play(states.onStart.animationName);
-        if (states.onStart.sound)
+        if (states.onStart.presset)
         {
-            if (states.repearStartSound)
+            if (states.onStart.presset.Loop)
                 executor.Source.loop = true;
-            executor.Source.volume = states.startSoundValue;
-            executor.Source.pitch = states.startSoundPitch;
-
-            executor.Source.clip = states.onStart.sound;
+            executor.Source.volume = states.onStart.presset.Volume;
+            executor.Source.pitch = states.onStart.presset.Pitch;
+            executor.Source.clip = states.onStart.presset.Clip;
             executor.Source?.Play();
         }
     }
@@ -30,9 +29,14 @@ public class MoveToTarget : AIAction
     private void OnComplete(AI executor)
     {
         executor.Animator?.Play(states.onComplete.animationName);
-        if (states.onComplete.sound)
+        if (states.onComplete.presset)
         {
-            executor.Source?.PlayOneShot(states.onComplete.sound);
+            if (states.onComplete.presset.Loop)
+                executor.Source.loop = true;
+            executor.Source.volume = states.onComplete.presset.Volume;
+            executor.Source.pitch = states.onComplete.presset.Pitch;
+            executor.Source.clip = states.onComplete.presset.Clip;
+            executor.Source?.Play();
         }
     }
 
