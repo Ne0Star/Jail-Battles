@@ -3,6 +3,23 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
+[System.Serializable]
+public struct ActionState
+{
+    public string animationName;
+    public AudioClip sound;
+}
+[System.Serializable]
+public struct ActionStates
+{
+    public float startSoundValue;
+    public float startSoundPitch;
+    public bool repearStartSound;
+
+    public ActionState onStart;
+    public ActionState onComplete;
+}
+
 /// <summary>
 /// Действие AI
 /// </summary>
@@ -10,6 +27,8 @@ public abstract class AIAction : AIEvents
 {
     [SerializeField] private List<System.Action<AI>> onStart;
     [SerializeField] private List<System.Action> onEnd;
+
+    [SerializeField] protected ActionStates states;
 
 
     [SerializeField] protected float duration;
@@ -19,7 +38,14 @@ public abstract class AIAction : AIEvents
     /// Свободно ли данное действие
     /// </summary>
     public bool Free { get => free; }
+    /// <summary>
+    /// Задержка действия, в зависимости от действия используется по разному
+    /// </summary>
     public float Duration { get => duration; }
+    public ActionStates States { get => states; }
+
+
+
 
     /// <summary>
     /// Блокирует данное действие для всех 

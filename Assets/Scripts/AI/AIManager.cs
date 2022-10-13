@@ -26,7 +26,7 @@ public class AIManager : MonoBehaviour
 
 
     /// <summary>
-    /// Возвращает все сценарии для AI
+    /// Возвращает все сценарии для переданного типа AI
     /// </summary>
     /// <returns></returns>
     public List<AIConsistency> GetConsistences(AI sourcess)
@@ -80,7 +80,7 @@ public class AIManager : MonoBehaviour
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
         allAi.Add(result);
-        result.SetPresset(presset, sources.Agent, type);
+        result.SetPresset(presset, sources.Agent, sources.Animator,sources.Source, type);
         return result;
     }
     private AI AddAI<T>(ref Entity sources, AIPressset presset, AIType type, string name) where T : Component
@@ -89,7 +89,7 @@ public class AIManager : MonoBehaviour
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
         allAi.Add(result);
-        result.SetPresset(presset, sources.Agent, type);
+        result.SetPresset(presset, sources.Agent, sources.Animator, sources.Source, type);
         return result;
     }
     public AI AddAI(Entity sources, AIPressset presset, AIType type)

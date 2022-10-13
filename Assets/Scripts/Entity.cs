@@ -58,8 +58,11 @@ public struct EntityAnimationPresset
 public abstract class Entity : MonoBehaviour
 {
     [SerializeField] protected NavMeshAgent agent;
-
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected AudioSource source;
+    public Animator Animator { get => animator; }
     public NavMeshAgent Agent { get => agent; }
+    public AudioSource Source { get => source; }
 
     private void OnEnable()
     {

@@ -7,6 +7,8 @@ using UnityEngine;
 /// </summary>
 public class CookAI : AI, IAI
 {
+    private bool isIdle = true;
+    private bool isMove = false;
 
     public void DebugCheck()
     {
@@ -16,32 +18,6 @@ public class CookAI : AI, IAI
     }
 
 
-    //private void StartConsistency(AIConsistency consistency)
-    //{
-    //    free = false;
-    //    UnityEngine.Events.UnityEvent onComplete = new UnityEngine.Events.UnityEvent();
-
-    //    onComplete.AddListener(() =>
-    //    {
-    //        free = true;
-    //    });
-
-    //    consistency.StartConsisstency(this, onComplete);
-    //}
-
-    //private void StartAction(AIAction action)
-    //{
-    //    free = false;
-    //    UnityEngine.Events.UnityEvent onComplete = new UnityEngine.Events.UnityEvent();
-
-    //    onComplete.AddListener(() =>
-    //    {
-    //        free = true;
-    //    });
-
-    //    action.StartAction(this, onComplete);
-    //}
-    public int asd = 0;
     public override void CustomUpdate()
     {
 
@@ -51,7 +27,6 @@ public class CookAI : AI, IAI
         }
 
         List<AIConsistency> consistency = LevelManager.Instance.AiManager.GetConsistences(this);
-        asd = consistency.Count;
         AIConsistency aIConsistency = consistency[Random.Range(0, consistency.Count)];
 
         free = false;

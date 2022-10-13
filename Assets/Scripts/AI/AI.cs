@@ -150,6 +150,8 @@ public struct AIPressset
 }
 public class AI : MonoBehaviour
 {
+    [SerializeField] private AudioSource source;
+    [SerializeField] private Animator animator;
     [SerializeField] private AIType type;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] private AIPressset presset;
@@ -163,16 +165,25 @@ public class AI : MonoBehaviour
     public NavMeshAgent Agent { get => agent; }
     public AIPressset Presset { get => presset; }
     public AIType Type { get => type; }
+    public Animator Animator { get => animator; }
+    public AudioSource Source { get => source; }
 
     public virtual void CustomUpdate()
     {
 
     }
 
-    public void SetPresset(AIPressset presset, NavMeshAgent agent, AIType type)
+    private void OnEnable()
+    {
+        transform.localPosition = Vector3.zero;
+    }
+
+    public void SetPresset(AIPressset presset, NavMeshAgent agent, Animator animator, AudioSource source, AIType type)
     {
         this.presset = presset;
         this.agent = agent;
         this.type = type;
+        this.animator = animator;
+        this.source = source;
     }
 }

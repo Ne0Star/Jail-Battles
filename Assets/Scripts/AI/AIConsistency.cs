@@ -188,7 +188,6 @@ public class AIConsistency : AIEvents
             bool next = false;
             action.StartAction(ai, () => next = true);
             yield return new WaitUntil(() => next);
-            Debug.Log("" + index);
             index++;
         }
         Debug.Log("—ценарий завершЄн");
