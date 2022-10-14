@@ -9,10 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c82304f9c2155f34d90512c1131cbd88, type: 3}
-  m_Name: "\u0428\u0430\u0433\u0438"
+  m_Script: {fileID: 11500000, guid: 5ecac5cbd3ca2f249b785e59bc0843d9, type: 3}
+  m_Name: (A)Idle
   m_EditorClassIdentifier: 
-  clip: {fileID: 8300000, guid: d8c1b24935678c64d949108fe12bfc20, type: 3}
-  loop: 1
-  volume: 1
-  pitch: 1.5
+  animationName: "\u041F\u043E\u043A\u043E\u0439"
+  speed: 1

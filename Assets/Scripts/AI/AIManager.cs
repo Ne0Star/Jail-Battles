@@ -45,6 +45,30 @@ public class AIManager : MonoBehaviour
     /// Возвращает свободный сценарий для переданного типа AI
     /// </summary>
     /// <returns></returns>
+    public AIConsistency GetConsistency(AI sourcess, bool random)
+    {
+        List<AIConsistency> result = null;
+        if (random) result = new List<AIConsistency>();
+        foreach (AIConsistency consistency in allConsistencies)
+        {
+            if (consistency.ApplyTypes.Contains(sourcess.Type))
+            {
+                //Debug.Log("Содержит");
+                if (consistency.Free)
+                {
+                    if (!random)
+                        return consistency;
+                    result.Add(consistency);
+                    //    Debug.Log("Свободен");
+                }
+            }
+        }
+        return result[Random.Range(0, Mathf.Clamp(result.Count - 1, 0, 100))];
+    }
+    /// <summary>
+    /// Возвращает свободный сценарий для переданного типа AI
+    /// </summary>
+    /// <returns></returns>
     public AIConsistency GetConsistency(AI sourcess)
     {
         foreach (AIConsistency consistency in allConsistencies)
@@ -61,7 +85,6 @@ public class AIManager : MonoBehaviour
         }
         return null;
     }
-
 
 
 

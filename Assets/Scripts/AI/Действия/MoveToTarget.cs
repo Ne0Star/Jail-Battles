@@ -9,47 +9,61 @@ public class MoveToTarget : AIAction
     [SerializeField] private float currentDistance;
     [SerializeField] private float exitDistance;
     [SerializeField] private Transform target;
-
-
-
     private void OnStart(AI executor)
     {
-        executor.Animator?.Play(states.onStart.animationName);
-        if (states.onStart.presset)
+        if (!states) return;
+        if (states.AStart)
         {
-            if (states.onStart.presset.Loop)
+            executor.Animator.Play(states.AStart.animationName);
+            executor.Animator.speed = states.AStart.speed;
+        }
+        if (states.SStart)
+        {
+            if (states.SStart)
                 executor.Source.loop = true;
-            executor.Source.volume = states.onStart.presset.Volume;
-            executor.Source.pitch = states.onStart.presset.Pitch;
-            executor.Source.clip = states.onStart.presset.Clip;
+
+            executor.Source.volume = states.SStart.Volume;
+            executor.Source.pitch = states.SStart.Pitch;
+            executor.Source.clip = states.SStart.Clip;
             executor.Source?.Play();
         }
     }
-
     private void OnComplete(AI executor)
     {
-        executor.Animator?.Play(states.onComplete.animationName);
-        if (states.onComplete.presset)
+        if (!states) return;
+        if (states.AComplete)
         {
-            if (states.onComplete.presset.Loop)
+            executor.Animator.Play(states.AComplete.animationName);
+            executor.Animator.speed = states.AComplete.speed;
+        }
+        if (states.SComplete)
+        {
+            if (states.SComplete.Loop)
                 executor.Source.loop = true;
-            executor.Source.volume = states.onComplete.presset.Volume;
-            executor.Source.pitch = states.onComplete.presset.Pitch;
-            executor.Source.clip = states.onComplete.presset.Clip;
+            executor.Source.volume = states.SComplete.Volume;
+            executor.Source.pitch = states.SComplete.Pitch;
+            executor.Source.clip = states.SComplete.Clip;
             executor.Source?.Play();
         }
     }
-
     protected override IEnumerator Action(AI executor, System.Action onComplete)
     {
         OnStart(executor);
 
-
         Vector3 endPosition = target.transform.position;
-        if(!pursue)
+        if (!pursue)
         {
             executor.Agent.SetDestination(endPosition);
         }
+        executor.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.NoObstacleAvoidance;
+        AIStatPresset stat = executor.Presset.States.Walk;
+        executor.Source.clip = stat.Sound.Clip;
+        executor.Source.loop = stat.Sound.Loop;
+        executor.Source.volume = stat.Sound.Volume;
+        executor.Source.pitch = stat.Sound.Pitch;
+        executor.Source.Play();
+        executor.Animator.Play(stat.Animation.animationName);
+        executor.Animator.speed = stat.Animation.speed;
         currentDistance = float.MaxValue;
         while (currentDistance > exitDistance)
         {
@@ -58,23 +72,15 @@ public class MoveToTarget : AIAction
                 endPosition = target.transform.position;
                 executor.Agent.SetDestination(endPosition);
             }
-
-            //executor.Source.pitch = Random.Range(1f, 1.3f);
-
             currentDistance = Vector2.Distance(new Vector2(endPosition.x, endPosition.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
-
-
-
-
             GameUtils.LookAt2D(executor.Presset.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Presset.RotateOffset);
-
-
             yield return new WaitForFixedUpdate();
         }
-
-
+        executor.Source.Stop();
+        yield return new WaitForSeconds(duration);
         OnComplete(executor);
         onComplete();
+        executor.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.MedQualityObstacleAvoidance;
         yield return null;
     }
 }

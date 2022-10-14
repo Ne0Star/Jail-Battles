@@ -135,6 +135,29 @@ public struct AITypes
 
 
 [System.Serializable]
+public struct AIStatPresset
+{
+    [SerializeField] private AnimationPresset animation;
+    [SerializeField] private SoundPresset sound;
+
+    public AnimationPresset Animation { get => animation; }
+    public SoundPresset Sound { get => sound; }
+}
+
+[System.Serializable]
+public struct AIStatsPresset
+{
+    [SerializeField] private AIStatPresset walk;
+    [SerializeField] private AIStatPresset idle;
+
+    public AIStatPresset Walk { get => walk; }
+    public AIStatPresset Idle { get => idle; }
+}
+
+
+
+
+[System.Serializable]
 public struct AIPressset
 {
     [SerializeField] private Transform rotateParent;
@@ -143,10 +166,14 @@ public struct AIPressset
     [SerializeField] private AITypes ignoreTypes;
     [SerializeField] private CustomCircleCollider trigger;
 
+    [SerializeField] private AIStatsPresset states;
+
+
     public AITypes Targets { get => targetTypes; }
     public AITypes Ignores { get => ignoreTypes; }
     public Transform RotateParent { get => rotateParent; }
     public float RotateOffset { get => rotateOffset; }
+    public AIStatsPresset States { get => states; }
 }
 public class AI : MonoBehaviour
 {

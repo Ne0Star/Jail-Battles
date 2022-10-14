@@ -5,119 +5,6 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 
-//[System.Serializable]
-//public class AIAction
-//{
-
-//    private AIActionType actionType;
-
-//    public AIActionType ActionType { get => actionType; set => actionType = value; }
-
-//    public enum AIActionType
-//    {
-//        Бежать
-//    }
-
-//}
-///// <summary>
-///// Отвечает за движение куда-либо
-///// </summary>
-//[System.Serializable]
-//public class MoveAction : AIAction
-//{
-//    public bool moveToTarget;
-//    public Transform target;
-//    public Vector3 targetPosition;
-//}
-
-
-
-//[CustomEditor(typeof(AIConsistency))]
-//public class AIActionEditor : Editor
-//{
-//    private AIConsistency data;
-//    public override void OnInspectorGUI()
-//    {
-//        data = (AIConsistency)target;
-
-//        var Actions = serializedObject.FindProperty("actions");
-//        //var _Actions = EditorGUILayout.PropertyField(Actions);
-
-//        GUIStyle scrollSkin = new GUIStyle(GUI.skin.box);
-//        GUIStyle toggleSkin = new GUIStyle(GUI.skin.button);
-
-
-
-//        serializedObject.Update();
-
-//        List<AIAction> actions = (List<AIAction>)Actions.GetValue();
-
-//        if (actions.Count > 0)
-//        {
-//            GUILayout.BeginHorizontal();
-//            data.showList = GUILayout.Toggle(data.showList, "Показать");
-//            GUILayout.Label("Список действий: ");
-//            GUILayout.EndHorizontal();
-//        }
-//        else
-//        {
-//            GUILayout.Label("Список действий пуст");
-//            if (GUILayout.Button("Добавить"))
-//            {
-//                actions.Add(new AIAction());
-//            }
-//            return;
-//        }
-
-
-//        if (data.showList)
-//        {
-//            GUILayout.BeginScrollView(new Vector2(200f, 0.5f), scrollSkin);
-//            for (int i = 0; i < actions.Count; i++)
-//            {
-//                AIAction action = actions[i];
-
-//                GUILayout.BeginHorizontal();
-//                action.ActionType = (AIAction.AIActionType)EditorGUILayout.EnumPopup(action.ActionType);
-
-//                switch (action.ActionType)
-//                {
-//                    case AIAction.AIActionType.Бежать:
-//                        actions[i] = new MoveAction();
-//                        break;
-//                }
-// actions[i].ActionType = action.ActionType;
-//                if (GUILayout.Button("X"))
-//                {
-//                    actions.RemoveAt(i);
-//                }
-//                GUILayout.EndHorizontal();
-//                action.DrawEditor();
-//                //GUILayout.Box("123123", scrollSkin);
-//            }
-//            GUILayout.EndScrollView();
-//        }
-//        if (GUILayout.Button("Добавить"))
-//        {
-//            actions.Add(new AIAction());
-//        }
-
-
-
-
-//        serializedObject.ApplyModifiedProperties();
-
-
-//        if (GUI.changed)
-//        {
-//            data.actions = actions;
-//            EditorUtility.SetDirty(target);
-//        }
-
-
-//    }
-//}
-
 /// <summary>
 /// Набор действий AI
 /// </summary>
@@ -170,16 +57,6 @@ public class AIConsistency : AIEvents
     private void SetFree(bool val)
     {
         free = val;
-        //foreach (AIAction action in actions)
-        //{
-        //    if (!val)
-        //    {
-        //        action.SetBlock(true);
-        //    } else
-        //    {
-        //        action.SetBlock(false);
-        //    }
-        //}
     }
 
     /// <summary>

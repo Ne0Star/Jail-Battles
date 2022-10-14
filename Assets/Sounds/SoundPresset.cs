@@ -2,7 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[CreateAssetMenu(fileName = "Sound", menuName = "Soundpresset", order = 1)]
+[CreateAssetMenu(fileName = "Sound", menuName = "AnimationPresset/Sound", order = 1)]
 public class SoundPresset : ScriptableObject
 {
     [SerializeField] private AudioClip clip;
