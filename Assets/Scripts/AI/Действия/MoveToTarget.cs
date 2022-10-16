@@ -48,7 +48,7 @@ public class MoveToTarget : AIAction
     }
     protected override IEnumerator Action(AI executor, System.Action onComplete)
     {
-        OnStart(executor);
+
 
         Vector3 endPosition = target.transform.position;
         if (!pursue)
@@ -65,22 +65,37 @@ public class MoveToTarget : AIAction
         executor.Animator.Play(stat.Animation.animationName);
         executor.Animator.speed = stat.Animation.speed;
         currentDistance = float.MaxValue;
+
+
+
         while (currentDistance > exitDistance)
         {
+            if (executor == null || !executor.gameObject || !executor.gameObject.activeSelf)
+                yield return null;
             if (pursue)
             {
                 endPosition = target.transform.position;
                 executor.Agent.SetDestination(endPosition);
             }
             currentDistance = Vector2.Distance(new Vector2(endPosition.x, endPosition.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
+            try
+            {
             GameUtils.LookAt2D(executor.Presset.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Presset.RotateOffset);
+            } catch
+            {
+                yield break;
+            }
+
             yield return new WaitForFixedUpdate();
         }
+        Debug.Log("PRISLA PIZDA");
         executor.Source.Stop();
+        OnStart(executor);
         yield return new WaitForSeconds(duration);
         OnComplete(executor);
         onComplete();
         executor.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.MedQualityObstacleAvoidance;
         yield return null;
     }
+
 }

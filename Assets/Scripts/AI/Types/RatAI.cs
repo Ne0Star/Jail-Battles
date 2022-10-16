@@ -8,7 +8,10 @@ public class RatAI : AI, IAI
     {
 
     }
+    protected override void UpdateAI()
+    {
 
+    }
     public void Initial()
     {
 

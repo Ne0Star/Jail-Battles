@@ -11,7 +11,10 @@ public class CrazyAI : AI, IAI
     {
 
     }
+    protected override void UpdateAI()
+    {
 
+    }
     public void Initial()
     {
 

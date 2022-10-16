@@ -8,7 +8,10 @@ public class GuardAI : AI, IAI
     {
 
     }
+    protected override void UpdateAI()
+    {
 
+    }
     public void Initial()
     {
 

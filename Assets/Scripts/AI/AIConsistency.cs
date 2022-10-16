@@ -5,11 +5,87 @@ using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.Events;
 
+
+
+
 /// <summary>
 /// Набор действий AI
 /// </summary>
 public class AIConsistency : AIEvents
 {
+
+#if UNITY_EDITOR
+    private void DrawArrow(Vector2 startPos, Vector2 endPos)
+    {
+
+        Vector2 arrowPos;
+        Vector2 arrowDirection;
+        Vector3 angleVectorUp = new Vector3(0f, 0.40f, -1f) /*length*/;
+        Vector3 angleVectorDown = new Vector3(0f, -0.40f, -1f) /*length*/;
+        Vector2 upTmp;
+        Vector2 downTmp;
+
+        arrowDirection = endPos - startPos;
+        arrowPos = startPos + (arrowDirection * 1f/*position along line*/);
+
+        upTmp = Quaternion.LookRotation(arrowDirection) * (angleVectorUp * 0.5f);
+        downTmp = Quaternion.LookRotation(arrowDirection) * (angleVectorDown * 0.5f);
+
+        Gizmos.DrawLine(startPos, endPos);
+        Gizmos.DrawRay(arrowPos, upTmp);
+        Gizmos.DrawRay(arrowPos, downTmp);
+    }
+
+
+    private void ForGizmo(Vector3 pos, Vector3 direction, float arrowHeadLength = 0.25f, float arrowHeadAngle = 20.0f)
+    {
+        Gizmos.DrawRay(pos, direction);
+
+        Vector3 right = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 + arrowHeadAngle, 0) * Vector3.forward;
+        Vector3 left = Quaternion.LookRotation(direction) * Quaternion.Euler(0, 180 - arrowHeadAngle, 0) * Vector3.forward;
+        Gizmos.DrawRay(pos + direction, right * arrowHeadLength);
+        Gizmos.DrawRay(pos + direction, left * arrowHeadLength);
+    }
+
+    private void Draw()
+    {
+        for (int i = 0; i < transform.childCount; i++)
+        {
+            Transform t = transform.GetChild(i);
+            if (t)
+            {
+
+                Gizmos.color = Color.red;
+                Gizmos.DrawWireSphere(t.position, 1f);
+                if (i + 1 < transform.childCount)
+                {
+                    Gizmos.color = Color.blue;
+                    float distance = Vector2.Distance(transform.GetChild(i + 1).position, transform.GetChild(i).position);
+                    Vector3 dir = transform.GetChild(i + 1).position - transform.GetChild(i).position;
+                    DrawArrow(transform.GetChild(i).position, transform.GetChild(i + 1).position);
+                    //ForGizmo(transform.GetChild(i).position, dir);
+                    //Debug.DrawLine(transform.GetChild(i).position, transform.GetChild(i+1).position);
+                }
+            }
+        }
+    }
+
+
+    [SerializeField] private bool drawGizmos = false;
+    private void OnDrawGizmos()
+    {
+        if(drawGizmos)
+        {
+            Draw();
+        }
+    }
+
+    private void OnDrawGizmosSelected()
+    {
+        Draw();
+    }
+#endif
+
     [SerializeField] private bool findChild = false;
     [SerializeField] private AITypes applyTypes;
     /// <summary>
@@ -31,7 +107,7 @@ public class AIConsistency : AIEvents
 
     private void Awake()
     {
-        if(findChild)
+        if (findChild)
         {
             actions.Clear();
             actions.AddRange(transform.GetComponentsInChildren<AIAction>());

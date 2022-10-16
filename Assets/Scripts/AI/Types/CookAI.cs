@@ -17,25 +17,8 @@ public class CookAI : AI, IAI
 #endif
     }
 
-    [SerializeField] private AIConsistency consistency;
-    public bool mark;
-    public override void CustomUpdate()
+    protected override void UpdateAI()
     {
-        if (!free)
-        {
-            return;
-        }
-        mark = !mark;
-        consistency = LevelManager.Instance.AiManager.GetConsistency(this);
-        if (consistency != null && consistency.Free)
-        {
-            //consistency.Free = false;
-            free = false;
-            consistency.StartConsisstency(this, () => { free = true; });
-        } else
-        {
-            consistency = null;
-        }
     }
     public void Initial()
     {

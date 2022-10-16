@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections;
+﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -62,20 +61,23 @@ public enum AIType
     /// <summary>
     /// Бегают по карте группой, если голодны сьедают зека
     /// </summary>
-    Крыса
+    Крыса,
+
+
+    Игрок
 
 }
 
 
-[Flags]
-public enum AnimationTypes
-{
-    Idle,
-    Move,
-    Run,
-    Attack,
-    Special
-}
+//[Flags]
+//public enum AnimationTypes
+//{
+//    Idle,
+//    Move,
+//    Run,
+//    Attack,
+//    Special
+//}
 
 //[Flags]
 //public enum AITypes
@@ -108,6 +110,8 @@ public struct AITypes
 {
     [SerializeField]
     private List<AITB> aiTypes;
+
+    public List<AITB> AiTypes { get => aiTypes; }
 
     //public List<AITB> AiTypes { get => aiTypes; }
 
@@ -164,7 +168,7 @@ public struct AIPressset
     [SerializeField] private float rotateOffset;
     [SerializeField] private AITypes targetTypes;
     [SerializeField] private AITypes ignoreTypes;
-    [SerializeField] private CustomCircleCollider trigger;
+    [SerializeField] private List<Collider2D> colliders;
 
     [SerializeField] private AIStatsPresset states;
 
@@ -174,15 +178,16 @@ public struct AIPressset
     public Transform RotateParent { get => rotateParent; }
     public float RotateOffset { get => rotateOffset; }
     public AIStatsPresset States { get => states; }
+    public List<Collider2D> Colliders { get => colliders; }
 }
-public class AI : MonoBehaviour
+public abstract class AI : MonoBehaviour
 {
     [SerializeField] private AudioSource source;
     [SerializeField] private Animator animator;
     [SerializeField] private AIType type;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] private AIPressset presset;
-
+    [SerializeField] protected bool blocker = false;
 
     [SerializeField] protected bool free = true;
     /// <summary>
@@ -194,16 +199,44 @@ public class AI : MonoBehaviour
     public AIType Type { get => type; }
     public Animator Animator { get => animator; }
     public AudioSource Source { get => source; }
-
-    public virtual void CustomUpdate()
+    private void Awake()
     {
-
-    }
-
-    private void OnEnable()
-    {
+        blocker = true;
         transform.localPosition = Vector3.zero;
     }
+    private IEnumerator Start()
+    {
+        yield return new WaitForSeconds(Random.Range(1f,2f));
+        blocker = false;
+    }
+
+
+    [SerializeField] private AIConsistency consistency;
+    public bool mark;
+
+    public void CustomUpdate()
+    {
+        if (!free)
+        {
+            return;
+        }
+        mark = !mark;
+        consistency = LevelManager.Instance.AiManager.GetConsistency(this, true);
+        if (consistency != null && consistency.Free)
+        {
+            //consistency.Free = false;
+            free = false;
+            consistency.StartConsisstency(this, () => { free = true; });
+        }
+        else
+        {
+            consistency = null;
+        }
+        if (blocker) return;
+        UpdateAI();
+    }
+
+    protected abstract void UpdateAI();
 
     public void SetPresset(AIPressset presset, NavMeshAgent agent, Animator animator, AudioSource source, AIType type)
     {
