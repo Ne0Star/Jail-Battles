@@ -57,12 +57,14 @@ public struct EntityAnimationPresset
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
+    [SerializeField] private HitBar hitBar;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource source;
     public Animator Animator { get => animator; }
     public NavMeshAgent Agent { get => agent; }
     public AudioSource Source { get => source; }
+    public HitBar HitBar { get => hitBar; }
 
     private void OnEnable()
     {
@@ -82,17 +84,21 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
-    protected virtual void TakeDamage(float damage)
+    public virtual void TakeDamage(Entity source, float damage)
     {
-
+        hitBar.TakeDamage(source, damage, () =>
+        {
+            gameObject.SetActive(false);
+        });
     }
+
     /// <summary>
     /// Нанесёт урон указанной сущности
     /// </summary>
     /// <param name="target"></param>
     /// <param name="damage"></param>
-    protected virtual void DealDamage(Entity target, float damage)
+    public virtual void DealDamage(Entity target, float damage)
     {
-        target.TakeDamage(damage);
+        target.TakeDamage(this, damage);
     }
 }

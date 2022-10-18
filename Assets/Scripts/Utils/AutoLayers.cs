@@ -1,9 +1,9 @@
+
 using UnityEngine;
 using UnityEngine.Tilemaps;
-
-#if UNITY_EDITOR
 public class AutoLayers : MonoBehaviour
 {
+    
     [SerializeField] private TilemapRenderer[] renderers;
     private void Awake()
     {
@@ -20,11 +20,10 @@ public class AutoLayers : MonoBehaviour
             order++;
         }
     }
-
+#if UNITY_EDITOR
     private void OnDrawGizmos()
     {
         SetOrders();
     }
-
-}
 #endif
+}

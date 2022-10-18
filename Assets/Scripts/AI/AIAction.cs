@@ -20,6 +20,8 @@ public abstract class AIAction : AIEvents
     /// Свободно ли данное действие
     /// </summary>
     public bool Free { get => free; }
+
+    [SerializeField] protected bool isStop = true;
     /// <summary>
     /// Задержка действия, в зависимости от действия используется по разному
     /// </summary>
@@ -36,6 +38,13 @@ public abstract class AIAction : AIEvents
             }
     }
 
+
+    public void StopAction()
+    {
+        isStop = true;
+        free = true;
+    }
+
     /// <summary>
     /// Запускает действие для данного AI
     /// </summary>
@@ -43,6 +52,7 @@ public abstract class AIAction : AIEvents
     /// <param name="onComplete">Сработает когда действие будет завершено</param>
     public void StartAction(AI executor, System.Action onComplete)
     {
+        isStop = false;
         free = false;
         if (onStart != null)
             foreach (System.Action<AI> e in onStart)
@@ -50,7 +60,6 @@ public abstract class AIAction : AIEvents
                 e?.Invoke(executor);
             }
         onComplete += End;
-
         StartCoroutine(Action(executor, onComplete));
     }
     /// <summary>

@@ -21,6 +21,43 @@ public class AIManager : MonoBehaviour
     }
 
 
+    public void MoveToTarget(AI ai, Entity target, System.Action start, System.Action update, System.Action complete)
+    {
+        if (!ai || !target)
+        {
+            complete();
+            return;
+        }
+        start();
+        StartCoroutine(_MoveToTarget(ai, target, update, complete));
+    }
+
+    private IEnumerator _MoveToTarget(AI ai, Entity target, System.Action update, System.Action complete)
+    {
+        ai.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.NoObstacleAvoidance;
+        AIStatPresset stat = ai.Presset.States.Walk;
+        ai.Source.clip = stat.Sound.Clip;
+        ai.Source.loop = stat.Sound.Loop;
+        ai.Source.volume = stat.Sound.Volume;
+        ai.Source.pitch = stat.Sound.Pitch;
+        ai.Source.Play();
+        ai.Animator.Play(stat.Animation.animationName);
+        ai.Animator.speed = stat.Animation.speed;
+        float currentDistance = float.MaxValue;
+        while (currentDistance > ai.Agent.radius + ai.Agent.radius)
+        {
+            currentDistance = Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), new Vector2(ai.Agent.transform.position.x, ai.Agent.transform.position.y));
+            ai.Agent.SetDestination(target.transform.position);
+
+            update();
+            yield return new WaitForFixedUpdate();
+        }
+        complete();
+        yield break;
+    }
+
+
+
     /// <summary>
     /// Возвращает все сценарии для переданного типа AI
     /// </summary>
@@ -143,8 +180,84 @@ public class AIManager : MonoBehaviour
     }
 
 
+
+    public Entity[] GetAllEntityByAI(AIType type)
+    {
+        List<Entity> result = new List<Entity>();
+        switch (type)
+        {
+            case AIType.Преследователь:
+                foreach (AI ai in puesues)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Псих:
+                foreach (AI ai in crazies)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Бычара:
+                foreach (AI ai in bycharaz)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Трус:
+                foreach (AI ai in cowards)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Маньяк:
+                foreach (AI ai in maniacs)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Уборщица:
+                foreach (AI ai in cleanings)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Повариха:
+                foreach (AI ai in cooks)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.ГлавнаяПовариха:
+                foreach (AI ai in headCooks)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.ГлавнаяУборщица:
+                foreach (AI ai in headCleanings)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Охранник:
+                foreach (AI ai in guardians)
+                {
+                    result.Add(ai.Entity);
+                }
+                break;
+            case AIType.Крыса:
+                return null;
+            case AIType.Игрок:
+                result.Add(LevelManager.Instance.Player);
+                break;
+        }
+        return result.ToArray();
+    }
+
     public AI[] GetAllAi(AIType type)
     {
+        List<Entity> result = new List<Entity>();
         switch (type)
         {
             case AIType.Преследователь:
@@ -168,6 +281,9 @@ public class AIManager : MonoBehaviour
             case AIType.Охранник:
                 return guardians.ToArray();
             case AIType.Крыса:
+                break;
+            case AIType.Игрок:
+
                 break;
         }
         return null;
@@ -195,15 +311,15 @@ public class AIManager : MonoBehaviour
         GameObject obj = new GameObject("Ai");
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources.Animator, sources.Source, type);
+        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type);
         return result;
     }
     private AI AddAI<T>(ref Entity sources, AIPressset presset, AIType type, string name) where T : Component
     {
-        GameObject obj = new GameObject("AI: " + name);
+        GameObject obj = new GameObject("AI: " + name + " " + allAi.Count);
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources.Animator, sources.Source, type);
+        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type);
         return result;
     }
 

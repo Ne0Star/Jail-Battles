@@ -141,6 +141,7 @@ public struct AITypes
 [System.Serializable]
 public struct AIStatPresset
 {
+    [SerializeField] private bool isRun;
     [SerializeField] private AnimationPresset animation;
     [SerializeField] private SoundPresset sound;
 
@@ -154,8 +155,32 @@ public struct AIStatsPresset
     [SerializeField] private AIStatPresset walk;
     [SerializeField] private AIStatPresset idle;
 
+    [SerializeField] private List<AIStatPresset> standartStrikes;
+    [SerializeField] private List<AIStatPresset> specialStrikes;
+    [SerializeField] private List<AIStatPresset> bossStrikes;
+
+    /// <summary>
+    /// Ходьба
+    /// </summary>
     public AIStatPresset Walk { get => walk; }
+    /// <summary>
+    /// Покой
+    /// </summary>
     public AIStatPresset Idle { get => idle; }
+
+
+    /// <summary>
+    /// Стандартные удары, руками, ногами, в среднем 8-14 ударов для убийства
+    /// </summary>
+    public List<AIStatPresset> StandartStrikes { get => standartStrikes; }
+    /// <summary>
+    /// Специальные удары AI, например уборщица может ударить шваброй, в среднем 3-6 ударов до убийства
+    /// </summary>
+    public List<AIStatPresset> SpecialStrikes { get => specialStrikes; }
+    /// <summary>
+    /// Особые сложные удары, для особо опасных AI, которые могут убить с 1-3 ударов
+    /// </summary>
+    public List<AIStatPresset> BossStrikes { get => bossStrikes; }
 }
 
 
@@ -186,9 +211,9 @@ public abstract class AI : MonoBehaviour
     [SerializeField] private Animator animator;
     [SerializeField] private AIType type;
     [SerializeField] protected NavMeshAgent agent;
-    [SerializeField] private AIPressset presset;
-    [SerializeField] protected bool blocker = false;
-
+    [SerializeField] protected AIPressset presset;
+    [SerializeField] private bool blocker = false;
+    [SerializeField] protected Entity entity;
     [SerializeField] protected bool free = true;
     /// <summary>
     /// Свободен ли данный AI в текущий момент
@@ -199,6 +224,8 @@ public abstract class AI : MonoBehaviour
     public AIType Type { get => type; }
     public Animator Animator { get => animator; }
     public AudioSource Source { get => source; }
+    public Entity Entity { get => entity; }
+
     private void Awake()
     {
         blocker = true;
@@ -206,17 +233,17 @@ public abstract class AI : MonoBehaviour
     }
     private IEnumerator Start()
     {
-        yield return new WaitForSeconds(Random.Range(1f,2f));
+        yield return new WaitForSeconds(Random.Range(1f, 2f));
         blocker = false;
     }
 
 
-    [SerializeField] private AIConsistency consistency;
+    [SerializeField] protected AIConsistency consistency;
     public bool mark;
 
     public void CustomUpdate()
     {
-        if (!free)
+        if (!free || !gameObject.activeInHierarchy)
         {
             return;
         }
@@ -236,14 +263,47 @@ public abstract class AI : MonoBehaviour
         UpdateAI();
     }
 
+    /// <summary>
+    /// Оптимизированное время обновления для AI
+    /// </summary>
     protected abstract void UpdateAI();
 
-    public void SetPresset(AIPressset presset, NavMeshAgent agent, Animator animator, AudioSource source, AIType type)
+    /// <summary>
+    /// В один из триггеров AI зашла цель
+    /// </summary>
+    /// <param name="entity"></param>
+    protected virtual void OnCustomTriggerStay(Entity entity)
+    {
+
+    }
+
+    /// <summary>
+    /// Сущность управляемая AI получила урон
+    /// </summary>
+    /// <param name="sources"></param>
+    /// <param name="value"></param>
+    protected virtual void OnDamaged(Entity sources, float value)
+    {
+
+    }
+
+    public void SetPresset(AIPressset presset, NavMeshAgent agent, Entity entity, Animator animator, AudioSource source, AIType type)
     {
         this.presset = presset;
         this.agent = agent;
         this.type = type;
         this.animator = animator;
         this.source = source;
+        this.entity = entity;
+
+        if (entity && entity.HitBar)
+            entity.HitBar.OnDamaged?.AddListener(OnDamaged);
+
+        AITrigger[] triggers = entity.gameObject.GetComponentsInChildren<AITrigger>(true);
+        foreach (AITrigger t in triggers)
+        {
+            t.SetAi(this);
+            t.OnStay.AddListener((e) => OnCustomTriggerStay(e));
+        }
     }
 }

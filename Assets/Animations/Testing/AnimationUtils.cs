@@ -1,121 +1,48 @@
-﻿using System.Collections;
+﻿
+using System.Collections;
 using System.Collections.Generic;
 using System.IO;
+using UnityEngine;
+# if UNITY_EDITOR
 using System.Threading.Tasks;
 using UnityEditor;
-using UnityEngine;
-
+#endif
 
 
 [CreateAssetMenu(fileName = "Animation DATA")]
 public class AnimationData : ScriptableObject
 {
     [SerializeField] private string relativePath;
-
-
-
     [SerializeField] private List<Sprite> sprites;
     public List<Sprite> Sprites { get => sprites; set => sprites = value; }
 }
-
-
-//[CustomEditor(typeof(AnimationUtils))]
-//public class AnimationEditor : Editor
-//{
-//    AnimationUtils tt;
-//    Camera cam;
-//    private void OnEnable()
-//    {
-//        tt = (AnimationUtils)target;
-//    }
-
-//    public override void OnInspectorGUI()
-//    {
-//        var FileName = serializedObject.FindProperty("fileName");
-//        var FilePath = serializedObject.FindProperty("relativePath");
-//        var StateName = serializedObject.FindProperty("stateName");
-//        var animator = serializedObject.FindProperty("animator");
-//        var camera = serializedObject.FindProperty("screenCamera");
-//        EditorGUILayout.PropertyField(FileName);
-//        EditorGUILayout.PropertyField(FilePath);
-//        EditorGUILayout.PropertyField(StateName);
-//        EditorGUILayout.PropertyField(animator);
-//        EditorGUILayout.PropertyField(camera);
-//        serializedObject.ApplyModifiedProperties();
-
-//        if (GUILayout.Button("Начать запись"))
-//        {
-//            Animator anim = (Animator)animator.GetValue();
-//            anim.Play((string)StateName.GetValue(),0);
-//            //ToTexture2D((Camera)camera.GetValue(), (s) => SaveSpriteToEditorPath(s, (string)FilePath.GetValue()));
-//            //WaitSprite((Camera)camera.GetValue(), (string)FilePath.GetValue());
-//            //DelayUseAsync(250, (Camera)Camera.GetValue(), (string)FilePath.GetValue());
-//            // StartCoroutine(Test());
-//        }
-//    }
-
-//    private void ToTexture2D(Camera cam, System.Action<Sprite> onComplete)
-//    {
-//        RenderTexture rTex = cam.targetTexture;
-//        RenderTexture currentActiveRT = RenderTexture.active;
-//        RenderTexture.active = rTex;
-//        cam.Render();
-//        Rect rect = new Rect(0, 0, rTex.width, rTex.height);
-//        Texture2D tex = new Texture2D(rTex.width, rTex.height);
-//        tex.ReadPixels(rect, 0, 0);
-//        tex.Apply();
-//        RenderTexture.active = currentActiveRT;
-//        Sprite s = Sprite.Create(tex, rect, new Vector2(0.5f, 0.5f));
-//        onComplete(s);
-//    }
-
-//    Sprite SaveSpriteToEditorPath(Sprite sprite, string proj_path)
-//    {
-//        var abs_path = Path.Combine(Application.dataPath, proj_path);
-//        proj_path = Path.Combine("Assets", proj_path);
-
-//        Directory.CreateDirectory(Path.GetDirectoryName(abs_path));
-//        File.WriteAllBytes(abs_path, ImageConversion.EncodeToPNG(sprite.texture));
-
-//        AssetDatabase.Refresh();
-
-//        var ti = AssetImporter.GetAtPath(proj_path) as TextureImporter;
-//        ti.spritePixelsPerUnit = sprite.pixelsPerUnit;
-//        ti.mipmapEnabled = false;
-//        ti.textureType = TextureImporterType.Sprite;
-
-//        EditorUtility.SetDirty(ti);
-//        ti.SaveAndReimport();
-
-//        return AssetDatabase.LoadAssetAtPath<Sprite>(proj_path);
-//    }
-//}
-
 public class AnimationUtils : MonoBehaviour
 {
-    [SerializeField] private bool createSreenShoot = false;
-     private bool startRecord = false;
+
+    public bool createSreenShoot = false;
+    private bool startRecord = false;
     private bool block = false;
-    [SerializeField] private Camera screenCamera;
-    [SerializeField] private List<Sprite> results = new List<Sprite>();
+    public Camera screenCamera;
+    public List<Sprite> results = new List<Sprite>();
 
     [Header("Префикс названия .Png")]
-    [SerializeField] private string fileName;
+    public string fileName;
     [Header("Путь относительно папки Assets, если указана несуществующая папка она будет создана")]
-    [SerializeField] private string relativePath;
+    public string relativePath;
     [Header("Анимация для раскадровки: ")]
     [Space(1)]
     [Header("Название анимации в Animator")]
-    [SerializeField] private string stateName;
+    public string stateName;
     [Header("Animator")]
-    [SerializeField] private Animator animator;
+    public Animator animator;
     [Range(0.02f, 1f)]
-    [SerializeField] private float frameStep;
-     private bool isRecording = false;
+    public float frameStep;
+    private bool isRecording = false;
+#if UNITY_EDITOR
     private void Awake()
     {
-        if(!animator)
-        animator = gameObject.GetComponent<Animator>();
+        if (!animator)
+            animator = gameObject.GetComponent<Animator>();
 
     }
 
@@ -222,7 +149,7 @@ public class AnimationUtils : MonoBehaviour
     private void OnDrawGizmos()
     {
         if (!screenCamera) screenCamera = GameObject.FindGameObjectWithTag("ScreenCamera").GetComponent<Camera>();
-        if(createSreenShoot)
+        if (createSreenShoot)
         {
             StartCoroutine(ToTexture2D(screenCamera, (s) => SaveSpriteToEditorPath(s, relativePath + "/" + fileName + "_" + "screenshot" + ".png")));
             createSreenShoot = false;
@@ -269,4 +196,5 @@ public class EditorCoroutine
             stop();
         }
     }
+#endif
 }

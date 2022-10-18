@@ -9,6 +9,7 @@ public class MoveToTarget : AIAction
     [SerializeField] private float currentDistance;
     [SerializeField] private float exitDistance;
     [SerializeField] private Transform target;
+
     private void OnStart(AI executor)
     {
         if (!states) return;
@@ -46,9 +47,10 @@ public class MoveToTarget : AIAction
             executor.Source?.Play();
         }
     }
+
     protected override IEnumerator Action(AI executor, System.Action onComplete)
     {
-
+        isStop = false;
 
         Vector3 endPosition = target.transform.position;
         if (!pursue)
@@ -68,27 +70,38 @@ public class MoveToTarget : AIAction
 
 
 
-        while (currentDistance > exitDistance)
+        while (currentDistance > exitDistance && !isStop && executor.Entity.gameObject.activeSelf)
         {
-            if (executor == null || !executor.gameObject || !executor.gameObject.activeSelf)
+            if (isStop)
+            {
+                onComplete();
+                executor.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.MedQualityObstacleAvoidance;
                 yield return null;
-            if (pursue)
-            {
-                endPosition = target.transform.position;
-                executor.Agent.SetDestination(endPosition);
             }
-            currentDistance = Vector2.Distance(new Vector2(endPosition.x, endPosition.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
-            try
+            else
             {
-            GameUtils.LookAt2D(executor.Presset.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Presset.RotateOffset);
-            } catch
-            {
-                yield break;
-            }
+                if (isStop || executor == null || !executor.gameObject || !executor.gameObject.activeSelf)
+                    yield return null;
 
+                if (pursue)
+                {
+                    endPosition = target.transform.position;
+                    executor.Agent.SetDestination(endPosition);
+                }
+
+                try
+                {
+                currentDistance = Vector2.Distance(new Vector2(endPosition.x, endPosition.y), new Vector2(executor.Agent.transform.position.x, executor.Agent.transform.position.y));
+                GameUtils.LookAt2D(executor.Presset.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Presset.RotateOffset);
+                }
+                catch
+                {
+                    yield break;
+                }
+            }
             yield return new WaitForFixedUpdate();
         }
-        Debug.Log("PRISLA PIZDA");
+        if (isStop) yield break;
         executor.Source.Stop();
         OnStart(executor);
         yield return new WaitForSeconds(duration);

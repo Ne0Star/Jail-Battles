@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   animationPressetStart: {fileID: 11400000, guid: 79239cee19c47574d986d1cf27f182c6,
     type: 2}
-  soundPressetStart: {fileID: 0}
+  soundPressetStart: {fileID: 11400000, guid: 30ff52cafe54d904b914b5c39a032f2f, type: 2}
   animationPressetComplete: {fileID: 11400000, guid: 78f8dbfe47d6e404383591efc67bdc11,
     type: 2}
   soundPressetComplete: {fileID: 11400000, guid: 4cf5ce82cde4c2f4a9bc326ff99b5901,

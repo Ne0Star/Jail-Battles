@@ -1,9 +1,6 @@
 using System.Collections;
 using System.Collections.Generic;
-using UnityEditor;
-using UnityEditor.SceneManagement;
 using UnityEngine;
-using UnityEngine.Events;
 
 
 
@@ -74,7 +71,7 @@ public class AIConsistency : AIEvents
     [SerializeField] private bool drawGizmos = false;
     private void OnDrawGizmos()
     {
-        if(drawGizmos)
+        if (drawGizmos)
         {
             Draw();
         }
@@ -93,7 +90,7 @@ public class AIConsistency : AIEvents
     /// </summary>
     public AITypes ApplyTypes { get => applyTypes; }
 
-
+    [SerializeField] private bool isStop = true;
     [SerializeField] private bool free;
     [SerializeField] private List<AIAction> actions;
     [SerializeField] private System.Action onStart;
@@ -142,9 +139,26 @@ public class AIConsistency : AIEvents
     public void StartConsisstency(AI ai, System.Action onComplete)
     {
         if (!free) return;
+        isStop = false;
         SetFree(false);
         StartCoroutine(StartActions(ai, onComplete));
     }
+
+    private void Stopping()
+    {
+
+    }
+
+    public void StopConsistency()
+    {
+        isStop = true;
+        foreach (AIAction action in actions)
+        {
+            action.StopAction();
+        }
+        SetFree(true);
+    }
+
     [SerializeField] int index = 0;
     private IEnumerator StartActions(AI ai, System.Action onComplete)
     {
@@ -153,10 +167,11 @@ public class AIConsistency : AIEvents
         {
             bool next = false;
             action.StartAction(ai, () => next = true);
-            yield return new WaitUntil(() => next);
+            //
+            yield return new WaitUntil(() => next || isStop);
+if (isStop) {  Stopping(); yield break; }
             index++;
         }
-        Debug.Log("—ценарий завершЄн");
         SetFree(true);
         onComplete?.Invoke();
         yield break;

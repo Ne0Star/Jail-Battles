@@ -2069,7 +2069,7 @@ PrefabInstance:
     - target: {fileID: 3663691936904871966, guid: 6fa57745851a93f4eae1d0ba0c140a2b,
         type: 3}
       propertyPath: m_SpriteKey
-      value: NaN
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 5073407040379773554, guid: 6fa57745851a93f4eae1d0ba0c140a2b,
         type: 3}

@@ -28,7 +28,15 @@ public class EnemuManager : MonoBehaviour
     {
         foreach (Enemu e in allEnemies)
         {
-            e.EnemuUpdate();
+            if (e.gameObject.activeSelf)
+            {
+                e.EnemuUpdate();
+            }
+            else
+            {
+                //e.gameObject.SetActive(true);
+            }
+
         }
 
         yield return new WaitForSeconds(enemuLifeTime);

@@ -7,4 +7,5 @@ public class AnimationPresset : ScriptableObject
 {
     public string animationName;
     public float speed;
+    public float duration;
 }
