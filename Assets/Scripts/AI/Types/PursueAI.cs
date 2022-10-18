@@ -35,6 +35,7 @@ public class PursueAI : AI
                 if (free)
                 {
                     this.target = null;
+                    if(consistency)
                     consistency.StopConsistency();
                     OnCustomTriggerStay(sources);
                 }
