@@ -3,12 +3,14 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
+
+
 /// <summary>
 /// Спавн и цикл врагов
 /// </summary>
 public class EnemuManager : MonoBehaviour
 {
-    [SerializeField] private float enemuLifeTime;
+    [SerializeField] private float updateTime;
 
     [SerializeField] private Enemu[] allEnemies = null;
 
@@ -39,7 +41,7 @@ public class EnemuManager : MonoBehaviour
 
         }
 
-        yield return new WaitForSeconds(enemuLifeTime);
+        yield return new WaitForSeconds(updateTime);
         StartCoroutine(Life());
     }
 }

@@ -6,7 +6,7 @@ using UnityEngine;
 public class TriggerManager : MonoBehaviour
 {
     [SerializeField] private float updateTime = 0.1f;
-    [SerializeField] private List<Trigger> triggers;
+    [SerializeField] private List<Trigger> triggers = new List<Trigger>();
 
     private void Awake()
     {
@@ -28,14 +28,34 @@ public class TriggerManager : MonoBehaviour
         triggers.Distinct();
     }
 
+
+
+    private void TriggersLife(int start, int end)
+    {
+        for (int i = start; i < end; i++)
+        {
+            if (i <= triggers.Count - 1 && i >= 0)
+            {
+                Trigger trigger = triggers[i];
+                trigger.CustomUpdate();
+            }
+            else return;
+        }
+    }
+
     private IEnumerator Life()
     {
-        foreach (Trigger trigger in triggers)
+        int index = 5;
+        int count = 0;
+        for (int i = 0; i < triggers.Count; i += 5)
         {
-            trigger.CustomUpdate();
+            TriggersLife(i, index);
+            index = i + 5;
+            count++;
+            yield return new WaitForFixedUpdate();
         }
 
-        yield return new WaitForSeconds(updateTime);
+        yield return new WaitForSeconds(updateTime * count);
         StartCoroutine(Life());
         yield break;
     }

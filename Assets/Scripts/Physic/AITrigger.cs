@@ -29,7 +29,7 @@ public class AITrigger : Trigger
 
         foreach (Entity target in targets)
         {
-            if (target  && target != sources.Entity&& target.gameObject.activeInHierarchy)
+            if (target  && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
                 if (Vector2.Distance(target.transform.position, transform.position) <= radius)
                 {
                     onStay.Invoke(target);
@@ -41,7 +41,7 @@ public class AITrigger : Trigger
     public void SetAi(AI sources)
     {
         if (!sources) return;
-        this.types = sources.Presset.Targets;
+        this.types = sources.TargetTypes;
         this.sources = sources;
         initialized = true;
     }

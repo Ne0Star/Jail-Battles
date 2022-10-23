@@ -26,7 +26,9 @@ public struct LevelData
 public class LevelManager : OneSingleton<LevelManager>
 {
 
+    [SerializeField] private float customTime;
 
+    public float CustomTime { get => customTime; }
 
     [SerializeField] private LevelData levelData;
 

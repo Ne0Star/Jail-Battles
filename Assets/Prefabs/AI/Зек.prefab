@@ -357,7 +357,7 @@ SpriteRenderer:
   m_FlipX: 0
   m_FlipY: 0
   m_DrawMode: 0
-  m_Size: {x: 10.24, y: 10.24}
+  m_Size: {x: 5.12, y: 5.12}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
   m_WasSpriteAssigned: 1
@@ -455,19 +455,18 @@ MonoBehaviour:
     colliders: []
     states:
       walk:
-        isRun: 0
         animation: {fileID: 11400000, guid: e9c9cd7a51825a240a5ab92903fb761a, type: 2}
         sound: {fileID: 11400000, guid: e926a88c8787a944591236e5ffe28caf, type: 2}
       idle:
-        isRun: 0
         animation: {fileID: 11400000, guid: 5b0a73b73d6639947b4bf79ad17e2180, type: 2}
         sound: {fileID: 11400000, guid: 6e8ad0037cc432b41a00a0e66b94dbcb, type: 2}
+      figtStance:
+        animation: {fileID: 0}
+        sound: {fileID: 0}
       standartStrikes:
-      - isRun: 0
-        animation: {fileID: 11400000, guid: 8388bf7984578e74ab5b0a1369be8f85, type: 2}
+      - animation: {fileID: 11400000, guid: 8388bf7984578e74ab5b0a1369be8f85, type: 2}
         sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
-      - isRun: 0
-        animation: {fileID: 11400000, guid: ff7921496579d724b8f847e24d1c3880, type: 2}
+      - animation: {fileID: 11400000, guid: ff7921496579d724b8f847e24d1c3880, type: 2}
         sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
       specialStrikes: []
       bossStrikes: []

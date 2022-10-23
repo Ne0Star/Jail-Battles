@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 /// <summary>
 /// Содержит анимации приндлежащие живым сущностям
@@ -69,13 +70,28 @@ public abstract class Entity : MonoBehaviour
     private void OnEnable()
     {
         Enable();
-        if(!agent)
-        agent = gameObject.AddComponent<NavMeshAgent>();
+        if (!agent)
+            agent = gameObject.AddComponent<NavMeshAgent>();
     }
     private void OnDisable()
     {
         Disable();
     }
+
+    public void DisableAgent()
+    {
+        agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+    }
+    public void EnableAgent()
+    {
+        agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
+        if (agent)
+        {
+            agent.updateRotation = false;
+            agent.updateUpAxis = false;
+        }
+    }
+
     protected virtual void Enable()
     {
 
@@ -84,6 +100,7 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
+
     public virtual void TakeDamage(Entity source, float damage)
     {
         hitBar.TakeDamage(source, damage, () =>

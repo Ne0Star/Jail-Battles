@@ -20,7 +20,6 @@ public class StandartBar : HitBar
         float heal = Mathf.Clamp(1f / health, 0.001f, 9999f);
         float maxHeal = Mathf.Clamp(1f / maxHealth, 0.001f, 999f);
         resultX = Mathf.Clamp((1f / heal) * maxHeal, 0, 1f);
-
                 HealthTarget.transform.localScale = new Vector3(resultX, HealthTarget.localScale.y, HealthTarget.localScale.z);
     }
 }

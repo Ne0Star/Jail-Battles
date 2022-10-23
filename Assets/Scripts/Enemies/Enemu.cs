@@ -8,10 +8,10 @@ public class Enemu : Entity
     private bool check = false;
     public bool Check { get => check; set => check = value; }
     public AIType AiType { get => aiType; }
-    [SerializeField] private AIPressset aiPresset;
+    [SerializeField] private AIUniversalData data;
+    [SerializeField] private AITypes targetTypes;
     [SerializeField] private AIType aiType;
     [SerializeField] protected AI ai;
-
 
     protected override void Enable()
     {
@@ -35,7 +35,6 @@ public class Enemu : Entity
         }
         if (ai)
         {
-            if(ai.Free)
             ai.CustomUpdate();
         }
     }
@@ -43,8 +42,8 @@ public class Enemu : Entity
     protected void ChangeAi()
     {
         if (ai != null)
-            LevelManager.Instance.AiManager.ChangeAI(this, ref ai, aiPresset, aiType);
-        else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(this, aiPresset, aiType);
+            LevelManager.Instance.AiManager.ChangeAI(this, ref ai, data, aiType, targetTypes);
+        else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(this, data, aiType, targetTypes);
     }
 
     int last, current;

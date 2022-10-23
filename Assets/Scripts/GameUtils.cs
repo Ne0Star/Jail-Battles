@@ -4,6 +4,7 @@ using UnityEngine;
 
 public static class GameUtils
 {
+
     /// <summary>
     /// whom поворачивается в сторону where, с смещением offset
     /// </summary>
@@ -17,6 +18,7 @@ public static class GameUtils
 
         whom.rotation = total;
     }
+
     public static void LookAt2DSmooth(Transform whom, Vector3 where, float offset, float time, float distanceToComplete, System.Action onComplete)
     {
         float angle = GameUtils.RoundToValue(Mathf.Atan2(where.y - whom.position.y, where.x - whom.position.x) * Mathf.Rad2Deg - offset, 0.05f);
@@ -24,6 +26,7 @@ public static class GameUtils
         whom.rotation = Quaternion.Lerp(whom.rotation, total, time);
         if (GameUtils.RoundToValue(Vector2.Distance(new Vector2(total.z, 0), new Vector2(whom.rotation.z, 0)), 0.05f) <= distanceToComplete) onComplete();
     }
+
     public static float RoundToValue(float round, float value)
     {
         float result = 0f;
@@ -33,6 +36,7 @@ public static class GameUtils
             result = (int)(round / value) * value;
         return result;
     }
+
     public static Vector3 ClampMagnitude(Vector3 v, float max, float min)
     {
         double sm = v.sqrMagnitude;
@@ -40,6 +44,7 @@ public static class GameUtils
         else if (sm < (double)min * (double)min) return v.normalized * min;
         return v;
     }
+
 }
 
 

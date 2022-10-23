@@ -1,7 +1,9 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 using UnityEngine.AI;
+using UnityEngine.Events;
 
 public enum AIType
 {
@@ -139,9 +141,8 @@ public struct AITypes
 
 
 [System.Serializable]
-public struct AIStatPresset
+public class AIStatPresset
 {
-    [SerializeField] private bool isRun;
     [SerializeField] private AnimationPresset animation;
     [SerializeField] private SoundPresset sound;
 
@@ -154,6 +155,7 @@ public struct AIStatsPresset
 {
     [SerializeField] private AIStatPresset walk;
     [SerializeField] private AIStatPresset idle;
+    [SerializeField] private AIStatPresset figtStance;
 
     [SerializeField] private List<AIStatPresset> standartStrikes;
     [SerializeField] private List<AIStatPresset> specialStrikes;
@@ -167,6 +169,12 @@ public struct AIStatsPresset
     /// Покой
     /// </summary>
     public AIStatPresset Idle { get => idle; }
+    /// <summary>
+    /// Боевая стойка
+    /// </summary>
+    public AIStatPresset FigtStance { get => figtStance; }
+
+
 
 
     /// <summary>
@@ -181,65 +189,79 @@ public struct AIStatsPresset
     /// Особые сложные удары, для особо опасных AI, которые могут убить с 1-3 ударов
     /// </summary>
     public List<AIStatPresset> BossStrikes { get => bossStrikes; }
+
 }
-
-
-
 
 [System.Serializable]
-public struct AIPressset
+public struct AIUniversalData
 {
-    [SerializeField] private Transform rotateParent;
+    [SerializeField] private List<AIAction> life;
+
+    [SerializeField] private float speed;
+    [SerializeField] private float rotateSpeed;
+
     [SerializeField] private float rotateOffset;
-    [SerializeField] private AITypes targetTypes;
-    [SerializeField] private AITypes ignoreTypes;
-    [SerializeField] private List<Collider2D> colliders;
+    [SerializeField] private Transform rotateParent;
 
-    [SerializeField] private AIStatsPresset states;
-
-
-    public AITypes Targets { get => targetTypes; }
-    public AITypes Ignores { get => ignoreTypes; }
-    public Transform RotateParent { get => rotateParent; }
+    public List<AIAction> Life { get => life; }
+    public float Speed { get => speed; }
+    public float RotateSpeed { get => rotateSpeed; }
     public float RotateOffset { get => rotateOffset; }
-    public AIStatsPresset States { get => states; }
-    public List<Collider2D> Colliders { get => colliders; }
+    public Transform RotateParent { get => rotateParent; }
 }
+
 public abstract class AI : MonoBehaviour
 {
+    [SerializeField] protected bool visible = false;
     [SerializeField] private AudioSource source;
     [SerializeField] private Animator animator;
     [SerializeField] private AIType type;
+    [SerializeField] protected AIUniversalData data;
     [SerializeField] protected NavMeshAgent agent;
-    [SerializeField] protected AIPressset presset;
     [SerializeField] private bool blocker = false;
     [SerializeField] protected Entity entity;
     [SerializeField] protected bool free = true;
+    [SerializeField] private AITypes targetTypes;
+
     /// <summary>
     /// Свободен ли данный AI в текущий момент
     /// </summary>
     public bool Free { get => free; }
     public NavMeshAgent Agent { get => agent; }
-    public AIPressset Presset { get => presset; }
     public AIType Type { get => type; }
     public Animator Animator { get => animator; }
     public AudioSource Source { get => source; }
     public Entity Entity { get => entity; }
+    public AITypes TargetTypes { get => targetTypes; }
+    public AIUniversalData Data { get => data; }
 
-    private void Awake()
+
+    protected virtual void Disable()
     {
-        blocker = true;
-        transform.localPosition = Vector3.zero;
+
     }
-    private IEnumerator Start()
+    protected virtual void Enable()
     {
-        yield return new WaitForSeconds(Random.Range(1f, 2f));
-        blocker = false;
+
+    }
+    protected virtual void Create()
+    {
+
+    }
+    private void OnDisable()
+    {
+        Disable();
+    }
+    private void OnEnable()
+    {
+        transform.localPosition = Vector2.zero;
+        Enable();
     }
 
-
-    [SerializeField] protected AIConsistency consistency;
-    public bool mark;
+    public void SetVisible(bool visible)
+    {
+        this.visible = visible;
+    }
 
     public void CustomUpdate()
     {
@@ -247,19 +269,23 @@ public abstract class AI : MonoBehaviour
         {
             return;
         }
-        mark = !mark;
-        consistency = LevelManager.Instance.AiManager.GetConsistency(this, true);
-        if (consistency != null && consistency.Free)
-        {
-            //consistency.Free = false;
-            free = false;
-            consistency.StartConsisstency(this, () => { free = true; });
-        }
-        else
-        {
-            consistency = null;
-        }
         if (blocker) return;
+
+        //if (!visible)
+        //{
+        //    agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
+        //    entity.Animator.enabled = false;
+        //    entity.Source.enabled = false;
+        //    entity.HitBar.HideVisual();
+        //}
+        //else
+        //{
+        //    agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
+        //    entity.Animator.enabled = true;
+        //    entity.Source.enabled = true;
+        //    entity.HitBar.ShowVisual();
+        //}
+
         UpdateAI();
     }
 
@@ -267,7 +293,6 @@ public abstract class AI : MonoBehaviour
     /// Оптимизированное время обновления для AI
     /// </summary>
     protected abstract void UpdateAI();
-
     /// <summary>
     /// В один из триггеров AI зашла цель
     /// </summary>
@@ -276,7 +301,6 @@ public abstract class AI : MonoBehaviour
     {
 
     }
-
     /// <summary>
     /// Сущность управляемая AI получила урон
     /// </summary>
@@ -286,10 +310,10 @@ public abstract class AI : MonoBehaviour
     {
 
     }
-
-    public void SetPresset(AIPressset presset, NavMeshAgent agent, Entity entity, Animator animator, AudioSource source, AIType type)
+    public void SetPresset(AIUniversalData data, NavMeshAgent agent, Entity entity, Animator animator, AudioSource source, AIType type, AITypes targetTypes)
     {
-        this.presset = presset;
+        this.targetTypes = targetTypes;
+        this.data = data;
         this.agent = agent;
         this.type = type;
         this.animator = animator;
@@ -305,5 +329,6 @@ public abstract class AI : MonoBehaviour
             t.SetAi(this);
             t.OnStay.AddListener((e) => OnCustomTriggerStay(e));
         }
+        Create();
     }
 }

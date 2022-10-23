@@ -5,7 +5,6 @@ using UnityEngine.Events;
 [System.Serializable]
 public abstract class HitBar : MonoBehaviour
 {
-
     [SerializeField] private UnityEvent<Entity, float> onDamaged, onHealth;
 
     private void Awake()

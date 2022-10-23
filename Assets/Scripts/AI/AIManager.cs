@@ -8,135 +8,13 @@ using UnityEngine;
 /// </summary>
 public class AIManager : MonoBehaviour
 {
-
     [SerializeField] private List<AI> allAi;
-
-    [SerializeField] private List<AIAction> allAction;
-    [SerializeField] private List<AIConsistency> allConsistencies;
+    [SerializeField] private List<AIArea> areas;
 
     private void Awake()
     {
-        allAction.AddRange(FindObjectsOfType<AIAction>());
-        allConsistencies.AddRange(FindObjectsOfType<AIConsistency>());
-    }
-
-
-    public void MoveToTarget(AI ai, Entity target, System.Action start, System.Action update, System.Action complete)
-    {
-        if (!ai || !target)
-        {
-            complete();
-            return;
-        }
-        start();
-        StartCoroutine(_MoveToTarget(ai, target, update, complete));
-    }
-
-    private IEnumerator _MoveToTarget(AI ai, Entity target, System.Action update, System.Action complete)
-    {
-        ai.Agent.obstacleAvoidanceType = UnityEngine.AI.ObstacleAvoidanceType.NoObstacleAvoidance;
-        AIStatPresset stat = ai.Presset.States.Walk;
-        ai.Source.clip = stat.Sound.Clip;
-        ai.Source.loop = stat.Sound.Loop;
-        ai.Source.volume = stat.Sound.Volume;
-        ai.Source.pitch = stat.Sound.Pitch;
-        ai.Source.Play();
-        ai.Animator.Play(stat.Animation.animationName);
-        ai.Animator.speed = stat.Animation.speed;
-        float currentDistance = float.MaxValue;
-        while (currentDistance > ai.Agent.radius + ai.Agent.radius)
-        {
-            currentDistance = Vector2.Distance(new Vector2(target.transform.position.x, target.transform.position.y), new Vector2(ai.Agent.transform.position.x, ai.Agent.transform.position.y));
-            ai.Agent.SetDestination(target.transform.position);
-
-            update();
-            yield return new WaitForFixedUpdate();
-        }
-        complete();
-        yield break;
-    }
-
-
-
-    /// <summary>
-    /// Возвращает все сценарии для переданного типа AI
-    /// </summary>
-    /// <returns></returns>
-    public List<AIConsistency> GetConsistences(AI sourcess)
-    {
-        List<AIConsistency> result = new List<AIConsistency>();
-        foreach (AIConsistency consistency in allConsistencies)
-        {
-            if (consistency.ApplyTypes.Contains(sourcess.Type))
-            {
-                result.Add(consistency);
-            }
-        }
-        return result;
-    }
-    /// <summary>
-    /// Возвращает свободный сценарий для переданного типа AI
-    /// </summary>
-    /// <returns></returns>
-    public AIConsistency GetConsistency(AI sourcess, bool random)
-    {
-        List<AIConsistency> result = null;
-        if (random) result = new List<AIConsistency>();
-        int index = 0;
-        foreach (AIConsistency consistency in allConsistencies)
-        {
-            if (consistency.ApplyTypes.Contains(sourcess.Type))
-            {
-                //Debug.Log("Содержит");
-                if (consistency.Free)
-                {
-                    if (!random)
-                        return consistency;
-                    index++;
-                    result.Add(consistency);
-                    //    Debug.Log("Свободен");
-                }
-            }
-        }
-        if (result == null || result.Count == 0) return null;
-        return result[Random.Range(0, Mathf.Clamp(result.Count, 0, index))];
-    }
-    /// <summary>
-    /// Возвращает свободный сценарий для переданного типа AI
-    /// </summary>
-    /// <returns></returns>
-    public AIConsistency GetConsistency(AI sourcess)
-    {
-        foreach (AIConsistency consistency in allConsistencies)
-        {
-            if (consistency.ApplyTypes.Contains(sourcess.Type))
-            {
-                //Debug.Log("Содержит");
-                if (consistency.Free)
-                {
-                    return consistency;
-                    //    Debug.Log("Свободен");
-                }
-            }
-        }
-        return null;
-    }
-
-
-
-    /// <summary>
-    /// Возвращает все действия для указанного типа Ai
-    /// </summary>
-    /// <typeparam name="T"></typeparam>
-    /// <returns></returns>
-    public List<AIAction> GetAllAction<T>()
-    {
-        List<AIAction> result = new List<AIAction>();
-        foreach (AIAction action in allAction)
-        {
-
-        }
-        return result;
+        //allAction.AddRange(FindObjectsOfType<AIAction>());
+        areas.AddRange(FindObjectsOfType<AIArea>(true));
     }
 
     private void RemoveAi(AI ai)
@@ -178,9 +56,6 @@ public class AIManager : MonoBehaviour
                 break;
         }
     }
-
-
-
     public Entity[] GetAllEntityByAI(AIType type)
     {
         List<Entity> result = new List<Entity>();
@@ -254,7 +129,6 @@ public class AIManager : MonoBehaviour
         }
         return result.ToArray();
     }
-
     public AI[] GetAllAi(AIType type)
     {
         List<Entity> result = new List<Entity>();
@@ -288,41 +162,110 @@ public class AIManager : MonoBehaviour
         }
         return null;
     }
-
-    public void ChangeAI(Entity sources, ref AI last, AIPressset presset, AIType type)
+    public void ChangeAI(Entity sources, ref AI last, AIUniversalData presset, AIType type, AITypes targetTypes)
     {
         if (last != null)
         {
             Destroy(last.gameObject);
             allAi.Remove(last);
             RemoveAi(last);
-            last = AddAI(sources, presset, type);
+            last = AddAI(sources, presset, type,targetTypes);
         }
         else
         {
-            last = AddAI(sources, presset, type);
+            last = AddAI(sources, presset, type, targetTypes);
         }
 
         //return result;
     }
-
-    private AI AddAI<T>(ref Entity sources, AIPressset presset, AIType type) where T : Component
+    private AI AddAI<T>(ref Entity sources, AIUniversalData presset, AIType type, AITypes targetTypes) where T : Component
     {
         GameObject obj = new GameObject("Ai");
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type);
+        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type,targetTypes);
         return result;
     }
-    private AI AddAI<T>(ref Entity sources, AIPressset presset, AIType type, string name) where T : Component
+    private AI AddAI<T>(ref Entity sources, AIUniversalData presset, AIType type, string name, AITypes targetTypes) where T : Component
     {
         GameObject obj = new GameObject("AI: " + name + " " + allAi.Count);
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type);
+        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type,targetTypes);
         return result;
     }
-
+    public AI AddAI(Entity sources, AIUniversalData presset, AIType type, AITypes targetTypes)
+    {
+        AI result = null;
+        int index = 0;
+        switch (type)
+        {
+            case AIType.Преследователь:
+                result = AddAI<PursueAI>(ref sources, presset, type, "Преследователь", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                puesues.Add((PursueAI)allAi[index]);
+                return result;
+            case AIType.Псих:
+                result = AddAI<CrazyAI>(ref sources, presset, type, "Псих", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                crazies.Add((CrazyAI)allAi[index]);
+                return result;
+            case AIType.Бычара:
+                result = AddAI<BycharaAI>(ref sources, presset, type, "Бычара", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                bycharaz.Add((BycharaAI)allAi[index]);
+                return result;
+            case AIType.Трус:
+                result = AddAI<CowardAI>(ref sources, presset, type, "Трус", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                cowards.Add((CowardAI)allAi[index]);
+                return result;
+            case AIType.Маньяк:
+                result = AddAI<ManiacAI>(ref sources, presset, type, "Маньяк", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                maniacs.Add((ManiacAI)allAi[index]);
+                return result;
+            case AIType.Уборщица:
+                result = AddAI<CleaningAI>(ref sources, presset, type, "Уборщица", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                cleanings.Add((CleaningAI)allAi[index]);
+                return result;
+            case AIType.Повариха:
+                result = AddAI<CookAI>(ref sources, presset, type, "Повариха", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                cooks.Add((CookAI)allAi[index]);
+                return result;
+            case AIType.ГлавнаяПовариха:
+                result = AddAI<HeadCookAI>(ref sources, presset, type, "Главная повариха", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                headCooks.Add((HeadCookAI)allAi[index]);
+                return result;
+            case AIType.ГлавнаяУборщица:
+                result = AddAI<MainCleningAI>(ref sources, presset, type, "Главная уборщица", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                headCleanings.Add((MainCleningAI)allAi[index]);
+                return result;
+            case AIType.Охранник:
+                result = AddAI<GuardAI>(ref sources, presset, type, "Охранник", targetTypes);
+                allAi.Add(result);
+                index = allAi.IndexOf(result);
+                cowards.Add((CowardAI)allAi[index]);
+                return result;
+            case AIType.Крыса:
+                result = AddAI<RatAI>(ref sources, presset, type, "Крыса", targetTypes);
+                return result;
+        }
+        return null;
+    }
 
     [SerializeField] private List<PursueAI> puesues;
     [SerializeField] private List<CrazyAI> crazies;
@@ -330,13 +273,10 @@ public class AIManager : MonoBehaviour
     [SerializeField] private List<CowardAI> cowards;
     [SerializeField] private List<ManiacAI> maniacs;
     [SerializeField] private List<GuardAI> guardians;
-
     [SerializeField] private List<CleaningAI> cleanings;
     [SerializeField] private List<MainCleningAI> headCleanings;
-
     [SerializeField] private List<CookAI> cooks;
     [SerializeField] private List<HeadCookAI> headCooks;
-
     public List<PursueAI> Puesues { get => puesues; }
     public List<CrazyAI> Crazies { get => crazies; }
     public List<BycharaAI> Bycharaz { get => bycharaz; }
@@ -347,77 +287,6 @@ public class AIManager : MonoBehaviour
     public List<MainCleningAI> HeadCleanings { get => headCleanings; }
     public List<CookAI> Cooks { get => cooks; }
     public List<HeadCookAI> HeadCooks { get => headCooks; }
+    public List<AIArea> Areas { get => areas; }
 
-    public AI AddAI(Entity sources, AIPressset presset, AIType type)
-    {
-        AI result = null;
-        int index = 0;
-        switch (type)
-        {
-            case AIType.Преследователь:
-                result = AddAI<PursueAI>(ref sources, presset, type, "Преследователь");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                puesues.Add((PursueAI)allAi[index]);
-                return result;
-            case AIType.Псих:
-                result = AddAI<CrazyAI>(ref sources, presset, type, "Псих");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                crazies.Add((CrazyAI)allAi[index]);
-                return result;
-            case AIType.Бычара:
-                result = AddAI<BycharaAI>(ref sources, presset, type, "Бычара");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                bycharaz.Add((BycharaAI)allAi[index]);
-                return result;
-            case AIType.Трус:
-                result = AddAI<CowardAI>(ref sources, presset, type, "Трус");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                cowards.Add((CowardAI)allAi[index]);
-                return result;
-            case AIType.Маньяк:
-                result = AddAI<ManiacAI>(ref sources, presset, type, "Маньяк");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                maniacs.Add((ManiacAI)allAi[index]);
-                return result;
-            case AIType.Уборщица:
-                result = AddAI<CleaningAI>(ref sources, presset, type, "Уборщица");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                cleanings.Add((CleaningAI)allAi[index]);
-                return result;
-            case AIType.Повариха:
-                result = AddAI<CookAI>(ref sources, presset, type, "Повариха");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                cooks.Add((CookAI)allAi[index]);
-                return result;
-            case AIType.ГлавнаяПовариха:
-                result = AddAI<HeadCookAI>(ref sources, presset, type, "Главная повариха");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                headCooks.Add((HeadCookAI)allAi[index]);
-                return result;
-            case AIType.ГлавнаяУборщица:
-                result = AddAI<MainCleningAI>(ref sources, presset, type, "Главная уборщица");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                headCleanings.Add((MainCleningAI)allAi[index]);
-                return result;
-            case AIType.Охранник:
-                result = AddAI<GuardAI>(ref sources, presset, type, "Охранник");
-                allAi.Add(result);
-                index = allAi.IndexOf(result);
-                cowards.Add((CowardAI)allAi[index]);
-                return result;
-            case AIType.Крыса:
-                result = AddAI<RatAI>(ref sources, presset, type, "Крыса");
-                return result;
-        }
-        return null;
-    }
 }

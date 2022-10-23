@@ -7818,7 +7818,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7828,7 +7828,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -7838,7 +7838,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -8004,7 +8004,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.x
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -8014,7 +8014,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.y
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
     classID: 4
     script: {fileID: 0}
   - curve:
@@ -8024,7 +8024,7 @@ AnimationClip:
       m_PostInfinity: 2
       m_RotationOrder: 4
     attribute: m_LocalEulerAngles.z
-    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u041F\u0440\u0430\u0432\u0430\u044F_\u0420\u0443\u043A\u0430/bone_3/bone_4/bone_5"
+    path: "\u0422\u0435\u043B\u043E \u0438 \u0440\u0443\u043A\u0438/bone_1/bone_\u0413\u043E\u043B\u043E\u0432\u0430"
     classID: 4
     script: {fileID: 0}
   m_HasGenericRootTransform: 0

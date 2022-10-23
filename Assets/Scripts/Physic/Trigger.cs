@@ -14,6 +14,7 @@ public abstract class Trigger : MonoBehaviour
     [SerializeField] private List<Entity> visitors;
 
     public UnityEvent<Entity> OnStay { get => onStay; }
+    protected float Radius { get => radius; }
 
     public abstract void CustomUpdate();
 
