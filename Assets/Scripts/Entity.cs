@@ -62,10 +62,14 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
     [SerializeField] protected AudioSource source;
+    [SerializeField] protected AIStatsPresset stats;
+
+
     public Animator Animator { get => animator; }
-    public NavMeshAgent Agent { get => agent; }
     public AudioSource Source { get => source; }
+    public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
+    public AIStatsPresset Stats { get => stats; set => stats = value; }
 
     private void OnEnable()
     {

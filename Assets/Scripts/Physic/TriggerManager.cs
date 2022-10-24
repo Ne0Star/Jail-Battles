@@ -3,40 +3,70 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class TriggerManager : MonoBehaviour
+
+
+public interface ICustomListItem
 {
-    [SerializeField] private float updateTime = 0.1f;
-    [SerializeField] private List<Trigger> triggers = new List<Trigger>();
+    void CustomUpdate();
 
-    private void Awake()
+}
+[System.Serializable]
+public class CustomList<T> where T : ICustomListItem
+{
+   [SerializeField] private List<T> values;
+    private float updateTime = 0.1f;
+    private int stepCount = 30;
+    [SerializeField]
+    private bool stop = true;
+
+    public List<T> Values { get => values; }
+
+    public CustomList(float updateTime, int stepCount)
     {
-        StartCoroutine(Life());
+        this.updateTime = updateTime;
+        this.stepCount = stepCount;
+        values = new List<T>();
+        stop = true;
+    }
+    public CustomList(float updateTime)
+    {
+        this.updateTime = updateTime;
+        values = new List<T>();
+        stop = true;
     }
 
-    private void Start()
+    public void RegisterRange(T[] values)
     {
-
+        this.values.AddRange(values);
     }
 
-    public void Register(Trigger trigger)
+    public void StopLife()
     {
-        triggers.Add(trigger);
+        stop = true;
     }
-    public void UnRegister(Trigger trigger)
+    public void StartLife(MonoBehaviour context)
     {
-        triggers.Remove(trigger);
-        triggers.Distinct();
+        context.StartCoroutine(Life());
     }
 
+    public void Register(T trigger)
+    {
+        values.Add(trigger);
+    }
+    public void UnRegister(T trigger)
+    {
+        values.Remove(trigger);
+        values.Distinct();
+    }
 
 
     private void TriggersLife(int start, int end)
     {
         for (int i = start; i < end; i++)
         {
-            if (i <= triggers.Count - 1 && i >= 0)
+            if (i <= values.Count - 1 && i >= 0)
             {
-                Trigger trigger = triggers[i];
+                T trigger = values[i];
                 trigger.CustomUpdate();
             }
             else return;
@@ -45,19 +75,43 @@ public class TriggerManager : MonoBehaviour
 
     private IEnumerator Life()
     {
-        int index = 5;
-        int count = 0;
-        for (int i = 0; i < triggers.Count; i += 5)
+        stop = false;
+        while (!stop)
         {
-            TriggersLife(i, index);
-            index = i + 5;
-            count++;
+            for (int i = 0; i < values.Count; i += stepCount)
+            {
+                TriggersLife(i, i + stepCount);
+                yield return new WaitForSeconds(updateTime);
+            }
+            Debug.Log("Работает ведь блять");
             yield return new WaitForFixedUpdate();
         }
-
-        yield return new WaitForSeconds(updateTime * count);
-        StartCoroutine(Life());
-        yield break;
     }
 
+}
+
+
+public class TriggerManager : MonoBehaviour
+{
+    [SerializeField] private float updateTime = 0.1f;
+    [SerializeField] private int stepCount = 30;
+    [SerializeField] private CustomList<Trigger> triggers;
+
+    private void Awake()
+    {
+        triggers = new CustomList<Trigger>(updateTime, stepCount);
+        triggers.RegisterRange(FindObjectsOfType<Trigger>());
+        triggers.StartLife(this);
+    }
+
+    public void Register(Trigger trigger)
+    {
+        if(triggers != null)
+        triggers.Register(trigger);
+    }
+    public void UnRegister(Trigger trigger)
+    {
+        if (triggers != null)
+            triggers.UnRegister(trigger);
+    }
 }

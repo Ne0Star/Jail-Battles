@@ -148,8 +148,54 @@ public class AIStatPresset
 
     public AnimationPresset Animation { get => animation; }
     public SoundPresset Sound { get => sound; }
-}
 
+
+    public void Play(Animator animator, AudioSource sources)
+    {
+        if (animation && animator.gameObject.activeSelf)
+        {
+            animator.speed = animation.speed;
+
+            animator.Play(animation.animationName);
+        }
+        if (sound && sources.gameObject.activeSelf)
+        {
+            sources.loop = sound.Loop;
+            sources.clip = sound.Clip;
+            sources.pitch = sound.Pitch;
+            sources.volume = sound.Volume;
+            sources.Play();
+        }
+        else
+        {
+            sources.clip = null;
+        }
+    }
+    public void Play(Animator animator, AudioSource sources, float animationSpeed)
+    {
+        if (animation && animator.gameObject.activeSelf)
+        {
+            animator.speed = animation.speed * animationSpeed;
+
+            animator.Play(animation.animationName);
+        }
+        if (sound && sources.gameObject.activeSelf)
+        {
+            sources.loop = sound.Loop;
+            sources.clip = sound.Clip;
+            sources.pitch = sound.Pitch * animationSpeed;
+            sources.volume = sound.Volume;
+            sources.Play();
+        }
+    }
+}
+[System.Serializable]
+public class AIFightStat
+{
+    public float damage;
+    public float attackSpeed;
+    public AIStatPresset presset;
+}
 [System.Serializable]
 public struct AIStatsPresset
 {
@@ -157,9 +203,9 @@ public struct AIStatsPresset
     [SerializeField] private AIStatPresset idle;
     [SerializeField] private AIStatPresset figtStance;
 
-    [SerializeField] private List<AIStatPresset> standartStrikes;
-    [SerializeField] private List<AIStatPresset> specialStrikes;
-    [SerializeField] private List<AIStatPresset> bossStrikes;
+    [SerializeField] private List<AIFightStat> standartStrikes;
+    [SerializeField] private List<AIFightStat> specialStrikes;
+    [SerializeField] private List<AIFightStat> bossStrikes;
 
     /// <summary>
     /// Ходьба
@@ -174,21 +220,31 @@ public struct AIStatsPresset
     /// </summary>
     public AIStatPresset FigtStance { get => figtStance; }
 
-
-
+    public AIFightStat GetStandartStrike()
+    {
+        return standartStrikes[Random.Range(0, standartStrikes.Count)];
+    }
+    public AIFightStat GetSpecialStrike()
+    {
+        return specialStrikes[Random.Range(0, specialStrikes.Count)];
+    }
+    public AIFightStat GetBossStrike()
+    {
+        return bossStrikes[Random.Range(0, bossStrikes.Count)];
+    }
 
     /// <summary>
     /// Стандартные удары, руками, ногами, в среднем 8-14 ударов для убийства
     /// </summary>
-    public List<AIStatPresset> StandartStrikes { get => standartStrikes; }
+    public List<AIFightStat> StandartStrikes { get => standartStrikes; }
     /// <summary>
     /// Специальные удары AI, например уборщица может ударить шваброй, в среднем 3-6 ударов до убийства
     /// </summary>
-    public List<AIStatPresset> SpecialStrikes { get => specialStrikes; }
+    public List<AIFightStat> SpecialStrikes { get => specialStrikes; }
     /// <summary>
     /// Особые сложные удары, для особо опасных AI, которые могут убить с 1-3 ударов
     /// </summary>
-    public List<AIStatPresset> BossStrikes { get => bossStrikes; }
+    public List<AIFightStat> BossStrikes { get => bossStrikes; }
 
 }
 
@@ -202,38 +258,31 @@ public struct AIUniversalData
 
     [SerializeField] private float rotateOffset;
     [SerializeField] private Transform rotateParent;
-
-    public List<AIAction> Life { get => life; }
     public float Speed { get => speed; }
     public float RotateSpeed { get => rotateSpeed; }
     public float RotateOffset { get => rotateOffset; }
     public Transform RotateParent { get => rotateParent; }
+    public List<AIAction> Life { get => life; }
 }
 
 public abstract class AI : MonoBehaviour
 {
-    [SerializeField] protected bool visible = false;
-    [SerializeField] private AudioSource source;
-    [SerializeField] private Animator animator;
     [SerializeField] private AIType type;
     [SerializeField] protected AIUniversalData data;
-    [SerializeField] protected NavMeshAgent agent;
-    [SerializeField] private bool blocker = false;
     [SerializeField] protected Entity entity;
-    [SerializeField] protected bool free = true;
     [SerializeField] private AITypes targetTypes;
 
-    /// <summary>
-    /// Свободен ли данный AI в текущий момент
-    /// </summary>
-    public bool Free { get => free; }
-    public NavMeshAgent Agent { get => agent; }
     public AIType Type { get => type; }
-    public Animator Animator { get => animator; }
-    public AudioSource Source { get => source; }
     public Entity Entity { get => entity; }
     public AITypes TargetTypes { get => targetTypes; }
     public AIUniversalData Data { get => data; }
+
+
+    public Animator Animator { get => entity.Animator; }
+    public AudioSource Source { get => entity.Source; }
+    public NavMeshAgent Agent => entity.Agent;
+    public HitBar Hit => entity.HitBar;
+    public AIStatsPresset Stats { get => entity.Stats; }
 
 
     protected virtual void Disable()
@@ -258,33 +307,118 @@ public abstract class AI : MonoBehaviour
         Enable();
     }
 
-    public void SetVisible(bool visible)
+
+
+    [SerializeField] private int index;
+    [SerializeField] private List<AIAction> lifeActions = new List<AIAction>();
+    [SerializeField] private List<AIAction> stackActions = new List<AIAction>();
+    [SerializeField] private AIAction currentAction;
+    [SerializeField] private AIAction lastAction = null;
+    public AIAction CurrentAction { get => currentAction; }
+
+
+    /// <summary>
+    /// Добавляет новое действие для AI
+    /// </summary>
+    /// <param name="action"></param>
+    /// <param name="breakMode"></param>
+    protected void AddAction(AIAction action, System.Action onComplete)
     {
-        this.visible = visible;
+        if (action == null ) return;
+        lifeActions.Add(action);
+        action.OnComplete.AddListener(() => onComplete());
     }
+    /// <summary>
+    /// Добавляет новое действие для AI
+    /// </summary>
+    /// <param name="action"></param>
+    /// <param name="breakMode"></param>
+    protected void AddAction(AIAction action)
+    {
+        if (action == null) return;
+        lifeActions.Add(action);
+    }
+    /// <summary>
+    /// Принудительно начинает выполнение указанного действия, после возвращается к предыдущему
+    /// </summary>
+    /// <param name="action"></param>
+    /// <param name="onComplete">Выполнится когда указанное действие закончит работу</param>
+    protected void SetAction(AIAction action, System.Action onComplete)
+    {
+        #region текущее в стек
+        lifeActions[index].Break();
+        stackActions.Add(lifeActions[index]);
+        #endregion
+
+        currentAction = action;
+        currentAction.OnComplete?.AddListener(() =>
+        {
+            currentAction = stackActions[stackActions.Count - 1];
+            stackActions.RemoveAt(stackActions.Count - 1);
+            onComplete();
+        });
+    }
+    protected void SetAction(AIAction action, System.Action onComplete, System.Action onBreak)
+    {
+        #region текущее в стек
+        lifeActions[index].Break();
+        stackActions.Add(lifeActions[index]);
+        #endregion
+        currentAction = action;
+        currentAction.OnComplete?.AddListener(() =>
+        {
+            if (stackActions != null)
+            {
+                currentAction = stackActions[stackActions.Count - 1];
+                stackActions.RemoveAt(stackActions.Count - 1);
+            }
+            onComplete();
+        });
+        currentAction.OnBreak?.AddListener(() =>
+        {
+            if (stackActions != null)
+            {
+                currentAction = stackActions[stackActions.Count - 1];
+                stackActions.RemoveAt(stackActions.Count - 1);
+            }
+            onBreak();
+        });
+    }
+
 
     public void CustomUpdate()
     {
-        if (!free || !gameObject.activeInHierarchy)
+        if (!gameObject.activeInHierarchy)
         {
             return;
         }
-        if (blocker) return;
 
-        //if (!visible)
-        //{
-        //    agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
-        //    entity.Animator.enabled = false;
-        //    entity.Source.enabled = false;
-        //    entity.HitBar.HideVisual();
-        //}
-        //else
-        //{
-        //    agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
-        //    entity.Animator.enabled = true;
-        //    entity.Source.enabled = true;
-        //    entity.HitBar.ShowVisual();
-        //}
+
+        if (currentAction != null)
+        {
+            currentAction.CustomUpdate();
+        }
+        else
+        {
+            index = index + 1 > lifeActions.Count - 1 ? 0 : index + 1;
+            currentAction = lifeActions[index];
+        }
+        if (currentAction != lastAction && currentAction != null)
+        {
+            currentAction.Initial();
+
+            currentAction.OnComplete?.AddListener(() =>
+            {
+                currentAction = null;
+            });
+
+            currentAction.OnBreak?.AddListener(() =>
+            {
+                currentAction = null;
+            });
+
+            lastAction = currentAction;
+        }
 
         UpdateAI();
     }
@@ -292,7 +426,10 @@ public abstract class AI : MonoBehaviour
     /// <summary>
     /// Оптимизированное время обновления для AI
     /// </summary>
-    protected abstract void UpdateAI();
+    protected virtual void UpdateAI()
+    {
+
+    }
     /// <summary>
     /// В один из триггеров AI зашла цель
     /// </summary>
@@ -310,14 +447,11 @@ public abstract class AI : MonoBehaviour
     {
 
     }
-    public void SetPresset(AIUniversalData data, NavMeshAgent agent, Entity entity, Animator animator, AudioSource source, AIType type, AITypes targetTypes)
+    public void SetPresset(AIUniversalData data, Entity entity, AIType type, AITypes targetTypes)
     {
         this.targetTypes = targetTypes;
         this.data = data;
-        this.agent = agent;
         this.type = type;
-        this.animator = animator;
-        this.source = source;
         this.entity = entity;
 
         if (entity && entity.HitBar)

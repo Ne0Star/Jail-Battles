@@ -39,11 +39,15 @@ public class ActionMoveByArea : AIAction
         if (!isMove)
         {
             isMove = true;
+
+
+
             targetPos = areas[Random.Range(0, areas.Count)].GetVector();
             executor.Agent.SetDestination(targetPos);
         }
         else
         {
+
             GameUtils.LookAt2D(executor.Data.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Data.RotateOffset);
             distance = Vector2.Distance(executor.transform.position, targetPos);
             if (distance <= executor.Agent.radius)
@@ -57,7 +61,7 @@ public class ActionMoveByArea : AIAction
 
     public override void Initial()
     {
-        Debug.Log("Init");
+        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
     }
 
     public override void Break()

@@ -50,7 +50,7 @@ public class LevelManager : OneSingleton<LevelManager>
     public Entity[] GetAllEntites()
     {
         List<Entity> result = new List<Entity>();
-        result.AddRange(enemuManager.AllEnemies);
+        result.AddRange(enemuManager.AllEnemies.Values);
         result.Add(Player);
         return result.ToArray();
     }

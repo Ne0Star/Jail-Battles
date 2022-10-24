@@ -53,6 +53,7 @@ MonoBehaviour:
   types:
     aiTypes: []
   initialized: 0
+  mark: 0
   targets: []
 --- !u!1 &2011844024293959765
 GameObject:
@@ -278,6 +279,7 @@ MonoBehaviour:
   types:
     aiTypes: []
   initialized: 0
+  mark: 0
   targets: []
 --- !u!1 &2011844024866736835
 GameObject:
@@ -289,6 +291,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2011844024866736832}
   - component: {fileID: 2011844024866736838}
+  - component: {fileID: 1723027309}
   m_Layer: 0
   m_Name: "\u041F\u0435\u0440\u0441\u043E\u043D\u0430\u0436"
   m_TagString: Untagged
@@ -363,6 +366,144 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &1723027309
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2011844024866736835}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: db1571982ba882642970e8eb017b23f9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  onVisible:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4811375740429089293}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2011844024293959765}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2011844025363028372}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2011844025363028375}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: EnableAgent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+      - m_Target: {fileID: 2011844024723198534}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 1
+        m_CallState: 2
+  onInvisible:
+    m_PersistentCalls:
+      m_Calls:
+      - m_Target: {fileID: 4811375740429089293}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011844024293959765}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011844025363028372}
+        m_TargetAssemblyTypeName: UnityEngine.Behaviour, UnityEngine
+        m_MethodName: set_enabled
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011844025363028375}
+        m_TargetAssemblyTypeName: Entity, Assembly-CSharp
+        m_MethodName: DisableAgent
+        m_Mode: 1
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
+      - m_Target: {fileID: 2011844024723198534}
+        m_TargetAssemblyTypeName: UnityEngine.GameObject, UnityEngine
+        m_MethodName: SetActive
+        m_Mode: 6
+        m_Arguments:
+          m_ObjectArgument: {fileID: 0}
+          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
+          m_IntArgument: 0
+          m_FloatArgument: 0
+          m_StringArgument: 
+          m_BoolArgument: 0
+        m_CallState: 2
 --- !u!1 &2011844025363028381
 GameObject:
   m_ObjectHideFlags: 0
@@ -410,7 +551,7 @@ NavMeshAgent:
   m_GameObject: {fileID: 2011844025363028381}
   m_Enabled: 1
   m_AgentTypeID: 0
-  m_Radius: 0.35
+  m_Radius: 0.3
   m_Speed: 3.5
   m_Acceleration: 10
   avoidancePriority: 50
@@ -419,8 +560,8 @@ NavMeshAgent:
   m_AutoTraverseOffMeshLink: 1
   m_AutoBraking: 1
   m_AutoRepath: 1
-  m_Height: 2
-  m_BaseOffset: 1
+  m_Height: 0.6
+  m_BaseOffset: 0
   m_WalkableMask: 4294967295
   m_ObstacleAvoidanceType: 4
 --- !u!114 &2011844025363028375
@@ -439,37 +580,38 @@ MonoBehaviour:
   agent: {fileID: 2011844025363028371}
   animator: {fileID: 2011844025363028372}
   source: {fileID: 2011844024293959850}
-  aiPresset:
+  stats:
+    walk:
+      animation: {fileID: 11400000, guid: e9c9cd7a51825a240a5ab92903fb761a, type: 2}
+      sound: {fileID: 11400000, guid: 30ff52cafe54d904b914b5c39a032f2f, type: 2}
+    idle:
+      animation: {fileID: 11400000, guid: 5b0a73b73d6639947b4bf79ad17e2180, type: 2}
+      sound: {fileID: 0}
+    figtStance:
+      animation: {fileID: 11400000, guid: 1cd0993a5461cb748a9f1c172c83de11, type: 2}
+      sound: {fileID: 0}
+    standartStrikes:
+    - damage: 5
+      attackSpeed: 0.1
+      presset:
+        animation: {fileID: 11400000, guid: ff7921496579d724b8f847e24d1c3880, type: 2}
+        sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
+    - damage: 5
+      attackSpeed: 0.1
+      presset:
+        animation: {fileID: 11400000, guid: 8388bf7984578e74ab5b0a1369be8f85, type: 2}
+        sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
+    specialStrikes: []
+    bossStrikes: []
+  data:
+    speed: 0
+    rotateSpeed: 0
+    rotateOffset: -83
     rotateParent: {fileID: 2011844025363028374}
-    rotateOffset: -90
-    targetTypes:
-      aiTypes:
-      - type: 0
-      - type: 1
-      - type: 2
-      - type: 3
-      - type: 4
-      - type: 9
-    ignoreTypes:
-      aiTypes: []
-    colliders: []
-    states:
-      walk:
-        animation: {fileID: 11400000, guid: e9c9cd7a51825a240a5ab92903fb761a, type: 2}
-        sound: {fileID: 11400000, guid: e926a88c8787a944591236e5ffe28caf, type: 2}
-      idle:
-        animation: {fileID: 11400000, guid: 5b0a73b73d6639947b4bf79ad17e2180, type: 2}
-        sound: {fileID: 11400000, guid: 6e8ad0037cc432b41a00a0e66b94dbcb, type: 2}
-      figtStance:
-        animation: {fileID: 0}
-        sound: {fileID: 0}
-      standartStrikes:
-      - animation: {fileID: 11400000, guid: 8388bf7984578e74ab5b0a1369be8f85, type: 2}
-        sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
-      - animation: {fileID: 11400000, guid: ff7921496579d724b8f847e24d1c3880, type: 2}
-        sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
-      specialStrikes: []
-      bossStrikes: []
+  targetTypes:
+    aiTypes:
+    - type: 11
+    - type: 0
   aiType: 0
   ai: {fileID: 0}
 --- !u!95 &2011844025363028372
@@ -597,7 +739,7 @@ MonoBehaviour:
     type: 3}
   m_PrefabInstance: {fileID: 2011844024950834525}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 0}
+  m_GameObject: {fileID: 4811375740429089293}
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 4a0833408a14d2b408ac9d1fc52edc50, type: 3}
@@ -606,6 +748,12 @@ MonoBehaviour:
 --- !u!4 &4811375740429089291 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6426339549996842838, guid: 87bb73cbe4eb09049b41656e9fc914dc,
+    type: 3}
+  m_PrefabInstance: {fileID: 2011844024950834525}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &4811375740429089293 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 6426339549996842832, guid: 87bb73cbe4eb09049b41656e9fc914dc,
     type: 3}
   m_PrefabInstance: {fileID: 2011844024950834525}
   m_PrefabAsset: {fileID: 0}

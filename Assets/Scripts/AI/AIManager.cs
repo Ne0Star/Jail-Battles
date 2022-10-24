@@ -169,7 +169,7 @@ public class AIManager : MonoBehaviour
             Destroy(last.gameObject);
             allAi.Remove(last);
             RemoveAi(last);
-            last = AddAI(sources, presset, type,targetTypes);
+            last = AddAI(sources, presset, type, targetTypes);
         }
         else
         {
@@ -183,7 +183,7 @@ public class AIManager : MonoBehaviour
         GameObject obj = new GameObject("Ai");
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type,targetTypes);
+        result.SetPresset(presset, sources, type, targetTypes);
         return result;
     }
     private AI AddAI<T>(ref Entity sources, AIUniversalData presset, AIType type, string name, AITypes targetTypes) where T : Component
@@ -191,7 +191,7 @@ public class AIManager : MonoBehaviour
         GameObject obj = new GameObject("AI: " + name + " " + allAi.Count);
         obj.transform.parent = sources.transform;
         AI result = obj.gameObject.AddComponent<T>() as AI;
-        result.SetPresset(presset, sources.Agent, sources, sources.Animator, sources.Source, type,targetTypes);
+        result.SetPresset(presset, sources, type, targetTypes);
         return result;
     }
     public AI AddAI(Entity sources, AIUniversalData presset, AIType type, AITypes targetTypes)

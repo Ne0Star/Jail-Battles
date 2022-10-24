@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public abstract class Trigger : MonoBehaviour
+public abstract class Trigger : MonoBehaviour, ICustomListItem
 {
 
     [SerializeField] protected UnityEvent<Entity> onStay;
@@ -17,6 +17,18 @@ public abstract class Trigger : MonoBehaviour
     protected float Radius { get => radius; }
 
     public abstract void CustomUpdate();
+
+
+    private void OnEnable()
+    {
+        LevelManager.Instance.TriggerManager.Register(this);
+    }
+
+    private void OnDisable()
+    {
+        LevelManager.Instance.TriggerManager.UnRegister(this);
+    }
+
 
     //private void Awake()
     //{

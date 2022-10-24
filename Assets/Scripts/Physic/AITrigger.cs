@@ -8,7 +8,7 @@ public class AITrigger : Trigger
     [SerializeField] private AITypes types;
     [SerializeField] private bool initialized = false;
 
-
+    [SerializeField] private bool mark;
 
     private void Awake()
     {
@@ -20,6 +20,8 @@ public class AITrigger : Trigger
     {
         if (!initialized) return;
 
+        mark = !mark;
+
         List<Entity> res = new List<Entity>();
         for (int i = 0; i < types.AiTypes.Count; i++)
         {
@@ -29,7 +31,7 @@ public class AITrigger : Trigger
 
         foreach (Entity target in targets)
         {
-            if (target  && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
+            if (target && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
                 if (Vector2.Distance(target.transform.position, transform.position) <= radius)
                 {
                     onStay.Invoke(target);
