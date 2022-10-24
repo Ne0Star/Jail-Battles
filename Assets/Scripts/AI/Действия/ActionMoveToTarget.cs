@@ -61,6 +61,7 @@ public class ActionMoveToTarget : AIAction
 
     private IEnumerator Attack()
     {
+        executor.Entity.AllowAttack = false;
         bool complete = false;
         while (!complete)
         {
@@ -89,8 +90,14 @@ public class ActionMoveToTarget : AIAction
     [SerializeField] private float distance;
     [SerializeField] private bool isAttack = false;
     [SerializeField] private bool reached = false;
+    private bool lastReached = false;
     public override void CustomUpdate()
     {
+        if(reached != lastReached)
+        {
+            executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+            lastReached = reached;
+        }
         if (reached)
         {
             GameUtils.LookAt2D(executor.Data.RotateParent, target.transform.position, executor.Data.RotateOffset);
@@ -99,9 +106,9 @@ public class ActionMoveToTarget : AIAction
         {
             GameUtils.LookAt2D(executor.Data.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.Data.RotateOffset);
         }
-        executor.Agent.isStopped = reached;
+
         distance = Vector2.Distance(executor.Agent.transform.position, target.transform.position);
-        if (distance <= (executor.Agent.radius + target.Agent.radius) + 0.1f)
+        if (distance <= (executor.Agent.radius + target.Agent.radius) + 0.01f)
         {
             reached = true;
             if (andAttack)
@@ -116,13 +123,16 @@ public class ActionMoveToTarget : AIAction
             {
                 onComplete?.Invoke();
             }
+        executor.Agent.isStopped =true;
         }
         else
         {
-            if (reached != false)
-            {
-                executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
-            }
+            //if (reached != false)
+            //{
+            //    executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+            //}
+
+            executor.Agent.isStopped = false;
             executor.Agent.SetDestination(target.transform.position);
             reached = false;
         }

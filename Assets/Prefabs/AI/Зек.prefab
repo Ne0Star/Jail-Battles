@@ -25,7 +25,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011844023941459740}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0.081, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -47,7 +47,7 @@ MonoBehaviour:
   onStay:
     m_PersistentCalls:
       m_Calls: []
-  radius: 2
+  radius: 0.6
   visitors: []
   sources: {fileID: 0}
   types:
@@ -251,7 +251,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2011844024785879311}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 3.47, z: 0}
+  m_LocalPosition: {x: -0, y: 1.937, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -273,7 +273,7 @@ MonoBehaviour:
   onStay:
     m_PersistentCalls:
       m_Calls: []
-  radius: 4
+  radius: 2
   visitors: []
   sources: {fileID: 0}
   types:
@@ -502,7 +502,7 @@ MonoBehaviour:
           m_IntArgument: 0
           m_FloatArgument: 0
           m_StringArgument: 
-          m_BoolArgument: 0
+          m_BoolArgument: 1
         m_CallState: 2
 --- !u!1 &2011844025363028381
 GameObject:
@@ -576,6 +576,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 28b0f8a6315510f48927f218300dc422, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  allowAttack: 1
   hitBar: {fileID: 4811375740429089290}
   agent: {fileID: 2011844025363028371}
   animator: {fileID: 2011844025363028372}
@@ -592,12 +593,12 @@ MonoBehaviour:
       sound: {fileID: 0}
     standartStrikes:
     - damage: 5
-      attackSpeed: 0.1
+      attackSpeed: 1
       presset:
         animation: {fileID: 11400000, guid: ff7921496579d724b8f847e24d1c3880, type: 2}
         sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
     - damage: 5
-      attackSpeed: 0.1
+      attackSpeed: 1
       presset:
         animation: {fileID: 11400000, guid: 8388bf7984578e74ab5b0a1369be8f85, type: 2}
         sound: {fileID: 11400000, guid: 7697f4a3acf500a4d9a13ce43e3c3aa6, type: 2}
@@ -610,7 +611,6 @@ MonoBehaviour:
     rotateParent: {fileID: 2011844025363028374}
   targetTypes:
     aiTypes:
-    - type: 11
     - type: 0
   aiType: 0
   ai: {fileID: 0}

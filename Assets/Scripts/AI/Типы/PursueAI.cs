@@ -22,7 +22,7 @@ public class PursueAI : AI
     /// <param name="entity"></param>
     protected override void OnCustomTriggerStay(Entity entity)
     {
-        if (pursue || entity == this.entity || CurrentAction == null) return;
+        if (pursue || entity == this.entity || CurrentAction == null || !entity.AllowAttack) return;
         bool attack = Random.Range(0, 100) >= pursueChance;
         if (!attack) return;
         pursue = true;
@@ -31,24 +31,25 @@ public class PursueAI : AI
         SetAction(actionMoveToTarget, () =>
         {
             pursue = false;
-
+            this.Entity.AllowAttack = true;
         }, () =>
         {
             pursue = false;
+            this.Entity.AllowAttack = true;
         });
     }
 
-    protected override void OnDamaged(Entity sources, float value)
+    protected override void OnDamaged(Entity entity, float value)
     {
         if (actionMoveToTarget != null)
         {
-            actionMoveToTarget.SetTarget(sources);
+            if (!entity.AllowAttack) return;
+            actionMoveToTarget.SetTarget(entity);
         }
     }
 
     protected override void Create()
     {
-
         AddAction(new ActionMoveByArea(this, LevelManager.Instance.AiManager.Areas, AreaType.Столовая));
     }
 }

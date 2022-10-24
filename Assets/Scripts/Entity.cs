@@ -58,6 +58,7 @@ public struct EntityAnimationPresset
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
+    [SerializeField] private bool allowAttack = true;
     [SerializeField] private HitBar hitBar;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected Animator animator;
@@ -65,11 +66,13 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected AIStatsPresset stats;
 
 
+
     public Animator Animator { get => animator; }
     public AudioSource Source { get => source; }
     public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
-    public AIStatsPresset Stats { get => stats; set => stats = value; }
+    public AIStatsPresset Stats { get => stats; }
+    public bool AllowAttack { get => allowAttack; set => allowAttack = value; }
 
     private void OnEnable()
     {

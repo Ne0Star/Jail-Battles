@@ -8,10 +8,12 @@ public class Enemu : Entity, ICustomListItem
     private bool check = false;
     public bool Check { get => check; set => check = value; }
     public AIType AiType { get => aiType; }
+    public AI Ai { get => ai; }
+
     [SerializeField] private AIUniversalData data;
     [SerializeField] private AITypes targetTypes;
     [SerializeField] private AIType aiType;
-    [SerializeField] protected AI ai;
+    [SerializeField] private AI ai;
 
     protected override void Enable()
     {
