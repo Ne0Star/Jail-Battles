@@ -14,7 +14,7 @@ public class AIManager : MonoBehaviour
     private void Awake()
     {
         //allAction.AddRange(FindObjectsOfType<AIAction>());
-        areas.AddRange(FindObjectsOfType<AIArea>(true));
+        //areas.AddRange(FindObjectsOfType<AIArea>(true));
         allAi.AddRange(FindObjectsOfType<AI>());
         foreach (AI ai in allAi)
         {

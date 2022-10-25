@@ -15,11 +15,11 @@ public class ActionMoveByArea : AIAction
     [SerializeField] private AI executor;
     [SerializeField] private List<AIArea> areas;
     [SerializeField] private bool isMove;
-
+    [SerializeField] private bool isIdle;
     public ActionMoveByArea(AI executor, List<AIArea> areas, AreaType type)
     {
         isMove = false;
-
+        isIdle = false;
         this.executor = executor;
         List<AIArea> aIAreas = new List<AIArea>();
         foreach (AIArea area in areas)
@@ -33,23 +33,34 @@ public class ActionMoveByArea : AIAction
     }
     [SerializeField] private Vector3 targetPos;
     [SerializeField] private float distance;
+
     public override void CustomUpdate()
     {
+        GameUtils.LookAt2D(executor.RotateParent, executor.transform.position + executor.Agent.velocity, executor.RotateOffset);
         if (!isMove)
         {
-            isMove = true;
 
-
-
-            targetPos = areas[Random.Range(0, areas.Count)].GetVector();
-            executor.Agent.SetDestination(targetPos);
+            if (!isIdle)
+            {
+                executor.Stats.Idle.Play(executor.Animator, executor.Source, executor.Agent.speed);
+                isIdle = true;
+            }
+            areas[Random.Range(0, areas.Count)].GetVector(executor.Agent, (result) =>
+            {
+                if (executor.Entity.gameObject.activeSelf)
+                {
+                    isMove = true;
+                    targetPos = result;
+                    executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+                    executor.Agent.SetDestination(targetPos);
+                    isIdle = false;
+                }
+            });
         }
         else
         {
-
-            GameUtils.LookAt2D(executor.RotateParent, executor.transform.position + executor.Agent.velocity, executor.RotateOffset);
             distance = Vector2.Distance(executor.transform.position, targetPos);
-            if (distance <= executor.Agent.radius)
+            if (distance <= executor.Agent.radius * 2)
             {
                 onComplete?.Invoke(this);
                 isMove = false;
@@ -60,7 +71,7 @@ public class ActionMoveByArea : AIAction
 
     public override void Initial()
     {
-        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+
     }
 
     public override void Break()

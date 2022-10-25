@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class AITrigger : Trigger
 {
+    [SerializeField] private bool customTypes = false;
+    [SerializeField] private bool colliderMode = true;
     [SerializeField] private AI sources;
     [SerializeField] private AITypes types;
     [SerializeField] private bool initialized = false;
@@ -32,17 +34,31 @@ public class AITrigger : Trigger
         foreach (Entity target in targets)
         {
             if (target && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
-                if (Vector2.Distance(target.transform.position, transform.position) <= radius)
+            {
+                if(!colliderMode)
+                {
+                if (Vector2.Distance(target.transform.position, transform.position) <= radius + 0.01f)
                 {
                     onStay.Invoke(target);
                     //Debug.Log("В моём радиусе цель: " + target.name);
                 }
+                } else
+                {
+                    if (Vector2.Distance(target.Agent.transform.position, sources.Agent.transform.position) <= (sources.Agent.radius + target.Agent.radius + 0.01f))
+                    {
+                        onStay.Invoke(target);
+                        //Debug.Log("В моём радиусе цель: " + target.name);
+                    }
+                }
+            }
+
         }
     }
 
     public void SetAi(AI sources)
     {
         if (!sources) return;
+        if(!customTypes)
         this.types = sources.TargetTypes;
         this.sources = sources;
         initialized = true;

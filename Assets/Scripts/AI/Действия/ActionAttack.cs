@@ -80,5 +80,6 @@ public class ActionAttack : AIAction
 
     public override void Initial()
     {
+        currentTime = float.MaxValue;
     }
 }

@@ -32,14 +32,15 @@ public class LevelManager : OneSingleton<LevelManager>
     {
         switch (range)
         {
-            case 0:
-                return one;
             case 1:
-                return two;
+                return one;
             case 2:
-                return three;
+                return two;
             case 3:
+                return three;
+            case 4:
                 return five;
+            case 0: return defaultColor;
             default: return defaultColor;
         }
     }

@@ -9,15 +9,21 @@ using UnityEngine;
 /// </summary>
 public class PursueAI : AI
 {
-    [SerializeField] private float pursueChance = 0.1f;
-
+    [SerializeField] private UpdateData pursueChance;
     [SerializeField] private bool isPursue = false;
     [SerializeField] private bool isWandering = false;
 
+    [SerializeField] private bool useChance = false;
 
     public override void MarkTarget(Entity entity)
     {
+        useChance = false;
         OnCustomTriggerStay(entity);
+    }
+
+    protected override void Enable()
+    {
+        pursueChance.Update();
     }
 
     /// <summary>
@@ -28,28 +34,23 @@ public class PursueAI : AI
     protected override void OnCustomTriggerStay(Entity entity)
     {
         if (isPursue || isAttack || entity == this.entity || CurrentAction == null) return;
-        //if (entity != LevelManager.Instance.Player)
-        //{
-        //    bool attack = Random.Range(0, 100) <= pursueChance;
-        //    if (!attack) return;
-        //    if (entity as Enemu)
-        //    {
-        //        Enemu e = (Enemu)entity;
-        //        if (e.Ai.IsAttack)
-        //        {
-        //            return;
-        //        }
-        //    } 
-        //}
+        if (useChance)
+        {
+            bool attack = Random.Range(0, 100) >= pursueChance.CurrentValue;
+            if (!attack) return;
+        }
+        else
+        {
+            useChance = true;
+        }
+
+
         isPursue = true;
-
-
-        entity.MarkTarget(Entity);
-        SetAction(new ActionMoveToTarget(this, entity, 10f - ((Enemu)Entity).RespawnCount), (v) =>
+        SetAction(new ActionMoveToTarget(this, entity, 4f + ((Enemu)Entity).RespawnCount, 1.2f), (v) =>
         {
             isPursue = false;
 
-            entity.TakeDamage(Entity,0);
+            entity.TakeDamage(Entity, 0);
             isAttack = true;
             SetAction(new ActionAttack(this, entity, attackSpeed.CurrentValue, attackDamage.CurrentValue), (v) =>
             {
@@ -68,6 +69,7 @@ public class PursueAI : AI
 
     protected override void OnDamaged(Entity entity, float value)
     {
+        useChance = false;
         OnCustomTriggerStay(entity);
     }
 

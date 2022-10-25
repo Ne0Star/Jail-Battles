@@ -10,17 +10,9 @@ public class Mover : MonoBehaviour
     [SerializeField] private float speed;
     [SerializeField] private float timeStep;
 
-    private void Start()
+    private void LateUpdate()
     {
-        StartCoroutine(Life());
-    }
-
-    private IEnumerator Life()
-    {
-        yield return new WaitForSeconds(timeStep);  
         transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x, target.position.y, offset.z), interpolator.Evaluate(speed * timeStep));
-        StartCoroutine(Life());
-        yield break;
     }
 
 }

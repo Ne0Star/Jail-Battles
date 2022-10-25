@@ -316,6 +316,16 @@ public abstract class AI : MonoBehaviour
 
     private void OnDisable()
     {
+        transform.localPosition = Vector2.zero;
+        isAttack = false;
+        attackDamage.Update();
+        attackDamage.Update();
+        moveSpeed.Update();
+        Agent.speed = moveSpeed.CurrentValue;
+
+    }
+    private void OnEnable()
+    {
         List<AIArea> aIAreas = new List<AIArea>();
         foreach (AreaType areaType in areaTypes)
         {
@@ -327,20 +337,20 @@ public abstract class AI : MonoBehaviour
                 }
             }
         }
-        entity.transform.position =aIAreas[Random.Range(0, aIAreas.Count - 1)].GetVector();
-    }
-    private void OnEnable()
-    {
-        transform.localPosition = Vector2.zero;
-        isAttack = false;
-        attackDamage.Update();
-        attackDamage.Update();
-        moveSpeed.Update();
-        rangeSprite.color = LevelManager.Instance.GetColorByRange(((Enemu)Entity).RespawnCount);
-        Agent.speed = moveSpeed.CurrentValue;
+        aIAreas[Random.Range(0, aIAreas.Count - 1)].GetVector(Agent, (result) =>
+        {
+            entity.transform.position = result;
+        });
+
+        StartCoroutine(WaitComplete());
         Enable();
     }
 
+    private IEnumerator WaitComplete()
+    {
+        yield return new WaitForSeconds(0.1f);
+        rangeSprite.color = LevelManager.Instance.GetColorByRange(((Enemu)Entity).RespawnCount);
+    }
 
 
     private int index;
