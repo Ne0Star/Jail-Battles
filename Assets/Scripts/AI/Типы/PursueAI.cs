@@ -10,10 +10,15 @@ using UnityEngine;
 public class PursueAI : AI
 {
     [SerializeField] private float pursueChance = 0.1f;
-    [SerializeField] private float damageMultipler = 1f;
-    [SerializeField] private bool pursue = false;
 
-    private ActionMoveToTarget actionMoveToTarget;
+    [SerializeField] private bool isPursue = false;
+    [SerializeField] private bool isWandering = false;
+
+
+    public override void MarkTarget(Entity entity)
+    {
+        OnCustomTriggerStay(entity);
+    }
 
     /// <summary>
     /// Текущее действие перенести в стек и начать выполнение нового действия
@@ -22,34 +27,57 @@ public class PursueAI : AI
     /// <param name="entity"></param>
     protected override void OnCustomTriggerStay(Entity entity)
     {
-        if (pursue || entity == this.entity || CurrentAction == null || !entity.AllowAttack) return;
-        bool attack = Random.Range(0, 100) >= pursueChance;
-        if (!attack) return;
-        pursue = true;
+        if (isPursue || isAttack || entity == this.entity || CurrentAction == null) return;
+        //if (entity != LevelManager.Instance.Player)
+        //{
+        //    bool attack = Random.Range(0, 100) <= pursueChance;
+        //    if (!attack) return;
+        //    if (entity as Enemu)
+        //    {
+        //        Enemu e = (Enemu)entity;
+        //        if (e.Ai.IsAttack)
+        //        {
+        //            return;
+        //        }
+        //    } 
+        //}
+        isPursue = true;
 
-        actionMoveToTarget = new ActionMoveToTarget(this, entity, 10, damageMultipler);
-        SetAction(actionMoveToTarget, () =>
+
+        entity.MarkTarget(Entity);
+        SetAction(new ActionMoveToTarget(this, entity, 10f - ((Enemu)Entity).RespawnCount), (v) =>
         {
-            pursue = false;
-            this.Entity.AllowAttack = true;
-        }, () =>
+            isPursue = false;
+
+            entity.TakeDamage(Entity,0);
+            isAttack = true;
+            SetAction(new ActionAttack(this, entity, attackSpeed.CurrentValue, attackDamage.CurrentValue), (v) =>
+            {
+                isAttack = false;
+                isPursue = false;
+            }, (v) =>
+            {
+                isAttack = false;
+                isPursue = false;
+            });
+        }, (v) =>
         {
-            pursue = false;
-            this.Entity.AllowAttack = true;
+            isPursue = false;
         });
     }
 
     protected override void OnDamaged(Entity entity, float value)
     {
-        if (actionMoveToTarget != null)
-        {
-            if (!entity.AllowAttack) return;
-            actionMoveToTarget.SetTarget(entity);
-        }
+        OnCustomTriggerStay(entity);
     }
 
     protected override void Create()
     {
-        AddAction(new ActionMoveByArea(this, LevelManager.Instance.AiManager.Areas, AreaType.Столовая));
+        isWandering = true;
+        AddAction(new ActionMoveByArea(this, LevelManager.Instance.AiManager.Areas, AreaType.Столовая), (v) =>
+        {
+            isWandering = false;
+        });
+
     }
 }

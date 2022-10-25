@@ -26,6 +26,26 @@ public struct LevelData
 public class LevelManager : OneSingleton<LevelManager>
 {
 
+    public Color one, two, three, four, five, defaultColor;
+
+    public Color GetColorByRange(int range)
+    {
+        switch (range)
+        {
+            case 0:
+                return one;
+            case 1:
+                return two;
+            case 2:
+                return three;
+            case 3:
+                return five;
+            default: return defaultColor;
+        }
+    }
+
+
+
     [SerializeField] private float customTime;
 
     public float CustomTime { get => customTime; }
@@ -60,8 +80,19 @@ public class LevelManager : OneSingleton<LevelManager>
         LevelManager.Instance = this;
         if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
         if (!aiManager) aiManager = FindObjectOfType<AIManager>();
-        if(!audioManager) audioManager = FindObjectOfType<AudioManager>();
+        if (!audioManager) audioManager = FindObjectOfType<AudioManager>();
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
+        StartCoroutine(Wait());
+    }
+
+    private IEnumerator Wait()
+    {
+        for (int i = 0; i < 180; i++)
+        {
+            Debug.Log(i);
+            yield return new WaitForSeconds(1);
+        }
+        Time.timeScale = 0;
     }
 
 }

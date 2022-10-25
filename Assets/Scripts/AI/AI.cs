@@ -249,41 +249,48 @@ public struct AIStatsPresset
 }
 
 [System.Serializable]
-public struct AIUniversalData
+public struct UpdateData
 {
-    [SerializeField] private List<AIAction> life;
+    [SerializeField] private bool addtive;
+    [SerializeField] float currentValue;
+    [SerializeField] float min, max;
 
-    [SerializeField] private float speed;
-    [SerializeField] private float rotateSpeed;
+    public float CurrentValue { get => currentValue; }
 
-    [SerializeField] private float rotateOffset;
-    [SerializeField] private Transform rotateParent;
-    public float Speed { get => speed; }
-    public float RotateSpeed { get => rotateSpeed; }
-    public float RotateOffset { get => rotateOffset; }
-    public Transform RotateParent { get => rotateParent; }
-    public List<AIAction> Life { get => life; }
+    public void Update()
+    {
+        if (addtive)
+        {
+            currentValue += Random.Range(min, max);
+        }
+        else
+        {
+            currentValue -= Random.Range(min, max);
+        }
+
+    }
+
 }
-
 public abstract class AI : MonoBehaviour
 {
+    [SerializeField] protected SpriteRenderer rangeSprite;
+    [SerializeField] protected bool isAttack = false;
+    [SerializeField] private Transform rotateParent;
+    [SerializeField] private float rotateOffset;
     [SerializeField] private AIType type;
-    [SerializeField] protected AIUniversalData data;
     [SerializeField] protected Entity entity;
     [SerializeField] private AITypes targetTypes;
-
+    [SerializeField] protected List<AreaType> areaTypes;
+    public Transform RotateParent { get => rotateParent; }
+    public float RotateOffset { get => rotateOffset; }
     public AIType Type { get => type; }
     public Entity Entity { get => entity; }
     public AITypes TargetTypes { get => targetTypes; }
-    public AIUniversalData Data { get => data; }
-
-
     public Animator Animator { get => entity.Animator; }
     public AudioSource Source { get => entity.Source; }
     public NavMeshAgent Agent => entity.Agent;
     public HitBar Hit => entity.HitBar;
     public AIStatsPresset Stats { get => entity.Stats; }
-
 
     protected virtual void Disable()
     {
@@ -297,24 +304,52 @@ public abstract class AI : MonoBehaviour
     {
 
     }
+
+    public virtual void MarkTarget(Entity entity)
+    {
+
+    }
+
+    [SerializeField] protected UpdateData attackSpeed;
+    [SerializeField] protected UpdateData attackDamage;
+    [SerializeField] protected UpdateData moveSpeed;
+
     private void OnDisable()
     {
-        Disable();
+        List<AIArea> aIAreas = new List<AIArea>();
+        foreach (AreaType areaType in areaTypes)
+        {
+            foreach (AIArea area in LevelManager.Instance.AiManager.Areas)
+            {
+                if (area.AreaType == areaType)
+                {
+                    aIAreas.Add(area);
+                }
+            }
+        }
+        entity.transform.position =aIAreas[Random.Range(0, aIAreas.Count - 1)].GetVector();
     }
     private void OnEnable()
     {
         transform.localPosition = Vector2.zero;
+        isAttack = false;
+        attackDamage.Update();
+        attackDamage.Update();
+        moveSpeed.Update();
+        rangeSprite.color = LevelManager.Instance.GetColorByRange(((Enemu)Entity).RespawnCount);
+        Agent.speed = moveSpeed.CurrentValue;
         Enable();
     }
 
 
 
-    [SerializeField] private int index;
+    private int index;
     [SerializeField] private List<AIAction> lifeActions = new List<AIAction>();
     [SerializeField] private List<AIAction> stackActions = new List<AIAction>();
     [SerializeField] private AIAction currentAction;
     [SerializeField] private AIAction lastAction = null;
     public AIAction CurrentAction { get => currentAction; }
+    public bool IsAttack { get => isAttack; }
 
 
     /// <summary>
@@ -322,11 +357,11 @@ public abstract class AI : MonoBehaviour
     /// </summary>
     /// <param name="action"></param>
     /// <param name="breakMode"></param>
-    protected void AddAction(AIAction action, System.Action onComplete)
+    protected void AddAction(AIAction action, System.Action<AIAction> onComplete)
     {
-        if (action == null ) return;
+        if (action == null) return;
         lifeActions.Add(action);
-        action.OnComplete.AddListener(() => onComplete());
+        action.OnComplete.AddListener((v) => onComplete(v));
     }
     /// <summary>
     /// Добавляет новое действие для AI
@@ -343,7 +378,7 @@ public abstract class AI : MonoBehaviour
     /// </summary>
     /// <param name="action"></param>
     /// <param name="onComplete">Выполнится когда указанное действие закончит работу</param>
-    protected void SetAction(AIAction action, System.Action onComplete)
+    protected void SetAction(AIAction action, System.Action<AIAction> onComplete)
     {
         #region текущее в стек
         lifeActions[index].Break();
@@ -351,37 +386,26 @@ public abstract class AI : MonoBehaviour
         #endregion
 
         currentAction = action;
-        currentAction.OnComplete?.AddListener(() =>
+        currentAction.OnComplete?.AddListener((v) =>
         {
-            currentAction = stackActions[stackActions.Count - 1];
-            stackActions.RemoveAt(stackActions.Count - 1);
-            onComplete();
+            onComplete(v);
         });
     }
-    protected void SetAction(AIAction action, System.Action onComplete, System.Action onBreak)
+    protected void SetAction(AIAction action, System.Action<AIAction> onComplete, System.Action<AIAction> onBreak)
     {
         #region текущее в стек
         lifeActions[index].Break();
-        stackActions.Add(lifeActions[index]);
+        if (!stackActions.Contains(lifeActions[index]))
+            stackActions.Add(lifeActions[index]);
         #endregion
         currentAction = action;
-        currentAction.OnComplete?.AddListener(() =>
+        currentAction.OnComplete?.AddListener((v) =>
         {
-            if (stackActions != null)
-            {
-                currentAction = stackActions[stackActions.Count - 1];
-                stackActions.RemoveAt(stackActions.Count - 1);
-            }
-            onComplete();
+            onComplete(v);
         });
-        currentAction.OnBreak?.AddListener(() =>
+        currentAction.OnBreak?.AddListener((v) =>
         {
-            if (stackActions != null)
-            {
-                currentAction = stackActions[stackActions.Count - 1];
-                stackActions.RemoveAt(stackActions.Count - 1);
-            }
-            onBreak();
+            onBreak(v);
         });
     }
 
@@ -394,31 +418,59 @@ public abstract class AI : MonoBehaviour
         }
 
 
+        if (currentAction != lastAction && currentAction != null)
+        {
+            currentAction.Initial();
+
+            currentAction.OnComplete?.AddListener((v) =>
+            {
+                if (stackActions.Contains(v))
+                {
+                    stackActions.Remove(v);
+                }
+                if (currentAction == v)
+                {
+                    currentAction = null;
+                }
+                v = null;
+            });
+
+            currentAction.OnBreak?.AddListener((v) =>
+            {
+                if (stackActions.Contains(v))
+                {
+                    stackActions.Remove(v);
+                }
+                if (currentAction == v)
+                {
+                    currentAction = null;
+                }
+                v = null;
+            });
+
+            lastAction = currentAction;
+        }
+
+
         if (currentAction != null)
         {
             currentAction.CustomUpdate();
         }
         else
         {
-            index = index + 1 > lifeActions.Count - 1 ? 0 : index + 1;
-            currentAction = lifeActions[index];
-        }
-        if (currentAction != lastAction && currentAction != null)
-        {
-            currentAction.Initial();
-
-            currentAction.OnComplete?.AddListener(() =>
+            if (stackActions != null && stackActions.Count > 0)
             {
-                currentAction = null;
-            });
-
-            currentAction.OnBreak?.AddListener(() =>
+                currentAction = stackActions[stackActions.Count - 1];
+                stackActions.Remove(currentAction);
+            }
+            else
             {
-                currentAction = null;
-            });
+                index = index + 1 > lifeActions.Count - 1 ? 0 : index + 1;
+                currentAction = lifeActions[index];
+            }
 
-            lastAction = currentAction;
         }
+
 
         UpdateAI();
     }
@@ -434,7 +486,7 @@ public abstract class AI : MonoBehaviour
     /// В один из триггеров AI зашла цель
     /// </summary>
     /// <param name="entity"></param>
-    protected virtual void OnCustomTriggerStay(Entity entity)
+    protected virtual void OnCustomTriggerStay(Entity ai)
     {
 
     }
@@ -447,13 +499,17 @@ public abstract class AI : MonoBehaviour
     {
 
     }
-    public void SetPresset(AIUniversalData data, Entity entity, AIType type, AITypes targetTypes)
+    /// <summary>
+    /// Устанавливает найстроки AI
+    /// </summary>
+    /// <param name="entity"></param>
+    public void SetPresset(Entity entity)
     {
-        this.targetTypes = targetTypes;
-        this.data = data;
-        this.type = type;
         this.entity = entity;
-
+        currentAction = null;
+        stackActions = new List<AIAction>();
+        lifeActions = new List<AIAction>();
+        index = 0;
         if (entity && entity.HitBar)
             entity.HitBar.OnDamaged?.AddListener(OnDamaged);
 

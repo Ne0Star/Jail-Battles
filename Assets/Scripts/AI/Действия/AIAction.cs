@@ -9,12 +9,12 @@ using UnityEngine.Events;
 /// </summary>
 /// 
 [System.Serializable]
-public abstract class AIAction //: ScriptableObject
+public abstract class AIAction// : ScriptableObject
 {
-    [SerializeField] protected UnityEvent onComplete = new UnityEvent();
-    [SerializeField] protected UnityEvent onBreak = new UnityEvent();
-    public UnityEvent OnComplete { get => onComplete; }
-    public UnityEvent OnBreak { get => onBreak; }
+    [SerializeField] protected UnityEvent<AIAction> onComplete = new UnityEvent<AIAction>();
+    [SerializeField] protected UnityEvent<AIAction> onBreak = new UnityEvent<AIAction>();
+    public UnityEvent<AIAction> OnComplete { get => onComplete; }
+    public UnityEvent<AIAction> OnBreak { get => onBreak; }
     /// <summary>
     /// Вызывается при назначении действия какому либо AI
     /// </summary>

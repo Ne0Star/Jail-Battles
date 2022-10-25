@@ -13,6 +13,13 @@ public class StandartBar : HitBar
         }
         UpdateData();
     }
+
+
+    private void OnEnable()
+    {
+        SetFull();
+    }
+
     public override void UpdateData()
     {
         if (destroyVisual) return;

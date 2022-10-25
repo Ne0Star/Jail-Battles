@@ -5,15 +5,17 @@ using UnityEngine;
 
 public class Enemu : Entity, ICustomListItem
 {
-    private bool check = false;
-    public bool Check { get => check; set => check = value; }
-    public AIType AiType { get => aiType; }
-    public AI Ai { get => ai; }
-
-    [SerializeField] private AIUniversalData data;
-    [SerializeField] private AITypes targetTypes;
-    [SerializeField] private AIType aiType;
     [SerializeField] private AI ai;
+    [SerializeField] private int respawnCount;
+    [SerializeField] private float timeToRespawn = 5f;
+    [SerializeField] private float currentTime;
+    public AI Ai { get => ai; }
+    public int RespawnCount { get => respawnCount; }
+
+    public override void MarkTarget(Entity source)
+    {
+        ai.MarkTarget(source);
+    }
 
     protected override void Enable()
     {
@@ -22,31 +24,58 @@ public class Enemu : Entity, ICustomListItem
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
-        ChangeAi();
+
+        ai.SetPresset(this);
+
+        //ChangeAi();
     }
 
-    protected void ChangeAi()
+    public void CustomUpdate()
     {
-        if (ai != null)
-            LevelManager.Instance.AiManager.ChangeAI(this, ref ai, data, aiType, targetTypes);
-        else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(this, data, aiType, targetTypes);
+        if (!gameObject.activeSelf)
+        {
+            if (currentTime >= timeToRespawn)
+            {
+                gameObject.SetActive(true);
+                
+                respawnCount++;
+                currentTime = 0f;
+            }
+            currentTime += 0.02f;
+            return;
+        }
+        ai.CustomUpdate();
     }
 
-    public virtual void CustomUpdate()
-    {
-        current = (int)aiType;
-        if (last != current)
-        {
+    //public AIType AiType { get => aiType; }
 
-            ChangeAi();
 
-            last = current;
-        }
-        if (ai)
-        {
-            ai.CustomUpdate();
-        }
-    }
+    //[SerializeField] private AIUniversalData data;
+    //[SerializeField] private AITypes targetTypes;
+    //[SerializeField] private AIType aiType;
 
-    int last, current;
+    //protected void ChangeAi()
+    //{
+    //    if (ai != null)
+    //        LevelManager.Instance.AiManager.ChangeAI(this, ref ai, data, aiType, targetTypes);
+    //    else if (ai == null) ai = LevelManager.Instance.AiManager.AddAI(this, data, aiType, targetTypes);
+    //}
+
+    //public virtual void CustomUpdate()
+    //{
+    //    current = (int)aiType;
+    //    if (last != current)
+    //    {
+
+    //        ChangeAi();
+
+    //        last = current;
+    //    }
+    //    if (ai)
+    //    {
+    //        ai.CustomUpdate();
+    //    }
+    //}
+
+    //int last, current;
 }

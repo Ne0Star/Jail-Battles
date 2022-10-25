@@ -16,7 +16,6 @@ public class ActionMoveByArea : AIAction
     [SerializeField] private List<AIArea> areas;
     [SerializeField] private bool isMove;
 
-
     public ActionMoveByArea(AI executor, List<AIArea> areas, AreaType type)
     {
         isMove = false;
@@ -48,11 +47,11 @@ public class ActionMoveByArea : AIAction
         else
         {
 
-            GameUtils.LookAt2D(executor.Data.RotateParent, executor.transform.position + executor.Agent.velocity, executor.Data.RotateOffset);
+            GameUtils.LookAt2D(executor.RotateParent, executor.transform.position + executor.Agent.velocity, executor.RotateOffset);
             distance = Vector2.Distance(executor.transform.position, targetPos);
             if (distance <= executor.Agent.radius)
             {
-                onComplete?.Invoke();
+                onComplete?.Invoke(this);
                 isMove = false;
                 targetPos = Vector3.zero;
             }

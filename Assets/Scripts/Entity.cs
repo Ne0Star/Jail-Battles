@@ -65,6 +65,14 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected AudioSource source;
     [SerializeField] protected AIStatsPresset stats;
 
+    /// <summary>
+    /// Кто то сделал целью эту сущность
+    /// </summary>
+    /// <param name="source"></param>
+    public virtual void MarkTarget(Entity source)
+    {
+
+    }
 
 
     public Animator Animator { get => animator; }

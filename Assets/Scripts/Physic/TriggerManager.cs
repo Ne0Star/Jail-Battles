@@ -83,7 +83,6 @@ public class CustomList<T> where T : ICustomListItem
                 TriggersLife(i, i + stepCount);
                 yield return new WaitForSeconds(updateTime);
             }
-            Debug.Log("Работает ведь блять");
             yield return new WaitForFixedUpdate();
         }
     }
