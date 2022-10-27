@@ -71,7 +71,7 @@ public class ActionMoveByArea : AIAction
 
     public override void Initial()
     {
-
+        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
     }
 
     public override void Break()
