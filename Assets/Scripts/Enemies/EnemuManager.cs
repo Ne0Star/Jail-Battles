@@ -16,7 +16,7 @@ public class EnemuManager : MonoBehaviour
 
     public CustomList<Enemu> AllEnemies { get => allEnemies; }
 
-    private void Awake()
+    private void Start()
     {
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>());
