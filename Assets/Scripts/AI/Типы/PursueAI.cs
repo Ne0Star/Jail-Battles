@@ -36,7 +36,7 @@ public class PursueAI : AI
         if (isPursue || isAttack || entity == this.entity || CurrentAction == null && Entity) return;
         if (useChance)
         {
-            bool attack = Random.Range(0, 100) >= pursueChance.CurrentValue;
+            bool attack = entity == LevelManager.Instance.Player ? Random.Range(0, 100) >= (pursueChance.CurrentValue * 2) : Random.Range(0, 100) >= pursueChance.CurrentValue;
             if (!attack) return;
         }
         else
