@@ -9,7 +9,7 @@ using UnityEngine.Events;
 /// </summary>
 /// 
 [System.Serializable]
-public abstract class AIAction// : ScriptableObject
+public abstract class AIAction : ScriptableObject
 {
     [SerializeField] protected UnityEvent<AIAction> onComplete = new UnityEvent<AIAction>();
     [SerializeField] protected UnityEvent<AIAction> onBreak = new UnityEvent<AIAction>();

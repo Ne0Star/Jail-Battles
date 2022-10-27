@@ -35,14 +35,15 @@ public class AITrigger : Trigger
         {
             if (target && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
             {
-                if(!colliderMode)
+                if (!colliderMode)
                 {
-                if (Vector2.Distance(target.transform.position, transform.position) <= radius + 0.01f)
-                {
-                    onStay.Invoke(target);
-                    //Debug.Log("В моём радиусе цель: " + target.name);
+                    if (Vector2.Distance(target.transform.position, transform.position) <= radius + 0.01f)
+                    {
+                        onStay.Invoke(target);
+                        //Debug.Log("В моём радиусе цель: " + target.name);
+                    }
                 }
-                } else
+                else
                 {
                     if (Vector2.Distance(target.Agent.transform.position, sources.Agent.transform.position) <= (sources.Agent.radius + target.Agent.radius + 0.01f))
                     {
@@ -58,8 +59,8 @@ public class AITrigger : Trigger
     public void SetAi(AI sources)
     {
         if (!sources) return;
-        if(!customTypes)
-        this.types = sources.TargetTypes;
+        if (!customTypes)
+            this.types = sources.TargetTypes;
         this.sources = sources;
         initialized = true;
     }
