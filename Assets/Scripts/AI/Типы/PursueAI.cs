@@ -33,7 +33,7 @@ public class PursueAI : AI
     /// <param name="entity"></param>
     protected override void OnCustomTriggerStay(Entity entity)
     {
-        if (isPursue || isAttack || entity == this.entity || CurrentAction == null) return;
+        if (isPursue || isAttack || entity == this.entity || CurrentAction == null && Entity) return;
         if (useChance)
         {
             bool attack = Random.Range(0, 100) >= pursueChance.CurrentValue;

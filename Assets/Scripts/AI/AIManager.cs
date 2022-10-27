@@ -8,8 +8,22 @@ using UnityEngine;
 /// </summary>
 public class AIManager : MonoBehaviour
 {
+    [SerializeField] private Transform spawnPointsTarget;
+
     [SerializeField] private List<AI> allAi;
     [SerializeField] private List<AIArea> areas;
+
+
+    public Vector3 GetSpawnPoint()
+    {
+        List<Vector3> points = new List<Vector3>();
+        foreach (Transform t in spawnPointsTarget)
+        {
+            points.Add(t.position);
+        }
+        return points[Random.Range(0, points.Count - 1)];
+    }
+
 
     private void Awake()
     {

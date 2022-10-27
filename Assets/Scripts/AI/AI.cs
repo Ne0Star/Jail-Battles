@@ -337,10 +337,12 @@ public abstract class AI : MonoBehaviour
                 }
             }
         }
-        aIAreas[Random.Range(0, aIAreas.Count - 1)].GetVector(Agent, (result) =>
-        {
-            entity.transform.position = result;
-        });
+        //aIAreas[Random.Range(0, aIAreas.Count - 1)].GetVector(Agent, (result) =>
+        //{
+        //    Agent.Warp(result);
+        //});
+
+entity.transform.position = LevelManager.Instance.AiManager.GetSpawnPoint();
 
         StartCoroutine(WaitComplete());
         Enable();
