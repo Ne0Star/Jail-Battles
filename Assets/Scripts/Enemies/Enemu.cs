@@ -6,11 +6,8 @@ using UnityEngine;
 public class Enemu : Entity, ICustomListItem
 {
     [SerializeField] private AI ai;
-    [SerializeField] private int respawnCount;
-    [SerializeField] private float timeToRespawn = 5f;
     [SerializeField] private float currentTime;
     public AI Ai { get => ai; }
-    public int RespawnCount { get => respawnCount; }
 
     public override void MarkTarget(Entity source)
     {
@@ -34,11 +31,9 @@ public class Enemu : Entity, ICustomListItem
     {
         if (!gameObject.activeSelf)
         {
-            if (currentTime >= timeToRespawn)
+            if (currentTime >= LevelManager.Instance.GetColorByRange(ai.UpdateCount).respawnTime)
             {
                 gameObject.SetActive(true);
-                
-                respawnCount++;
                 currentTime = 0f;
             }
             currentTime += 0.02f;

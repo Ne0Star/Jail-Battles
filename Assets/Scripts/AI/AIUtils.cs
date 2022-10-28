@@ -11,6 +11,17 @@ using UnityEngine.AI;
 public static class AIUtils
 {
 
+    public static bool Collision(NavMeshAgent one, NavMeshAgent two)
+    {
+        if (Vector2.Distance(one.transform.position, two.transform.position) <= (one.radius + two.radius + 0.01f))
+        {
+            return true;
+        } else
+        {
+            return false;
+        }
+    }
+
     public static void MoveCircle(Vector3 center, AI[] array, float pose, float scalePersent)
     {
         if (array == null)

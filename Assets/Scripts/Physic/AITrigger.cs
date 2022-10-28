@@ -6,7 +6,7 @@ public class AITrigger : Trigger
 {
     [SerializeField] private bool customTypes = false;
     [SerializeField] private bool colliderMode = true;
-    [SerializeField] private AI sources;
+    [SerializeField] private Entity sources;
     [SerializeField] private AITypes types;
     [SerializeField] private bool initialized = false;
 
@@ -33,7 +33,7 @@ public class AITrigger : Trigger
 
         foreach (Entity target in targets)
         {
-            if (target && target != sources.Entity && target != this && target.gameObject.activeInHierarchy)
+            if (target && target != sources && target != this && target.gameObject.activeInHierarchy)
             {
                 if (!colliderMode)
                 {
@@ -61,7 +61,7 @@ public class AITrigger : Trigger
         if (!sources) return;
         if (!customTypes)
             this.types = sources.TargetTypes;
-        this.sources = sources;
+        this.sources = sources.Entity;
         initialized = true;
     }
 }

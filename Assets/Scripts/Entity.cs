@@ -58,12 +58,36 @@ public struct EntityAnimationPresset
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
-    [SerializeField] private bool allowAttack = true;
-    [SerializeField] private HitBar hitBar;
-    [SerializeField] protected NavMeshAgent agent;
-    [SerializeField] protected Animator animator;
-    [SerializeField] protected AudioSource source;
+    private HitBar hitBar;
+    protected NavMeshAgent agent;
+    protected Animator animator;
+    protected AudioSource source;
     [SerializeField] protected AIStatsPresset stats;
+
+
+    private void Awake()
+    {
+        if (!source)
+        {
+            source = GetComponentInChildren<AudioSource>(true);
+        }
+        if (!hitBar)
+        {
+            hitBar = GetComponentInChildren<HitBar>(true);
+        }
+        if (!animator)
+        {
+            animator = GetComponentInChildren<Animator>(true);
+        }
+        if (!agent)
+        {
+            agent = GetComponent<NavMeshAgent>();
+            if (!agent)
+            {
+                agent = GetComponent<NavMeshAgent>();
+            }
+        }
+    }
 
     /// <summary>
     /// Кто то сделал целью эту сущность
@@ -80,7 +104,6 @@ public abstract class Entity : MonoBehaviour
     public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
     public AIStatsPresset Stats { get => stats; }
-    public bool AllowAttack { get => allowAttack; set => allowAttack = value; }
 
     private void OnEnable()
     {
@@ -116,21 +139,22 @@ public abstract class Entity : MonoBehaviour
 
     }
 
-    public virtual void TakeDamage(Entity source, float damage)
+    public virtual void TakeDamage(Entity source, float damage, System.Action onKill)
     {
         hitBar.TakeDamage(source, damage, () =>
         {
+            onKill();
             gameObject.SetActive(false);
         });
     }
 
-    /// <summary>
-    /// Нанесёт урон указанной сущности
-    /// </summary>
-    /// <param name="target"></param>
-    /// <param name="damage"></param>
-    public virtual void DealDamage(Entity target, float damage)
-    {
-        target.TakeDamage(this, damage);
-    }
+    ///// <summary>
+    ///// Нанесёт урон указанной сущности
+    ///// </summary>
+    ///// <param name="target"></param>
+    ///// <param name="damage"></param>
+    //public virtual void DealDamage(Entity target, float damage)
+    //{
+    //    target.TakeDamage(this, damage);
+    //}
 }

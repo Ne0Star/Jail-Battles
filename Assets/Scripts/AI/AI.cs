@@ -70,34 +70,6 @@ public enum AIType
 
 }
 
-
-//[Flags]
-//public enum AnimationTypes
-//{
-//    Idle,
-//    Move,
-//    Run,
-//    Attack,
-//    Special
-//}
-
-//[Flags]
-//public enum AITypes
-//{
-//    Преследователь,
-//    Псих,
-//    Бычара,
-//    Трус,
-//    Маньяк,
-//    Уборщица,
-//    Повариха,
-//    ГлавнаяПовариха,
-//    ГлавнаяУборщица,
-//    Охранник,
-//    Крыса
-
-//}
-
 [System.Serializable]
 public struct AITB
 {
@@ -196,56 +168,137 @@ public class AIFightStat
     public float attackSpeed;
     public AIStatPresset presset;
 }
+
+[System.Serializable]
+public struct WeaponPresset
+{
+    /// <summary>
+    /// Ближний бой
+    /// </summary>
+    [SerializeField] private AIStatPresset mele;
+    /// <summary>
+    /// Пистолеты
+    /// </summary>
+    [SerializeField] private AIStatPresset gun;
+    /// <summary>
+    /// Автоматы
+    /// </summary>
+    [SerializeField] private AIStatPresset machine;
+
+    private Weapon weapon;
+
+
+    public void Init(Weapon weapon)
+    {
+        this.weapon = weapon;
+    }
+
+    public void Play(Animator animator, AudioSource sources, float speed, Weapon weapon)
+    {
+        if (weapon == null)
+        {
+            mele.Play(animator, sources);
+        }
+        else
+        {
+            switch (weapon.WeaponType)
+            {
+                case WeaponType.Одноручное:
+                    gun.Play(animator, sources, speed);
+                    break;
+                case WeaponType.Двуручное:
+                    machine.Play(animator, sources, speed);
+                    break;
+            }
+        }
+    }
+
+    public void Play(Animator animator, AudioSource sources, Weapon weapon)
+    {
+        if (weapon == null)
+        {
+            mele.Play(animator, sources);
+        }
+        else
+        {
+            switch (weapon.WeaponType)
+            {
+                case WeaponType.Одноручное:
+                    gun.Play(animator, sources);
+                    break;
+                case WeaponType.Двуручное:
+                    machine.Play(animator, sources);
+                    break;
+            }
+        }
+    }
+}
+
+[System.Serializable]
+public struct FightPresset
+{
+    [SerializeField] private List<AIStatPresset> standartStrikes;
+    [SerializeField] private List<AIStatPresset> specialStrikes;
+    [SerializeField] private List<AIStatPresset> bossStrikes;
+    public List<AIStatPresset> StandartStrikes { get => standartStrikes; }
+    public List<AIStatPresset> SpecialStrikes { get => specialStrikes; }
+    public List<AIStatPresset> BossStrikes { get => bossStrikes; }
+}
+
+
 [System.Serializable]
 public struct AIStatsPresset
 {
-    [SerializeField] private AIStatPresset walk;
-    [SerializeField] private AIStatPresset idle;
-    [SerializeField] private AIStatPresset figtStance;
+    [SerializeField] private WeaponPresset walk;
+    [SerializeField] private WeaponPresset idle;
+    [SerializeField] private WeaponPresset figtStance;
 
-    [SerializeField] private List<AIFightStat> standartStrikes;
-    [SerializeField] private List<AIFightStat> specialStrikes;
-    [SerializeField] private List<AIFightStat> bossStrikes;
+    private Weapon weapon;
+
+    [SerializeField] private List<AIStatPresset> handsAttacks;
+    [SerializeField] private List<AIStatPresset> meleAttacks;
+    [SerializeField] private List<AIStatPresset> rangeAttacks;
+
+    public void Init(Weapon weapon)
+    {
+        walk.Init(weapon);
+        idle.Init(weapon);
+        figtStance.Init(weapon);
+        this.weapon = weapon;
+    }
+
+    public void Attack(Animator animator, AudioSource source, float speed)
+    {
+        if (weapon == null)
+        {
+            handsAttacks[Random.Range(0, handsAttacks.Count - 1)].Play(animator, source, speed);
+        }
+        else
+        {
+            switch (weapon.WeaponType)
+            {
+                case WeaponType.Одноручное:
+                    meleAttacks[Random.Range(0, meleAttacks.Count - 1)].Play(animator, source, speed);
+                    break;
+                case WeaponType.Двуручное:
+                    rangeAttacks[Random.Range(0, rangeAttacks.Count - 1)].Play(animator, source, speed);
+                    break;
+            }
+        }
+    }
 
     /// <summary>
     /// Ходьба
     /// </summary>
-    public AIStatPresset Walk { get => walk; }
+    public WeaponPresset Walk { get => walk; }
     /// <summary>
     /// Покой
     /// </summary>
-    public AIStatPresset Idle { get => idle; }
+    public WeaponPresset Idle { get => idle; }
     /// <summary>
     /// Боевая стойка
     /// </summary>
-    public AIStatPresset FigtStance { get => figtStance; }
-
-    public AIFightStat GetStandartStrike()
-    {
-        return standartStrikes[Random.Range(0, standartStrikes.Count)];
-    }
-    public AIFightStat GetSpecialStrike()
-    {
-        return specialStrikes[Random.Range(0, specialStrikes.Count)];
-    }
-    public AIFightStat GetBossStrike()
-    {
-        return bossStrikes[Random.Range(0, bossStrikes.Count)];
-    }
-
-    /// <summary>
-    /// Стандартные удары, руками, ногами, в среднем 8-14 ударов для убийства
-    /// </summary>
-    public List<AIFightStat> StandartStrikes { get => standartStrikes; }
-    /// <summary>
-    /// Специальные удары AI, например уборщица может ударить шваброй, в среднем 3-6 ударов до убийства
-    /// </summary>
-    public List<AIFightStat> SpecialStrikes { get => specialStrikes; }
-    /// <summary>
-    /// Особые сложные удары, для особо опасных AI, которые могут убить с 1-3 ударов
-    /// </summary>
-    public List<AIFightStat> BossStrikes { get => bossStrikes; }
-
+    public WeaponPresset FigtStance { get => figtStance; }
 }
 
 [System.Serializable]
@@ -273,6 +326,7 @@ public struct UpdateData
 }
 public abstract class AI : MonoBehaviour
 {
+    [SerializeField] protected Weapon weapon;
     [SerializeField] protected SpriteRenderer rangeSprite;
     [SerializeField] protected bool isAttack = false;
     [SerializeField] private Transform rotateParent;
@@ -291,7 +345,7 @@ public abstract class AI : MonoBehaviour
     public NavMeshAgent Agent => entity.Agent;
     public HitBar Hit => entity.HitBar;
     public AIStatsPresset Stats { get => entity.Stats; }
-
+    public Weapon Weapon { get => weapon; }
     protected virtual void Disable()
     {
 
@@ -304,7 +358,6 @@ public abstract class AI : MonoBehaviour
     {
 
     }
-
     public virtual void MarkTarget(Entity entity)
     {
 
@@ -313,19 +366,43 @@ public abstract class AI : MonoBehaviour
     [SerializeField] protected UpdateData attackSpeed;
     [SerializeField] protected UpdateData attackDamage;
     [SerializeField] protected UpdateData moveSpeed;
+    [SerializeField] protected UpdateData health;
+    [SerializeField] protected UpdateData healthBonus;
+
 
     private void OnDisable()
     {
         transform.localPosition = Vector2.zero;
         isAttack = false;
+    }
+
+    [SerializeField] private int updateCount = 0;
+
+    public void UpdateCurrentAI()
+    {
+        updateCount++;
+        healthBonus.Update();
+        health.Update();
         attackDamage.Update();
         attackDamage.Update();
         moveSpeed.Update();
+
+        Hit.UpdateHealth(health.CurrentValue);
+        Hit.AddHealth(healthBonus.CurrentValue);
         Agent.speed = moveSpeed.CurrentValue;
 
+        StartCoroutine(WaitComplete());
+        UpdateCirrentAI_();
     }
+
+    protected virtual void UpdateCirrentAI_()
+    {
+
+    }
+
     private void OnEnable()
     {
+        Stats.Init(weapon);
         List<AIArea> aIAreas = new List<AIArea>();
         foreach (AreaType areaType in areaTypes)
         {
@@ -341,17 +418,19 @@ public abstract class AI : MonoBehaviour
         //{
         //    Agent.Warp(result);
         //});
-
-entity.transform.position = LevelManager.Instance.AiManager.GetSpawnPoint();
-
         StartCoroutine(WaitComplete());
+        entity.transform.position = LevelManager.Instance.AiManager.GetSpawnPoint();
         Enable();
     }
 
     private IEnumerator WaitComplete()
     {
         yield return new WaitForSeconds(0.1f);
-        rangeSprite.color = LevelManager.Instance.GetColorByRange(((Enemu)Entity).RespawnCount);
+        rangeSprite.color = LevelManager.Instance.GetColorByRange(updateCount).color;
+        weapon = LevelManager.Instance.WeaponManager.GetFreeWeapon(weaponType, false);
+        weapon.transform.parent = weaponParent;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localScale = new Vector3(1,1,1);
     }
 
 
@@ -362,6 +441,7 @@ entity.transform.position = LevelManager.Instance.AiManager.GetSpawnPoint();
     [SerializeField] private AIAction lastAction = null;
     public AIAction CurrentAction { get => currentAction; }
     public bool IsAttack { get => isAttack; }
+    public int UpdateCount { get => updateCount; }
 
 
     /// <summary>
@@ -486,7 +566,8 @@ entity.transform.position = LevelManager.Instance.AiManager.GetSpawnPoint();
 
         UpdateAI();
     }
-
+    [SerializeField] private WeaponType weaponType;
+    [SerializeField] private Transform weaponParent;
     /// <summary>
     /// Оптимизированное время обновления для AI
     /// </summary>

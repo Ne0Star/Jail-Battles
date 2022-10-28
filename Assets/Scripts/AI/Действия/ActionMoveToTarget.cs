@@ -69,7 +69,7 @@ public class ActionMoveToTarget : AIAction
         startSpeed = executor.Agent.speed;
         executor.Agent.speed *= speedMultipler;
         breaking = false;
-        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed, executor.Weapon);
         executor.Agent.SetDestination(target.Agent.transform.position);
     }
 

@@ -23,26 +23,32 @@ public struct LevelData
 
 }
 
+[System.Serializable]
+public struct RangeRange
+{
+    public string name;
+    public Color color;
+    public int min, max;
+    public float respawnTime;
+}
+
 public class LevelManager : OneSingleton<LevelManager>
 {
 
-    public Color one, two, three, four, five, defaultColor;
+    public List<RangeRange> ranges;
 
-    public Color GetColorByRange(int range)
+    public RangeRange GetColorByRange(int range)
     {
-        switch (range)
+        RangeRange result = new RangeRange();
+        foreach (RangeRange r in ranges)
         {
-            case 1:
-                return one;
-            case 2:
-                return two;
-            case 3:
-                return three;
-            case 4:
-                return five;
-            case 0: return defaultColor;
-            default: return defaultColor;
+            if (range <= r.max && range >= r.min)
+            {
+                result = r;
+                return result;
+            }
         }
+        return result;
     }
 
 
@@ -57,6 +63,7 @@ public class LevelManager : OneSingleton<LevelManager>
     [SerializeField] private EnemuManager enemuManager;
     [SerializeField] private AIManager aiManager;
     [SerializeField] private AudioManager audioManager;
+    [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private TriggerManager triggerManager;
     [SerializeField] private LevelPresset levelPresset;
 
@@ -67,6 +74,7 @@ public class LevelManager : OneSingleton<LevelManager>
     public TriggerManager TriggerManager { get => triggerManager; }
     public LevelPresset LevelPresset { get => levelPresset; }
     public LevelData LevelData { get => levelData; }
+    public WeaponManager WeaponManager { get => weaponManager; }
 
     public Entity[] GetAllEntites()
     {
@@ -83,6 +91,7 @@ public class LevelManager : OneSingleton<LevelManager>
         if (!aiManager) aiManager = FindObjectOfType<AIManager>();
         if (!audioManager) audioManager = FindObjectOfType<AudioManager>();
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
+        if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>();
         StartCoroutine(Wait());
     }
 

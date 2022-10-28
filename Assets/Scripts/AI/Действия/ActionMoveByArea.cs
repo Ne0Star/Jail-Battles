@@ -42,7 +42,7 @@ public class ActionMoveByArea : AIAction
 
             if (!isIdle)
             {
-                executor.Stats.Idle.Play(executor.Animator, executor.Source, executor.Agent.speed);
+                executor.Stats.Idle.Play(executor.Animator, executor.Source, executor.Agent.speed, executor.Weapon);
                 isIdle = true;
             }
             areas[Random.Range(0, areas.Count)].GetVector(executor.Agent, (result) =>
@@ -51,7 +51,7 @@ public class ActionMoveByArea : AIAction
                 {
                     isMove = true;
                     targetPos = result;
-                    executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+                    executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed, executor.Weapon);
                     executor.Agent.SetDestination(targetPos);
                     isIdle = false;
                 }
@@ -71,7 +71,7 @@ public class ActionMoveByArea : AIAction
 
     public override void Initial()
     {
-        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed);
+        executor.Stats.Walk.Play(executor.Animator, executor.Source, executor.Agent.speed, executor.Weapon);
     }
 
     public override void Break()

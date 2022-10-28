@@ -10,9 +10,10 @@ using UnityEngine;
 public class PursueAI : AI
 {
     [SerializeField] private UpdateData pursueChance;
+    [SerializeField] private UpdateData exitDistance;
+
     [SerializeField] private bool isPursue = false;
     [SerializeField] private bool isWandering = false;
-
     [SerializeField] private bool useChance = false;
 
     public override void MarkTarget(Entity entity)
@@ -26,6 +27,12 @@ public class PursueAI : AI
         pursueChance.Update();
     }
 
+    protected override void UpdateCirrentAI_()
+    {
+        exitDistance.Update();
+        pursueChance.Update();
+    }
+
     /// <summary>
     /// Текущее действие перенести в стек и начать выполнение нового действия
     /// Когда новое действиие закончиться вернуться к последнему действию из стека
@@ -36,7 +43,7 @@ public class PursueAI : AI
         if (isPursue || isAttack || entity == this.entity || CurrentAction == null && Entity) return;
         if (useChance)
         {
-            bool attack = entity == LevelManager.Instance.Player ? true :  Random.Range(0, 100) >= pursueChance.CurrentValue;
+            bool attack = entity == LevelManager.Instance.Player ? true : Random.Range(0, 100) >= pursueChance.CurrentValue;
             if (!attack) return;
         }
         else
@@ -46,11 +53,10 @@ public class PursueAI : AI
 
 
         isPursue = true;
-        SetAction(new ActionMoveToTarget(this, entity, 4f + ((Enemu)Entity).RespawnCount, 1.2f), (v) =>
+        SetAction(new ActionMoveToTarget(this, entity, exitDistance.CurrentValue, 1.2f), (v) =>
         {
             isPursue = false;
 
-            entity.TakeDamage(Entity, 0);
             isAttack = true;
             SetAction(new ActionAttack(this, entity, attackSpeed.CurrentValue, attackDamage.CurrentValue), (v) =>
             {
@@ -75,6 +81,7 @@ public class PursueAI : AI
 
     protected override void Create()
     {
+
         isWandering = true;
         AddAction(new ActionMoveByArea(this, LevelManager.Instance.AiManager.Areas, AreaType.Столовая), (v) =>
         {
