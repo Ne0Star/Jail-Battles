@@ -4,7 +4,9 @@ using System.Linq;
 using UnityEngine;
 
 
-
+/// <summary>
+/// Элемент может храниться в кастомном листе
+/// </summary>
 public interface ICustomListItem
 {
     void CustomUpdate();

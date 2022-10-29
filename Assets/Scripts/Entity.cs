@@ -59,10 +59,9 @@ public struct EntityAnimationPresset
 public abstract class Entity : MonoBehaviour
 {
     private HitBar hitBar;
-    protected NavMeshAgent agent;
-    protected Animator animator;
-    protected AudioSource source;
-    [SerializeField] protected AIStatsPresset stats;
+    [SerializeField] protected NavMeshAgent agent;
+    [SerializeField] protected Animator animator;
+    [SerializeField] protected AudioSource source;
 
 
     private void Awake()
@@ -89,27 +88,16 @@ public abstract class Entity : MonoBehaviour
         }
     }
 
-    /// <summary>
-    /// Кто то сделал целью эту сущность
-    /// </summary>
-    /// <param name="source"></param>
-    public virtual void MarkTarget(Entity source)
-    {
-
-    }
-
-
     public Animator Animator { get => animator; }
     public AudioSource Source { get => source; }
     public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
-    public AIStatsPresset Stats { get => stats; }
 
     private void OnEnable()
     {
         Enable();
         if (!agent)
-            agent = gameObject.AddComponent<NavMeshAgent>();
+            agent = gameObject.GetComponent<NavMeshAgent>();
     }
     private void OnDisable()
     {

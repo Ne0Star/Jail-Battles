@@ -5,21 +5,6 @@ using UnityEngine;
 [System.Serializable]
 public struct LevelData
 {
-    [SerializeField] private List<AI> pursues;
-
-    public void RemovePursuer(AI pursuer)
-    {
-        pursues.Remove(pursuer);
-    }
-    public void AddPursuer(AI pursuer)
-    {
-        pursues.Add(pursuer);
-    }
-
-    public int GetPursuersCount()
-    {
-        return pursues.Count;
-    }
 
 }
 
@@ -31,6 +16,31 @@ public struct RangeRange
     public int min, max;
     public float respawnTime;
 }
+
+[System.Serializable]
+public struct UpdateData
+{
+    [SerializeField] private bool addtive;
+    [SerializeField] float currentValue;
+    [SerializeField] float min, max;
+
+    public float CurrentValue { get => currentValue; }
+
+    public void Update()
+    {
+        if (addtive)
+        {
+            currentValue += Random.Range(min, max);
+        }
+        else
+        {
+            currentValue -= Random.Range(min, max);
+        }
+
+    }
+
+}
+
 
 public class LevelManager : OneSingleton<LevelManager>
 {
@@ -61,7 +71,6 @@ public class LevelManager : OneSingleton<LevelManager>
 
     [SerializeField] private Player player;
     [SerializeField] private EnemuManager enemuManager;
-    [SerializeField] private AIManager aiManager;
     [SerializeField] private AudioManager audioManager;
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private TriggerManager triggerManager;
@@ -69,7 +78,6 @@ public class LevelManager : OneSingleton<LevelManager>
 
     public Player Player { get => player; }
     public EnemuManager EnemuManager { get => enemuManager; }
-    public AIManager AiManager { get => aiManager; }
     public AudioManager AudioManager { get => audioManager; }
     public TriggerManager TriggerManager { get => triggerManager; }
     public LevelPresset LevelPresset { get => levelPresset; }
@@ -88,7 +96,6 @@ public class LevelManager : OneSingleton<LevelManager>
     {
         LevelManager.Instance = this;
         if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
-        if (!aiManager) aiManager = FindObjectOfType<AIManager>();
         if (!audioManager) audioManager = FindObjectOfType<AudioManager>();
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
         if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>();
