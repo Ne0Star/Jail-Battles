@@ -8,8 +8,22 @@ using UnityEngine;
 /// </summary>
 public enum WeaponType
 {
-    Одноручное,
-    Двуручное
+    /// <summary>
+    /// Нету оружия
+    /// </summary>
+    None,
+    /// <summary>
+    /// Пистолет
+    /// </summary>
+    Gun,
+    /// <summary>
+    /// Автомат
+    /// </summary>
+    Machine,
+    /// <summary>
+    /// Дубинка/короткая палка
+    /// </summary>
+    Mele,
 }
 
 /// <summary>

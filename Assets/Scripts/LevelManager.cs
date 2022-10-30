@@ -41,11 +41,55 @@ public struct UpdateData
 
 }
 
+public enum AreaType
+{
+    Кухня,
+    Столовая
+}
+
+[System.Serializable]
+public struct AIAreas
+{   
+    [SerializeField] private AreaType areaType;
+    [SerializeField] private List<AIArea> areas;
+
+    public AreaType AreaType { get => areaType; }
+    public List<AIArea> Areas { get => areas; }
+}
 
 public class LevelManager : OneSingleton<LevelManager>
 {
 
-    public List<RangeRange> ranges;
+    [SerializeField] private List<AIAreas> areas;
+
+    [SerializeField] private List<RangeRange> ranges;
+    [SerializeField] private float customTime;
+    [SerializeField] private LevelData levelData;
+    [SerializeField] private Player player;
+    [SerializeField] private EnemuManager enemuManager;
+    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private TriggerManager triggerManager;
+    [SerializeField] private LevelPresset levelPresset;
+
+    public Player Player { get => player; }
+    public EnemuManager EnemuManager { get => enemuManager; }
+    public TriggerManager TriggerManager { get => triggerManager; }
+    public LevelPresset LevelPresset { get => levelPresset; }
+    public LevelData LevelData { get => levelData; }
+    public WeaponManager WeaponManager { get => weaponManager; }
+    public float CustomTime { get => customTime; }
+
+    public List<AIArea> GetAreas(AreaType type)
+    {
+        foreach(AIAreas area in areas)
+        {
+            if(area.AreaType == type)
+            {
+                return area.Areas;
+            }
+        }
+        return null;
+    }
 
     public RangeRange GetColorByRange(int range)
     {
@@ -62,28 +106,6 @@ public class LevelManager : OneSingleton<LevelManager>
     }
 
 
-
-    [SerializeField] private float customTime;
-
-    public float CustomTime { get => customTime; }
-
-    [SerializeField] private LevelData levelData;
-
-    [SerializeField] private Player player;
-    [SerializeField] private EnemuManager enemuManager;
-    [SerializeField] private AudioManager audioManager;
-    [SerializeField] private WeaponManager weaponManager;
-    [SerializeField] private TriggerManager triggerManager;
-    [SerializeField] private LevelPresset levelPresset;
-
-    public Player Player { get => player; }
-    public EnemuManager EnemuManager { get => enemuManager; }
-    public AudioManager AudioManager { get => audioManager; }
-    public TriggerManager TriggerManager { get => triggerManager; }
-    public LevelPresset LevelPresset { get => levelPresset; }
-    public LevelData LevelData { get => levelData; }
-    public WeaponManager WeaponManager { get => weaponManager; }
-
     public Entity[] GetAllEntites()
     {
         List<Entity> result = new List<Entity>();
@@ -91,12 +113,27 @@ public class LevelManager : OneSingleton<LevelManager>
         result.Add(Player);
         return result.ToArray();
     }
+    [SerializeField] private List<AudioClip> findClips = new List<AudioClip>();
+    [SerializeField] private Dictionary<string, AudioClip> allClips = new Dictionary<string, AudioClip>();
+
+
+    public AudioClip GetClip(string name)
+    {
+        return allClips[name];
+    }
 
     private void Awake()
     {
         LevelManager.Instance = this;
+        foreach (AudioClip clip in findClips)
+        {
+            if (clip != null)
+            {
+                allClips.Add(clip.name, clip);
+            }
+        }
+        findClips = null;
         if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
-        if (!audioManager) audioManager = FindObjectOfType<AudioManager>();
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
         if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>();
         StartCoroutine(Wait());
@@ -106,10 +143,9 @@ public class LevelManager : OneSingleton<LevelManager>
     {
         for (int i = 0; i < 180; i++)
         {
-            Debug.Log(i);
+            //Debug.Log(i);
             yield return new WaitForSeconds(1);
         }
         Time.timeScale = 0;
     }
-
 }

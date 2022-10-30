@@ -23,6 +23,19 @@ public class EnemuManager : MonoBehaviour
         allEnemies.StartLife(this);
     }
 
+    public Enemu[] GetAllEnemu(Enemu ignore)
+    {
+        List<Enemu> result = new List<Enemu>();
+        foreach (Enemu en in allEnemies)
+        {
+            if (en && en != ignore)
+            {
+                result.Add(en);
+            }
+        }
+        return result.ToArray();
+    }
+
     //private IEnumerator Life()
     //{
     //    foreach (Enemu e in allEnemies)

@@ -3,12 +3,6 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
-public enum AreaType
-{
-    Кухня,
-    Столовая
-}
-
 public class AIArea : MonoBehaviour
 {
     [SerializeField] private NavMeshSurface2d surface;

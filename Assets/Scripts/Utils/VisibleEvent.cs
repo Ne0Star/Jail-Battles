@@ -6,7 +6,12 @@ using UnityEngine.Events;
 public class VisibleEvent : MonoBehaviour
 {
     [SerializeField] private UnityEvent onVisible, onInvisible;
-    
+
+    private void OnEnable()
+    {
+        onInvisible?.Invoke();
+    }
+
     private void OnBecameInvisible()
     {
         onInvisible?.Invoke();

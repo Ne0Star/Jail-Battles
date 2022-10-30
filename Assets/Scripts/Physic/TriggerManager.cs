@@ -13,7 +13,7 @@ public interface ICustomListItem
 
 }
 [System.Serializable]
-public class CustomList<T> where T : ICustomListItem
+public class CustomList<T> : IEnumerable where T : ICustomListItem
 {
    [SerializeField] private List<T> values;
     private float updateTime = 0.1f;
@@ -89,6 +89,10 @@ public class CustomList<T> where T : ICustomListItem
         }
     }
 
+    public IEnumerator GetEnumerator()
+    {
+        return ((IEnumerable)values).GetEnumerator();
+    }
 }
 
 
