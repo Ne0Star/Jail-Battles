@@ -1,9 +1,16 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using UnityEngine;
 
 public static class GameUtils
 {
+
+
+    public static IEnumerable<T> DistinctBy<T, TKey>(this IEnumerable<T> enumerable, System.Func<T, TKey> keySelector)
+    {
+        return enumerable.GroupBy(keySelector).Select(grp => grp.First());
+    }
 
     /// <summary>
     /// whom поворачивается в сторону where, с смещением offset

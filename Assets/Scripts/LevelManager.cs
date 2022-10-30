@@ -49,7 +49,7 @@ public enum AreaType
 
 [System.Serializable]
 public struct AIAreas
-{   
+{
     [SerializeField] private AreaType areaType;
     [SerializeField] private List<AIArea> areas;
 
@@ -69,21 +69,24 @@ public class LevelManager : OneSingleton<LevelManager>
     [SerializeField] private EnemuManager enemuManager;
     [SerializeField] private WeaponManager weaponManager;
     [SerializeField] private TriggerManager triggerManager;
+    [SerializeField] private CleanersManager cleanersManager;
     [SerializeField] private LevelPresset levelPresset;
 
     public Player Player { get => player; }
     public EnemuManager EnemuManager { get => enemuManager; }
     public TriggerManager TriggerManager { get => triggerManager; }
+
     public LevelPresset LevelPresset { get => levelPresset; }
     public LevelData LevelData { get => levelData; }
     public WeaponManager WeaponManager { get => weaponManager; }
     public float CustomTime { get => customTime; }
+    public CleanersManager CleanersManager { get => cleanersManager; }
 
     public List<AIArea> GetAreas(AreaType type)
     {
-        foreach(AIAreas area in areas)
+        foreach (AIAreas area in areas)
         {
-            if(area.AreaType == type)
+            if (area.AreaType == type)
             {
                 return area.Areas;
             }
@@ -138,6 +141,7 @@ public class LevelManager : OneSingleton<LevelManager>
         if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
         if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>();
+        if(!cleanersManager) cleanersManager = FindObjectOfType<CleanersManager>();
         StartCoroutine(Wait());
     }
 

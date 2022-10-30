@@ -5,14 +5,24 @@ using UnityEngine;
 public class MoveToTarget : AIAction
 {
 
-    [SerializeField] private Entity target;
+    [SerializeField] private Transform target;
     [SerializeField] private Entity executor;
     [SerializeField] private float breakDistance;
-    public MoveToTarget(Entity executor, Entity target, float breakDistance)
+    [SerializeField] private bool useBreakDistance = false;
+
+    public MoveToTarget(Entity executor, Transform target)
+    {
+        this.executor = executor;
+        this.target = target;
+        useBreakDistance = false;
+    }
+
+    public MoveToTarget(Entity executor, Transform target, float breakDistance)
     {
         this.executor = executor;
         this.target = target;
         this.breakDistance = breakDistance;
+        useBreakDistance = true;
     }
 
     public override void Break()
@@ -33,19 +43,19 @@ public class MoveToTarget : AIAction
             }
             else
             {
-                GameUtils.LookAt2D(e.RotateParent, target.Agent.transform.position, e.RotateOffset);
+                GameUtils.LookAt2D(e.RotateParent, target.position, e.RotateOffset);
             }
         }
     }
     public override void CustomUpdate()
     {
-        float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        float distance = Vector2.Distance(executor.Agent.transform.position, target.position);
         Rotate();
-        if (distance <= executor.Agent.radius + target.Agent.radius)
+        if (distance <= executor.Agent.radius)
         {
             onComplete?.Invoke(this);
         }
-        else if (distance >= breakDistance)
+        else if (useBreakDistance && distance >= breakDistance)
         {
             OnBreak?.Invoke(this);
         }

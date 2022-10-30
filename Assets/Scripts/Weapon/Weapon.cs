@@ -31,26 +31,27 @@ public enum WeaponType
 /// </summary>
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] private AudioSource sources;
+    [SerializeField] private Transform particles;
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackDistance;
     [SerializeField] private float reloadSpeed;
-
-    private Transform parent;
-
     [SerializeField] private WeaponType weaponType;
+
+    private void OnDrawGizmos()
+    {
+        Gizmos.color = Color.green;
+        Gizmos.DrawWireSphere(transform.position, attackDistance);
+    }
 
     public WeaponType WeaponType { get => weaponType; }
 
-    private void Start()
-    {
-        parent = transform.parent;
-    }
 
-    private void OnDisable()
+    public void AnimateAttack()
     {
-        transform.parent = parent;
-    }
+        sources.Play();
 
+    }
 
     /// <summary>
     /// Урон наносимый оружием

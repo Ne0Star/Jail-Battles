@@ -2,35 +2,16 @@
 using UnityEngine;
 using UnityEngine.U2D.Animation;
 
+
 public class Enemu : Entity, ICustomListItem
 {
     [SerializeField] private EntityTrigger[] triggers;
     [SerializeField] private float currentTime;
     [SerializeField] private int updateCount;
-
+    [SerializeField] private List<EntityType> targetType;
     [SerializeField] private float rotateOffset;
-
     [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
-     protected Weapon weapon;
-
-    protected void SetWeaponParent(Weapon weapon)
-    {
-        switch (weapon.WeaponType)
-        {
-            case WeaponType.None:
-                break;
-            case WeaponType.Gun:
-                weapon.transform.parent = gunParent;
-                
-                break;
-            case WeaponType.Machine:
-                weapon.transform.parent = machineParent;
-                break;
-            case WeaponType.Mele:
-                weapon.transform.parent = meleParent;
-                break;
-        }
-    }
+    [SerializeField] protected Weapon weapon;
 
     private void SetAllFalse()
     {
@@ -42,11 +23,8 @@ public class Enemu : Entity, ICustomListItem
 
     public void SetWeapon(Weapon weapon)
     {
-        if (weapon == null || (weapon != null && weapon.WeaponType == WeaponType.None))
+        if (weapon == null)
         {
-            this.weapon = null;
-            SetAllFalse();
-            animator.Animator.SetBool("none", true);
             return;
         };
         SetAllFalse();
@@ -54,7 +32,7 @@ public class Enemu : Entity, ICustomListItem
         {
             case WeaponType.None:
                 animator.Animator.SetBool("none", true);
-                this.weapon = null;
+                weapon.transform.parent = transform;
                 return;
             case WeaponType.Gun:
                 animator.Animator.SetBool("gun", true);
@@ -69,6 +47,9 @@ public class Enemu : Entity, ICustomListItem
                 weapon.transform.parent = meleParent;
                 break;
         }
+        weapon.transform.localScale = Vector3.one;
+        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
         this.weapon = weapon;
     }
 
@@ -76,19 +57,16 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] protected List<AIAction> lifeActions = new List<AIAction>();
     [SerializeField] protected AIAction currentAction;
     [SerializeField] protected AIAction lastAction;
-
-
     [SerializeField] private int lifeActionIndex = 0;
-
     public float RotateOffset { get => rotateOffset; }
     public Transform RotateParent { get => rotateParent; }
-
 
     sealed protected override void Enable()
     {
         triggers = GetComponentsInChildren<EntityTrigger>(true);
         foreach (EntityTrigger trigger in triggers)
         {
+            trigger.targetType = targetType;
             trigger.OnStay?.AddListener((e) => OnCustomTriggerStay(e));
         }
         SpriteLibrary library = GetComponentInChildren<SpriteLibrary>(true);
@@ -168,6 +146,12 @@ public class Enemu : Entity, ICustomListItem
             action.Initial();
         }
     }
+
+    protected virtual void OnUpdate()
+    {
+
+    }
+
     public void CustomUpdate()
     {
         if (!gameObject.activeSelf)
@@ -231,8 +215,7 @@ public class Enemu : Entity, ICustomListItem
 
                 lifeActionIndex = lifeActionIndex + 1 > lifeActions.Count - 1 ? 0 : lifeActionIndex + 1;
             }
-
         }
-
+        OnUpdate();
     }
 }

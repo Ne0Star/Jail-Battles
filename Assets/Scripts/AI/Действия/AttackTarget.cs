@@ -10,12 +10,17 @@ public class AttackTarget : AIAction
 
     [SerializeField] private float exitDistance;
 
-    public AttackTarget(Entity executor, Entity target, Weapon weapon, float exitDistance)
+    public AttackTarget(Entity executor, Entity target, Weapon weapon, float exitDistance, bool fastAttack)
     {
         this.executor = executor;
         this.target = target;
         this.weapon = weapon;
         this.exitDistance = exitDistance;
+        if (fastAttack)
+        {
+            currentTime = float.MaxValue;
+        }
+        else { currentTime = 0f; }
     }
 
     [SerializeField] private float currentTime;
@@ -44,12 +49,13 @@ public class AttackTarget : AIAction
     public override void CustomUpdate()
     {
         float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        float weaponDistance = Vector2.Distance(weapon.transform.position, target.Agent.transform.position);
         Rotate();
         if (target && target.gameObject.activeSelf)
         {
-            if (distance <= weapon.AttackDistance)
+            if (weaponDistance <= weapon.AttackDistance)
             {
-                if(!reached)
+                if (!reached)
                 {
                     executor.Animator.Play("idle");
                 }
@@ -58,6 +64,7 @@ public class AttackTarget : AIAction
                 executor.Agent.isStopped = true;
                 if (currentTime >= weapon.ReloadSpeed)
                 {
+                    weapon.AnimateAttack();
                     target.TakeDamage(executor, weapon.AttackDamage, () =>
                     {
 
@@ -84,6 +91,6 @@ public class AttackTarget : AIAction
 
     public override void Initial()
     {
-        currentTime = float.MaxValue;
+
     }
 }

@@ -1,17 +1,29 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using System.Linq;
 
 public class EntityTrigger : Trigger
 {
-    [SerializeField] private bool colliderMode;
-
-
-
+    public bool colliderMode;
+    public List<EntityType> targetType;
+    private void Awake()
+    {
+        if (targetType != null)
+            targetType = targetType.DistinctBy(i => i.GetHashCode()).ToList();
+    }
 
     public override void CustomUpdate()
     {
-        foreach (Enemu e in LevelManager.Instance.EnemuManager.AllEnemies)
+
+        List<Entity> searches = new List<Entity>();
+        if (targetType != null)
+            foreach (EntityType type in targetType)
+            {
+                searches.AddRange(LevelManager.Instance.EnemuManager.GetAllEntityByType(type));
+            }
+
+        foreach (Entity e in searches)
         {
             float distance = Vector2.Distance(e.Agent.transform.position, transform.position);
             if (colliderMode)
@@ -20,7 +32,7 @@ public class EntityTrigger : Trigger
                 {
                     onStay?.Invoke(e);
                 }
-                if(Vector2.Distance(LevelManager.Instance.Player.Agent.transform.position, transform.position) <= radius + LevelManager.Instance.Player.Agent.radius)
+                if (Vector2.Distance(LevelManager.Instance.Player.Agent.transform.position, transform.position) <= radius + LevelManager.Instance.Player.Agent.radius)
                 {
                     onStay?.Invoke(LevelManager.Instance.Player);
                 }

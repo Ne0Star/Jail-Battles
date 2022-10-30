@@ -4,7 +4,6 @@ using System.Linq;
 using UnityEngine;
 
 
-
 /// <summary>
 /// Спавн и цикл врагов
 /// </summary>
@@ -16,10 +15,58 @@ public class EnemuManager : MonoBehaviour
 
     public CustomList<Enemu> AllEnemies { get => allEnemies; }
 
+
+    [SerializeField] private List<Convict> allConvicts;
+    [SerializeField] private List<Cleaner> allCleaners;
+    /// <summary>
+    /// Все зеки на карте
+    /// </summary>
+    public List<Convict> AllConvicts { get => allConvicts; }
+    /// <summary>
+    /// Все уборщицы на карте
+    /// </summary>
+    public List<Cleaner> AllCleaners { get => allCleaners; }
+
+
+    public List<Entity> GetAllEntityByType(EntityType type)
+    {
+        List<Entity> r = new List<Entity>();
+        switch (type)
+        {
+            case EntityType.Зек:
+                r.AddRange(allConvicts);
+                break;
+            case EntityType.Уборщик:
+                r.AddRange(allCleaners);
+                break;
+            case EntityType.Повар:
+                break;
+            case EntityType.Охранник:
+                break;
+            case EntityType.Игрок:
+                r.Add(LevelManager.Instance.Player);
+                break;
+        }
+        return r;
+    }
+
     private void Start()
     {
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>());
+
+        foreach (Enemu e in allEnemies)
+        {
+            if (e as Convict)
+            {
+                allConvicts.Add((Convict)e);
+            }
+            if(e as Cleaner)
+            {
+                allCleaners.Add((Cleaner)e);
+            }
+        }
+
         allEnemies.StartLife(this);
     }
 
@@ -35,23 +82,4 @@ public class EnemuManager : MonoBehaviour
         }
         return result.ToArray();
     }
-
-    //private IEnumerator Life()
-    //{
-    //    foreach (Enemu e in allEnemies)
-    //    {
-    //        if (e.gameObject.activeSelf)
-    //        {
-    //            e.EnemuUpdate();
-    //        }
-    //        else
-    //        {
-    //            //e.gameObject.SetActive(true);
-    //        }
-
-    //    }
-
-    //    yield return new WaitForSeconds(updateTime);
-    //    StartCoroutine(Life());
-    //}
 }

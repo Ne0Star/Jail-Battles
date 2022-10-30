@@ -4,12 +4,21 @@ using UnityEngine;
 using UnityEngine.AI;
 using UnityEngine.Events;
 
+public enum EntityType
+{
+    Зек,
+    Уборщик,
+    Повар,
+    Охранник,
+    Игрок
+}
+
 [System.Serializable]
 public struct EntityAnimationData
 {
+    [SerializeField] private EntityType entityType;
     [SerializeField] private AudioSource source;
     [SerializeField] private Animator animator;
-
     [SerializeField] private List<EntityAnimation> animations;
 
     public void Play(string statName)
@@ -31,6 +40,7 @@ public struct EntityAnimationData
 
     public AudioSource Source { get => source; }
     public Animator Animator { get => animator; }
+    public EntityType EntityType { get => entityType; }
 }
 
 /// <summary>
@@ -43,6 +53,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected EntityAnimationData animator;
 
+    public event System.Action<Entity> onDied;
 
     private void Awake()
     {
@@ -107,12 +118,15 @@ public abstract class Entity : MonoBehaviour
 
 
 
-    public virtual void TakeDamage(Entity source, float damage, System.Action onKill)
+    public void TakeDamage(Entity source, float damage, System.Action onKill)
     {
         hitBar.TakeDamage(source, damage, () =>
         {
+            if (onDied != null)
+                onDied((Entity)this);
             onKill();
             gameObject.SetActive(false);
+
         });
     }
 
