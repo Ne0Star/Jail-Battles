@@ -38,6 +38,7 @@ public class MoveFromArea : AIAction
 
     public override void Initial()
     {
+        executor.Agent.isStopped = false;
         areas[Random.Range(0, areas.Count - 1)].GetVector(executor.Agent, (v) =>
         {
             targetPos = v;

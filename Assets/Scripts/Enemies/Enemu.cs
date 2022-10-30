@@ -10,8 +10,27 @@ public class Enemu : Entity, ICustomListItem
 
     [SerializeField] private float rotateOffset;
 
-    [SerializeField] private Transform gunParent, machineParent, meleParent, rotateParent;
-    [SerializeField] private Weapon weapon;
+    [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
+     protected Weapon weapon;
+
+    protected void SetWeaponParent(Weapon weapon)
+    {
+        switch (weapon.WeaponType)
+        {
+            case WeaponType.None:
+                break;
+            case WeaponType.Gun:
+                weapon.transform.parent = gunParent;
+                
+                break;
+            case WeaponType.Machine:
+                weapon.transform.parent = machineParent;
+                break;
+            case WeaponType.Mele:
+                weapon.transform.parent = meleParent;
+                break;
+        }
+    }
 
     private void SetAllFalse()
     {
@@ -83,12 +102,6 @@ public class Enemu : Entity, ICustomListItem
             }
             resolver.SetCategoryAndLabel(resolver.GetCategory(), labels[Random.Range(0, labels.Count - 1)]);
         }
-
-        //foreach (SpriteResolver resolver in resolvers)
-        //{
-        //    Debug.Log(resolver + " -.- " + resolver.GetLabel().Length);
-        //    resolver.SetCategoryAndLabel(resolver.GetCategory(), Random.Range(1, resolver.GetLabel().Length) + "");
-        //}
         Enabled();
     }
     protected virtual void OnCustomTriggerStay(Entity e)
@@ -167,40 +180,6 @@ public class Enemu : Entity, ICustomListItem
             currentTime += 0.02f;
             return;
         }
-
-
-        //if (currentAction != lastAction && currentAction != null)
-        //{
-        //    currentAction.Initial();
-
-        //    currentAction.OnComplete?.AddListener((v) =>
-        //    {
-        //        if (stackActions.Contains(v))
-        //        {
-        //            stackActions.Remove(v);
-        //        }
-        //        if (currentAction == v)
-        //        {
-        //            currentAction = null;
-        //        }
-        //        v = null;
-        //    });
-
-        //    currentAction.OnBreak?.AddListener((v) =>
-        //    {
-        //        if (stackActions.Contains(v))
-        //        {
-        //            stackActions.Remove(v);
-        //        }
-        //        if (currentAction == v)
-        //        {
-        //            currentAction = null;
-        //        }
-        //        v = null;
-        //    });
-
-        //    lastAction = currentAction;
-        //}
 
         // Если действие существует
         if (currentAction != null)

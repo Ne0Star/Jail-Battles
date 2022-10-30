@@ -21,15 +21,26 @@ public class MoveToTarget : AIAction
     }
 
     [SerializeField] private Vector3 targetPos;
-
-    public override void CustomUpdate()
+    [SerializeField] private bool reached = false;
+    private void Rotate()
     {
-        float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
         if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
-            GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
+            if (!reached)
+            {
+                GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
+            }
+            else
+            {
+                GameUtils.LookAt2D(e.RotateParent, target.Agent.transform.position, e.RotateOffset);
+            }
         }
+    }
+    public override void CustomUpdate()
+    {
+        float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        Rotate();
         if (distance <= executor.Agent.radius + target.Agent.radius)
         {
             onComplete?.Invoke(this);
@@ -43,6 +54,7 @@ public class MoveToTarget : AIAction
 
     public override void Initial()
     {
+        executor.Agent.isStopped = false;
         executor.Animator.Play("walk");
     }
 }

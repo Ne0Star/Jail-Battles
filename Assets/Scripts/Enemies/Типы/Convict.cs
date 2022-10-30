@@ -5,27 +5,47 @@ using UnityEngine;
 public class Convict : Enemu
 {
     [SerializeField] private Entity target;
-
+    [SerializeField] private WeaponType initialWeapon;
     protected override void Enabled()
     {
-        SetWeapon(null);
+
+        Weapon weapon = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(initialWeapon, false);
+        if (weapon != null)
+        {
+            SetWeaponParent(weapon);
+            weapon.transform.localScale = Vector3.one;
+            weapon.transform.localPosition = Vector3.zero;
+            weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        }
+
+        SetWeapon(weapon);
         animator.Play("Покой");
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
     }
     protected override void OnCustomTriggerStay(Entity e)
     {
-        if (e == this || e == target) return;
+        if (e == this || target == e) return;
         this.target = e;
-        MoveToTarget moveToTarget = new MoveToTarget(this, e, 4f);
-        moveToTarget.OnBreak?.AddListener((a) =>
-        {
-            this.target = null;
-        });
-        moveToTarget.OnComplete?.AddListener((a) =>
-        {
-            this.target = null;
-        });
-        SetAction(moveToTarget);
+
+
+            AttackTarget attackAction = new AttackTarget(this, target, weapon, weapon.AttackDistance);
+            attackAction.OnComplete?.AddListener((a) =>
+            {
+                target = null;
+            });
+            attackAction.OnBreak?.AddListener((a) =>
+            {
+                target = null;
+            });
+            SetAction(attackAction);
+
+
+        //MoveToTarget moveToTarget = new MoveToTarget(this, e, 10f);
+        //moveToTarget.OnComplete?.AddListener((a) =>
+        //{
+
+        //});
+        //SetAction(moveToTarget);
     }
 }

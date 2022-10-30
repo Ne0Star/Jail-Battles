@@ -119,7 +119,9 @@ public class LevelManager : OneSingleton<LevelManager>
 
     public AudioClip GetClip(string name)
     {
-        return allClips[name];
+        AudioClip result = null;
+        allClips.TryGetValue(name, out result);
+        return result;
     }
 
     private void Awake()
