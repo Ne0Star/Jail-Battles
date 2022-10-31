@@ -4,17 +4,14 @@ using UnityEngine;
 
 public class AttackTarget : AIAction
 {
-    [SerializeField] private Entity executor;
+    [SerializeField] private Enemu executor;
     [SerializeField] private Entity target;
-    [SerializeField] private Weapon weapon;
-
     [SerializeField] private float exitDistance;
 
-    public AttackTarget(Entity executor, Entity target, Weapon weapon, float exitDistance, bool fastAttack)
+    public AttackTarget(Enemu executor, Entity target, float exitDistance, bool fastAttack)
     {
         this.executor = executor;
         this.target = target;
-        this.weapon = weapon;
         this.exitDistance = exitDistance;
         if (fastAttack)
         {
@@ -32,28 +29,24 @@ public class AttackTarget : AIAction
 
     private void Rotate()
     {
-        if (executor as Enemu)
-        {
-            Enemu e = (Enemu)executor;
             if (!reached)
             {
-                GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
+                GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
             }
             else
             {
-                GameUtils.LookAt2D(e.RotateParent, target.Agent.transform.position, e.RotateOffset);
+                GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
             }
-        }
     }
     [SerializeField] private bool reached = false;
     public override void CustomUpdate()
     {
         float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
-        float weaponDistance = Vector2.Distance(weapon.transform.position, target.Agent.transform.position);
+        float weaponDistance = Vector2.Distance(executor.Weapon.transform.position, target.Agent.transform.position);
         Rotate();
         if (target && target.gameObject.activeSelf)
         {
-            if (weaponDistance <= weapon.AttackDistance)
+            if (weaponDistance <= executor.Weapon.AttackDistance)
             {
                 if (!reached)
                 {
@@ -62,10 +55,10 @@ public class AttackTarget : AIAction
                 reached = true;
 
                 executor.Agent.isStopped = true;
-                if (currentTime >= weapon.ReloadSpeed)
+                if (currentTime >= executor.Weapon.ReloadSpeed)
                 {
-                    weapon.AnimateAttack();
-                    target.TakeDamage(executor, weapon.AttackDamage, () =>
+                    executor.Weapon.AnimateAttack();
+                    target.TakeDamage(executor, executor.Weapon.AttackDamage, () =>
                     {
 
                     });

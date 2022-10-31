@@ -23,39 +23,44 @@ public class Enemu : Entity, ICustomListItem
 
     public void SetWeapon(Weapon weapon)
     {
-        if (weapon == null)
-        {
-            return;
-        };
+        if (!weapon) return;
         SetAllFalse();
+
         switch (weapon.WeaponType)
         {
             case WeaponType.None:
                 animator.Animator.SetBool("none", true);
-                weapon.transform.parent = transform;
-                return;
+                weapon.transform.SetParent(transform);
+                break;
             case WeaponType.Gun:
                 animator.Animator.SetBool("gun", true);
-                weapon.transform.parent = gunParent;
+                weapon.transform.SetParent(gunParent);
                 break;
             case WeaponType.Machine:
                 animator.Animator.SetBool("machine", true);
-                weapon.transform.parent = machineParent;
+                weapon.transform.SetParent(machineParent);
                 break;
             case WeaponType.Mele:
                 animator.Animator.SetBool("mele", true);
-                weapon.transform.parent = meleParent;
+                weapon.transform.SetParent(meleParent);
                 break;
         }
-        weapon.gameObject.SetActive(true);
-        weapon.transform.localScale = Vector3.one;
-        weapon.transform.localPosition = Vector3.zero;
+        weapon.transform.position = weapon.transform.parent.position;
         weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        weapon.transform.localScale = Vector3.one;
         weapon.Free = false;
+        weapon.gameObject.SetActive(true);
+
+
+        //weapon.transform.localPosition = Vector3.zero;
+
+
+        Debug.Log("DAMN " + name + " " + weapon.transform.localPosition + " " + weapon.transform.parent);
         OnDied.AddListener((e) =>
         {
             weapon.gameObject.SetActive(false);
             weapon.Free = true;
+            //SetWeapon(LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false));
         });
         this.weapon = weapon;
     }
@@ -67,8 +72,9 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] private int lifeActionIndex = 0;
     public float RotateOffset { get => rotateOffset; }
     public Transform RotateParent { get => rotateParent; }
+    public Weapon Weapon { get => weapon; }
 
-    sealed protected override void Enable()
+    protected override void Create()
     {
         triggers = GetComponentsInChildren<EntityTrigger>(true);
         foreach (EntityTrigger trigger in triggers)
@@ -87,6 +93,13 @@ public class Enemu : Entity, ICustomListItem
             }
             resolver.SetCategoryAndLabel(resolver.GetCategory(), labels[Random.Range(0, labels.Count - 1)]);
         }
+    }
+
+    sealed protected override void Enable()
+    {
+
+        currentAction = null;
+        lifeActions = new List<AIAction>();
         Enabled();
     }
     protected virtual void OnCustomTriggerStay(Entity e)
@@ -96,8 +109,8 @@ public class Enemu : Entity, ICustomListItem
 
     protected virtual void Enabled()
     {
-        SetWeapon(null);
-        animator.Play("Покой");
+        //SetWeapon(null);
+        //animator.Play("Покой");
     }
     /// <summary>
     /// Устанавливает новое действие
@@ -158,7 +171,7 @@ public class Enemu : Entity, ICustomListItem
     {
 
     }
-
+    public int diedCount = 0;
     public void CustomUpdate()
     {
         if (!gameObject.activeSelf)
@@ -166,6 +179,7 @@ public class Enemu : Entity, ICustomListItem
             if (currentTime >= LevelManager.Instance.GetColorByRange(updateCount).respawnTime)
             {
                 gameObject.SetActive(true);
+                diedCount++;
                 currentTime = 0f;
             }
             currentTime += 0.02f;
@@ -201,7 +215,7 @@ public class Enemu : Entity, ICustomListItem
                 stackActions.Remove(currentAction);
             }
             // Иначе если в стеке нету берём из цикла
-            else
+            else if (lifeActions != null && lifeActions.Count > 0)
             {
                 currentAction = lifeActions[lifeActionIndex];
                 currentAction.Initial();

@@ -10,8 +10,8 @@ GameObject:
   m_Component:
   - component: {fileID: 3355128281325546511}
   - component: {fileID: 3355128281325546510}
-  - component: {fileID: 3851532384203060846}
   - component: {fileID: 156439649856895867}
+  - component: {fileID: -6684653283741190080}
   m_Layer: 0
   m_Name: "MP-443 _\u0413\u0440\u0430\u0447"
   m_TagString: Untagged
@@ -49,13 +49,34 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   free: 1
-  sources: {fileID: 6838484495052107679, guid: 744ca177156d6b5499a3f1629cc8c30c, type: 3}
+  clip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
+  source: {fileID: -6684653283741190080}
   particles: {fileID: 0}
   attackDamage: 50
   attackDistance: 4
   reloadSpeed: 1
   weaponType: 1
---- !u!82 &3851532384203060846
+--- !u!95 &156439649856895867
+Animator:
+  serializedVersion: 4
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3355128281325546508}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: c1b200cb6f284da4f95c3ce33a30601e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
+--- !u!82 &-6684653283741190080
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -66,7 +87,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2124236479221159910, guid: 62010f372a453e542b6b7a5befada8e5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
+  m_audioClip: {fileID: 0}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -74,13 +95,13 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
-  MinDistance: 0
+  MinDistance: 4
   MaxDistance: 8
   Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
+  rolloffMode: 2
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -89,8 +110,17 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.9593267
+      outSlope: -2.9593267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.12308089
+    - serializedVersion: 3
+      time: 0.40227005
+      value: 0.32160687
+      inSlope: -0.99999994
+      outSlope: -0.99999994
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -98,12 +128,12 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.29900697
+      outSlope: -0.29900697
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.17377958
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -112,7 +142,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0
@@ -152,26 +182,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!95 &156439649856895867
-Animator:
-  serializedVersion: 4
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3355128281325546508}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: c1b200cb6f284da4f95c3ce33a30601e, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &3355128281366900043
 GameObject:
   m_ObjectHideFlags: 0

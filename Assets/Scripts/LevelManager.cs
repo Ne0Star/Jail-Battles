@@ -138,11 +138,22 @@ public class LevelManager : OneSingleton<LevelManager>
             }
         }
         findClips = null;
-        if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>();
-        if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>();
-        if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>();
-        if(!cleanersManager) cleanersManager = FindObjectOfType<CleanersManager>();
+        if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>(true);
+        if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>(true);
+        if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>(true);
+        if (!cleanersManager) cleanersManager = FindObjectOfType<CleanersManager>(true);
         StartCoroutine(Wait());
+    }
+
+    private IEnumerator Start()
+    {
+        triggerManager.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(0.1f);
+        weaponManager.gameObject.SetActive(true);
+        //yield return new WaitForSeconds(0.5f);
+        cleanersManager.gameObject.SetActive(true);
+        enemuManager.gameObject.SetActive(true);
+        yield return null;
     }
 
     private IEnumerator Wait()

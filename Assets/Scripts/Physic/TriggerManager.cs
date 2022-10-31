@@ -102,11 +102,11 @@ public class TriggerManager : MonoBehaviour
     [SerializeField] private int stepCount = 30;
     [SerializeField] private CustomList<Trigger> triggers;
 
-    private void Awake()
+    private void OnEnable()
     {
-        triggers = new CustomList<Trigger>(updateTime, stepCount);
+               triggers = new CustomList<Trigger>(updateTime, stepCount);
         triggers.RegisterRange(FindObjectsOfType<Trigger>());
-        triggers.StartLife(this);
+        triggers.StartLife(this); 
     }
 
     public void Register(Trigger trigger)

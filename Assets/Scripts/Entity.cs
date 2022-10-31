@@ -69,6 +69,15 @@ public abstract class Entity : MonoBehaviour
                 agent = GetComponent<NavMeshAgent>();
             }
         }
+        Create();
+    }
+
+    /// <summary>
+    /// Awake
+    /// </summary>
+    protected virtual void Create()
+    {
+
     }
 
     public NavMeshAgent Agent { get => agent; }
@@ -76,6 +85,9 @@ public abstract class Entity : MonoBehaviour
     public EntityAnimationData Animator { get => animator; }
     public UnityEvent<Entity> OnDied { get => onDied; }
 
+    /// <summary>
+    /// OneNAB;E
+    /// </summary>
     private void OnEnable()
     {
         if (!agent)
@@ -105,11 +117,16 @@ public abstract class Entity : MonoBehaviour
             agent.updateUpAxis = false;
         }
     }
-
+    /// <summary>
+    /// OnEnable
+    /// </summary>
     protected virtual void Enable()
     {
 
     }
+    /// <summary>
+    /// OnDisable
+    /// </summary>
     protected virtual void Disable()
     {
 

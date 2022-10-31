@@ -39,7 +39,7 @@ public class MoveFromArea : AIAction
     public override void Initial()
     {
         executor.Agent.isStopped = false;
-        areas[Random.Range(0, areas.Count - 1)].GetVector(executor.Agent, (v) =>
+        areas[Random.Range(0, areas.Count)].GetVector(executor.Agent, (v) =>
         {
             if (executor.gameObject.activeSelf)
             {

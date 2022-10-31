@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Cleaner : Enemu
 {
+    [SerializeField] private float cleaningDuration;
     [SerializeField] private float cleaningTime;
     [SerializeField] private float exitDistance;
     [SerializeField] private Trash currentTrash;
@@ -32,8 +33,7 @@ public class Cleaner : Enemu
                 MoveToTarget action = new MoveToTarget(this, currentTrash.transform);
                 action.OnComplete?.AddListener((a) =>
                 {
-
-                    Cleaning act = new Cleaning(this, currentTrash);
+                    Cleaning act = new Cleaning(this, currentTrash, cleaningDuration);
                     act.OnComplete?.AddListener((a) =>
                     {
                         currentTrash = null;

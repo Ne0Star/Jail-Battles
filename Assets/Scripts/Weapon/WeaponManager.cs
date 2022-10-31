@@ -16,29 +16,24 @@ public class WeaponManager : MonoBehaviour
     [SerializeField] private List<BatchObject<Weapon>> weaponsBathces = new List<BatchObject<Weapon>>();
     [SerializeField] private List<Weapon> allWeapons;
 
-    private void Awake()
+    private void OnEnable()
     {
         foreach (BatchObject<Weapon> list in weaponsBathces)
         {
             for (int i = 0; i < list.count; i++)
             {
-                Weapon weapon = Instantiate(list.prefab, transform);
+                Weapon weapon = Instantiate(list.prefab);
                 weapon.Free = true;
+                weapon.gameObject.SetActive(false);
                 allWeapons.Add(weapon);
             }
         }
     }
 
+
     public Weapon GetRandomWeaponByType(WeaponType type, bool ignoreCount)
     {
-        //List<WeaponType> weaponTypes = new List<WeaponType>();
-        //weaponTypes.Add(WeaponType.None);
-        //weaponTypes.Add(WeaponType.Gun);
-        //weaponTypes.Add(WeaponType.Machine);
-        //weaponTypes.Add(WeaponType.Mele);
-
         List<Weapon> weapons = GetFreeWeapons(type, ignoreCount);
-
         if (weapons == null || weapons.Count == 0) return null;
         int index = Random.Range(0, weapons.Count - 1);
         Weapon result = weapons[index];
@@ -52,11 +47,8 @@ public class WeaponManager : MonoBehaviour
         {
             foreach (Weapon weapon in allWeapons)
             {
-                if (weapon.gameObject.activeSelf && weapon.Free)
-                    if (weapon.WeaponType == type)
-                    {
-                        result.Add(weapon);
-                    }
+                if (weapon.Free && weapon.WeaponType == type)
+                    result.Add(weapon);
             }
         }
         else
@@ -65,15 +57,14 @@ public class WeaponManager : MonoBehaviour
             for (int i = 1; i < allWeapons.Count; i++)
             {
                 Weapon weapon = allWeapons[i];
-                if (weapon.gameObject.activeSelf && weapon.Free)
-                    if (weapon.WeaponType == type)
+                if (weapon.Free && weapon.WeaponType == type)
+                {
+                    if (index >= 1)
                     {
-                        if (index >= 1)
-                        {
-                            result.Add(weapon);
-                        }
-                        index++;
+                        result.Add(weapon);
                     }
+                    index++;
+                }
             }
         }
         return result;

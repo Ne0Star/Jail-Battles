@@ -6,10 +6,12 @@ public class Cleaning : AIAction
 {
     [SerializeField] private Entity executor;
     [SerializeField] private Trash trash;
-    public Cleaning(Entity executor, Trash trash)
+    [SerializeField] private float cleaningTime;
+    public Cleaning(Entity executor, Trash trash, float cleaningTime)
     {
         this.executor = executor;
         this.trash = trash;
+        this.cleaningTime = cleaningTime;
     }
 
     public override void Break()
@@ -27,12 +29,8 @@ public class Cleaning : AIAction
 
     public override void Initial()
     {
-        trash.Cleaning();
-        if (executor as Enemu)
-        {
-            Enemu e = (Enemu)executor;
-            GameUtils.LookAt2D(e.RotateParent, trash.transform.position, -120f);
-        }
+        trash.Cleaning(cleaningTime);
+            GameUtils.LookAt2D(executor.Agent.transform, trash.transform.position, -90);
         executor.Animator.Play("cleaning");
     }
 }

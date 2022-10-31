@@ -55,7 +55,7 @@ public class CleanersManager : MonoBehaviour
         return result;
     }
 
-    private void Awake()
+    private void OnEnable()
     {
         for (int i = 0; i < maxTrash; i++)
         {
@@ -79,7 +79,7 @@ public class CleanersManager : MonoBehaviour
         Trash result = null;
         foreach (Trash trash in allTrash)
         {
-            if (trash && !trash.gameObject.activeSelf)
+            if (trash && !trash.block)
             {
                 result = trash;
                 break;
@@ -88,10 +88,11 @@ public class CleanersManager : MonoBehaviour
         return result;
     }
 
-    private void RemoveTrash(Trash t)
-    {
-        t.onComplete -= RemoveTrash;
-    }
+    //private void RemoveTrash(Trash t)
+    //{
+    //    activeTrash.Remove(t);
+    //    //t.onComplete.AddListener((t) => RemoveTrash(t));
+    //}
 
     private void CreateTrash(Entity target)
     {
@@ -100,8 +101,9 @@ public class CleanersManager : MonoBehaviour
         {
             t.transform.position = target.Agent.transform.position;
             t.gameObject.SetActive(true);
-            t.onComplete += RemoveTrash;
             activeTrash.Add(t);
+            t.onComplete.AddListener((tt) => activeTrash.Remove(t));
+
         }
         else { Debug.Log("Мусор закончился"); }
     }

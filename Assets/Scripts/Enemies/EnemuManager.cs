@@ -49,11 +49,11 @@ public class EnemuManager : MonoBehaviour
         }
         return r;
     }
-
-    private void Start()
+    private void OnEnable()
     {
+
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
-        allEnemies.RegisterRange(FindObjectsOfType<Enemu>());
+        allEnemies.RegisterRange(FindObjectsOfType<Enemu>(true));
 
         foreach (Enemu e in allEnemies)
         {
@@ -61,13 +61,17 @@ public class EnemuManager : MonoBehaviour
             {
                 allConvicts.Add((Convict)e);
             }
-            if(e as Cleaner)
+            if (e as Cleaner)
             {
                 allCleaners.Add((Cleaner)e);
             }
+
+
+            e.gameObject.SetActive(true);
         }
 
         allEnemies.StartLife(this);
+
     }
 
     public Enemu[] GetAllEnemu(Enemu ignore)

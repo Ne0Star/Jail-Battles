@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 5226830854831182915}
   - component: {fileID: 5226830854831182914}
-  - component: {fileID: 1460918127574257252}
+  - component: {fileID: -341042948010121328}
   m_Layer: 0
   m_Name: None
   m_TagString: Untagged
@@ -46,13 +46,14 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   free: 1
-  sources: {fileID: 1460918127574257252}
+  clip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
+  source: {fileID: -341042948010121328}
   particles: {fileID: 0}
   attackDamage: 5
   attackDistance: 2
   reloadSpeed: 1
   weaponType: 0
---- !u!82 &1460918127574257252
+--- !u!82 &-341042948010121328
 AudioSource:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -63,7 +64,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 2124236479221159910, guid: 62010f372a453e542b6b7a5befada8e5,
     type: 2}
-  m_audioClip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
+  m_audioClip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
   m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
@@ -71,13 +72,13 @@ AudioSource:
   Mute: 0
   Spatialize: 0
   SpatializePostEffects: 0
-  Priority: 128
+  Priority: 0
   DopplerLevel: 1
-  MinDistance: 0
+  MinDistance: 4
   MaxDistance: 8
   Pan2D: 0
-  rolloffMode: 0
-  BypassEffects: 0
+  rolloffMode: 2
+  BypassEffects: 1
   BypassListenerEffects: 0
   BypassReverbZones: 0
   rolloffCustomCurve:
@@ -86,8 +87,17 @@ AudioSource:
     - serializedVersion: 3
       time: 0
       value: 1
-      inSlope: 0
-      outSlope: 0
+      inSlope: -2.9593267
+      outSlope: -2.9593267
+      tangentMode: 0
+      weightedMode: 0
+      inWeight: 0
+      outWeight: 0.12308089
+    - serializedVersion: 3
+      time: 0.40227005
+      value: 0.32160687
+      inSlope: -0.99999994
+      outSlope: -0.99999994
       tangentMode: 0
       weightedMode: 0
       inWeight: 0.33333334
@@ -95,12 +105,12 @@ AudioSource:
     - serializedVersion: 3
       time: 1
       value: 0
-      inSlope: 0
-      outSlope: 0
+      inSlope: -0.29900697
+      outSlope: -0.29900697
       tangentMode: 0
       weightedMode: 0
-      inWeight: 0.33333334
-      outWeight: 0.33333334
+      inWeight: 0.17377958
+      outWeight: 0
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
@@ -109,7 +119,7 @@ AudioSource:
     m_Curve:
     - serializedVersion: 3
       time: 0
-      value: 0
+      value: 1
       inSlope: 0
       outSlope: 0
       tangentMode: 0

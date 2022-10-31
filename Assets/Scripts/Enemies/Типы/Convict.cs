@@ -7,19 +7,25 @@ public class Convict : Enemu
     [SerializeField] private float exitDistance;
     [SerializeField] private Entity target;
     [SerializeField] private WeaponType initialWeapon;
+
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.Space))
+        {
+            TakeDamage(this, 50f, () => {
+
+            });
+        }
+    }
+
     protected override void Enabled()
     {
-        Weapon weapon = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(initialWeapon, false);
-        //if (weapon != null)
-        //{
-        //    SetWeaponParent(weapon);
-        //    weapon.transform.localScale = Vector3.one;
-        //    weapon.transform.localPosition = Vector3.zero;
-        //    weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        //}
+        Weapon w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(initialWeapon, false);
+        SetWeapon(w);
 
-        SetWeapon(weapon);
-        animator.Play("Покой");
+
+
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
     }
@@ -37,11 +43,11 @@ public class Convict : Enemu
 
     protected override void OnCustomTriggerStay(Entity e)
     {
-        if (e == this || target == e || target) return;
+        if (e == this || target == e || target || !weapon) return;
         this.target = e;
 
 
-        AttackTarget attackAction = new AttackTarget(this, target, weapon, exitDistance, false);
+        AttackTarget attackAction = new AttackTarget(this, target, exitDistance, false);
         attackAction.OnComplete?.AddListener((a) =>
         {
             target = null;

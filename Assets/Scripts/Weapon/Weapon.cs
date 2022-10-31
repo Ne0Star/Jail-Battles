@@ -32,7 +32,8 @@ public enum WeaponType
 public class Weapon : MonoBehaviour
 {
     [SerializeField] private bool free = false;
-    [SerializeField] private AudioSource sources;
+    [SerializeField] private AudioClip clip;
+    [SerializeField] private AudioSource source;
     [SerializeField] private Transform particles;
     [SerializeField] private float attackDamage;
     [SerializeField] private float attackDistance;
@@ -45,11 +46,17 @@ public class Weapon : MonoBehaviour
         Gizmos.DrawWireSphere(transform.position, attackDistance);
     }
 
+    private void OnEnable()
+    {
+        transform.localPosition = Vector3.zero;
+    }
+
     public WeaponType WeaponType { get => weaponType; }
 
     public void AnimateAttack()
     {
-        sources.Play();
+        source.clip = clip;
+        source.Play();
 
     }
 
