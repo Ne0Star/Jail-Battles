@@ -127,7 +127,7 @@ public abstract class Entity : MonoBehaviour
                 onDied?.Invoke(this);
             onKill();
             gameObject.SetActive(false);
-
+            
         });
     }
 

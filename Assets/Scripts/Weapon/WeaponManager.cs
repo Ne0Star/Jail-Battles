@@ -23,6 +23,7 @@ public class WeaponManager : MonoBehaviour
             for (int i = 0; i < list.count; i++)
             {
                 Weapon weapon = Instantiate(list.prefab, transform);
+                weapon.Free = true;
                 allWeapons.Add(weapon);
             }
         }
@@ -40,7 +41,8 @@ public class WeaponManager : MonoBehaviour
 
         if (weapons == null || weapons.Count == 0) return null;
         int index = Random.Range(0, weapons.Count - 1);
-        return weapons[index];
+        Weapon result = weapons[index];
+        return result;
     }
 
     public List<Weapon> GetFreeWeapons(WeaponType type, bool ignoreCount)
@@ -50,7 +52,7 @@ public class WeaponManager : MonoBehaviour
         {
             foreach (Weapon weapon in allWeapons)
             {
-                if (weapon.gameObject.activeSelf)
+                if (weapon.gameObject.activeSelf && weapon.Free)
                     if (weapon.WeaponType == type)
                     {
                         result.Add(weapon);
@@ -63,7 +65,7 @@ public class WeaponManager : MonoBehaviour
             for (int i = 1; i < allWeapons.Count; i++)
             {
                 Weapon weapon = allWeapons[i];
-                if (weapon.gameObject.activeSelf)
+                if (weapon.gameObject.activeSelf && weapon.Free)
                     if (weapon.WeaponType == type)
                     {
                         if (index >= 1)
@@ -77,46 +79,46 @@ public class WeaponManager : MonoBehaviour
         return result;
     }
 
-    /// <summary>
-    /// Вернёт оружие по его типу, если игнорировать количество, то получит то оружие которое предназначено для игрока
-    /// </summary>
-    /// <param name="type"></param>
-    /// <param name="ignoreCount"></param>
-    /// <returns></returns>
-    public Weapon GetFreeWeapon(WeaponType type, bool ignoreCount)
-    {
-        Weapon result = null;
-        if (ignoreCount)
-        {
-            foreach (Weapon weapon in allWeapons)
-            {
-                if (weapon.gameObject.activeSelf)
-                    if (weapon.WeaponType == type)
-                    {
-                        result = weapon;
-                        break;
-                    }
-            }
-        }
-        else
-        {
-            int index = 0;
-            for (int i = 1; i < allWeapons.Count; i++)
-            {
-                Weapon weapon = allWeapons[i];
-                if (weapon.gameObject.activeSelf)
-                    if (weapon.WeaponType == type)
-                    {
-                        if (index >= 1)
-                        {
-                            result = weapon;
-                            break;
-                        }
-                        index++;
-                    }
-            }
-        }
-        return result;
-    }
+    ///// <summary>
+    ///// Вернёт оружие по его типу, если игнорировать количество, то получит то оружие которое предназначено для игрока
+    ///// </summary>
+    ///// <param name="type"></param>
+    ///// <param name="ignoreCount"></param>
+    ///// <returns></returns>
+    //public Weapon GetFreeWeapon(WeaponType type, bool ignoreCount)
+    //{
+    //    Weapon result = null;
+    //    if (ignoreCount)
+    //    {
+    //        foreach (Weapon weapon in allWeapons)
+    //        {
+    //            if (weapon.gameObject.activeSelf)
+    //                if (weapon.WeaponType == type)
+    //                {
+    //                    result = weapon;
+    //                    break;
+    //                }
+    //        }
+    //    }
+    //    else
+    //    {
+    //        int index = 0;
+    //        for (int i = 1; i < allWeapons.Count; i++)
+    //        {
+    //            Weapon weapon = allWeapons[i];
+    //            if (weapon.gameObject.activeSelf)
+    //                if (weapon.WeaponType == type)
+    //                {
+    //                    if (index >= 1)
+    //                    {
+    //                        result = weapon;
+    //                        break;
+    //                    }
+    //                    index++;
+    //                }
+    //        }
+    //    }
+    //    return result;
+    //}
 
 }

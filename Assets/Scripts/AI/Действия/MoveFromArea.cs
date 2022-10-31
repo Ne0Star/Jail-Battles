@@ -24,7 +24,7 @@ public class MoveFromArea : AIAction
     {
         if (!init) return;
         float distance = Vector2.Distance(executor.Agent.transform.position, targetPos);
-        if(executor as Enemu)
+        if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
             GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
@@ -41,10 +41,18 @@ public class MoveFromArea : AIAction
         executor.Agent.isStopped = false;
         areas[Random.Range(0, areas.Count - 1)].GetVector(executor.Agent, (v) =>
         {
-            targetPos = v;
-            executor.Agent.SetDestination(v);
-            init = true;
-            executor.Animator.Play("walk");
+            if (executor.gameObject.activeSelf)
+            {
+                targetPos = v;
+                executor.Agent.SetDestination(v);
+                init = true;
+                executor.Animator.Play("walk");
+            }
+            else
+            {
+                onComplete?.Invoke(this);
+            }
+
         });
     }
 }

@@ -45,6 +45,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c63740c18615fdb488da1d065d5501e9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  free: 1
   sources: {fileID: 1460918127574257252}
   particles: {fileID: 0}
   attackDamage: 5

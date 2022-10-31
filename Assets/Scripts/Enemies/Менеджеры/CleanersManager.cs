@@ -74,7 +74,7 @@ public class CleanersManager : MonoBehaviour
         Trash t = GetFreeTrash();
         if (t)
         {
-            t.transform.position = target.transform.position;
+            t.transform.position = target.Agent.transform.position;
             t.gameObject.SetActive(true);
             t.onComplete += RemoveTrash;
             activeTrash.Add(t);

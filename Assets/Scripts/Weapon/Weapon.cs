@@ -31,6 +31,7 @@ public enum WeaponType
 /// </summary>
 public class Weapon : MonoBehaviour
 {
+    [SerializeField] private bool free = false;
     [SerializeField] private AudioSource sources;
     [SerializeField] private Transform particles;
     [SerializeField] private float attackDamage;
@@ -45,7 +46,6 @@ public class Weapon : MonoBehaviour
     }
 
     public WeaponType WeaponType { get => weaponType; }
-
 
     public void AnimateAttack()
     {
@@ -65,4 +65,5 @@ public class Weapon : MonoBehaviour
     /// Время перезарядки оружия
     /// </summary>
     public float ReloadSpeed { get => reloadSpeed; }
+    public bool Free { get => free; set => free = value; }
 }
