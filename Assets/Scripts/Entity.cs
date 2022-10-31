@@ -53,7 +53,7 @@ public abstract class Entity : MonoBehaviour
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected EntityAnimationData animator;
 
-    public event System.Action<Entity> onDied;
+    [SerializeField] private UnityEvent<Entity> onDied;
 
     private void Awake()
     {
@@ -74,6 +74,7 @@ public abstract class Entity : MonoBehaviour
     public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
     public EntityAnimationData Animator { get => animator; }
+    public UnityEvent<Entity> OnDied { get => onDied; }
 
     private void OnEnable()
     {
@@ -122,8 +123,8 @@ public abstract class Entity : MonoBehaviour
     {
         hitBar.TakeDamage(source, damage, () =>
         {
-            if (onDied != null)
-                onDied((Entity)this);
+           
+                onDied?.Invoke(this);
             onKill();
             gameObject.SetActive(false);
 

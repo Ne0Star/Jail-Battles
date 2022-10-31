@@ -15,8 +15,20 @@ public class CleanersManager : MonoBehaviour
 
     public Trash GetRandomActiveTrash()
     {
-        if(activeTrash == null || activeTrash.Count <= 0) return null;
-        return activeTrash[Random.Range(0, activeTrash.Count - 1)];
+        if (activeTrash == null || activeTrash.Count <= 0) return null;
+
+        Trash result = activeTrash[Random.Range(0, activeTrash.Count - 1)];
+
+        if (!result.block)
+        {
+            result.block = true;
+            return result;
+        }
+        else
+        {
+            return null;
+        }
+        return result;
     }
 
     private void Awake()
@@ -29,11 +41,12 @@ public class CleanersManager : MonoBehaviour
         }
     }
 
-    private void Start()
+    private IEnumerator Start()
     {
+        yield return new WaitForSeconds(0.1f);
         foreach (Entity e in LevelManager.Instance.GetAllEntites())
         {
-            e.onDied += CreateTrash;
+            e.OnDied?.AddListener((v) => CreateTrash(e));
         }
     }
 
@@ -59,17 +72,14 @@ public class CleanersManager : MonoBehaviour
     private void CreateTrash(Entity target)
     {
         Trash t = GetFreeTrash();
-        t.transform.position = target.transform.position;
-        t.gameObject.SetActive(true);
-
-        t.onComplete += RemoveTrash;
-
-        //t.onComplete += (tt) =>
-        //{
-        //    tt.onComplete -= ;
-        //    activeTrash.Remove(tt);
-        //};
-        activeTrash.Add(t);
+        if (t)
+        {
+            t.transform.position = target.transform.position;
+            t.gameObject.SetActive(true);
+            t.onComplete += RemoveTrash;
+            activeTrash.Add(t);
+        }
+        else { Debug.Log("Мусор закончился"); }
     }
 
 

@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class Trash : MonoBehaviour
 {
+    [SerializeField] public bool block = false;
     [SerializeField] private Animator animator;
     [SerializeField] private bool cleaning = false;
 
@@ -12,6 +13,7 @@ public class Trash : MonoBehaviour
     public void Cleaning()
     {
         if (cleaning) return;
+        block = true;
         cleaning = true;
         animator.Play("Clean");
     }
@@ -19,6 +21,9 @@ public class Trash : MonoBehaviour
     public void Complete()
     {
         onComplete(this);
+        gameObject.SetActive(false);
+        block = false;
+        cleaning = false;
     }
 
 }

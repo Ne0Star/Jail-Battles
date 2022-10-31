@@ -32,7 +32,13 @@ public class Cleaner : Enemu
                 MoveToTarget action = new MoveToTarget(this, currentTrash.transform);
                 action.OnComplete?.AddListener((a) =>
                 {
-                    currentTrash = null;
+
+                    Cleaning act = new Cleaning(this, currentTrash);
+                    act.OnComplete?.AddListener((a) =>
+                    {
+                        currentTrash = null;
+                    });
+                    SetAction(act);
                 });
                 SetAction(action);
             }
