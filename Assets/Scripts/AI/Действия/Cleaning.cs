@@ -19,7 +19,7 @@ public class Cleaning : AIAction
 
     public override void CustomUpdate()
     {
-        if(!trash.block)
+        if (!trash.block)
         {
             onComplete?.Invoke(this);
         }
@@ -28,6 +28,11 @@ public class Cleaning : AIAction
     public override void Initial()
     {
         trash.Cleaning();
+        if (executor as Enemu)
+        {
+            Enemu e = (Enemu)executor;
+            GameUtils.LookAt2D(e.RotateParent, trash.transform.position, -120f);
+        }
         executor.Animator.Play("cleaning");
     }
 }

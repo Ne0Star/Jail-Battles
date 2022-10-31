@@ -2,8 +2,32 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
+[System.Serializable]
+public struct TrashData
+{
+    public TrashType type;
+    public List<Sprite> sprites;
+}
+
 public class CleanersManager : MonoBehaviour
 {
+
+    public TrashData GetTrashData(TrashType type)
+    {
+        TrashData result = new TrashData();
+        foreach(TrashData data in trashDatas)
+        {
+            if(data.type == type)
+            {
+                result = data;
+                break;
+            }
+        }
+        return result;
+    }
+
+    [SerializeField] private List<TrashData> trashDatas;
+
     [SerializeField] private int maxTrash;
     [SerializeField] private Trash trashPrefab;
 
@@ -11,7 +35,7 @@ public class CleanersManager : MonoBehaviour
     [SerializeField] private List<Trash> activeTrash = new List<Trash>();
 
     public List<Trash> ActiveTrash { get => activeTrash; }
-
+    public List<TrashData> TrashDatas { get => trashDatas; }
 
     public Trash GetRandomActiveTrash()
     {

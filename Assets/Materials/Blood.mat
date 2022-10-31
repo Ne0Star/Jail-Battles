@@ -7,7 +7,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: VFX
+  m_Name: Blood
   m_Shader: {fileID: -6465566751694194690, guid: 6721497657a9fb44f8ef882915a33e2a,
     type: 3}
   m_ValidKeywords: []
@@ -22,7 +22,7 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - _MainTex:
-        m_Texture: {fileID: 2800000, guid: 61accd28c6caa6e4780f6bdada53e2bc, type: 3}
+        m_Texture: {fileID: 2800000, guid: 84841f45d45e38d40ac9bb85a9868fea, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - unity_Lightmaps:
@@ -40,5 +40,5 @@ Material:
     m_Ints: []
     m_Floats: []
     m_Colors:
-    - _Color: {r: 14.093176, g: 14.093176, b: 14.093176, a: 1}
+    - _Color: {r: 0.5, g: 0, b: 0, a: 1}
   m_BuildTextureStacks: []

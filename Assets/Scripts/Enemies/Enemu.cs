@@ -47,6 +47,7 @@ public class Enemu : Entity, ICustomListItem
                 weapon.transform.parent = meleParent;
                 break;
         }
+        weapon.gameObject.SetActive(true);
         weapon.transform.localScale = Vector3.one;
         weapon.transform.localPosition = Vector3.zero;
         weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
