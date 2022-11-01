@@ -69,7 +69,7 @@ public class Enemu : Entity, ICustomListItem
         //weapon.transform.localPosition = Vector3.zero;
 
 
-        Debug.Log("DAMN " + name + " " + weapon.transform.localPosition + " " + weapon.transform.parent);
+        //Debug.Log("DAMN " + name + " " + weapon.transform.localPosition + " " + weapon.transform.parent);
         OnDied.AddListener((e) =>
         {
             weapon.gameObject.SetActive(false);

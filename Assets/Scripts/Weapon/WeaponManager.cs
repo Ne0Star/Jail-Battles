@@ -82,7 +82,6 @@ public class WeaponManager : MonoBehaviour
                 }
                 if (add)
                 {
-                    Debug.Log("Оружие есть");
                     if (weapon.Free && weapon.WeaponType == type)
                     {
                         if (index >= 1)

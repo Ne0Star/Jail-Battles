@@ -134,7 +134,7 @@ MonoBehaviour:
   clip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
   source: {fileID: 5823073158569691813}
   particles: {fileID: 0}
-  attackDamage: 10
+  attackDamage: 15
   attackDistance: 2
   reloadSpeed: 0.2
   weaponType: 3

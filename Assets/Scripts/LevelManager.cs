@@ -161,6 +161,6 @@ public class LevelManager : OneSingleton<LevelManager>
             //Debug.Log(i);
             yield return new WaitForSeconds(1);
         }
-        Time.timeScale = 0;
+        Debug.Log("ПРОШЛО 3 МИНУТЫ");
     }
 }

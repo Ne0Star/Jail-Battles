@@ -85,7 +85,10 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
+    protected virtual void Attacked(Entity attacker)
+    {
 
+    }
     public NavMeshAgent Agent { get => agent; }
     public HitBar HitBar { get => hitBar; }
     public EntityAnimationData Animator { get => animator; }
@@ -144,6 +147,7 @@ public abstract class Entity : MonoBehaviour
 
     public void TakeDamage(Entity source, float damage, System.Action onKill)
     {
+        Attacked(source);
         hitBar.TakeDamage(source, damage, () =>
         {
            

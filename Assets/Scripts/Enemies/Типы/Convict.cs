@@ -15,6 +15,11 @@ public class Convict : Enemu
     {
         if (Input.GetKeyDown(KeyCode.Space))
         {
+            if (weapon)
+            {
+                weapon.gameObject.SetActive(false);
+                weapon = null;
+            }
             Enabled();
             //TakeDamage(this, 50f, () =>
             //{
@@ -31,28 +36,26 @@ public class Convict : Enemu
 
     public override void Attack()
     {
-        target.TakeDamage(this, weapon.AttackDamage, () =>
+        if (target && weapon)
         {
+            target.TakeDamage(this, weapon.AttackDamage, () =>
+            {
 
-        });
+            });
+            weapon.AnimateAttack();
+        }
     }
 
     protected override void Enabled()
     {
         bool da = false;
         Weapon w = null;
-        da = Random.Range(0, 100) >= 100 - noneChance;
+
+
+        da = Random.Range(0, 100) >= 100 - machineChance;
         if (da)
         {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false);
-            SetWeapon(w);
-            SetLife();
-            return;
-        }
-        da = Random.Range(0, 100) >= 100 - meleChance;
-        if (da)
-        {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Mele, false);
+            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Machine, false);
             SetWeapon(w);
             SetLife();
             return;
@@ -65,17 +68,30 @@ public class Convict : Enemu
             SetLife();
             return;
         }
-        da = Random.Range(0, 100) >= 100 - machineChance;
+        da = Random.Range(0, 100) >= 100 - meleChance;
         if (da)
         {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Machine, false);
+            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Mele, false);
+            SetWeapon(w);
+            SetLife();
+            return;
+        }
+        da = Random.Range(0, 100) >= 100 - noneChance;
+        if (da)
+        {
+            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false);
             SetWeapon(w);
             SetLife();
             return;
         }
 
 
+
+
+
     }
+
+    private bool attack = false;
 
     private void OnDrawGizmos()
     {
@@ -88,6 +104,12 @@ public class Convict : Enemu
         }
     }
 
+    protected override void Attacked(Entity attacker)
+    {
+        this.target = null;
+            OnCustomTriggerStay(attacker);
+    }
+
     protected override void OnCustomTriggerStay(Entity e)
     {
         if (e == this || target == e || target || !weapon) return;
@@ -95,13 +117,17 @@ public class Convict : Enemu
 
 
         AttackTarget attackAction = new AttackTarget(this, target, exitDistance, false);
+        attack = true;
+        //target.TakeDamage(this, 0f, () => { });
         attackAction.OnComplete?.AddListener((a) =>
         {
             target = null;
+            attack = false;
         });
         attackAction.OnBreak?.AddListener((a) =>
         {
             target = null;
+            attack = false;
         });
         SetAction(attackAction);
     }

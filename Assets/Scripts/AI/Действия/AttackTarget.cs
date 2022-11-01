@@ -66,7 +66,7 @@ public class AttackTarget : AIAction
                 executor.Agent.isStopped = true;
                 if (currentTime >= executor.Weapon.ReloadSpeed)
                 {
-                    Debug.Log("attack atttack kasdkaskdkasdksadk");
+                    //Debug.Log("attack atttack kasdkaskdkasdksadk");
                     executor.Animator.Play("attack");
                     //executor.Weapon.AnimateAttack();
                     //target.TakeDamage(executor, executor.Weapon.AttackDamage, () =>
