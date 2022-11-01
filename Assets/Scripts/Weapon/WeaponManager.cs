@@ -39,12 +39,13 @@ public class WeaponManager : MonoBehaviour
     }
 
 
-    public Weapon GetRandomWeaponByType(WeaponType type, bool ignoreCount)
+    public T GetRandomWeaponByType<T>() where T : Weapon
     {
-        List<Weapon> weapons = GetFreeWeapons(type, ignoreCount);
+        List<T> weapons = GetFreeWeapons<T>();
         if (weapons == null || weapons.Count == 0) return null;
         int index = Random.Range(0, weapons.Count - 1);
-        Weapon result = weapons[index];
+        T result = weapons[index];
+        Debug.Log(result);
         return result;
     }
 
@@ -54,44 +55,13 @@ public class WeaponManager : MonoBehaviour
     /// <param name="type"></param>
     /// <param name="ignoreCount"></param>
     /// <returns></returns>
-    public List<Weapon> GetFreeWeapons(WeaponType type, bool ignoreCount)
+    public List<T> GetFreeWeapons<T>() where T : Weapon
     {
-        List<Weapon> result = new List<Weapon>();
-        if (ignoreCount)
+        List<T> result = new List<T>();
+        foreach (Weapon weapon in allWeapons)
         {
-            foreach (Weapon weapon in allWeapons)
-            {
-                if (weapon.Free && weapon.WeaponType == type)
-                    result.Add(weapon);
-            }
-        }
-        else
-        {
-            int index = 0;
-            for (int i = 1; i < allWeapons.Count; i++)
-            {
-                Weapon weapon = allWeapons[i];
-                bool add = false;
-                foreach (BatchWeapon bw in weaponsBathces)
-                {
-                    if (bw.prefab.GetType() == weapon.GetType())
-                    {
-                        add = Random.Range(0, 100) >= bw.chance;
-                        break;
-                    }
-                }
-                if (add)
-                {
-                    if (weapon.Free && weapon.WeaponType == type)
-                    {
-                        if (index >= 1)
-                        {
-                            result.Add(weapon);
-                        }
-                        index++;
-                    }
-                }
-            }
+            if (weapon.Free && weapon as T)
+                result.Add((T)weapon);
         }
         return result;
     }

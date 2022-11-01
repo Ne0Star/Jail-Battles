@@ -21,6 +21,35 @@ public struct EntityAnimationData
     [SerializeField] private Animator animator;
     [SerializeField] private List<EntityAnimation> animations;
 
+    public void SetMachine()
+    {
+        animator.SetBool("none", false);
+        animator.SetBool("gun", false);
+        animator.SetBool("machine", true);
+        animator.SetBool("mele", false);
+    }
+    public void SetNone()
+    {
+        animator.SetBool("none", true);
+        animator.SetBool("gun", false);
+        animator.SetBool("machine", false);
+        animator.SetBool("mele", false);
+    }
+    public void SetMele()
+    {
+        animator.SetBool("none", false);
+        animator.SetBool("gun", false);
+        animator.SetBool("machine", false);
+        animator.SetBool("mele", true);
+    }
+    public void SetGun()
+    {
+        animator.SetBool("none", false);
+        animator.SetBool("gun", true);
+        animator.SetBool("machine", false);
+        animator.SetBool("mele", false);
+    }
+
     public void Play(string statName)
     {
         bool stat = false;

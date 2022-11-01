@@ -11,22 +11,22 @@ public class Convict : Enemu
     //[SerializeField] private WeaponType initialWeapon;
 
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.Space))
-        {
-            if (weapon)
-            {
-                weapon.gameObject.SetActive(false);
-                weapon = null;
-            }
-            Enabled();
-            //TakeDamage(this, 50f, () =>
-            //{
+    //private void Update()
+    //{
+    //    if (Input.GetKeyDown(KeyCode.Space))
+    //    {
+    //        if (weapon)
+    //        {
+    //            weapon.gameObject.SetActive(false);
+    //            weapon = null;
+    //        }
+    //        Enabled();
+    //        //TakeDamage(this, 50f, () =>
+    //        //{
 
-            //});
-        }
-    }
+    //        //});
+    //    }
+    //}
 
     private void SetLife()
     {
@@ -49,41 +49,40 @@ public class Convict : Enemu
     protected override void Enabled()
     {
         bool da = false;
-        Weapon w = null;
+        //Weapon w = null;
 
 
-        da = Random.Range(0, 100) >= 100 - machineChance;
-        if (da)
-        {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Machine, false);
-            SetWeapon(w);
-            SetLife();
-            return;
-        }
+        //da = Random.Range(0, 100) >= 100 - machineChance;
+        //if (da)
+        //{
+        //    w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Machine, false);
+        //    SetWeapon(w);
+        //    SetLife();
+        //    return;
+        //}
         da = Random.Range(0, 100) >= 100 - gunChance;
         if (da)
         {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Gun, false);
-            SetWeapon(w);
+            Gun result =  LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
+            Debug.Log(result);
+            SetGun(result);
             SetLife();
-            return;
         }
         da = Random.Range(0, 100) >= 100 - meleChance;
         if (da)
         {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.Mele, false);
-            SetWeapon(w);
+            Mele result = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Mele>();
+            SetMele(result);
             SetLife();
-            return;
         }
-        da = Random.Range(0, 100) >= 100 - noneChance;
-        if (da)
-        {
-            w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false);
-            SetWeapon(w);
-            SetLife();
-            return;
-        }
+        //da = Random.Range(0, 100) >= 100 - noneChance;
+        //if (da)
+        //{
+        //    w = LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false);
+        //    SetWeapon(w);
+        //    SetLife();
+        //    return;
+        //}
 
 
 
@@ -93,21 +92,20 @@ public class Convict : Enemu
 
     private bool attack = false;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(agent.transform.position, exitDistance);
-        if (weapon)
-        {
-            Gizmos.color = Color.green;
-            Gizmos.DrawWireSphere(weapon.transform.position, weapon.AttackDistance);
-        }
-    }
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(agent.transform.position, exitDistance);
+    //    if (weapon)
+    //    {
+    //        Gizmos.color = Color.green;
+    //        Gizmos.DrawWireSphere(weapon.transform.position, weapon.AttackDistance);
+    //    }
+    //}
 
     protected override void Attacked(Entity attacker)
     {
-        this.target = null;
-            OnCustomTriggerStay(attacker);
+        this.target = attacker;
     }
 
     protected override void OnCustomTriggerStay(Entity e)
@@ -116,9 +114,9 @@ public class Convict : Enemu
         this.target = e;
 
 
-        AttackTarget attackAction = new AttackTarget(this, target, exitDistance, false);
+        AttackTarget attackAction = new AttackTarget(this, ref target, exitDistance, true);
         attack = true;
-        //target.TakeDamage(this, 0f, () => { });
+        target.TakeDamage(this, 0f, () => { });
         attackAction.OnComplete?.AddListener((a) =>
         {
             target = null;

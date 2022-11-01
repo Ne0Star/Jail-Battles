@@ -31,15 +31,16 @@ public enum WeaponType
 /// </summary>
 public class Weapon : MonoBehaviour
 {
-    [SerializeField] private bool free = false;
-    [SerializeField] private AudioClip clip;
-    [SerializeField] private AudioSource source;
-    [SerializeField] private Transform particles;
-    [SerializeField] private float attackDamage;
-    [SerializeField] private float attackDistance;
+    public WeaponType WeaponType { get => weaponType; }
+
+    [SerializeField] protected bool free = false;
+    [SerializeField] protected AudioClip clip;
+    [SerializeField] protected AudioSource source;
+    [SerializeField] protected float attackDamage;
+    [SerializeField] private int attackCount;
+    [SerializeField] protected float attackSpeed;
     [SerializeField] private float reloadSpeed;
     [SerializeField] private WeaponType weaponType;
-
     [SerializeField] private GameObject left, top;
 
     /// <summary>
@@ -59,19 +60,10 @@ public class Weapon : MonoBehaviour
         left.gameObject.SetActive(false);
     }
 
-
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, attackDistance);
-    }
-
     private void OnEnable()
     {
         transform.localPosition = Vector3.zero;
     }
-
-    public WeaponType WeaponType { get => weaponType; }
 
     public void AnimateAttack()
     {
@@ -85,12 +77,13 @@ public class Weapon : MonoBehaviour
     /// </summary>
     public float AttackDamage { get => attackDamage; }
     /// <summary>
-    /// Максимальное расстояние при котором может происходить атака
-    /// </summary>
-    public float AttackDistance { get => attackDistance; }
-    /// <summary>
     /// Время перезарядки оружия
     /// </summary>
-    public float ReloadSpeed { get => reloadSpeed; }
     public bool Free { get => free; set => free = value; }
+    public float AttackSpeed { get => attackSpeed; }
+    public int AttackCount { get => attackCount; }
+    /// <summary>
+    /// Скорость перезарядки
+    /// </summary>
+    public float ReloadSpeed { get => reloadSpeed; }
 }

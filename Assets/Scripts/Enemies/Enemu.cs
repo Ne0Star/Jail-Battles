@@ -11,8 +11,11 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] private List<EntityType> targetType;
     [SerializeField] private float rotateOffset;
     [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
-    [SerializeField] protected Weapon weapon;
 
+
+    [SerializeField] protected Weapon weapon;
+    [SerializeField] protected Mele mele;
+    [SerializeField] protected Gun gun;
     public virtual void Attack()
     {
 
@@ -20,63 +23,86 @@ public class Enemu : Entity, ICustomListItem
 
     public void Left()
     {
-        weapon.Left();
+        gun.Left();
     }
     public void Top()
     {
-        weapon.Top();
+        gun.Top();
     }
 
     private void SetAllFalse()
     {
+        if(weapon)
+        {
+            weapon.gameObject.SetActive(false);
+        }
+        if(mele)
+        {
+            mele.gameObject.SetActive(false);
+        }
+        if(gun)
+        {
+            gun.gameObject.SetActive(false);
+        }
         animator.Animator.SetBool("none", false);
         animator.Animator.SetBool("gun", false);
         animator.Animator.SetBool("machine", false);
         animator.Animator.SetBool("mele", false);
     }
 
-    public void SetWeapon(Weapon weapon)
+
+    public void SetMele(Mele mele)
     {
-        if (!weapon) return;
+        this.mele = mele;
+        SetWeapon(mele);
+    }
+
+    public void SetGun(Gun gun)
+    {
+        this.gun = gun;
+        SetWeapon(gun);
+    }
+
+    public void SetWeapon(Weapon gun)
+    {
+        if (!gun) return;
         SetAllFalse();
 
-        switch (weapon.WeaponType)
+        if (gun as Mele)
         {
-            case WeaponType.None:
-                animator.Animator.SetBool("none", true);
-                weapon.transform.SetParent(transform);
-                break;
-            case WeaponType.Gun:
-                animator.Animator.SetBool("gun", true);
-                weapon.transform.SetParent(gunParent);
-                break;
-            case WeaponType.Machine:
-                animator.Animator.SetBool("machine", true);
-                weapon.transform.SetParent(machineParent);
-                break;
-            case WeaponType.Mele:
-                animator.Animator.SetBool("mele", true);
-                weapon.transform.SetParent(meleParent);
-                break;
+            animator.Animator.SetBool("mele", true);
+            gun.transform.SetParent(meleParent);
+            this.mele = (Mele)gun;
         }
-        weapon.transform.position = weapon.transform.parent.position;
-        weapon.transform.localRotation = Quaternion.Euler(Vector3.zero);
-        weapon.transform.localScale = Vector3.one;
-        weapon.Free = false;
-        weapon.gameObject.SetActive(true);
+        else if (gun as Gun)
+        {
+            animator.Animator.SetBool("gun", true);
+            gun.transform.SetParent(gunParent);
+            this.gun = (Gun)gun;
+        }
+        else if (gun as Machine)
+        {
+            animator.Animator.SetBool("machine", true);
+            gun.transform.SetParent(machineParent);
+        }
+        else if (gun as None)
+        {
+            animator.Animator.SetBool("none", true);
+            gun.transform.SetParent(transform);
+        }
 
+        gun.transform.position = gun.transform.parent.position;
+        gun.transform.localRotation = Quaternion.Euler(Vector3.zero);
+        gun.transform.localScale = Vector3.one;
+        gun.Free = false;
+        gun.gameObject.SetActive(true);
 
-        //weapon.transform.localPosition = Vector3.zero;
-
-
-        //Debug.Log("DAMN " + name + " " + weapon.transform.localPosition + " " + weapon.transform.parent);
         OnDied.AddListener((e) =>
         {
-            weapon.gameObject.SetActive(false);
-            weapon.Free = true;
-            //SetWeapon(LevelManager.Instance.WeaponManager.GetRandomWeaponByType(WeaponType.None, false));
+            gun.gameObject.SetActive(false);
+            gun.Free = true;
         });
-        this.weapon = weapon;
+        this.weapon = gun;
     }
 
     [SerializeField] protected List<AIAction> stackActions = new List<AIAction>();
@@ -86,8 +112,9 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] private int lifeActionIndex = 0;
     public float RotateOffset { get => rotateOffset; }
     public Transform RotateParent { get => rotateParent; }
+    public Gun WeaponGun { get => gun; }
+    public Mele WeaponMele { get => mele; }
     public Weapon Weapon { get => weapon; }
-
     protected override void Create()
     {
         triggers = GetComponentsInChildren<EntityTrigger>(true);

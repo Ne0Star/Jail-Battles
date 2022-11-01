@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226830854831182915}
-  - component: {fileID: 5226830854831182914}
+  - component: {fileID: 8613446731319640574}
   - component: {fileID: 5823073158569691813}
   m_Layer: 0
   m_Name: "\u0416\u0435\u043B\u0435\u0437\u043D\u0430\u044F \u0434\u0443\u0431\u0438\u043D\u043A\u0430"
@@ -118,7 +118,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5226830854831182914
+--- !u!114 &8613446731319640574
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -127,16 +127,16 @@ MonoBehaviour:
   m_GameObject: {fileID: 5226830854831182912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63740c18615fdb488da1d065d5501e9, type: 3}
+  m_Script: {fileID: 11500000, guid: eb5edd6fbeecd784db4c1b40db0839ad, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   free: 1
   clip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
   source: {fileID: 5823073158569691813}
-  particles: {fileID: 0}
   attackDamage: 15
-  attackDistance: 2
-  reloadSpeed: 0.2
+  attackCount: 1
+  attackSpeed: 0.1
+  reloadSpeed: 0.05
   weaponType: 3
   left: {fileID: 0}
   top: {fileID: 0}
