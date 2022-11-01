@@ -13,6 +13,20 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
     [SerializeField] protected Weapon weapon;
 
+    public virtual void Attack()
+    {
+
+    }
+
+    public void Left()
+    {
+        weapon.Left();
+    }
+    public void Top()
+    {
+        weapon.Top();
+    }
+
     private void SetAllFalse()
     {
         animator.Animator.SetBool("none", false);

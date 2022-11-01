@@ -59,9 +59,7 @@ public struct AIAreas
 
 public class LevelManager : OneSingleton<LevelManager>
 {
-
     [SerializeField] private List<AIAreas> areas;
-
     [SerializeField] private List<RangeRange> ranges;
     [SerializeField] private float customTime;
     [SerializeField] private LevelData levelData;

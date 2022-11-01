@@ -40,6 +40,26 @@ public class Weapon : MonoBehaviour
     [SerializeField] private float reloadSpeed;
     [SerializeField] private WeaponType weaponType;
 
+    [SerializeField] private GameObject left, top;
+
+    /// <summary>
+    /// Переключает отображение оружия на вид сбоку
+    /// </summary>
+    public void Left()
+    {
+        top.gameObject.SetActive(false);
+        left.gameObject.SetActive(true);
+    }
+    /// <summary>
+    /// Переключает отображение оружия на вид сверху
+    /// </summary>
+    public void Top()
+    {
+        top.gameObject.SetActive(true);
+        left.gameObject.SetActive(false);
+    }
+
+
     private void OnDrawGizmos()
     {
         Gizmos.color = Color.green;

@@ -23,6 +23,7 @@ public struct EntityAnimationData
 
     public void Play(string statName)
     {
+        bool stat = false;
         foreach (EntityAnimation animation in animations)
         {
             if (statName == animation.statName)
@@ -34,7 +35,12 @@ public struct EntityAnimationData
                 source.clip = LevelManager.Instance.GetClip(animation.clipName);
                 source.Play();
                 animator.Play(animation.animName);
+                stat = true;
             }
+        }
+        if(!stat)
+        {
+            Debug.LogWarning("У сущности нету данных анимации с названием: " + statName);
         }
     }
 

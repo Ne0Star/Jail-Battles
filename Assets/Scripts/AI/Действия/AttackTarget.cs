@@ -29,45 +29,61 @@ public class AttackTarget : AIAction
 
     private void Rotate()
     {
-            if (!reached)
-            {
-                GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
-            }
-            else
-            {
-                GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
-            }
+        if (!reached)
+        {
+            GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
+        }
+        else
+        {
+            GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
+        }
     }
     [SerializeField] private bool reached = false;
     public override void CustomUpdate()
     {
         float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
-        float weaponDistance = Vector2.Distance(executor.Weapon.transform.position, target.Agent.transform.position);
+        float weaponDistance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        float attackDiantce = 0f;
+        if (executor.Weapon.WeaponType == WeaponType.None || executor.Weapon.WeaponType == WeaponType.Mele)
+        {
+            attackDiantce = executor.Agent.radius + target.Agent.radius + 0.1f;
+        }
+        else
+        {
+            attackDiantce = executor.Weapon.AttackDistance;
+        }
         Rotate();
         if (target && target.gameObject.activeSelf)
         {
-            if (weaponDistance <= executor.Weapon.AttackDistance)
+            if (weaponDistance <= attackDiantce)
             {
                 if (!reached)
                 {
-                    executor.Animator.Play("idle");
+                    executor.Animator.Play("fightStance");
                 }
                 reached = true;
 
                 executor.Agent.isStopped = true;
                 if (currentTime >= executor.Weapon.ReloadSpeed)
                 {
-                    executor.Weapon.AnimateAttack();
-                    target.TakeDamage(executor, executor.Weapon.AttackDamage, () =>
-                    {
+                    Debug.Log("attack atttack kasdkaskdkasdksadk");
+                    executor.Animator.Play("attack");
+                    //executor.Weapon.AnimateAttack();
+                    //target.TakeDamage(executor, executor.Weapon.AttackDamage, () =>
+                    //{
 
-                    });
+                    //});
                     currentTime = 0;
                 }
                 currentTime += Time.unscaledDeltaTime;
             }
             else
             {
+                if(reached)
+                {
+                    executor.Animator.Play("walk");
+                }
+                reached = false;
                 executor.Agent.isStopped = false;
                 executor.Agent.SetDestination(target.Agent.transform.position);
             }
