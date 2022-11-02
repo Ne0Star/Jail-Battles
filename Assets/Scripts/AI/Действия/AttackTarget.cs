@@ -38,11 +38,13 @@ public class AttackTarget : AIAction
     {
         if (!reached)
         {
-            GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
+            GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+            //GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
         }
         else
         {
-            GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
+            GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+            //GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
         }
     }
 
@@ -51,14 +53,17 @@ public class AttackTarget : AIAction
     {
         if (!reached)
         {
+            attackCount = 0;
+            attackTime = 0f;
+            currentTime = 0f;
             executor.SetWeapon(w);
             executor.Animator.Play("fightStance");
         }
         reached = true;
         executor.Agent.isStopped = true;
-        if (attackCount < executor.WeaponGun.AttackCount)
+        if (attackCount < executor.Weapon.AttackCount)
         {
-            if (attackTime >= executor.WeaponGun.AttackSpeed)
+            if (attackTime >= executor.Weapon.AttackSpeed)
             {
 
                 executor.Animator.Play("attack");
@@ -70,7 +75,7 @@ public class AttackTarget : AIAction
         }
         else
         {
-            if (currentTime >= executor.WeaponGun.ReloadSpeed)
+            if (currentTime >= executor.Weapon.ReloadSpeed)
             {
 
                 executor.Animator.Play("reload");
@@ -89,10 +94,12 @@ public class AttackTarget : AIAction
         if (distance >= exitDistance)
         {
             OnBreak?.Invoke(this);
+            return;
         }
         if (!target || !target.gameObject.activeSelf)
         {
             OnComplete?.Invoke(this);
+            return;
         }
         Rotate();
         // Есть пушка

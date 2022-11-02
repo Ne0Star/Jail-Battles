@@ -10,6 +10,7 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] private int updateCount;
     [SerializeField] private List<EntityType> targetType;
     [SerializeField] private float rotateOffset;
+    [SerializeField] private float rotateSpeed;
     [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
 
 
@@ -32,15 +33,15 @@ public class Enemu : Entity, ICustomListItem
 
     private void SetAllFalse()
     {
-        if(weapon)
+        if (weapon)
         {
             weapon.gameObject.SetActive(false);
         }
-        if(mele)
+        if (mele)
         {
             mele.gameObject.SetActive(false);
         }
-        if(gun)
+        if (gun)
         {
             gun.gameObject.SetActive(false);
         }
@@ -115,6 +116,8 @@ public class Enemu : Entity, ICustomListItem
     public Gun WeaponGun { get => gun; }
     public Mele WeaponMele { get => mele; }
     public Weapon Weapon { get => weapon; }
+    public float RotateSpeed { get => rotateSpeed; }
+
     protected override void Create()
     {
         triggers = GetComponentsInChildren<EntityTrigger>(true);
@@ -160,7 +163,7 @@ public class Enemu : Entity, ICustomListItem
     protected void SetAction(AIAction action)
     {
         // Текущее действие в стек
-        if (currentAction != null)
+        if (currentAction != null && lifeActions.Contains(currentAction))
             stackActions.Add(currentAction);
 
         action.OnComplete.AddListener((a) =>

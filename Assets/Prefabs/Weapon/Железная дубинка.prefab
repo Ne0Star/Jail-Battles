@@ -135,8 +135,8 @@ MonoBehaviour:
   source: {fileID: 5823073158569691813}
   attackDamage: 15
   attackCount: 1
-  attackSpeed: 0.1
-  reloadSpeed: 0.05
+  attackSpeed: 0.05
+  reloadSpeed: 0.5
   weaponType: 3
   left: {fileID: 0}
   top: {fileID: 0}

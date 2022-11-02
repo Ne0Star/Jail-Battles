@@ -93,7 +93,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5226830854831182915}
-  - component: {fileID: 5226830854831182914}
+  - component: {fileID: 4218982194374033796}
   - component: {fileID: 5823073158569691813}
   m_Layer: 0
   m_Name: "\u041C\u0430\u043A\u0430\u0440"
@@ -119,7 +119,7 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &5226830854831182914
+--- !u!114 &4218982194374033796
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -128,19 +128,21 @@ MonoBehaviour:
   m_GameObject: {fileID: 5226830854831182912}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c63740c18615fdb488da1d065d5501e9, type: 3}
+  m_Script: {fileID: 11500000, guid: d52dbbb252942184eadf8c367b82f316, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  free: 1
+  free: 0
   clip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
   source: {fileID: 5823073158569691813}
-  particles: {fileID: 0}
-  attackDamage: 40
-  attackDistance: 3
-  reloadSpeed: 0.2
-  weaponType: 1
+  attackDamage: 10
+  attackCount: 5
+  attackSpeed: 0.1
+  reloadSpeed: 1
+  weaponType: 0
   left: {fileID: 6661317449680704966}
   top: {fileID: 5226830854805296391}
+  attackDistance: 4
+  notAttackDistance: 2
 --- !u!82 &5823073158569691813
 AudioSource:
   m_ObjectHideFlags: 0

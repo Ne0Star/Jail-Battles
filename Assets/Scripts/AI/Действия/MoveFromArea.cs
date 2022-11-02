@@ -27,7 +27,7 @@ public class MoveFromArea : AIAction
         if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
-            GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
+            GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
         }
         if (distance <= executor.Agent.radius)
         {

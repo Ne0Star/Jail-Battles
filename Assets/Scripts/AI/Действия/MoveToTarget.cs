@@ -39,11 +39,13 @@ public class MoveToTarget : AIAction
             Enemu e = (Enemu)executor;
             if (!reached)
             {
-                GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
+                GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
+                //GameUtils.LookAt2D(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset);
             }
             else
             {
-                GameUtils.LookAt2D(e.RotateParent, target.position, e.RotateOffset);
+                GameUtils.LookAt2DSmooth(e.RotateParent, target.position, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
+                //GameUtils.LookAt2D(e.RotateParent, target.position, e.RotateOffset);
             }
         }
     }

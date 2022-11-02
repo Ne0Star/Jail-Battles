@@ -12,16 +12,16 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 558a8e2b6826cf840aae193990ba9f2e, type: 3}
   m_Name: ShadowsMidtonesHighlights
   m_EditorClassIdentifier: 
-  active: 1
+  active: 0
   shadows:
     m_OverrideState: 0
     m_Value: {x: 1, y: 0.9213794, z: 0.99966264, w: 0}
   midtones:
     m_OverrideState: 1
-    m_Value: {x: 0.9761331, y: 0.9250803, z: 1, w: 0}
+    m_Value: {x: 1, y: 0.9009049, z: 0.97170544, w: 0}
   highlights:
     m_OverrideState: 1
-    m_Value: {x: 1, y: 0.937507, z: 0.84209704, w: 0}
+    m_Value: {x: 0.956092, y: 0.8327716, z: 1, w: 0}
   shadowsStart:
     m_OverrideState: 1
     m_Value: 0
@@ -46,10 +46,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81180773991d8724ab7f2d216912b564, type: 3}
   m_Name: ChromaticAberration
   m_EditorClassIdentifier: 
-  active: 0
+  active: 1
   intensity:
     m_OverrideState: 1
-    m_Value: 1
+    m_Value: 0.157
 --- !u!114 &-4496470095603902815
 MonoBehaviour:
   m_ObjectHideFlags: 3
@@ -71,7 +71,7 @@ MonoBehaviour:
     m_Value: 0
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0.7221944, g: 0.6924744, b: 0.7578583, a: 1}
+    m_Value: {r: 0, g: 1, b: 0.8857477, a: 1}
   hueShift:
     m_OverrideState: 0
     m_Value: 0
@@ -93,16 +93,16 @@ MonoBehaviour:
   active: 1
   color:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 0, b: 0, a: 1}
+    m_Value: {r: 0.001334992, g: 0.048339676, b: 0.09433961, a: 1}
   center:
     m_OverrideState: 1
     m_Value: {x: 0.5, y: 0.5}
   intensity:
     m_OverrideState: 1
-    m_Value: 0.232
+    m_Value: 0.278
   smoothness:
     m_OverrideState: 1
-    m_Value: 0.587
+    m_Value: 0.47
   rounded:
     m_OverrideState: 1
     m_Value: 1

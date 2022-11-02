@@ -33,6 +33,12 @@ public static class GameUtils
         whom.rotation = Quaternion.Lerp(whom.rotation, total, time);
         if (GameUtils.RoundToValue(Vector2.Distance(new Vector2(total.z, 0), new Vector2(whom.rotation.z, 0)), 0.05f) <= distanceToComplete) onComplete();
     }
+    public static void LookAt2DSmooth(Transform whom, Vector3 where, float offset, float time)
+    {
+        float angle = Mathf.Atan2(where.y - whom.position.y, where.x - whom.position.x) * Mathf.Rad2Deg;
+        Quaternion total = Quaternion.Euler(whom.rotation.eulerAngles.x, whom.rotation.eulerAngles.y, angle+offset);
+        whom.rotation = Quaternion.Lerp(whom.rotation, total, time);
+    }
 
     public static float RoundToValue(float round, float value)
     {

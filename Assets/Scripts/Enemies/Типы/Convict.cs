@@ -8,6 +8,7 @@ public class Convict : Enemu
 
     [SerializeField] private float exitDistance;
     [SerializeField] private Entity target;
+    [SerializeField] public Entity pursuer;
     //[SerializeField] private WeaponType initialWeapon;
 
 
@@ -46,6 +47,14 @@ public class Convict : Enemu
         }
     }
 
+    protected override void Disable()
+    {
+        stackActions.Clear();
+        currentAction = null;
+        lifeActions.Clear();
+        target = null;
+    }
+
     protected override void Enabled()
     {
         bool da = false;
@@ -63,8 +72,7 @@ public class Convict : Enemu
         da = Random.Range(0, 100) >= 100 - gunChance;
         if (da)
         {
-            Gun result =  LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
-            Debug.Log(result);
+            Gun result = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
             SetGun(result);
             SetLife();
         }
@@ -92,6 +100,8 @@ public class Convict : Enemu
 
     private bool attack = false;
 
+    public Entity Target { get => target; }
+
     //private void OnDrawGizmos()
     //{
     //    Gizmos.color = Color.red;
@@ -105,14 +115,29 @@ public class Convict : Enemu
 
     protected override void Attacked(Entity attacker)
     {
-        this.target = attacker;
+        OnCustomTriggerStay(attacker);
     }
 
     protected override void OnCustomTriggerStay(Entity e)
     {
-        if (e == this || target == e || target || !weapon) return;
-        this.target = e;
+        //if (e == this || target) return;
 
+        //if (e && e as Convict)
+        //{
+        //    Convict c = (Convict)e;
+        //    if (c.Target && c.Target.gameObject.activeSelf) return;
+        //    if (c.pursuer && c.pursuer.gameObject.activeSelf) return;
+        //    c.pursuer = this;
+        //}
+        if (e == this || target == e || (target && target.gameObject.activeInHierarchy) || !weapon) return;
+
+
+        //if (target && target.gameObject.activeSelf && target as Convict)
+        //{
+        //    if (((Convict)target).Target && ((Convict)target).Target != this && ((Convict)target).Target.gameObject.activeSelf) return;
+        //}
+ //  || target
+        this.target = e;
 
         AttackTarget attackAction = new AttackTarget(this, ref target, exitDistance, true);
         attack = true;
