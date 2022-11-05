@@ -6,6 +6,22 @@ using UnityEngine;
 public struct LevelData
 {
 
+    [SerializeField] private float pursurehance;
+    [SerializeField] private float feedChance;
+    [SerializeField] private float toiletChance;
+    [SerializeField] private float beginChance;
+    public LevelData(float pursurehance, float feedChance, float toiletChance, float beginChance)
+    {
+        this.pursurehance = pursurehance;
+        this.feedChance = feedChance;
+        this.toiletChance = toiletChance;
+        this.beginChance = beginChance;
+    }
+
+    public float Pursurehance { get => pursurehance; }
+    public float FeedChance { get => feedChance; }
+    public float ToiletChance { get => toiletChance; }
+    public float BeginChance { get => beginChance; }
 }
 
 [System.Serializable]
@@ -72,7 +88,8 @@ public struct Stat
 public enum AreaType
 {
     Кухня,
-    Столовая
+    Столовая,
+    КабинетМедсестры
 }
 
 [System.Serializable]
@@ -170,6 +187,7 @@ public class LevelManager : OneSingleton<LevelManager>
     private void Awake()
     {
         LevelManager.Instance = this;
+
         foreach (AudioClip clip in findClips)
         {
             if (clip != null)

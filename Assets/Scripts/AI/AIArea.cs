@@ -48,7 +48,19 @@ public class AIArea : MonoBehaviour
         //    Gizmos.DrawWireSphere(r, 0.5f);
 
         //});
-        Gizmos.color = Color.red;
+        switch (areaType)
+        {
+            case AreaType.Кухня:
+                Gizmos.color = Color.yellow;
+                break;
+            case AreaType.Столовая:
+                Gizmos.color = Color.red;
+                break;
+            case AreaType.КабинетМедсестры:
+                Gizmos.color = Color.blue;
+                break;
+        }
+
         //Vector3 size = new Vector3(surface.navMeshData.sourceBounds.size.z / 2, surface.navMeshData.sourceBounds.size.x / 2, 0);
         Gizmos.DrawWireCube(transform.position, size);
 

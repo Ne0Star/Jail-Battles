@@ -6,6 +6,8 @@ using UnityEngine.U2D.Animation;
 public class Enemu : Entity, ICustomListItem
 {
 
+    [SerializeField] protected Entity target;
+
     [SerializeField] private Stat moveSpeed;
 
     [SerializeField] private EntityTrigger[] triggers;
@@ -27,11 +29,13 @@ public class Enemu : Entity, ICustomListItem
 
     public void Left()
     {
-        gun.Left();
+        if (gun)
+            gun.Left();
     }
     public void Top()
     {
-        gun.Top();
+        if (gun)
+            gun.Top();
     }
 
     private void SetAllFalse()
@@ -121,6 +125,7 @@ public class Enemu : Entity, ICustomListItem
     public Weapon Weapon { get => weapon; }
     public float RotateSpeed { get => rotateSpeed; }
     public Stat MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
+    public Entity Target { get => target; }
 
     protected override void Create()
     {
@@ -179,6 +184,7 @@ public class Enemu : Entity, ICustomListItem
         action.id = -1;
         currentAction = action;
         bool addStack = true;
+
         foreach (AIAction act in stackActions)
         {
             if (act.id == currentAction.id)
@@ -189,6 +195,8 @@ public class Enemu : Entity, ICustomListItem
         }
         if (addStack && !action.BlockStack)
             stackActions.Add(currentAction);
+
+
     }
     protected void AddAction(AIAction action)
     {
@@ -243,10 +251,10 @@ public class Enemu : Entity, ICustomListItem
         if (currentAction != null)
         {
             currentAction.CustomUpdate();
-                if (stackActions.Contains(currentAction))
-                {
-                    stackActions.Remove(currentAction);
-                }
+            if (stackActions.Contains(currentAction))
+            {
+                stackActions.Remove(currentAction);
+            }
         }
         else if (stackActions != null && stackActions.Count > 0)
         {

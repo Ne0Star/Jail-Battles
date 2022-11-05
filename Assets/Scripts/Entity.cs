@@ -10,7 +10,8 @@ public enum EntityType
     Уборщик,
     Повар,
     Охранник,
-    Игрок
+    Игрок,
+    Медсестра
 }
 
 [System.Serializable]

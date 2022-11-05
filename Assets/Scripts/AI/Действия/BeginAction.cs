@@ -6,31 +6,33 @@ public class BeginAction : AIAction
 {
     public System.Action onDied;
 
-    [SerializeField] private Entity executor;
-    [SerializeField] private Entity pursuer;
+    [SerializeField] private Enemu executor;
+    [SerializeField] private Enemu pursuer;
     [SerializeField] private List<AIArea> areas;
-    [SerializeField] private float completeDistance;
-    public BeginAction(Entity executor, Entity pursuer, List<AIArea> areas, float completeDistance)
+    [SerializeField] private float speedInterpolator;
+    public BeginAction(Enemu executor, Enemu pursuer, List<AIArea> areas, float speedInterpolator)
     {
         this.executor = executor;
         this.pursuer = pursuer;
         this.areas = areas;
-        this.completeDistance = completeDistance;
+        this.speedInterpolator = speedInterpolator;
     }
 
     public override void CustomUpdate()
     {
         float distance = Vector2.Distance(executor.Agent.transform.position, pursuer.Agent.transform.position);
+
         if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
+            e.Agent.speed = Mathf.Clamp(e.Agent.speed + speedInterpolator, -e.MoveSpeed.MaxValue, e.MoveSpeed.MaxValue);
             GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
         }
-        if (distance >= completeDistance)
+        if (!pursuer || !pursuer.gameObject.activeSelf || !(pursuer.Target == executor))
         {
             onComplete?.Invoke(this);
         }
-        if(!executor.gameObject.activeSelf)
+        if (!executor.gameObject.activeSelf)
         {
             onDied?.Invoke();
         }

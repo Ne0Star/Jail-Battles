@@ -5,35 +5,56 @@ using UnityEngine;
 public class Convict : Enemu
 {
     [SerializeField] private float exitDistance = 8f;
-    [SerializeField] private Entity target;
 
 
     [SerializeField] private bool isBegin = false;
     [SerializeField] private bool isIdle = false;
     [SerializeField] private bool isAttack = false;
 
+    public bool IsBegin { get => isBegin; }
+    public bool IsAttack { get => isAttack; }
+    public bool IsIdle { get => isIdle; }
+
     protected override void Attacked(Entity attacker)
     {
-        StartAttack(attacker);
+
+        if (HitBar.Health <= HitBar.GetMaxHealth() / 2 && !isBegin)
+        {
+            isBegin = Random.Range(0, 100) >= (100 - LevelManager.Instance.LevelData.BeginChance);
+            if (isBegin)
+            {
+                agent.speed = Mathf.Clamp(agent.speed + 1f, -MoveSpeed.MaxValue, MoveSpeed.MaxValue);
+                BeginAction ba = new BeginAction(this, (Enemu)attacker, LevelManager.Instance.GetAreas(AreaType.Столовая), exitDistance);
+                ba.OnComplete?.AddListener((a) =>
+                {
+                    isBegin = false;
+                });
+                SetAction(ba);
+            }
+            return;
+        }
+        else
+        {
+            StartAttack(attacker);
+        }
     }
 
     protected override void OnCustomTriggerStay(Entity e)
     {
-
+        if (e != LevelManager.Instance.Player)
+        {
+            bool agro = Random.Range(0, 100) >= (100 - LevelManager.Instance.LevelData.Pursurehance);
+            if (!agro) return;
+        }
+        if (isBegin) return;
         StartAttack(e);
     }
-
-
-    //[SerializeField] private float gunChance = 10f, machineChance = 5f, meleChance = 20f, noneChance = 50f;
-
-    //[SerializeField] private float exitDistance;
-    //[SerializeField] private Entity target;
 
     protected override void Disable()
     {
         currentAction = null;
-        stackActions = null;
-        lifeActions = null;
+        stackActions = new List<AIAction>();
+        lifeActions = new List<AIAction>();
         target = null;
         isBegin = false;
         isIdle = false;
@@ -58,14 +79,6 @@ public class Convict : Enemu
         }
     }
 
-    //protected override void Disable()
-    //{
-    //    stackActions.Clear();
-    //    currentAction = null;
-    //    lifeActions.Clear();
-    //    target = null;
-    //}
-
     protected override void Enabled()
     {
         stackActions = new List<AIAction>();
@@ -78,35 +91,26 @@ public class Convict : Enemu
         SetLife();
     }
 
-    //public Entity Target { get => target; }
-
-    //[SerializeField] private bool agroBlock = false;
-    private void CheckAttackResult()
-    {
-        if (HitBar.Health <= HitBar.GetMaxHealth() / 2 && !isBegin)
-        {
-            isBegin = true;
-
-            GetInLineAction inline = new GetInLineAction(this, InlineType.ВМедпункт);
-            inline.OnComplete?.AddListener((a) =>
-            {
-                isBegin = false;
-            });
-            return;
-        }
-    }
-
     private void StartAttack(Entity e)
     {
         if (isBegin || isIdle || this.target != null || this == e) return;
-        this.target = e;
+
+        if (e as Convict)
+        {
+            Convict enemu = (Convict)e;
+            if (enemu.isBegin || (enemu.Target && (enemu.Target.gameObject.activeSelf && enemu.Target != this)))
+            {
+                return;
+            }
+        }
+
         isAttack = true;
-        AttackTarget attackAction = new AttackTarget(this, ref target, exitDistance, true);
+        this.target = e;
+        AttackTarget attackAction = new AttackTarget(this, ref target, exitDistance * 2, true);
         attackAction.OnComplete?.AddListener((a) =>
         {
             target = null;
             isAttack = false;
-            CheckAttackResult();
         });
         SetAction(attackAction);
     }

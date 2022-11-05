@@ -8,7 +8,6 @@ public class Cleaner : Enemu
     [SerializeField] private float cleaningTime;
     [SerializeField] private float exitDistance;
     [SerializeField] private Trash currentTrash;
-    [SerializeField] private Entity target;
 
     private float currentTime = 0f;
 
