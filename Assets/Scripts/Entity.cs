@@ -49,7 +49,29 @@ public struct EntityAnimationData
         animator.SetBool("machine", false);
         animator.SetBool("mele", false);
     }
-
+    public void Play(string statName, float addtiveSpeed)
+    {
+        //addtiveSpeed;// /= 4;
+        bool stat = false;
+        foreach (EntityAnimation animation in animations)
+        {
+            if (statName == animation.statName)
+            {
+                animator.speed = animation.animationSpeed;// * addtiveSpeed;
+                source.volume = animation.clipVolume;
+                source.loop = animation.clipLoop;
+                source.pitch = animation.clipPitch;
+                source.clip = LevelManager.Instance.GetClip(animation.clipName);
+                source.Play();
+                animator.Play(animation.animName);
+                stat = true;
+            }
+        }
+        if (!stat)
+        {
+            Debug.LogWarning("У сущности нету данных анимации с названием: " + statName);
+        }
+    }
     public void Play(string statName)
     {
         bool stat = false;
@@ -67,7 +89,7 @@ public struct EntityAnimationData
                 stat = true;
             }
         }
-        if(!stat)
+        if (!stat)
         {
             Debug.LogWarning("У сущности нету данных анимации с названием: " + statName);
         }
@@ -84,11 +106,17 @@ public struct EntityAnimationData
 /// </summary>
 public abstract class Entity : MonoBehaviour
 {
-    private HitBar hitBar;
+    [SerializeField] private TrashType diedVFX;
+    [SerializeField] private HitBar hitBar;
     [SerializeField] protected NavMeshAgent agent;
     [SerializeField] protected EntityAnimationData animator;
-
     [SerializeField] private UnityEvent<Entity> onDied;
+
+    public NavMeshAgent Agent { get => agent; }
+    public HitBar HitBar { get => hitBar; }
+    public EntityAnimationData Animator { get => animator; }
+    public UnityEvent<Entity> OnDied { get => onDied; }
+    public TrashType DiedVFX { get => diedVFX; set => diedVFX = value; }
 
     private void Awake()
     {
@@ -106,7 +134,6 @@ public abstract class Entity : MonoBehaviour
         }
         Create();
     }
-
     /// <summary>
     /// Awake
     /// </summary>
@@ -118,14 +145,6 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
-    public NavMeshAgent Agent { get => agent; }
-    public HitBar HitBar { get => hitBar; }
-    public EntityAnimationData Animator { get => animator; }
-    public UnityEvent<Entity> OnDied { get => onDied; }
-
-    /// <summary>
-    /// OneNAB;E
-    /// </summary>
     private void OnEnable()
     {
         if (!agent)
@@ -135,13 +154,13 @@ public abstract class Entity : MonoBehaviour
             agent.updateRotation = false;
             agent.updateUpAxis = false;
         }
+        onDied?.AddListener((e) => LevelManager.Instance.TrashManager.CreateTrash(DiedVFX, agent.transform.position));
         Enable();
     }
     private void OnDisable()
     {
         Disable();
     }
-
     public void DisableAgent()
     {
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
@@ -169,22 +188,17 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
-
-
-
-
-
     public void TakeDamage(Entity source, float damage, System.Action onKill)
     {
         Attacked(source);
         hitBar.TakeDamage(source, damage, () =>
         {
-           
-                onDied?.Invoke(this);
+
+            onDied?.Invoke(this);
             onKill();
             gameObject.SetActive(false);
-            
+
+            onDied?.RemoveAllListeners();
         });
     }
-
 }

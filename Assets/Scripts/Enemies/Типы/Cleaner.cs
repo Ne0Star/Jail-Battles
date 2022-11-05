@@ -27,7 +27,7 @@ public class Cleaner : Enemu
         }
         if (currentTime >= cleaningTime)
         {
-            currentTrash = LevelManager.Instance.CleanersManager.GetRandomActiveTrash();
+            //currentTrash = LevelManager.Instance.CleanersManager.GetRandomActiveTrash();
             if (currentTrash)
             {
                 MoveToTarget action = new MoveToTarget(this, currentTrash.transform);

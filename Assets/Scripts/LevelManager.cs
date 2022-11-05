@@ -41,6 +41,34 @@ public struct UpdateData
 
 }
 
+[System.Serializable]
+public struct Stat
+{
+    [SerializeField] private bool addtive;
+    [SerializeField] private float defaultValue;
+    [SerializeField] private float maxValue;
+    [SerializeField] private float currentValue;
+    [SerializeField] private float regeneratePercent;
+
+    public float CurrentValue { get => currentValue; set => currentValue = value; }
+    public float DefaultValue { get => defaultValue; }
+    public float MaxValue { get => maxValue; }
+
+    public void UpdateDefaultValue(float value)
+    {
+        this.defaultValue = value;
+    }
+    public void Normalize()
+    {
+        float regenValue = (1f * regeneratePercent / 100);
+
+        currentValue = Mathf.Lerp(currentValue, defaultValue, regenValue);
+
+        //currentValue = Mathf.Clamp(addtive ? currentValue + regenValue : currentValue - regenValue, defaultValue, 9999);
+    }
+
+}
+
 public enum AreaType
 {
     Кухня,
@@ -64,21 +92,35 @@ public class LevelManager : OneSingleton<LevelManager>
     [SerializeField] private float customTime;
     [SerializeField] private LevelData levelData;
     [SerializeField] private Player player;
-    [SerializeField] private EnemuManager enemuManager;
-    [SerializeField] private WeaponManager weaponManager;
-    [SerializeField] private TriggerManager triggerManager;
-    [SerializeField] private CleanersManager cleanersManager;
     [SerializeField] private LevelPresset levelPresset;
 
     public Player Player { get => player; }
-    public EnemuManager EnemuManager { get => enemuManager; }
-    public TriggerManager TriggerManager { get => triggerManager; }
-
     public LevelPresset LevelPresset { get => levelPresset; }
     public LevelData LevelData { get => levelData; }
-    public WeaponManager WeaponManager { get => weaponManager; }
     public float CustomTime { get => customTime; }
-    public CleanersManager CleanersManager { get => cleanersManager; }
+
+
+    #region Managers
+    [SerializeField] private EnemuManager enemuManager;
+    [SerializeField] private WeaponManager weaponManager;
+    [SerializeField] private TriggerManager triggerManager;
+    [SerializeField] private CleanerManager cleanerManager;
+    [SerializeField] private TrashManager trashManager;
+    [SerializeField] private InLineManager inLineManager;
+
+
+
+    public EnemuManager EnemuManager { get => enemuManager; }
+    public WeaponManager WeaponManager { get => weaponManager; }
+    public TriggerManager TriggerManager { get => triggerManager; }
+    public CleanerManager CleanerManager { get => cleanerManager; }
+    public TrashManager TrashManager { get => trashManager; }
+    public InLineManager InLineManager { get => inLineManager; }
+
+    #endregion
+
+
+
 
     public List<AIArea> GetAreas(AreaType type)
     {
@@ -139,18 +181,25 @@ public class LevelManager : OneSingleton<LevelManager>
         if (!enemuManager) enemuManager = FindObjectOfType<EnemuManager>(true);
         if (!triggerManager) triggerManager = FindObjectOfType<TriggerManager>(true);
         if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>(true);
-        if (!cleanersManager) cleanersManager = FindObjectOfType<CleanersManager>(true);
+        if (!cleanerManager) cleanerManager = FindObjectOfType<CleanerManager>(true);
+        if (!trashManager) trashManager = FindObjectOfType<TrashManager>(true);
+        if (!inLineManager) inLineManager = FindObjectOfType<InLineManager>(true);
         StartCoroutine(Wait());
     }
 
     private IEnumerator Start()
     {
         triggerManager.gameObject.SetActive(true);
-        //yield return new WaitForSeconds(0.1f);
+
         weaponManager.gameObject.SetActive(true);
-        //yield return new WaitForSeconds(0.5f);
-        cleanersManager.gameObject.SetActive(true);
+
+        cleanerManager.gameObject.SetActive(true);
         enemuManager.gameObject.SetActive(true);
+
+        trashManager.gameObject.SetActive(true);
+
+        inLineManager.gameObject.SetActive(true);
+
         yield return null;
     }
 

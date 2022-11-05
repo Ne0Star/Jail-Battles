@@ -43,6 +43,7 @@ public class EntityTrigger : Trigger
                 {
                     onStay?.Invoke(e);
                 }
+                if(LevelManager.Instance.Player.gameObject.activeInHierarchy)
                 if (Vector2.Distance(LevelManager.Instance.Player.Agent.transform.position, transform.position) <= radius)
                 {
                     onStay?.Invoke(LevelManager.Instance.Player);

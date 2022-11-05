@@ -29,23 +29,21 @@ public class AttackTarget : AIAction
     [SerializeField] private float currentTime;
     [SerializeField] private float attackTime;
     [SerializeField] private int attackCount;
-    public override void Break()
-    {
-
-    }
-
+    [SerializeField] private bool rotated = false;
     private void Rotate()
     {
-        if (!reached)
-        {
-            GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
-            //GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
-        }
-        else
-        {
-            GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
-            //GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
-        }
+        rotated = false;
+        if (executor && executor.gameObject.activeSelf)
+            if (!reached)
+            {
+                GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+                //GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
+            }
+            else
+            {
+                GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+                //GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
+            }
     }
 
 
@@ -78,7 +76,7 @@ public class AttackTarget : AIAction
             if (currentTime >= executor.Weapon.ReloadSpeed)
             {
 
-                executor.Animator.Play("reload");
+                //executor.Animator.Play("reload");
 
                 attackCount = 0;
                 currentTime = 0;
@@ -86,22 +84,24 @@ public class AttackTarget : AIAction
             currentTime += Time.unscaledDeltaTime;
         }
     }
-
+    public System.Action onExitDistance;
     [SerializeField] private bool reached = false;
     public override void CustomUpdate()
     {
         float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
-        if (distance >= exitDistance)
-        {
-            OnBreak?.Invoke(this);
-            return;
-        }
         if (!target || !target.gameObject.activeSelf)
         {
             OnComplete?.Invoke(this);
+            target = null;
             return;
         }
-        Rotate();
+        if (distance >= exitDistance)
+        {
+            onExitDistance?.Invoke();
+            return;
+        }
+
+
         // Есть пушка
         if (executor.WeaponGun && distance <= executor.WeaponGun.AttackDistance && distance >= executor.WeaponGun.NotAttackDistance)
         {
@@ -116,12 +116,14 @@ public class AttackTarget : AIAction
         {
             if (reached)
             {
-                executor.Animator.Play("walk");
+                executor.Animator.Play("walk", executor.Agent.speed);
             }
             reached = false;
             executor.Agent.isStopped = false;
+            //Debug.Log("Хуйня");
             executor.Agent.SetDestination(target.Agent.transform.position);
         }
+        Rotate();
     }
 
     public override void Initial()

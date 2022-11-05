@@ -55,6 +55,14 @@ public class EnemuManager : MonoBehaviour
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>(true));
 
+        StartCoroutine(Enabled());
+
+        allEnemies.StartLife(this);
+
+    }
+
+    private IEnumerator Enabled()
+    {
         foreach (Enemu e in allEnemies)
         {
             if (e as Convict)
@@ -68,10 +76,8 @@ public class EnemuManager : MonoBehaviour
 
 
             e.gameObject.SetActive(true);
+            yield return new WaitForSeconds(0.001f);
         }
-
-        allEnemies.StartLife(this);
-
     }
 
     public Enemu[] GetAllEnemu(Enemu ignore)

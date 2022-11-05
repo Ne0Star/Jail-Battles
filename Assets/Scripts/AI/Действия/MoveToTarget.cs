@@ -4,12 +4,12 @@ using UnityEngine;
 
 public class MoveToTarget : AIAction
 {
+    public System.Action onExitDistance;
 
     [SerializeField] private Transform target;
     [SerializeField] private Entity executor;
     [SerializeField] private float breakDistance;
     [SerializeField] private bool useBreakDistance = false;
-
     public MoveToTarget(Entity executor, Transform target)
     {
         this.executor = executor;
@@ -23,11 +23,6 @@ public class MoveToTarget : AIAction
         this.target = target;
         this.breakDistance = breakDistance;
         useBreakDistance = true;
-    }
-
-    public override void Break()
-    {
-
     }
 
     [SerializeField] private Vector3 targetPos;
@@ -59,7 +54,7 @@ public class MoveToTarget : AIAction
         }
         else if (useBreakDistance && distance >= breakDistance)
         {
-            OnBreak?.Invoke(this);
+            onExitDistance?.Invoke();
         }
         executor.Agent.SetDestination(target.transform.position);
     }
@@ -67,6 +62,6 @@ public class MoveToTarget : AIAction
     public override void Initial()
     {
         executor.Agent.isStopped = false;
-        executor.Animator.Play("walk");
+        executor.Animator.Play("walk",executor.Agent.speed);
     }
 }

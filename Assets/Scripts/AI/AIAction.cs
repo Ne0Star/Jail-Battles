@@ -9,20 +9,18 @@ using UnityEngine.Events;
 /// </summary>
 /// 
 [System.Serializable]
-public abstract class AIAction  : ScriptableObject
+public abstract class AIAction : ScriptableObject
 {
+    public int id;
+    [SerializeField] private bool blockStack = false;
     [SerializeField] protected UnityEvent<AIAction> onComplete = new UnityEvent<AIAction>();
-    [SerializeField] protected UnityEvent<AIAction> onBreak = new UnityEvent<AIAction>();
     public UnityEvent<AIAction> OnComplete { get => onComplete; }
-    public UnityEvent<AIAction> OnBreak { get => onBreak; }
+    public bool BlockStack { get => blockStack; set => blockStack = value; }
+
     /// <summary>
     /// Вызывается при назначении действия какому либо AI
     /// </summary>
     public abstract void Initial();
-    /// <summary>
-    /// Вызывается когда действие прерывается
-    /// </summary>
-    public abstract void Break();
     /// <summary>
     /// Вызывается каждое время обновления для действия
     /// </summary>

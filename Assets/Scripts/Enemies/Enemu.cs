@@ -5,6 +5,9 @@ using UnityEngine.U2D.Animation;
 
 public class Enemu : Entity, ICustomListItem
 {
+
+    [SerializeField] private Stat moveSpeed;
+
     [SerializeField] private EntityTrigger[] triggers;
     [SerializeField] private float currentTime;
     [SerializeField] private int updateCount;
@@ -110,13 +113,14 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] protected List<AIAction> lifeActions = new List<AIAction>();
     [SerializeField] protected AIAction currentAction;
     [SerializeField] protected AIAction lastAction;
-    [SerializeField] private int lifeActionIndex = 0;
+    [SerializeField] private int index = 0;
     public float RotateOffset { get => rotateOffset; }
     public Transform RotateParent { get => rotateParent; }
     public Gun WeaponGun { get => gun; }
     public Mele WeaponMele { get => mele; }
     public Weapon Weapon { get => weapon; }
     public float RotateSpeed { get => rotateSpeed; }
+    public Stat MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
 
     protected override void Create()
     {
@@ -157,58 +161,53 @@ public class Enemu : Entity, ICustomListItem
         //animator.Play("Покой");
     }
     /// <summary>
-    /// Устанавливает новое действие
+    /// Устанавливает новое действие, если использовать стек то текущее выполняемое добавится в стек
     /// </summary>
     /// <param name="action"></param>
-    protected void SetAction(AIAction action)
+    /// <param name="useStack"></param>
+    public void SetAction(AIAction action)
     {
-        // Текущее действие в стек
-        if (currentAction != null && lifeActions.Contains(currentAction))
-            stackActions.Add(currentAction);
+        action.OnComplete?.AddListener((a) =>
+        {
+            if (currentAction == a)
+            {
+                currentAction = null;
+            }
+            stackActions.Remove(a);
+        });
 
-        action.OnComplete.AddListener((a) =>
-        {
-            stackActions.Remove(a);
-            if (a == currentAction)
-            {
-                currentAction = null;
-            }
-        });
-        action.OnBreak.AddListener((a) =>
-        {
-            stackActions.Remove(a);
-            if (a == currentAction)
-            {
-                currentAction = null;
-            }
-        });
-        action.Initial();
-        // Текущим дейсвтием становится это
+        action.id = -1;
         currentAction = action;
+        bool addStack = true;
+        foreach (AIAction act in stackActions)
+        {
+            if (act.id == currentAction.id)
+            {
+                addStack = false;
+                break;
+            }
+        }
+        if (addStack && !action.BlockStack)
+            stackActions.Add(currentAction);
     }
     protected void AddAction(AIAction action)
     {
         if (action == null) return;
+        action.id = lifeActions.Count + 1;
         lifeActions.Add(action);
-        if (currentAction == null)
+        //if (currentAction == null)
+        //{
+        currentAction = action;
+        action.OnComplete.AddListener((a) =>
         {
-            currentAction = action;
-            action.OnComplete.AddListener((a) =>
+            if (currentAction == a)
             {
-                if (currentAction == a)
-                {
-                    currentAction = null;
-                }
-            });
-            action.OnBreak.AddListener((a) =>
-            {
-                if (currentAction == a)
-                {
-                    currentAction = null;
-                }
-            });
-            action.Initial();
-        }
+                currentAction = null;
+            }
+        });
+
+        action.Initial();
+        //}
     }
 
     protected virtual void OnUpdate()
@@ -230,57 +229,37 @@ public class Enemu : Entity, ICustomListItem
             return;
         }
 
-        // Если действие существует
+
+        moveSpeed.CurrentValue = agent.speed;
+        moveSpeed.Normalize();
+        agent.speed = moveSpeed.CurrentValue;
+
+        if (currentAction != null && currentAction != lastAction)
+        {
+            currentAction.Initial();
+            lastAction = currentAction;
+        }
+
         if (currentAction != null)
         {
             currentAction.CustomUpdate();
+                if (stackActions.Contains(currentAction))
+                {
+                    stackActions.Remove(currentAction);
+                }
         }
-        else // Если действия нету
+        else if (stackActions != null && stackActions.Count > 0)
         {
-            // Если в стеке есть действия, берем из стека
-            if (stackActions != null && stackActions.Count > 0)
-            {
-                currentAction = stackActions[stackActions.Count - 1];
-                currentAction.Initial();
-                currentAction.OnComplete.AddListener((a) =>
-                {
-                    if (currentAction == a)
-                    {
-                        currentAction = null;
-                    }
-                });
-                currentAction.OnBreak.AddListener((a) =>
-                {
-                    if (currentAction == a)
-                    {
-                        currentAction = null;
-                    }
-                });
-                stackActions.Remove(currentAction);
-            }
-            // Иначе если в стеке нету берём из цикла
-            else if (lifeActions != null && lifeActions.Count > 0)
-            {
-                currentAction = lifeActions[lifeActionIndex];
-                currentAction.Initial();
-                currentAction.OnComplete.AddListener((a) =>
-                {
-                    if (currentAction == a)
-                    {
-                        currentAction = null;
-                    }
-                });
-                currentAction.OnBreak.AddListener((a) =>
-                {
-                    if (currentAction == a)
-                    {
-                        currentAction = null;
-                    }
-                });
-
-                lifeActionIndex = lifeActionIndex + 1 > lifeActions.Count - 1 ? 0 : lifeActionIndex + 1;
-            }
+            currentAction = stackActions[stackActions.Count - 1];
         }
+        else if (lifeActions != null && lifeActions.Count > 0)
+        {
+            currentAction = lifeActions[index];
+            index = index + 1 > lifeActions.Count - 1 ? 0 : index + 1;
+        }
+
+
+
         OnUpdate();
     }
 }

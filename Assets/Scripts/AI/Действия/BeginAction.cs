@@ -2,38 +2,40 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MoveFromArea : AIAction
+public class BeginAction : AIAction
 {
+    public System.Action onDied;
+
     [SerializeField] private Entity executor;
+    [SerializeField] private Entity pursuer;
     [SerializeField] private List<AIArea> areas;
-    public MoveFromArea(Entity executor, List<AIArea> areas)
+    [SerializeField] private float completeDistance;
+    public BeginAction(Entity executor, Entity pursuer, List<AIArea> areas, float completeDistance)
     {
         this.executor = executor;
+        this.pursuer = pursuer;
         this.areas = areas;
-
-
-
+        this.completeDistance = completeDistance;
     }
 
-    [SerializeField] private float distance;
-    [SerializeField] private Vector3 targetPos;
-    [SerializeField] private bool init = false;
     public override void CustomUpdate()
     {
-        if (!init) return;
-        float distance = Vector2.Distance(executor.Agent.transform.position, targetPos);
+        float distance = Vector2.Distance(executor.Agent.transform.position, pursuer.Agent.transform.position);
         if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
             GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
         }
-        if (distance <= executor.Agent.radius)
+        if (distance >= completeDistance)
         {
             onComplete?.Invoke(this);
         }
-
+        if(!executor.gameObject.activeSelf)
+        {
+            onDied?.Invoke();
+        }
     }
-
+    [SerializeField] private Vector3 targetPos;
     public override void Initial()
     {
         executor.Agent.isStopped = false;
@@ -43,7 +45,6 @@ public class MoveFromArea : AIAction
             {
                 targetPos = v;
                 executor.Agent.SetDestination(v);
-                init = true;
                 executor.Animator.Play("walk", executor.Agent.speed);
             }
             else

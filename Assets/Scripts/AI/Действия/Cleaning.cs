@@ -12,16 +12,12 @@ public class Cleaning : AIAction
         this.executor = executor;
         this.trash = trash;
         this.cleaningTime = cleaningTime;
-    }
-
-    public override void Break()
-    {
 
     }
 
     public override void CustomUpdate()
     {
-        if (!trash.block)
+        if (!trash.IsFree)
         {
             onComplete?.Invoke(this);
         }
@@ -29,7 +25,7 @@ public class Cleaning : AIAction
 
     public override void Initial()
     {
-        trash.Cleaning(cleaningTime);
+        trash.StartCleaning(cleaningTime);
             GameUtils.LookAt2D(executor.Agent.transform, trash.transform.position, -90);
         executor.Animator.Play("cleaning");
     }
