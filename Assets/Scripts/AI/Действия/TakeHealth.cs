@@ -1,16 +1,17 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 public class TakeHealth : AIAction
 {
     [SerializeField] private Nurse executor;
     [SerializeField] private Entity target;
-    public TakeHealth(Nurse executor, Entity target, System.Action complete)
+    public TakeHealth(Nurse executor, Entity target, UnityEvent complete)
     {
         this.executor = executor;
         this.target = target;
-        complete += Complete;
+        complete.AddListener(Complete);
     }
 
     private void Complete()
@@ -27,9 +28,13 @@ public class TakeHealth : AIAction
             onComplete?.Invoke(this);
             return;
         }
-        if (AIUtils.Collision(executor.Agent, target.Agent))
+        else
         {
             GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+        }
+        float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        if (distance <= executor.Agent.radius + target.Agent.radius + 0.1f)
+        {
             if (!startHeal)
             {
                 executor.Animator.Play("health");
@@ -41,8 +46,8 @@ public class TakeHealth : AIAction
 
     public override void Initial()
     {
-
         executor.Agent.isStopped = true;
-        executor.Animator.Play("idle");
+        executor.Agent.SetDestination(target.transform.position);
+        executor.Animator.Play("walk");
     }
 }

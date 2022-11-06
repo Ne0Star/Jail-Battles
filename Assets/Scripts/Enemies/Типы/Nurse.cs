@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Events;
 
 /// <summary>
 /// Мед сестра
@@ -15,12 +16,13 @@ public class Nurse : Enemu
     [SerializeField] private float actionTime = 40f;
     [SerializeField] private bool isFree;
 
-    [SerializeField] private System.Action targetComplete;
+    [SerializeField] private UnityEvent targetComplete;
 
     public bool IsFree { get => isFree; }
 
     public void Health()
     {
+        //if (target) target.HitBar.AddHealth(LevelManager.Instance.LevelData.HealValue);
         targetComplete?.Invoke();
     }
     public void GetHealth(Entity sources, System.Action onComplete)
@@ -30,6 +32,7 @@ public class Nurse : Enemu
             onComplete?.Invoke();
             return;
         }
+        //this.target = sources;
         isFree = false;
         TakeHealth take = new TakeHealth(this, sources, targetComplete);
         take.OnComplete?.AddListener((a) =>

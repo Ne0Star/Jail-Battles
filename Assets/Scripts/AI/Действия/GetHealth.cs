@@ -19,7 +19,8 @@ public class GetHealth : AIAction
 
 
             executor.Agent.SetDestination(nurse.Agent.transform.position);
-            if (AIUtils.Collision(executor.Agent, nurse.Agent))
+            float distance = Vector2.Distance(executor.Agent.transform.position, nurse.Agent.transform.position);
+            if (distance <= (executor.Agent.radius + nurse.Agent.radius * 3))
             {
                 initialized = false;
                 executor.Animator.Play("idle");
@@ -36,7 +37,8 @@ public class GetHealth : AIAction
                     GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
                 }
             }
-        } else
+        }
+        else
         {
             if (executor as Enemu)
             {

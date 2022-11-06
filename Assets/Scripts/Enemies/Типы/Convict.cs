@@ -14,7 +14,7 @@ public class Convict : Enemu
     public bool IsBegin { get => isBegin; }
     public bool IsAttack { get => isAttack; }
     public bool IsIdle { get => isIdle; }
-
+    public bool IsHealth { get => isHealth; }
 
     private void Heal()
     {
@@ -113,7 +113,7 @@ public class Convict : Enemu
         if (e as Convict)
         {
             Convict enemu = (Convict)e;
-            if (enemu.isBegin || (enemu.Target && (enemu.Target.gameObject.activeSelf && enemu.Target != this)))
+            if (enemu.isBegin || (enemu.Target && (enemu.Target.gameObject.activeSelf && enemu.Target != this)) || enemu.isHealth)
             {
                 return;
             }
