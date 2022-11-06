@@ -28,32 +28,53 @@ public class BeginAction : AIAction
             e.Agent.speed = Mathf.Clamp(e.Agent.speed + speedInterpolator, -e.MoveSpeed.MaxValue, e.MoveSpeed.MaxValue);
             GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
         }
-        if (!pursuer || !pursuer.gameObject.activeSelf || !(pursuer.Target == executor))
+        if (pursuer as Convict)
         {
-            onComplete?.Invoke(this);
+            Convict c = (Convict)pursuer;
+            if (!c.IsAttack)// || c.Target != executor)
+            {
+                onComplete?.Invoke(this);
+            }
         }
         if (!executor.gameObject.activeSelf)
         {
             onDied?.Invoke();
         }
+
+
+        if (!isMove)
+        {
+            isMove = true;
+            areas[Random.Range(0, areas.Count)].GetVector(executor.Agent, (v) =>
+            {
+                if (executor.gameObject.activeSelf)
+                {
+                    targetPos = v;
+                    executor.Agent.SetDestination(targetPos);
+                    executor.Animator.Play("walk", executor.Agent.speed);
+                }
+                else
+                {
+                    onComplete?.Invoke(this);
+                }
+
+            });
+        }
+        else
+        {
+            if (Vector2.Distance(executor.Agent.transform.position, targetPos) <= executor.Agent.radius + pursuer.Agent.radius)
+            {
+                isMove = false;
+            }
+        }
+
     }
+
+    [SerializeField] private bool isMove = false;
     [SerializeField] private Vector3 targetPos;
     public override void Initial()
     {
+        isMove = false;
         executor.Agent.isStopped = false;
-        areas[Random.Range(0, areas.Count)].GetVector(executor.Agent, (v) =>
-        {
-            if (executor.gameObject.activeSelf)
-            {
-                targetPos = v;
-                executor.Agent.SetDestination(v);
-                executor.Animator.Play("walk", executor.Agent.speed);
-            }
-            else
-            {
-                onComplete?.Invoke(this);
-            }
-
-        });
     }
 }

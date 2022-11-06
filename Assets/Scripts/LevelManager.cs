@@ -6,22 +6,40 @@ using UnityEngine;
 public struct LevelData
 {
 
-    [SerializeField] private float pursurehance;
+    [Header("Шанс что любой бот пойдет кушать")]
     [SerializeField] private float feedChance;
+    [Header("Шанс любой бот пойдет в туалет")]
     [SerializeField] private float toiletChance;
+
+    [Space(1)]
+
+    [Header("Шанс что зек вступит в бой")]
+    [SerializeField] private float pursurehance;
+    [Header("Шанс что зек убежит из боя при низком уровне ХП")]
     [SerializeField] private float beginChance;
-    public LevelData(float pursurehance, float feedChance, float toiletChance, float beginChance)
+
+    [Space(1)]
+
+    [Header("Шанс что зек пойдет лечится")]
+    [SerializeField] private float healChance;
+    [Header("Количесво хп для исцеления")]
+    [SerializeField] private float healValue;
+
+    public LevelData(float pursurehance, float feedChance, float toiletChance, float beginChance, float healChance, float healValue)
     {
         this.pursurehance = pursurehance;
         this.feedChance = feedChance;
         this.toiletChance = toiletChance;
         this.beginChance = beginChance;
+        this.healChance = healChance;
+        this.healValue = healValue;
     }
-
     public float Pursurehance { get => pursurehance; }
     public float FeedChance { get => feedChance; }
     public float ToiletChance { get => toiletChance; }
     public float BeginChance { get => beginChance; }
+    public float HealChance { get => healChance; }
+    public float HealValue { get => healValue; }
 }
 
 [System.Serializable]
@@ -123,7 +141,6 @@ public class LevelManager : OneSingleton<LevelManager>
     [SerializeField] private TriggerManager triggerManager;
     [SerializeField] private CleanerManager cleanerManager;
     [SerializeField] private TrashManager trashManager;
-    [SerializeField] private InLineManager inLineManager;
 
 
 
@@ -132,7 +149,6 @@ public class LevelManager : OneSingleton<LevelManager>
     public TriggerManager TriggerManager { get => triggerManager; }
     public CleanerManager CleanerManager { get => cleanerManager; }
     public TrashManager TrashManager { get => trashManager; }
-    public InLineManager InLineManager { get => inLineManager; }
 
     #endregion
 
@@ -201,7 +217,6 @@ public class LevelManager : OneSingleton<LevelManager>
         if (!weaponManager) weaponManager = FindObjectOfType<WeaponManager>(true);
         if (!cleanerManager) cleanerManager = FindObjectOfType<CleanerManager>(true);
         if (!trashManager) trashManager = FindObjectOfType<TrashManager>(true);
-        if (!inLineManager) inLineManager = FindObjectOfType<InLineManager>(true);
         StartCoroutine(Wait());
     }
 
@@ -215,8 +230,6 @@ public class LevelManager : OneSingleton<LevelManager>
         enemuManager.gameObject.SetActive(true);
 
         trashManager.gameObject.SetActive(true);
-
-        inLineManager.gameObject.SetActive(true);
 
         yield return null;
     }

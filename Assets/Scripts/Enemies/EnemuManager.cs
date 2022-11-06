@@ -28,6 +28,20 @@ public class EnemuManager : MonoBehaviour
     public List<Cleaner> AllCleaners { get => allCleaners; }
 
 
+    public T GetEntityByType<T>() where T : Enemu
+    {
+        T result = null;
+        foreach (Entity entity in allEnemies)
+        {
+            if (entity as T)
+            {
+                result = (T)entity;
+                break;
+            }
+        }
+        return result;
+    }
+
     public List<Entity> GetAllEntityByType(EntityType type)
     {
         List<Entity> r = new List<Entity>();

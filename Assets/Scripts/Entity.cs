@@ -202,4 +202,16 @@ public abstract class Entity : MonoBehaviour
             onDied?.RemoveAllListeners();
         });
     }
+    public void TakeDamage(Entity source, float damage)
+    {
+        Attacked(source);
+        hitBar.TakeDamage(source, damage, () =>
+        {
+
+            onDied?.Invoke(this);
+            gameObject.SetActive(false);
+
+            onDied?.RemoveAllListeners();
+        });
+    }
 }

@@ -10,17 +10,32 @@ public class Convict : Enemu
     [SerializeField] private bool isBegin = false;
     [SerializeField] private bool isIdle = false;
     [SerializeField] private bool isAttack = false;
-
+    [SerializeField] private bool isHealth = false;
     public bool IsBegin { get => isBegin; }
     public bool IsAttack { get => isAttack; }
     public bool IsIdle { get => isIdle; }
 
+
+    private void Heal()
+    {
+        if (isHealth) return;
+        if (Random.Range(0, 100) >= (100 - LevelManager.Instance.LevelData.HealChance))
+        {
+            isHealth = true;
+            GetHealth health = new GetHealth(this);
+            health.OnComplete?.AddListener((a) =>
+            {
+                isHealth = false;
+            });
+            SetAction(health);
+        }
+    }
+    // 200 20
     protected override void Attacked(Entity attacker)
     {
-
         if (HitBar.Health <= HitBar.GetMaxHealth() / 2 && !isBegin)
         {
-            isBegin = Random.Range(0, 100) >= (100 - LevelManager.Instance.LevelData.BeginChance);
+            isBegin = Random.Range(0, 100) >= ((100 - LevelManager.Instance.LevelData.BeginChance) + (HitBar.Health / 100));
             if (isBegin)
             {
                 agent.speed = Mathf.Clamp(agent.speed + 1f, -MoveSpeed.MaxValue, MoveSpeed.MaxValue);
@@ -28,25 +43,24 @@ public class Convict : Enemu
                 ba.OnComplete?.AddListener((a) =>
                 {
                     isBegin = false;
+                    Heal();
                 });
                 SetAction(ba);
             }
             return;
         }
-        else
-        {
-            StartAttack(attacker);
-        }
+        if(!isHealth)
+        StartAttack(attacker);
     }
 
     protected override void OnCustomTriggerStay(Entity e)
     {
+        if (isBegin || isHealth) return;
         if (e != LevelManager.Instance.Player)
         {
             bool agro = Random.Range(0, 100) >= (100 - LevelManager.Instance.LevelData.Pursurehance);
             if (!agro) return;
         }
-        if (isBegin) return;
         StartAttack(e);
     }
 
@@ -59,6 +73,7 @@ public class Convict : Enemu
         isBegin = false;
         isIdle = false;
         isAttack = false;
+        isHealth = false;
     }
 
     private void SetLife()
@@ -111,6 +126,7 @@ public class Convict : Enemu
         {
             target = null;
             isAttack = false;
+            Heal();
         });
         SetAction(attackAction);
     }
