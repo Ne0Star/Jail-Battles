@@ -7,11 +7,10 @@ public class VisibleEvent : MonoBehaviour
 {
     [SerializeField] private UnityEvent onVisible, onInvisible;
 
-    private void OnEnable()
+    private void Start()
     {
         onInvisible?.Invoke();
     }
-
     private void OnBecameInvisible()
     {
         onInvisible?.Invoke();
