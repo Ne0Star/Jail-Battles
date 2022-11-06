@@ -16,20 +16,32 @@ public class GetHealth : AIAction
         if (initialized)
         {
 
-            if (executor as Enemu)
-            {
-                Enemu e = (Enemu)executor;
-                GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
-            }
+
 
             executor.Agent.SetDestination(nurse.Agent.transform.position);
             if (AIUtils.Collision(executor.Agent, nurse.Agent))
             {
                 initialized = false;
+                executor.Animator.Play("idle");
                 nurse.GetHealth(executor, () =>
                 {
                     OnComplete?.Invoke(this);
                 });
+            }
+            else
+            {
+                if (executor as Enemu)
+                {
+                    Enemu e = (Enemu)executor;
+                    GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
+                }
+            }
+        } else
+        {
+            if (executor as Enemu)
+            {
+                Enemu e = (Enemu)executor;
+                GameUtils.LookAt2DSmooth(e.RotateParent, nurse.Agent.transform.position, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
             }
         }
     }
