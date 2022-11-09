@@ -5,4 +5,8 @@ using UnityEngine;
 public class CookManager : MonoBehaviour
 {
     [SerializeField] private List<AIActionItem> cookItems;
+
+
+
+
 }

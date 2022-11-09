@@ -8,11 +8,11 @@ public class AttackTarget : AIAction
     [SerializeField] private Entity target;
     [SerializeField] private float exitDistance;
 
-    public AttackTarget(Enemu executor, ref Entity target, float exitDistance, bool fastAttack)
+    public AttackTarget(Enemu executor, ref Entity target, bool fastAttack)
     {
         this.executor = executor;
         this.target = target;
-        this.exitDistance = exitDistance;
+        this.exitDistance = LevelManager.Instance.LevelData.ExitDistance;
         attackTime = 0;
         attackCount = 0;
         if (fastAttack)
@@ -33,17 +33,29 @@ public class AttackTarget : AIAction
     private void Rotate()
     {
         rotated = false;
-        if (executor && executor.gameObject.activeSelf)
+        if (executor && executor.gameObject.activeSelf && target && target.gameObject.activeSelf)
+        {
             if (!reached)
             {
-                GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+                GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * (executor.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler));
+                    rotated = true;
+                //rotated = true
                 //GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
             }
             else
             {
-                GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * executor.RotateSpeed);
+                GameUtils.LookAt2DSmooth(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset, Time.unscaledDeltaTime * (executor.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler), 0.1f, () =>
+                {
+                    rotated = true;
+                });
                 //GameUtils.LookAt2D(executor.RotateParent, target.Agent.transform.position, executor.RotateOffset);
             }
+        }
+        else
+        {
+            OnComplete?.Invoke(this);
+        }
+
     }
 
 
@@ -98,17 +110,18 @@ public class AttackTarget : AIAction
         if (distance >= exitDistance)
         {
             onExitDistance?.Invoke();
+            onComplete?.Invoke(this);
             return;
         }
 
 
         // Есть пушка
-        if (executor.WeaponGun && distance <= executor.WeaponGun.AttackDistance && distance >= executor.WeaponGun.NotAttackDistance)
+        if (executor.WeaponGun && distance <= executor.WeaponGun.AttackDistance && distance >= executor.WeaponGun.NotAttackDistance && rotated)
         {
             SimulateWeapon(executor.WeaponGun);
         }
         // Есть дубинка
-        else if (executor.WeaponMele && distance <= executor.Agent.radius + target.Agent.radius + 0.1f)
+        else if (executor.WeaponMele && distance <= executor.Agent.radius + target.Agent.radius + 0.2f && rotated)
         {
             SimulateWeapon(executor.WeaponMele);
         }

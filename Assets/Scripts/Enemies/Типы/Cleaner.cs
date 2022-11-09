@@ -9,41 +9,67 @@ public class Cleaner : Enemu
     [SerializeField] private float exitDistance;
     [SerializeField] private Trash currentTrash;
 
-    private float currentTime = 0f;
+    [SerializeField] private float time = 0f;
 
+    protected override void Create()
+    {
+
+    }
     protected override void Enabled()
     {
-        AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Кухня)));
-        AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
+        List<AIArea> areas = LevelManager.Instance.GetAreas(AreaType.Кухня);
+        areas.AddRange(LevelManager.Instance.GetAreas(AreaType.Столовая));
+        AddAction(new MoveFromArea(this, areas));
+        AddAction(new MoveFromArea(this, areas));
+        //AddAction(new MoveFromArea(this, ));
+    }
+
+    protected override void Disable()
+    {
+
+
     }
 
     protected override void OnUpdate()
     {
-        if (currentTrash != null)
+        if (time >= cleaningTime)
         {
-
-            return;
-        }
-        if (currentTime >= cleaningTime)
-        {
-            //currentTrash = LevelManager.Instance.CleanersManager.GetRandomActiveTrash();
-            if (currentTrash)
+            if (currentTrash == null)
             {
-                MoveToTarget action = new MoveToTarget(this, currentTrash.transform);
-                action.OnComplete?.AddListener((a) =>
+                currentTrash = LevelManager.Instance.TrashManager.GetFreeActiveTrash();
+                if (currentTrash)
                 {
-                    Cleaning act = new Cleaning(this, currentTrash, cleaningDuration);
-                    act.OnComplete?.AddListener((a) =>
+                    Cleaning cl = new Cleaning(this, currentTrash, cleaningTime);
+                    cl.OnComplete.AddListener((a) =>
                     {
                         currentTrash = null;
                     });
-                    SetAction(act);
-                });
-                SetAction(action);
+                    currentTrash.SetFree(false);
+                    SetAction(cl);
+                }
             }
-            currentTime = 0f;
+
+            ////currentTrash = LevelManager.Instance.CleanersManager.GetRandomActiveTrash();
+            //if (currentTrash)
+            //{
+            //    MoveToTarget action = new MoveToTarget(this, currentTrash.transform);
+            //    action.OnComplete?.AddListener((a) =>
+            //    {
+            //        Cleaning act = new Cleaning(this, currentTrash, cleaningDuration);
+            //        act.OnComplete?.AddListener((a) =>
+            //        {
+            //            currentTrash = null;
+            //        });
+            //        SetAction(act);
+            //    });
+            //    SetAction(action);
+            //} else
+            //{
+            //    currentTrash = LevelManager.Instance.TrashManager.GetFreeTrash();
+            //}
+            time = 0f;
         }
-        currentTime += Time.unscaledDeltaTime;
+        time += Time.unscaledDeltaTime;
     }
 
     //protected override void OnCustomTriggerStay(Entity e)

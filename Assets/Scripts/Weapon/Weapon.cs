@@ -2,28 +2,62 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-
-/// <summary>
-/// Тип оружия
-/// </summary>
-public enum WeaponType
+[System.Serializable]
+public enum WeaponCategory
 {
     /// <summary>
     /// Нету оружия
     /// </summary>
-    None,
+    None = 0,
+
     /// <summary>
     /// Пистолет
     /// </summary>
-    Gun,
+    Стрелковое_Легкое = 1,
+
     /// <summary>
     /// Автомат
     /// </summary>
-    Machine,
+    Стрелковое_Тяжелое = 2,
+
     /// <summary>
     /// Дубинка/короткая палка
     /// </summary>
-    Mele,
+    Ближний_Бой_Одноручное = 3,
+
+    /// <summary>
+    /// Палка, копьё...
+    /// </summary>
+    Ближний_Бой_Двуручное = 4,
+
+    /// <summary>
+    /// Граната, молотов
+    /// </summary>
+    Только_Метательное = 5
+}
+
+/// <summary>
+/// Тип оружия
+/// Категория = 14 
+/// </summary>
+[System.Serializable]
+public enum WeaponType
+{
+    None,
+    MP_443_Грач,
+    АПС,
+    Железная_Дилдинка,
+    Макар,
+    ПП_91_Кедр,
+    Швабра,
+    Граната,
+    Кунай,
+    Сюрикен,
+    Палка,
+    Сломанная_Палка,
+    Бутылка,
+    Вилка,
+    Нож,
 }
 
 /// <summary>
@@ -32,6 +66,7 @@ public enum WeaponType
 public class Weapon : MonoBehaviour
 {
     public WeaponType WeaponType { get => weaponType; }
+    public WeaponCategory WeaponCategory { get => weaponCategory; }
 
     [SerializeField] protected bool free = false;
     [SerializeField] protected AudioClip clip;
@@ -40,7 +75,21 @@ public class Weapon : MonoBehaviour
     [SerializeField] private int attackCount;
     [SerializeField] protected float attackSpeed;
     [SerializeField] private float reloadSpeed;
+
+    [SerializeField] private WeaponCategory weaponCategory;
     [SerializeField] private WeaponType weaponType;
+    private void OnDrawGizmosSelected()
+    {
+
+    }
+
+    private void OnValidate()
+    {
+        //weaponCategory = (WeaponCategory)weaponType.GetTypeCode();
+    }
+
+
+
     [SerializeField] private GameObject left, top;
 
     /// <summary>

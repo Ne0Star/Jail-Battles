@@ -6,6 +6,14 @@ using UnityEngine;
 public struct LevelData
 {
 
+
+
+    [Header("Время на которое появится HitBar")]
+    [SerializeField] private float hitBarDuration;
+    [Header("Множитель скорости вращения всех сущностей")]
+    [SerializeField] private float rotateMultipler;
+    [Header("Дистанция после которой приследование останавливается")]
+    [SerializeField] private float exitDistance;
     [Header("Шанс что любой бот пойдет кушать")]
     [SerializeField] private float feedChance;
     [Header("Шанс любой бот пойдет в туалет")]
@@ -25,7 +33,7 @@ public struct LevelData
     [Header("Количесво хп для исцеления")]
     [SerializeField] private float healValue;
 
-    public LevelData(float pursurehance, float feedChance, float toiletChance, float beginChance, float healChance, float healValue)
+    public LevelData(float pursurehance, float feedChance, float toiletChance, float beginChance, float healChance, float healValue, float exitDistance, float rotateMultipler, float hitBarDuration)
     {
         this.pursurehance = pursurehance;
         this.feedChance = feedChance;
@@ -33,13 +41,21 @@ public struct LevelData
         this.beginChance = beginChance;
         this.healChance = healChance;
         this.healValue = healValue;
+        this.exitDistance = exitDistance;
+        this.rotateMultipler = rotateMultipler;
+        this.hitBarDuration = hitBarDuration;
     }
+
     public float Pursurehance { get => pursurehance; }
     public float FeedChance { get => feedChance; }
     public float ToiletChance { get => toiletChance; }
     public float BeginChance { get => beginChance; }
     public float HealChance { get => healChance; }
     public float HealValue { get => healValue; }
+    public float ExitDistance { get => exitDistance; }
+    public float RotateMultipler { get => rotateMultipler; }
+    public float HitBarDuration { get => hitBarDuration; }
+
 }
 
 [System.Serializable]
@@ -78,9 +94,13 @@ public struct UpdateData
 [System.Serializable]
 public struct Stat
 {
+    [SerializeField] private float minValue;
+    [SerializeField] private float maxValue;
+
     [SerializeField] private bool addtive;
     [SerializeField] private float defaultValue;
-    [SerializeField] private float maxValue;
+
+
     [SerializeField] private float currentValue;
     [SerializeField] private float regeneratePercent;
 
@@ -92,6 +112,22 @@ public struct Stat
     {
         this.defaultValue = value;
     }
+
+    public void DeBuffToPercent(float percent)
+    {
+        float regenValue = (1f * percent / 100);
+
+        currentValue = Mathf.Lerp(currentValue, minValue, regenValue);
+    }
+    public void DeBuff(float value)
+    {
+        currentValue = Mathf.Clamp(currentValue - value, minValue, maxValue);
+    }
+    public void Buff(float value)
+    {
+        currentValue = Mathf.Clamp(currentValue + value, minValue, maxValue);
+    }
+
     public void Normalize()
     {
         float regenValue = (1f * regeneratePercent / 100);
@@ -107,7 +143,8 @@ public enum AreaType
 {
     Кухня,
     Столовая,
-    КабинетМедсестры
+    КабинетМедсестры,
+    ОхраннаяЗона
 }
 
 [System.Serializable]

@@ -4,15 +4,18 @@ using UnityEngine;
 
 public class Mover : MonoBehaviour
 {
-    [SerializeField] private Vector3 offset;
+    [SerializeField] private Vector2 offset;
     [SerializeField] private AnimationCurve interpolator;
     [SerializeField] private Transform target;
     [SerializeField] private float speed;
     [SerializeField] private float timeStep;
 
+    public Vector3 Offset { get => offset; set => offset = value; }
+
     private void LateUpdate()
     {
-        transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x, target.position.y, offset.z), interpolator.Evaluate(speed * timeStep));
+        offset = LevelManager.Instance.Player.PlayerController.Direction();
+        transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, 0), interpolator.Evaluate(speed * timeStep));
     }
 
 }

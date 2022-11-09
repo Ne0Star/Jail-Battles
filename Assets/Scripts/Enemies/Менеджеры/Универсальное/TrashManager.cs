@@ -26,6 +26,9 @@ public struct TrashData
 
 public class TrashManager : MonoBehaviour
 {
+
+    public event System.Action<Trash> onCreatedTrash;
+
     [SerializeField] private List<TrashData> trashDatas;
 
     [SerializeField] private int batchCount;
@@ -41,6 +44,7 @@ public class TrashManager : MonoBehaviour
 
             Trash t = Instantiate(trashPrefab, transform);
             GameObject trashOBJ = t.gameObject;
+            trashOBJ.name = "Trash: " + i;
             trashOBJ.transform.parent = transform;
             trashOBJ.gameObject.SetActive(false);
             allTrash.Add(t);
@@ -72,6 +76,7 @@ public class TrashManager : MonoBehaviour
         t.Initial(GetDataByType(type));
         t.gameObject.SetActive(true);
         t.gameObject.transform.position = worldPosition;
+        onCreatedTrash?.Invoke(t);
     }
 
     public TrashData GetDataByType(TrashType type)
@@ -90,15 +95,33 @@ public class TrashManager : MonoBehaviour
     }
 
     /// <summary>
-    /// Возвращает мусор указаннного типа со сцены
+    /// Возвращает активный мусор любого типа
     /// </summary>
     /// <returns></returns>
-    public Trash GetFreeTrash()
+    private Trash GetFreeTrash()
     {
         Trash result = null;
         foreach (Trash t in allTrash)
         {
-            if (t.IsFree)
+            if (t && !t.gameObject.activeSelf)
+            {
+                result = t;
+                break;
+            }
+        }
+        return result;
+    }
+
+    /// <summary>
+    /// Возвращает активный мусор любого типа
+    /// </summary>
+    /// <returns></returns>
+    public Trash GetFreeActiveTrash()
+    {
+        Trash result = null;
+        foreach (Trash t in allTrash)
+        {
+            if (t && t.gameObject.activeSelf && t.IsFree)
             {
                 result = t;
                 break;

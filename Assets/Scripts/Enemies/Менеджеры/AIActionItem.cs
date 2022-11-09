@@ -9,5 +9,8 @@ public class AIActionItem : MonoBehaviour
     [SerializeField] protected bool isFree = false;
 
     public bool IsFree { get => isFree; }
+
+    public void SetFree(bool val) => isFree = val;
+
     public UnityEvent<AIActionItem> OnComplete { get => onComplete; }
 }

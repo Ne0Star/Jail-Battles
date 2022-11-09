@@ -29,15 +29,19 @@ public static class GameUtils
     public static void LookAt2DSmooth(Transform whom, Vector3 where, float offset, float time, float distanceToComplete, System.Action onComplete)
     {
         Vector2 dir = new Vector2(where.y - whom.position.y, where.x - whom.position.x).normalized;
-        float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg + offset;
-        Quaternion total = Quaternion.Euler(whom.rotation.eulerAngles.x, whom.rotation.eulerAngles.y, angle);
+        float angle = Mathf.Atan2(dir.x, dir.y) * Mathf.Rad2Deg ;
+        Quaternion total = Quaternion.Euler(whom.rotation.eulerAngles.x, whom.rotation.eulerAngles.y, angle+ offset);
         whom.rotation = Quaternion.Lerp(whom.rotation, total, time);
-        if (Vector2.Distance(new Vector2(total.z, 0), new Vector2(whom.rotation.z, 0)) <= distanceToComplete) onComplete();
+        if (Vector2.Distance(new Vector2(Mathf.Abs(total.z), 0), new Vector2(Mathf.Abs(whom.rotation.z), 0)) <= distanceToComplete)
+        {
+            onComplete();
+            return;
+        }
     }
     public static void LookAt2DSmooth(Transform whom, Vector3 where, float offset, float time)
     {
-        float angle = Mathf.Atan2(where.y - whom.position.y, where.x - whom.position.x) * Mathf.Rad2Deg + offset;
-        Quaternion total = Quaternion.Euler(whom.rotation.eulerAngles.x, whom.rotation.eulerAngles.y, angle);
+        float angle = Mathf.Atan2(where.y - whom.position.y, where.x - whom.position.x) * Mathf.Rad2Deg ;
+        Quaternion total = Quaternion.Euler(whom.rotation.eulerAngles.x, whom.rotation.eulerAngles.y, angle+ offset);
         whom.rotation = Quaternion.Lerp(whom.rotation, total, time);
     }
 

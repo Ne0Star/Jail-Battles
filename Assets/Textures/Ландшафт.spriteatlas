@@ -43,7 +43,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 62262ecb0c8b835448128875f07588f6, type: 3}
     - {fileID: 2800000, guid: 569fa48671e4ef5489732ae791f491bb, type: 3}
     - {fileID: 2800000, guid: c4569b7a543d6bc48b5424c9a28828de, type: 3}
-    - {fileID: 2800000, guid: 11943c25624b5874c83ed4bffe2c0900, type: 3}
     - {fileID: 2800000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
     - {fileID: 2800000, guid: eba185aaec27d1b49abfb53d069705c2, type: 3}
     - {fileID: 2800000, guid: 93272a7ba0346b2428f6ecf927159390, type: 3}
@@ -121,7 +120,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: af5c9133649e6124cbf7c631a7152373, type: 3}
   - {fileID: 21300000, guid: 754785f3ab3738543b21468d801e750b, type: 3}
   - {fileID: 21300000, guid: a72b7b64a1442924d97980771abf4f47, type: 3}
-  - {fileID: 21300000, guid: 11943c25624b5874c83ed4bffe2c0900, type: 3}
   - {fileID: 21300000, guid: ecfd59552f8102d4784fc54d0726e1fd, type: 3}
   - {fileID: 21300000, guid: 8a2e476569f7d7a4ea07905927763d6b, type: 3}
   - {fileID: 21300000, guid: 8e56fd75db0e1e3459708b726c7638ac, type: 3}
@@ -190,7 +188,6 @@ SpriteAtlas:
   - Group 496
   - "\u041F\u0430\u0440\u043A\u0435\u0442"
   - Group 15647
-  - Group 873
   - Group 426
   - Group 411
   - Group 453

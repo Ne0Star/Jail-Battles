@@ -26,7 +26,7 @@ public class BeginAction : AIAction
         {
             Enemu e = (Enemu)executor;
             e.Agent.speed = Mathf.Clamp(e.Agent.speed + speedInterpolator, -e.MoveSpeed.MaxValue, e.MoveSpeed.MaxValue);
-            GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
+            GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * (e.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler));
         }
         if (pursuer as Convict)
         {

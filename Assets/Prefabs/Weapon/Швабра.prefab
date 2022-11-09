@@ -222,7 +222,8 @@ MonoBehaviour:
   attackCount: 1
   attackSpeed: 0.05
   reloadSpeed: 0.5
-  weaponType: 3
+  weaponCategory: 4
+  weaponType: 6
   left: {fileID: 0}
   top: {fileID: 0}
 --- !u!82 &5823073158569691813

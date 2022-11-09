@@ -11,35 +11,15 @@ public enum TrashType
 
 public class Trash : AIActionItem
 {
+
+    public Vector3 worldPos => cleaningCenter.position;
+    [SerializeField] private Transform cleaningCenter;
     [SerializeField] private TrashType trashType;
     [SerializeField] private bool autoDestroy;
     [SerializeField] private Animator animator;
     [SerializeField] private bool cleaning = false;
 
     [SerializeField] private SpriteRenderer render;
-
-
-    //private void Awake()
-    //{
-    //    InitialComponent<SpriteRenderer>(ref render);
-    //    InitialComponent<Animator>(ref animator);
-    //}
-
-    //private void InitialComponent<T>(ref T c) where T : Component
-    //{
-    //    if(c == null)
-    //    {
-    //        c = gameObject.GetComponent<T>();
-    //        if(c == null)
-    //        {
-    //            c = gameObject.GetComponentInChildren<T>(true);
-    //            if(c == null)
-    //            {
-    //                throw new System.Exception("Не удалось найти компонент: " + typeof(T));
-    //            }
-    //        }
-    //    }
-    //}
 
 
     public void Initial(TrashData data)
@@ -51,17 +31,8 @@ public class Trash : AIActionItem
         this.autoDestroy = data.AutoDestroy;
     }
 
-
-    private void OnDisable()
-    {
-        isFree = true;
-        cleaning = false;
-        onComplete?.Invoke(this);
-    }
-
     private void OnEnable()
     {
-        isFree = false;
         animator.Play("Enable");
     }
 
@@ -69,13 +40,15 @@ public class Trash : AIActionItem
     [SerializeField] private float cleaningTime;
 
     public TrashType TrashType { get => trashType; }
+    public bool Cleaning { get => cleaning; }
 
     public void StartCleaning(float cleaningTime)
     {
-        if (!isFree || cleaning) return;
+        if (cleaning) return;
+        cleaning = true;
         isFree = false;
         this.cleaningTime = cleaningTime;
-        cleaning = true;
+
         animator.Play("Clean");
     }
 
@@ -97,6 +70,9 @@ public class Trash : AIActionItem
     public void Complete()
     {
         gameObject.SetActive(false);
+        isFree = true;
+        cleaning = false;
+        onComplete?.Invoke(this);
     }
 
 }

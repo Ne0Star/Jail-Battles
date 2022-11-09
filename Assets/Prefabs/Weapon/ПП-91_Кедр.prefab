@@ -218,11 +218,12 @@ MonoBehaviour:
   free: 1
   clip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
   source: {fileID: 5823073158569691813}
-  particles: {fileID: 0}
   attackDamage: 2
-  attackDistance: 4
+  attackCount: 0
+  attackSpeed: 0
   reloadSpeed: 0.1
-  weaponType: 2
+  weaponCategory: 2
+  weaponType: 5
   left: {fileID: 4521989939302798378}
   top: {fileID: 5226830854805296391}
 --- !u!82 &5823073158569691813

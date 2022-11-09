@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Convict : Enemu
 {
-    [SerializeField] private float exitDistance = 8f;
-
-
     [SerializeField] private bool isBegin = false;
     [SerializeField] private bool isIdle = false;
     [SerializeField] private bool isAttack = false;
@@ -39,7 +36,7 @@ public class Convict : Enemu
             if (isBegin)
             {
                 agent.speed = Mathf.Clamp(agent.speed + 1f, -MoveSpeed.MaxValue, MoveSpeed.MaxValue);
-                BeginAction ba = new BeginAction(this, (Enemu)attacker, LevelManager.Instance.GetAreas(AreaType.Столовая), exitDistance);
+                BeginAction ba = new BeginAction(this, (Enemu)attacker, LevelManager.Instance.GetAreas(AreaType.Столовая), LevelManager.Instance.LevelData.ExitDistance);
                 ba.OnComplete?.AddListener((a) =>
                 {
                     isBegin = false;
@@ -79,6 +76,7 @@ public class Convict : Enemu
     private void SetLife()
     {
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
+        AddAction(new IdleAction(this, Random.Range(0.5F,2F), LevelManager.Instance.GetAreas(AreaType.Столовая)));
         AddAction(new MoveFromArea(this, LevelManager.Instance.GetAreas(AreaType.Столовая)));
     }
 
@@ -121,7 +119,7 @@ public class Convict : Enemu
 
         isAttack = true;
         this.target = e;
-        AttackTarget attackAction = new AttackTarget(this, ref target, exitDistance * 2, true);
+        AttackTarget attackAction = new AttackTarget(this, ref target, true);
         attackAction.OnComplete?.AddListener((a) =>
         {
             target = null;

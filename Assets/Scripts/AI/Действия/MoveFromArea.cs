@@ -15,23 +15,27 @@ public class MoveFromArea : AIAction
 
     }
 
-    [SerializeField] private float distance;
-    [SerializeField] private Vector3 targetPos;
+    //[SerializeField] private float distance;
+    [SerializeField] private Vector3 targetPos, lastPos;
     [SerializeField] private bool init = false;
+
     public override void CustomUpdate()
     {
-        if (!init) return;
+        if (lastPos == targetPos)
+        {
+            executor.Agent.SetDestination(targetPos);
+        }
+        lastPos = targetPos;
         float distance = Vector2.Distance(executor.Agent.transform.position, targetPos);
         if (executor as Enemu)
         {
             Enemu e = (Enemu)executor;
-            GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * e.RotateSpeed);
+            GameUtils.LookAt2DSmooth(e.RotateParent, e.Agent.transform.position + e.Agent.velocity, e.RotateOffset, Time.unscaledDeltaTime * (executor.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler));
         }
-        if (distance <= executor.Agent.radius)
+        if (distance <= executor.Agent.radius * 2)
         {
             onComplete?.Invoke(this);
         }
-
     }
 
     public override void Initial()

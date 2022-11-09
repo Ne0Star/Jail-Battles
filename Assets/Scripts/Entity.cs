@@ -135,6 +135,7 @@ public abstract class Entity : MonoBehaviour
         }
         Create();
     }
+
     /// <summary>
     /// Awake
     /// </summary>
@@ -142,10 +143,12 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
+
     protected virtual void Attacked(Entity attacker)
     {
 
     }
+
     private void OnEnable()
     {
         if (!agent)
@@ -158,14 +161,17 @@ public abstract class Entity : MonoBehaviour
         onDied?.AddListener((e) => LevelManager.Instance.TrashManager.CreateTrash(DiedVFX, agent.transform.position));
         Enable();
     }
+
     private void OnDisable()
     {
         Disable();
     }
+
     public void DisableAgent()
     {
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.NoObstacleAvoidance;
     }
+
     public void EnableAgent()
     {
         agent.obstacleAvoidanceType = ObstacleAvoidanceType.LowQualityObstacleAvoidance;
@@ -175,6 +181,7 @@ public abstract class Entity : MonoBehaviour
             agent.updateUpAxis = false;
         }
     }
+
     /// <summary>
     /// OnEnable
     /// </summary>
@@ -182,6 +189,7 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
+
     /// <summary>
     /// OnDisable
     /// </summary>
@@ -189,12 +197,12 @@ public abstract class Entity : MonoBehaviour
     {
 
     }
+
     public void TakeDamage(Entity source, float damage, System.Action onKill)
     {
         Attacked(source);
         hitBar.TakeDamage(source, damage, () =>
         {
-
             onDied?.Invoke(this);
             onKill();
             gameObject.SetActive(false);
@@ -202,6 +210,7 @@ public abstract class Entity : MonoBehaviour
             onDied?.RemoveAllListeners();
         });
     }
+
     public void TakeDamage(Entity source, float damage)
     {
         Attacked(source);

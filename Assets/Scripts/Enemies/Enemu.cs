@@ -15,7 +15,6 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] private int updateCount;
     [SerializeField] private List<EntityType> targetType;
     [SerializeField] private float rotateOffset;
-    [SerializeField] private float rotateSpeed;
     [SerializeField] protected Transform gunParent, machineParent, meleParent, rotateParent;
 
 
@@ -24,6 +23,20 @@ public class Enemu : Entity, ICustomListItem
     [SerializeField] protected Gun gun;
     public virtual void Attack()
     {
+
+    }
+
+    private void Start()
+    {
+
+        HitBar.OnDamaged?.AddListener((sources, value) =>
+        {
+            if (HitBar && HitBar.gameObject)
+            {
+                HitBar.gameObject.SetActive(true);
+                damaged = true;
+            }
+        });
 
     }
 
@@ -123,9 +136,10 @@ public class Enemu : Entity, ICustomListItem
     public Gun WeaponGun { get => gun; }
     public Mele WeaponMele { get => mele; }
     public Weapon Weapon { get => weapon; }
-    public float RotateSpeed { get => rotateSpeed; }
     public Stat MoveSpeed { get => moveSpeed; set => moveSpeed = value; }
     public Entity Target { get => target; }
+
+    [SerializeField] private bool GenerateRandomSkin = true;
 
     protected override void Create()
     {
@@ -135,16 +149,20 @@ public class Enemu : Entity, ICustomListItem
             trigger.targetType = targetType;
             trigger.OnStay?.AddListener((e) => OnCustomTriggerStay(e));
         }
-        SpriteLibrary library = GetComponentInChildren<SpriteLibrary>(true);
-        SpriteResolver[] resolvers = GetComponentsInChildren<SpriteResolver>(true);
-        foreach (SpriteResolver resolver in resolvers)
+        if (GenerateRandomSkin)
         {
-            List<string> labels = new List<string>();
-            foreach (string s in library.spriteLibraryAsset.GetCategoryLabelNames(resolver.GetCategory()))
+            SpriteLibrary library = GetComponentInChildren<SpriteLibrary>(true);
+            SpriteResolver[] resolvers = GetComponentsInChildren<SpriteResolver>(true);
+            foreach (SpriteResolver resolver in resolvers)
             {
-                labels.Add(s);
+                List<string> labels = new List<string>();
+                foreach (string s in library.spriteLibraryAsset.GetCategoryLabelNames(resolver.GetCategory()))
+                {
+                    labels.Add(s);
+                }
+                if (labels.Count > 0)
+                    resolver.SetCategoryAndLabel(resolver.GetCategory(), labels[Random.Range(0, labels.Count - 1)]);
             }
-            resolver.SetCategoryAndLabel(resolver.GetCategory(), labels[Random.Range(0, labels.Count - 1)]);
         }
     }
 
@@ -162,8 +180,7 @@ public class Enemu : Entity, ICustomListItem
 
     protected virtual void Enabled()
     {
-        //SetWeapon(null);
-        //animator.Play("Покой");
+
     }
     /// <summary>
     /// Устанавливает новое действие, если использовать стек то текущее выполняемое добавится в стек
@@ -222,11 +239,21 @@ public class Enemu : Entity, ICustomListItem
     {
 
     }
+
     public int diedCount = 0;
+    [SerializeField] private bool damaged = false;
     public void CustomUpdate()
     {
+        if (damaged)
+            if (currentTime >= LevelManager.Instance.LevelData.HitBarDuration)
+            {
+                HitBar.gameObject.SetActive(false);
+                damaged = false;
+            }
+
         if (!gameObject.activeSelf)
         {
+            if (diedCount == 0) return;
             if (currentTime >= LevelManager.Instance.GetColorByRange(updateCount).respawnTime)
             {
                 gameObject.SetActive(true);

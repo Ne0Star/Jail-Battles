@@ -17,7 +17,12 @@ public class EnemuManager : MonoBehaviour
 
 
     [SerializeField] private List<Convict> allConvicts;
+
     [SerializeField] private List<Cleaner> allCleaners;
+    [SerializeField] private List<Cook> allCook;
+    [SerializeField] private List<Nurse> allNurse;
+    [SerializeField] private List<Defender> allDefenders;
+
     /// <summary>
     /// Все зеки на карте
     /// </summary>
@@ -26,7 +31,15 @@ public class EnemuManager : MonoBehaviour
     /// Все уборщицы на карте
     /// </summary>
     public List<Cleaner> AllCleaners { get => allCleaners; }
-
+    /// <summary>
+    /// Все повара на карте
+    /// </summary>
+    public List<Cook> AllCook { get => allCook; }
+    /// <summary>
+    /// Все медсестры на карте
+    /// </summary>
+    public List<Nurse> AllNurse { get => allNurse; }
+    public List<Defender> AllDefenders { get => allDefenders; }
 
     public T GetEntityByType<T>() where T : Enemu
     {
@@ -87,11 +100,38 @@ public class EnemuManager : MonoBehaviour
             {
                 allCleaners.Add((Cleaner)e);
             }
+            if (e as Nurse)
+            {
+                allNurse.Add((Nurse)e);
+            }
+            if (e as Cook)
+            {
+                AllCook.Add((Cook)e);
+            }
+            if (e as Defender)
+            {
+                allDefenders.Add((Defender)e);
+            }
 
-
-            e.gameObject.SetActive(true);
-            yield return new WaitForSeconds(0.001f);
         }
+
+        List<Enemu> bases = new List<Enemu>();
+        bases.AddRange(AllCleaners);
+        bases.AddRange(AllCook);
+        bases.AddRange(AllNurse);
+        bases.AddRange(allDefenders);
+        foreach (Enemu e in bases)
+        {
+            e.gameObject.SetActive(true);
+        }
+
+        foreach (Enemu e in allConvicts)
+        {
+            e.gameObject.SetActive(true);
+            float time = Random.Range(0.05f, 0.15f);
+            yield return new WaitForSeconds(time);
+        }
+
     }
 
     public Enemu[] GetAllEnemu(Enemu ignore)
