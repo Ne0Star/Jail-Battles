@@ -4,6 +4,7 @@ using UnityEngine;
 
 public class WeaponShop : Shop
 {
+    public event System.Action<WeaponItem> onSelected;
     [SerializeField] private Transform listParent;
     [SerializeField] private WeaponShopItem itemPrefab;
     [SerializeField] private WeaponItem selectedItem;
@@ -26,7 +27,7 @@ public class WeaponShop : Shop
 
     private void SetPreviewItem(WeaponItem item)
     {
-
+        onSelected.Invoke(item);
     }
 
     public void SetCategory(int categoryIndex)

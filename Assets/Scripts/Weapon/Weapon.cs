@@ -59,22 +59,40 @@ public enum WeaponType
     Вилка,
     Нож,
 }
+[System.Serializable]
+public struct WeaponStat
+{
+    [Header("Универсальные данные для каждого типа оружия")]
+    [SerializeField] private float attackDamage;
+    [SerializeField] private int attackCount;
+    [SerializeField] private float attackSpeed;
+    [SerializeField] private float reloadSpeed;
+
+    public float AttackDamage { get => attackDamage; }
+    public int AttackCount { get => attackCount; }
+    public float AttackSpeed { get => attackSpeed; }
+    public float ReloadSpeed { get => reloadSpeed; }
+
+
+
+
+}
 
 /// <summary>
 /// Оружие
 /// </summary>
 public class Weapon : MonoBehaviour
 {
+
     public WeaponType WeaponType { get => weaponType; }
     public WeaponCategory WeaponCategory { get => weaponCategory; }
 
     [SerializeField] protected bool free = false;
     [SerializeField] protected AudioClip clip;
     [SerializeField] protected AudioSource source;
-    [SerializeField] protected float attackDamage;
-    [SerializeField] private int attackCount;
-    [SerializeField] protected float attackSpeed;
-    [SerializeField] private float reloadSpeed;
+
+    [SerializeField] protected int currentUpdateNumber;
+    [SerializeField] protected WeaponStat[] updateStats = new WeaponStat[1];
 
     [SerializeField] private WeaponCategory weaponCategory;
     [SerializeField] private WeaponType weaponType;
@@ -124,15 +142,16 @@ public class Weapon : MonoBehaviour
     /// <summary>
     /// Урон наносимый оружием
     /// </summary>
-    public float AttackDamage { get => attackDamage; }
+    public float AttackDamage { get => updateStats[currentUpdateNumber].AttackDamage; }
     /// <summary>
     /// Время перезарядки оружия
     /// </summary>
     public bool Free { get => free; set => free = value; }
-    public float AttackSpeed { get => attackSpeed; }
-    public int AttackCount { get => attackCount; }
+    public float AttackSpeed { get => updateStats[currentUpdateNumber].AttackSpeed; }
+    public int AttackCount { get => updateStats[currentUpdateNumber].AttackCount; }
     /// <summary>
     /// Скорость перезарядки
     /// </summary>
-    public float ReloadSpeed { get => reloadSpeed; }
+    public float ReloadSpeed { get => updateStats[currentUpdateNumber].ReloadSpeed; }
+    public WeaponStat[] UpdateStats { get => updateStats; }
 }

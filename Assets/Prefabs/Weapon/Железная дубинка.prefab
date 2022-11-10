@@ -133,10 +133,12 @@ MonoBehaviour:
   free: 1
   clip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
   source: {fileID: 5823073158569691813}
-  attackDamage: 15
-  attackCount: 1
-  attackSpeed: 0.05
-  reloadSpeed: 0.5
+  currentUpdateNumber: 0
+  updateStats:
+  - attackDamage: 0
+    attackCount: 0
+    attackSpeed: 0
+    reloadSpeed: 0
   weaponCategory: 4
   weaponType: 3
   left: {fileID: 0}

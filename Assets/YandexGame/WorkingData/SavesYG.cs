@@ -21,5 +21,17 @@ namespace YG
         /// Скин ноги
         /// </summary>
         public string leggs = "1";
+
+
+        public WeaponPlayerData[] weapons = new WeaponPlayerData[1];
+
     }
+
+
+    public struct WeaponPlayerData
+    {
+        public int counts;
+        public WeaponType wapon;
+    }
+
 }
