@@ -6,6 +6,7 @@ public class WeaponShop : Shop
 {
     [SerializeField] private Transform listParent;
     [SerializeField] private WeaponShopItem itemPrefab;
+    [SerializeField] private WeaponItem selectedItem;
     [SerializeField] private List<WeaponItem> shopStorage = new List<WeaponItem>();
     [SerializeField] private List<WeaponShopItem> allItems = new List<WeaponShopItem>();
 
@@ -21,6 +22,11 @@ public class WeaponShop : Shop
     private void Byu(WeaponItem item)
     {
         Debug.Log("Попытка купить" + item.name);
+    }
+
+    private void SetPreviewItem(WeaponItem item)
+    {
+
     }
 
     public void SetCategory(int categoryIndex)
@@ -40,7 +46,7 @@ public class WeaponShop : Shop
     {
         WeaponShopItem item = GetFreeItem();
         item.SetItem(itemType);
-        item.onByuAttemp += Byu;
+        item.onByuAttemp += SetPreviewItem;
         item.gameObject.SetActive(true);
     }
 
