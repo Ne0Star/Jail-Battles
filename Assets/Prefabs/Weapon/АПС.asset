@@ -12,6 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635fd45ba878b87499983ddad1fc5ddb, type: 3}
   m_Name: "\u0410\u041F\u0421"
   m_EditorClassIdentifier: 
+  shopIco: {fileID: 0}
   m_Weapon: {fileID: 2973198210013856428, guid: d71810f0cfaa2ca44bdeeb3057946ba0,
     type: 3}
-  m_Price: 6
+  m_Price: 4000
