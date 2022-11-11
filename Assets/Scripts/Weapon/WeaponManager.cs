@@ -39,6 +39,20 @@ public class WeaponManager : MonoBehaviour
     }
 
 
+    public Weapon GetWeaponByType(WeaponType type)
+    {
+        Weapon result = null;
+        foreach(Weapon weapon in allWeapons)
+        {
+            if(weapon.WeaponType == type && weapon.Free && !weapon.gameObject.activeSelf)
+            {
+                result = weapon;
+                break;
+            }
+        }
+        return result;
+    }
+
     public T GetRandomWeaponByType<T>() where T : Weapon
     {
         List<T> weapons = GetFreeWeapons<T>();

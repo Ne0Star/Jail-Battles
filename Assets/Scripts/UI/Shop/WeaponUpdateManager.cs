@@ -24,7 +24,7 @@ public class WeaponUpdateManager : MonoBehaviour
     [SerializeField] private float startWidth;
 
 
-    [SerializeField] GameObject updateBody, buyBody, equpBody;
+    [SerializeField] GameObject updateBody, buyBody, equpBody, fullUpdate;
 
     private void Awake()
     {
@@ -48,9 +48,10 @@ public class WeaponUpdateManager : MonoBehaviour
         {
             playerBalance.text = YG.YandexGame.savesData.money + " ";
 
-            if (YG.YandexGame.savesData.money < selectedItem.Price * selectedItem.Weapon.CurrentUpdateCount)
+            if (YG.YandexGame.savesData.money < selectedItem.Price * selectedItem.Weapon.CurrentUpdateCount ||
+            selectedItem.Weapon.CurrentUpdateCount == selectedItem.Weapon.MaxUpdateCount)
             {
-                Debug.Log("Недостаточно средств для покупки улучшения");
+                Debug.Log("Недостаточно средств для покупки улучшения или достигнуто максимальное улучшение");
                 return;
             }
 
@@ -110,6 +111,7 @@ public class WeaponUpdateManager : MonoBehaviour
             });
             YG.YandexGame.savesData.byuWeapons = newData.ToArray();
         }
+        YandexGame.savesData.money = Mathf.Clamp(YandexGame.savesData.money - selectedItem.Price, 0, 99999);
         SetItem(selectedItem);
         YG.YandexGame.SaveProgress();
     }
@@ -123,6 +125,7 @@ public class WeaponUpdateManager : MonoBehaviour
         stackableBody.gameObject.SetActive(false);
         byuItemBTN.gameObject.SetActive(false);
         byuUpdateBTN.gameObject.SetActive(false);
+        fullUpdate.gameObject.SetActive(false);
     }
 
     public void UpdateWeapon()
@@ -148,15 +151,26 @@ public class WeaponUpdateManager : MonoBehaviour
     [SerializeField] private WeaponItem selectedItem;
     [SerializeField] private Text stackableValue, stackableMaxValue;
     [SerializeField] private GameObject stackableBody;
+
+    private void CheckFullUpdate(WeaponPlayerData currentData)
+    {
+        if (currentData.updateCount == selectedItem.MaxWeaponCount)
+        {
+            updateBody.gameObject.SetActive(false);
+            byuUpdateBTN.gameObject.SetActive(false);
+            fullUpdate.gameObject.SetActive(true);
+        }
+        else
+        {
+            updateBody.gameObject.SetActive(true);
+            byuUpdateBTN.gameObject.SetActive(true);
+            fullUpdate.gameObject.SetActive(false);
+        }
+    }
+
     private void SetItem(WeaponItem item)
     {
-        //attackCount_v.text = item.Weapon.AttackCount + " ";
-        //reloadSpeed_v.text = item.Weapon.ReloadSpeed + " ";
-        //attackSpeed_v.text = item.Weapon.AttackSpeed + " ";
-        //attackDamage_v.text = item.Weapon.AttackDamage + " ";
-
         selectedItem = item;
-
         bool isByu = false;
         WeaponPlayerData currentData = new WeaponPlayerData();
         foreach (WeaponPlayerData data in YG.YandexGame.savesData.byuWeapons)
@@ -170,27 +184,20 @@ public class WeaponUpdateManager : MonoBehaviour
             }
         }
         bool stackable = item.MaxWeaponCount > 1;
-
         byuValue.text = selectedItem.Price + " ";
         updateValue.text = (selectedItem.Price * selectedItem.Weapon.CurrentUpdateCount) + " ";
         playerBalance.text = YG.YandexGame.savesData.money + " ";
-
-        //playerBalance.transform.parent.gameObject.SetActive(true);
-
-        Debug.Log("Stackable = " + stackable + " Isbyu = " + isByu);
-
+        fullUpdate.gameObject.SetActive(false);
         if (isByu && stackable) // Куплен, стакается
         {
             buyBody.gameObject.SetActive(false);
             updateBody.gameObject.SetActive(true);
             stackableBody.gameObject.SetActive(true);
-equpBody.SetActive(true);
-
+            equpBody.SetActive(true);
             stackableValue.text = currentData.counts + " ";
             stackableMaxValue.text = item.MaxWeaponCount + " ";
-            
-
             byuUpdateBTN.gameObject.SetActive(true);
+            CheckFullUpdate(currentData);
             if (currentData.counts < item.MaxWeaponCount) // Куплено не максимальное количество
             {
                 byuItemBTN.gameObject.SetActive(true);
@@ -199,32 +206,22 @@ equpBody.SetActive(true);
             {
                 byuItemBTN.gameObject.SetActive(false);
             }
-
-
-
-
             VisibilityUpdateItem(selectedItem);
         }
         else if (isByu && !stackable) // Куплен нестакается
         {
             buyBody.gameObject.SetActive(false);
-            updateBody.gameObject.SetActive(true);
+            CheckFullUpdate(currentData);
             stackableBody.gameObject.SetActive(false);
             equpBody.SetActive(true);
-
             byuItemBTN.gameObject.SetActive(false);
-            byuUpdateBTN.gameObject.SetActive(true);
             VisibilityUpdateItem(selectedItem);
-
         }
         else if (!isByu && stackable) // Некуплен, стакается
         {
             stackableBody.gameObject.SetActive(true);
             byuItemBTN.gameObject.SetActive(true);
             byuUpdateBTN.gameObject.SetActive(false);
-
-
-
         }
         else if (!isByu && !stackable)// Некуплен нестакается
         {
@@ -232,53 +229,14 @@ equpBody.SetActive(true);
             updateBody.gameObject.SetActive(false);
             stackableBody.gameObject.SetActive(false);
             equpBody.SetActive(false);
-
             if (selectedItem.Weapon.CurrentUpdateCount == 0)
             {
 
             }
-
             byuItemBTN.gameObject.SetActive(true);
             byuUpdateBTN.gameObject.SetActive(false);
         }
-
-        //if (isByu)
-        //{
-        //    if (item.MaxWeaponCount > 1)
-        //    {
-        //        // Если можно купить ещё
-        //        if (currentData.counts <= item.MaxWeaponCount)
-        //        {
-        //            buyBody.gameObject.SetActive(false);
-        //            byuItemBTN.gameObject.SetActive(true);
-        //            stackableBody.SetActive(true);
-        //            stackableValue.text = currentData.counts + " ";
-        //            stackableMaxValue.text = item.MaxWeaponCount + " ";
-        //        }
-        //        else
-        //        {
-        //            Debug.Log("Куплено максимальное количество");
-        //        }
-        //    }
-        //    else
-        //    {
-        //        buyBody.gameObject.SetActive(false);
-        //        updateBody.gameObject.SetActive(true);
-
-        //        updateValue.text = (selectedItem.Price * selectedItem.Weapon.CurrentUpdateCount) + " ";
-        //        byuItemBTN.gameObject.SetActive(false);
-        //        byuUpdateBTN.gameObject.SetActive(true);
-        //        VisibilityUpdateItem(selectedItem);
-        //    }
-        //}
-        //else
-        //{
-
-        //}
     }
-
-
-
 
     private void VisibilityUpdateItem(WeaponItem item)
     {

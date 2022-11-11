@@ -14,22 +14,27 @@ public class Player : Enemu
         playerController = new Controller_0(this, moveSpeed);
 
 
+
+
+
         Gun r = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
         SetGun(r);
         Mele re = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Mele>();
         SetMele(re);
 
 
-        foreach (WeaponPlayerData data in YG.YandexGame.savesData.byuWeapons)
+        foreach (WeaponPlayerData data in YG.YandexGame.savesData.selectedWeapons)
         {
-            if (data.wapon == r.WeaponType)
-            {
-                r.SetUpdate(data.updateCount);
-            }
-            if (data.wapon == re.WeaponType)
-            {
-                re.SetUpdate(data.updateCount);
-            }
+            //if(r)
+            //if (data.wapon == r.WeaponType)
+            //{
+            //    r.SetUpdate(data.updateCount);
+            //}
+            //if(re)
+            //if (data.wapon == re.WeaponType)
+            //{
+            //    re.SetUpdate(data.updateCount);
+            //}
         }
 
     }
