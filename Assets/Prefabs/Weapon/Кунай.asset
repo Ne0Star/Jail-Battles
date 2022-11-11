@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 635fd45ba878b87499983ddad1fc5ddb, type: 3}
-  m_Name: "\u041F\u041F-91-\u041A\u0415\u0414\u0420"
+  m_Name: "\u041A\u0443\u043D\u0430\u0439"
   m_EditorClassIdentifier: 
   shopIco: {fileID: 0}
-  m_Weapon: {fileID: 5226830854831182914, guid: e2bd5621913aba149acbf2b27c7cdc14,
+  m_Weapon: {fileID: 8613446731319640574, guid: 245dc7d581e6d9142b57e8737cb2670d,
     type: 3}
-  maxWeaponCount: 1
-  m_Price: 5000
+  maxWeaponCount: 10
+  m_Price: 5

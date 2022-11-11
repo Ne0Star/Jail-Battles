@@ -8,7 +8,7 @@ public class Enemu : Entity, ICustomListItem
 
     [SerializeField] protected Entity target;
 
-    [SerializeField] private Stat moveSpeed;
+    [SerializeField] protected Stat moveSpeed;
 
     [SerializeField] private EntityTrigger[] triggers;
     [SerializeField] private float currentTime;

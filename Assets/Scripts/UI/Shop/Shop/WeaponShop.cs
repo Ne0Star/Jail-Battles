@@ -5,12 +5,12 @@ using UnityEngine;
 public class WeaponShop : Shop
 {
     public event System.Action<WeaponItem> onSelected;
+    public event System.Action onSwipeCategory;
     [SerializeField] private Transform listParent;
     [SerializeField] private WeaponShopItem itemPrefab;
-    [SerializeField] private WeaponItem selectedItem;
     [SerializeField] private List<WeaponItem> shopStorage = new List<WeaponItem>();
     [SerializeField] private List<WeaponShopItem> allItems = new List<WeaponShopItem>();
-
+    [SerializeField] private List<WeaponSlot> slots;
     private void Awake()
     {
         for (int i = 0; i < batchCount; i++)
@@ -23,6 +23,12 @@ public class WeaponShop : Shop
     private void Byu(WeaponItem item)
     {
         Debug.Log("Попытка купить" + item.name);
+    }
+
+
+    public void SaveAndExit()
+    {
+
     }
 
     private void SetPreviewItem(WeaponItem item)
@@ -41,6 +47,7 @@ public class WeaponShop : Shop
                 AddItem(item);
             }
         }
+        onSwipeCategory();
     }
 
     private void AddItem(WeaponItem itemType)

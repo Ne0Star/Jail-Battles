@@ -15,4 +15,5 @@ MonoBehaviour:
   shopIco: {fileID: 0}
   m_Weapon: {fileID: 2973198210013856428, guid: d71810f0cfaa2ca44bdeeb3057946ba0,
     type: 3}
+  maxWeaponCount: 1
   m_Price: 4000

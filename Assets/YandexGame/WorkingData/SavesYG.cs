@@ -9,6 +9,9 @@ namespace YG
         public bool feedbackDone;
         public bool promptDone;
 
+
+        public int money = 300;
+
         /// <summary>
         /// Скин тело и руки
         /// </summary>
@@ -23,14 +26,32 @@ namespace YG
         public string leggs = "1";
 
 
-        public WeaponPlayerData[] weapons = new WeaponPlayerData[1];
+        public WeaponPlayerData[] selectedWeapons = new WeaponPlayerData[1]
+        {
+            new WeaponPlayerData()
+            {
+                counts = 1,
+                updateCount = 0,
+                wapon = WeaponType.None
+            }
+        };
 
+        public WeaponPlayerData[] byuWeapons = new WeaponPlayerData[1]
+        {
+            new WeaponPlayerData()
+            {
+                counts = 1,
+                updateCount = 0,
+                wapon = WeaponType.None
+            }
+        };
     }
 
-
+    [System.Serializable]
     public struct WeaponPlayerData
     {
         public int counts;
+        public int updateCount;
         public WeaponType wapon;
     }
 

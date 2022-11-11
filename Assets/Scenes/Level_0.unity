@@ -3157,9 +3157,7 @@ MonoBehaviour:
   onDied:
     m_PersistentCalls:
       m_Calls: []
-  gun: {fileID: 0}
-  machine: {fileID: 0}
-  rotateOffset: -90
+  target: {fileID: 0}
   moveSpeed:
     minValue: 0
     maxValue: 0
@@ -3167,7 +3165,26 @@ MonoBehaviour:
     defaultValue: 0
     currentValue: 0
     regeneratePercent: 0
+  triggers: []
+  currentTime: 0
+  updateCount: 0
+  targetType: 
+  rotateOffset: -90
+  gunParent: {fileID: 0}
+  machineParent: {fileID: 0}
+  meleParent: {fileID: 0}
   rotateParent: {fileID: 0}
+  weapon: {fileID: 0}
+  mele: {fileID: 0}
+  gun: {fileID: 0}
+  stackActions: []
+  lifeActions: []
+  currentAction: {fileID: 0}
+  lastAction: {fileID: 0}
+  index: 0
+  GenerateRandomSkin: 1
+  diedCount: 0
+  damaged: 0
 --- !u!1 &684046964
 GameObject:
   m_ObjectHideFlags: 0
@@ -6279,6 +6296,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5625357655212830716, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5625357655212830716, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w

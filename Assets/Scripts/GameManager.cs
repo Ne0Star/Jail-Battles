@@ -104,6 +104,17 @@ public class GameManager : OneSingleton<GameManager>
             resultText = result
         };
     }
+
+
+#if UNITY_EDITOR
+
+    public void ScreenShoot()
+    {
+        ScreenCapture.CaptureScreenshot("ScreenShoot.jpg");
+    }
+
+#endif
+
 }
 public struct LocalizerData
 {

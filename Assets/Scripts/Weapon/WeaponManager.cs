@@ -45,7 +45,6 @@ public class WeaponManager : MonoBehaviour
         if (weapons == null || weapons.Count == 0) return null;
         int index = Random.Range(0, weapons.Count - 1);
         T result = weapons[index];
-        //Debug.Log(result);
         return result;
     }
 

@@ -2,22 +2,36 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
+using YG;
 
-public class Player : Entity
+public class Player : Enemu
 {
-    [SerializeField] private Weapon gun, machine;
-    [SerializeField] private float rotateOffset;
-    [SerializeField] private Stat moveSpeed;
     [SerializeField] private PlayerController playerController;
-    [SerializeField] private Transform rotateParent;
-    
-    public Transform RotateParent { get => rotateParent; }
-    public float RotateOffset { get => rotateOffset; }
     public PlayerController PlayerController { get => playerController; }
 
     private void Awake()
     {
         playerController = new Controller_0(this, moveSpeed);
+
+
+        Gun r = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
+        SetGun(r);
+        Mele re = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Mele>();
+        SetMele(re);
+
+
+        foreach (WeaponPlayerData data in YG.YandexGame.savesData.byuWeapons)
+        {
+            if (data.wapon == r.WeaponType)
+            {
+                r.SetUpdate(data.updateCount);
+            }
+            if (data.wapon == re.WeaponType)
+            {
+                re.SetUpdate(data.updateCount);
+            }
+        }
+
     }
 
     private void Start()
