@@ -6,10 +6,13 @@ using YG;
 
 public class WeaponShopItemUpdate : MonoBehaviour
 {
+    public Sprite fullUpdateIco, updateIco;
+    public Image updateImage;
+
     [SerializeField] private Button updateBTN;
     [SerializeField] private Text label, byuPrice;
 
-    [SerializeField] private GameObject updateParent, ratingParent, fullUpdateParent;
+    [SerializeField] private GameObject updateParent, ratingParent, fullUpdateParent, valueLabel, valueIco;
     [SerializeField] private RectTransform ratingRect;
 
     [SerializeField] private float startWidth = 0;
@@ -33,17 +36,34 @@ public class WeaponShopItemUpdate : MonoBehaviour
 
     private void SetStartWidth()
     {
-        
+
     }
 
     public void SetStat(WeaponItem item, ref WeaponStatInt stat, string name)
     {
-        WeaponStatInt stat_ = stat;
-        updateBTN.onClick?.RemoveAllListeners();
-
         LocalizerData textData = GameManager.Instance.GetValueByKey(name);
         label.text = textData.resultText;
         label.font = textData.resultFont;
+
+        if (stat.UpdateCount == stat.MaxUpdateCount)
+        {
+            Debug.Log("Улучшено на максимум");
+
+            valueLabel.SetActive(false);
+            valueIco.SetActive(false);
+            updateBTN.interactable = false;
+            updateImage.sprite = fullUpdateIco;
+
+            Set(ratingRect, stat.Value, stat.MaxValue);
+            return;
+        }
+        updateBTN.interactable = true;
+        updateImage.sprite = updateIco;
+        valueLabel.SetActive(true);
+        valueIco.SetActive(true);
+
+        WeaponStatInt stat_ = stat;
+        updateBTN.onClick?.RemoveAllListeners();
 
         var total = item.Price * (stat.UpdateCount + 1);
         var result = Mathf.RoundToInt((total - item.Price) * stat.MaxUpdateCount * stat.PriceFactor);
@@ -73,12 +93,29 @@ public class WeaponShopItemUpdate : MonoBehaviour
 
     public void SetStat(WeaponItem item, ref WeaponStatFloat stat, string name)
     {
-        WeaponStatFloat stat_ = stat;
-        updateBTN.onClick?.RemoveAllListeners();
-
         LocalizerData textData = GameManager.Instance.GetValueByKey(name);
         label.text = textData.resultText;
         label.font = textData.resultFont;
+
+        if (stat.UpdateCount == stat.MaxUpdateCount)
+        {
+            Debug.Log("Улучшено на максимум");
+
+            valueLabel.SetActive(false);
+            valueIco.SetActive(false);
+            updateBTN.interactable = false;
+            updateImage.sprite = fullUpdateIco;
+
+            Set(ratingRect, stat.Value, stat.MaxValue);
+            return;
+        }
+        updateBTN.interactable = true;
+        updateImage.sprite = updateIco;
+        valueLabel.SetActive(true);
+        valueIco.SetActive(true);
+
+        WeaponStatFloat stat_ = stat;
+        updateBTN.onClick?.RemoveAllListeners();
 
         var total = item.Price * (stat.UpdateCount + 1);
         var result = Mathf.RoundToInt((total - item.Price) * stat.MaxUpdateCount * stat.PriceFactor);

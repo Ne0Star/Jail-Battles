@@ -65,7 +65,7 @@ public class WeaponShop : Shop
             CreateItem();
         }
         updateManger = GetComponentInChildren<WeaponUpdateManager>(true);
-        startWidth = weaponView.ratingView.rect.width;
+        startWidth = weaponView.ratingView.GetWidth();
         mainView.SetActive(false);
         YandexGame.GetDataEvent += UpdateBalance;
     }
@@ -85,7 +85,7 @@ public class WeaponShop : Shop
         float precent = value * 100 / maxValue;
         float coof = startWidth / 100f;
         float totalWidth = coof * precent;
-        target.SetWidth(totalWidth);
+        target.SetWidth(Mathf.Clamp(totalWidth,0f, startWidth));
     }
 
     private void GetRating(WeaponItem item)
