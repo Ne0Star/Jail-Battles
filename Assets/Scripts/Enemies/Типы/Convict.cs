@@ -84,7 +84,16 @@ public class Convict : Enemu
     {
         if (target && weapon)
         {
-            target.TakeDamage(this, weapon.AttackDamage, () =>
+            YG.WeaponData weaponData = new YG.WeaponData();
+            foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+            {
+                if (m.weaponType == weapon.WeaponType)
+                {
+                    weaponData = m;
+                    break;
+                }
+            }
+            target.TakeDamage(this, weaponData.attackDamage.Value, () =>
             {
 
             });

@@ -12,15 +12,15 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: efa747916aa66674d96ea40ca8a480b2, type: 3}
   m_Name: InfoYG
   m_EditorClassIdentifier: 
-  scopes: 0
-  playerPhotoSize: 0
-  leaderboardEnable: 0
-  siteLock: 0
-  checkAdblock: 0
+  scopes: 1
+  playerPhotoSize: 2
+  leaderboardEnable: 1
+  siteLock: 1
+  checkAdblock: 1
   fullscreenAdChallenge: 0
   staticRBTInGame: 0
   LocalizationEnable: 1
-  callingLanguageCheck: 0
+  callingLanguageCheck: 1
   translateMethod: 2
   CSVFileTranslate:
     format: 0
@@ -29,32 +29,33 @@ MonoBehaviour:
     ru: 1
     en: 1
     tr: 1
-    az: 0
-    be: 0
-    he: 0
-    hy: 0
-    ka: 0
-    et: 0
-    fr: 0
-    kk: 0
-    ky: 0
-    lt: 0
-    lv: 0
-    ro: 0
-    tg: 0
-    tk: 0
-    uk: 0
-    uz: 0
-    es: 0
-    pt: 0
-    ar: 0
-    id: 0
-    ja: 0
-    it: 0
-    de: 0
-    hi: 0
+    az: 1
+    be: 1
+    he: 1
+    hy: 1
+    ka: 1
+    et: 1
+    fr: 1
+    kk: 1
+    ky: 1
+    lt: 1
+    lv: 1
+    ro: 1
+    tg: 1
+    tk: 1
+    uk: 1
+    uz: 1
+    es: 1
+    pt: 1
+    ar: 1
+    id: 1
+    ja: 1
+    it: 1
+    de: 1
+    hi: 1
   fonts:
-    defaultFont: []
+    defaultFont:
+    - {fileID: 12800000, guid: 17495f6ec4db40942b442e4fd3e50768, type: 3}
     ru: []
     en: []
     tr: []
@@ -83,4 +84,4 @@ MonoBehaviour:
     de: []
     hi: []
   SDKStartDelay: 0
-  debug: 1
+  debug: 0

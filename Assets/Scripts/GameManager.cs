@@ -1,19 +1,96 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using YG;
 
 public class GameManager : OneSingleton<GameManager>
 {
+    [SerializeField] private Font resultFont;
+    [SerializeField] private List<YG.WeaponData> defaultWeaponDatas = new List<YG.WeaponData>();
+
     [SerializeField] private string currentLang = "ru";
     [SerializeField] private TextAsset scvLanguages;
     [SerializeField] private InfoYG infoYg;
 
+    public List<WeaponData> DefaultWeaponDatas { get => defaultWeaponDatas; }
+    public Font ResultFont { get => resultFont; set => resultFont = value; }
+
     private void Awake()
     {
         GameManager.Instance = this;
-        scvLanguages = Resources.Load<TextAsset>("TranslateCSV");
+        if (!scvLanguages)
+            scvLanguages = Resources.Load<TextAsset>("TranslateCSV");
+
         YandexGame.SwitchLanguage(currentLang);
+        YandexGame.SwitchLangEvent += ReLang;
+
+    }
+
+    private void ReLang(string s)
+    {
+        Font[] fonts = infoYg.fonts.GetFontsByLanguageName(currentLang);
+        Font resultFont = null;
+        bool font = false;
+        if (fonts != null)
+            foreach (Font f in fonts)
+            {
+                if (f != null)
+                {
+                    resultFont = f;
+                    font = true;
+                    break;
+                }
+            }
+        if (!font)
+        {
+            foreach (Font f in infoYg.fonts.defaultFont)
+            {
+                if (f != null)
+                {
+                    resultFont = f;
+                    break;
+                }
+            }
+        }
+        this.resultFont = resultFont;
+    }
+
+    public WeaponData GetDefaultDataByType(WeaponType type)
+    {
+        WeaponData result = new WeaponData();
+        foreach (WeaponData data in defaultWeaponDatas)
+        {
+            if (data.weaponType == type)
+            {
+                result = data;
+                break;
+            }
+        }
+        return result;
+    }
+
+    [SerializeField] private YG.WeaponData stat;
+    [SerializeField] bool setAllStat;
+    private void OnDrawGizmos()
+    {
+        if (setAllStat)
+        {
+            for (int i = 0; i < defaultWeaponDatas.Count; i++)
+            {
+                YG.WeaponData data = defaultWeaponDatas[i];
+
+                WeaponType type = data.weaponType;
+                data = stat;
+                data.patronCount.SetUpdate(Random.Range(0, 9));
+                data.patronStorage.SetUpdate(Random.Range(0, 9));
+                data.attackDamage.SetUpdate(Random.Range(0, 9));
+                data.weaponType = type;
+
+                defaultWeaponDatas[i] = data;
+            }
+            setAllStat = false;
+        }
     }
 
     private int GetLangIndex(string lang)
@@ -53,7 +130,7 @@ public class GameManager : OneSingleton<GameManager>
     }
     public LocalizerData GetValueByKey(string key)
     {
-        string[] values = CSVManager.ImportTransfersByKey("TranslateCSV", 27, key);
+        string[] values = CSVManager.ImportTransfersByKey(scvLanguages, 30, key);
 
         if (values == null)
         {
@@ -73,50 +150,91 @@ public class GameManager : OneSingleton<GameManager>
                 resultText = "null :)"
             };
         }
-        Font[] fonts = infoYg.fonts.GetFontsByLanguageName(currentLang);
-        Font resultFont = null;
-        bool font = false;
-        if (fonts != null)
-            foreach (Font f in fonts)
-            {
-                if (f != null)
-                {
-                    resultFont = f;
-                    font = true;
-                    break;
-                }
-            }
-        if (!font)
-        {
-            foreach (Font f in infoYg.fonts.defaultFont)
-            {
-                if (f != null)
-                {
-                    resultFont = f;
-                    break;
-                }
-            }
-        }
 
         return new LocalizerData
         {
-            resultFont = resultFont,
+            resultFont = this.resultFont,
             resultText = result
         };
     }
 
 
+
+
 #if UNITY_EDITOR
+
+    private void Update()
+    {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            ScreenShoot();
+        }
+        if (Input.GetKeyDown(KeyCode.S))
+        {
+            YandexGame.savesData.money += 1000;
+            YandexGame.SaveProgress();
+        }
+        if (Input.GetKeyDown(KeyCode.T))
+        {
+            Text[] texts = FindObjectsOfType<Text>();
+            foreach (Text text in texts)
+            {
+                text.text = text.text;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Text[] texts = FindObjectsOfType<Text>();
+            foreach (Text text in texts)
+            {
+                text.font = text.font;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.R))
+        {
+            YandexGame.ResetSaveProgress();
+        }
+    }
 
     public void ScreenShoot()
     {
         ScreenCapture.CaptureScreenshot("ScreenShoot.jpg");
     }
+#else
+
+    private void Update()
+    {
+        if(Input.GetKeyDown(KeyCode.R))
+        {
+            YandexGame.ResetSaveProgress();
+        }
+        if(Input.GetKeyDown(KeyCode.S))
+        {
+            YandexGame.savesData.money += 1000;
+            YandexGame.SaveProgress();
+        }
+                if (Input.GetKeyDown(KeyCode.T))
+        {
+            Text[] texts = FindObjectsOfType<Text>();
+            foreach(Text text in texts)
+            {
+                text.text = text.text;
+            }
+        }
+        if (Input.GetKeyDown(KeyCode.Y))
+        {
+            Text[] texts = FindObjectsOfType<Text>();
+            foreach (Text text in texts)
+            {
+                text.font = text.font;
+            }
+        }
+    }
 
 #endif
 
 }
-public struct LocalizerData
+public class LocalizerData
 {
     public string resultText;
     public Font resultFont;

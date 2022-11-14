@@ -201,7 +201,7 @@ namespace YG
                 return null;
             }
 
-            var url = String.Format("http://translate.google.cn/translate_a/single?client=gtx&dt=t&sl={0}&tl={1}&q={2}", "auto", translationTo, WebUtility.UrlEncode(text));
+            var url = String.Format("https://translate.google.com.hk/translate_a/single?client=gtx&dt=t&sl={0}&tl={1}&q={2}", "auto", translationTo, WebUtility.UrlEncode(text));
             UnityWebRequest www = UnityWebRequest.Get(url);
             www.SendWebRequest();
             while (!www.isDone)

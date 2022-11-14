@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635fd45ba878b87499983ddad1fc5ddb, type: 3}
   m_Name: "\u041C\u0430\u043A\u0430\u0440"
   m_EditorClassIdentifier: 
-  shopIco: {fileID: 0}
+  useTranslator: 0
+  nameKey: 
+  shopIco: {fileID: 21300000, guid: f634fae8a215b504f92d617f56662fe4, type: 3}
   m_Weapon: {fileID: 4218982194374033796, guid: 744ca177156d6b5499a3f1629cc8c30c,
     type: 3}
   maxWeaponCount: 1

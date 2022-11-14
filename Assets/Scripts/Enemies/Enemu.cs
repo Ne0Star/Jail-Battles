@@ -118,7 +118,6 @@ public class Enemu : Entity, ICustomListItem
         gun.transform.localScale = Vector3.one;
         gun.Free = false;
         gun.gameObject.SetActive(true);
-        gun.SetUpdate(Random.Range(1, diedCount));
         OnDied.AddListener((e) =>
         {
             gun.gameObject.SetActive(false);

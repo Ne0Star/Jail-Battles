@@ -23,19 +23,19 @@ public class Player : Enemu
         SetMele(re);
 
 
-        foreach (WeaponPlayerData data in YG.YandexGame.savesData.selectedWeapons)
-        {
-            //if(r)
-            //if (data.wapon == r.WeaponType)
-            //{
-            //    r.SetUpdate(data.updateCount);
-            //}
-            //if(re)
-            //if (data.wapon == re.WeaponType)
-            //{
-            //    re.SetUpdate(data.updateCount);
-            //}
-        }
+        //foreach (WeaponPlayerData data in YG.YandexGame.savesData.selectedWeapons)
+        //{
+        //    //if(r)
+        //    //if (data.wapon == r.WeaponType)
+        //    //{
+        //    //    r.SetUpdate(data.updateCount);
+        //    //}
+        //    //if(re)
+        //    //if (data.wapon == re.WeaponType)
+        //    //{
+        //    //    re.SetUpdate(data.updateCount);
+        //    //}
+        //}
 
     }
 

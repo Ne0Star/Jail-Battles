@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 635fd45ba878b87499983ddad1fc5ddb, type: 3}
   m_Name: "MP-443_\u0413\u0440\u0430\u0447 1"
   m_EditorClassIdentifier: 
-  shopIco: {fileID: 0}
+  useTranslator: 0
+  nameKey: 
+  shopIco: {fileID: 21300000, guid: 5840e3f7ab3cf354dba1f888ad4f3d93, type: 3}
   m_Weapon: {fileID: 8977461712234561743, guid: 2812fa026c9315b47bdfb7bd759bfeb4,
     type: 3}
   maxWeaponCount: 1

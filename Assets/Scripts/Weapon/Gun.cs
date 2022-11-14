@@ -4,23 +4,21 @@ using UnityEngine;
 
 public class Gun : Weapon
 {
-    [SerializeField] private float attackDistance;
     [SerializeField] private float notAttackDistance;
 
-    private void OnDrawGizmos()
-    {
-        Gizmos.color = Color.green;
-        Gizmos.DrawWireSphere(transform.position, attackDistance);
-        Gizmos.color = Color.red;
-        Gizmos.DrawWireSphere(transform.position, notAttackDistance);
-    }
 
-    /// <summary>
-    /// Максимальное расстояние при котором может происходить атака
-    /// </summary>
-    public float AttackDistance { get => attackDistance; }
+
+    //private void OnDrawGizmos()
+    //{
+    //    Gizmos.color = Color.green;
+    //    Gizmos.DrawWireSphere(transform.position, attackDistance.Value);
+    //    Gizmos.color = Color.red;
+    //    Gizmos.DrawWireSphere(transform.position, notAttackDistance);
+    //}
+
     /// <summary>
     /// Расстояние при котором атака не может происходить
     /// </summary>
     public float NotAttackDistance { get => notAttackDistance; }
+
 }

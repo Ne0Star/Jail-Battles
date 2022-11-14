@@ -7,7 +7,6 @@ public class AttackTarget : AIAction
     [SerializeField] private Enemu executor;
     [SerializeField] private Entity target;
     [SerializeField] private float exitDistance;
-
     public AttackTarget(Enemu executor, ref Entity target, bool fastAttack)
     {
         this.executor = executor;
@@ -59,7 +58,7 @@ public class AttackTarget : AIAction
     }
 
 
-    private void SimulateWeapon(Weapon w)
+    private void SimulateWeapon(Mele w)
     {
         if (!reached)
         {
@@ -71,9 +70,21 @@ public class AttackTarget : AIAction
         }
         reached = true;
         executor.Agent.isStopped = true;
-        if (attackCount < executor.Weapon.AttackCount)
+
+        YG.WeaponData weaponData = new YG.WeaponData();
+        foreach(YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
         {
-            if (attackTime >= executor.Weapon.AttackSpeed)
+            if(m.weaponType == w.WeaponType)
+            {
+                weaponData = m;
+                break;
+            }
+        }
+
+
+        if (attackCount <  weaponData.attackCount.Value)
+        {
+            if (attackTime >= weaponData.attackSpeed.Value)
             {
 
                 executor.Animator.Play("attack");
@@ -85,7 +96,7 @@ public class AttackTarget : AIAction
         }
         else
         {
-            if (currentTime >= executor.Weapon.ReloadSpeed)
+            if (currentTime >= weaponData.reloadSpeed.Value)
             {
 
                 //executor.Animator.Play("reload");
@@ -96,6 +107,54 @@ public class AttackTarget : AIAction
             currentTime += Time.unscaledDeltaTime;
         }
     }
+    private void SimulateWeapon(Gun w)
+    {
+        if (!reached)
+        {
+            attackCount = 0;
+            attackTime = 0f;
+            currentTime = 0f;
+            executor.SetWeapon(w);
+            executor.Animator.Play("fightStance");
+        }
+        reached = true;
+        executor.Agent.isStopped = true;
+        YG.WeaponData weaponData = new YG.WeaponData();
+        foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+        {
+            if (m.weaponType == w.WeaponType)
+            {
+                weaponData = m;
+                break;
+            }
+        }
+        if (attackCount < weaponData.patronCount.Value)
+        {
+            if (attackTime >= weaponData.attackSpeed.Value)
+            {
+
+                executor.Animator.Play("attack");
+
+                attackCount++;
+                attackTime = 0;
+            }
+            attackTime += Time.unscaledDeltaTime;
+        }
+        else
+        {
+            if (currentTime >= weaponData.reloadSpeed.Value)
+            {
+
+                //executor.Animator.Play("reload");
+
+                attackCount = 0;
+                currentTime = 0;
+            }
+            currentTime += Time.unscaledDeltaTime;
+        }
+    }
+
+
     public System.Action onExitDistance;
     [SerializeField] private bool reached = false;
     public override void CustomUpdate()
@@ -114,16 +173,24 @@ public class AttackTarget : AIAction
             return;
         }
 
-
-        // Есть пушка
-        if (executor.WeaponGun && distance <= executor.WeaponGun.AttackDistance && distance >= executor.WeaponGun.NotAttackDistance && rotated)
+        YG.WeaponData weaponData = new YG.WeaponData();
+        foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
         {
-            SimulateWeapon(executor.WeaponGun);
+            if (m.weaponType == executor.WeaponGun.WeaponType)
+            {
+                weaponData = m;
+                break;
+            }
+        }
+        // Есть пушка
+        if (executor.WeaponGun && distance <= weaponData.attackSpeed.Value && distance >= executor.WeaponGun.NotAttackDistance && rotated)
+        {
+            SimulateWeapon((Gun)executor.WeaponGun);
         }
         // Есть дубинка
         else if (executor.WeaponMele && distance <= executor.Agent.radius + target.Agent.radius + 0.2f && rotated)
         {
-            SimulateWeapon(executor.WeaponMele);
+            SimulateWeapon((Mele)executor.WeaponMele);
         }
         else
         {

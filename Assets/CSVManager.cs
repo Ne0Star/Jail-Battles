@@ -11,10 +11,8 @@ public class CSVManager
     public static readonly string LINE_SPLIT_RE = @"\r\n|\n\r|\n|\r";
 
     // Чтение CSV файла. Поиск переводов по ключу
-    public static string[] ImportTransfersByKey(string CSVName, int languagesCount, string key)
+    public static string[] ImportTransfersByKey(TextAsset data, int languagesCount, string key)
     {
-        TextAsset data = Resources.Load(CSVName) as TextAsset;
-
         string[] keys = Regex.Split(CommaFormat(data.text), LINE_SPLIT_RE);
         string[] result = new string[languagesCount];
 
@@ -27,7 +25,7 @@ public class CSVManager
             {
                 for (int i2 = 0; i2 < languagesCount; i2++)
                 {
-                    result[i2] = translates[i2 + 1].Replace("*", ",").Replace(@"\n", "\n");
+                    result[i2] = translates[Mathf.Clamp(i2 + 1, 0, translates.Length - 1)].Replace("*", ",").Replace(@"\n", "\n");
                     complete = true;
                 }
             }

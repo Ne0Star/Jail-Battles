@@ -218,19 +218,48 @@ MonoBehaviour:
   free: 1
   clip: {fileID: 8300000, guid: 57c6d920aa1f4fc49adf77aadb61b6b4, type: 3}
   source: {fileID: 5823073158569691813}
-  currentUpdateNumber: 0
-  maxUpdateCount: 10
-  currentUpdateCount: 0
-  currentStat:
-    attackDamage: 0
-    attackCount: 0
-    attackSpeed: 0
-    reloadSpeed: 0
-  fullStat:
-    attackDamage: 10
-    attackCount: 10
-    attackSpeed: 10
-    reloadSpeed: 10
+  attackSpeed:
+    allowUpdate: 1
+    value: 1
+    maxValue: 5
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
+  attackDistance:
+    allowUpdate: 1
+    value: 1
+    maxValue: 5
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
+  reloadSpeed:
+    allowUpdate: 1
+    value: 1
+    maxValue: 5
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
+  attackDamage:
+    allowUpdate: 1
+    value: 1
+    maxValue: 5
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
+  patronCount:
+    allowUpdate: 1
+    value: 6
+    maxValue: 6
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
+  patronStorage:
+    allowUpdate: 1
+    value: 6
+    maxValue: 6
+    updateCount: 0
+    maxUpdateCount: 5
+    priceFactor: 0.01
   weaponCategory: 2
   weaponType: 5
   left: {fileID: 4521989939302798378}

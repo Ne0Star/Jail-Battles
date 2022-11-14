@@ -55,19 +55,93 @@ public enum WeaponType
     Вилка,
     Нож,
 }
-[System.Serializable]
-public struct WeaponStat
-{
-    [Header("Универсальные данные для каждого типа оружия")]
-    [SerializeField] private float attackDamage;
-    [SerializeField] private int attackCount;
-    [SerializeField] private float attackSpeed;
-    [SerializeField] private float reloadSpeed;
 
-    public float AttackDamage { get => attackDamage; set => attackDamage = value; }
-    public int AttackCount { get => attackCount; set => attackCount = value; }
-    public float AttackSpeed { get => attackSpeed; set => attackSpeed = value; }
-    public float ReloadSpeed { get => reloadSpeed; set => reloadSpeed = value; }
+[System.Serializable]
+public class WeaponStatInt
+{
+    [SerializeField] private bool allowUpdate = true;
+    [SerializeField] private int value;
+    [SerializeField] private int maxValue;
+
+    [SerializeField] private int updateCount = 0;
+    [SerializeField] private int maxUpdateCount = 10;
+
+    [SerializeField] private float priceFactor = 0.01f;
+    public int Value { get => GetValue(); }
+    public int MaxValue { get => maxValue; }
+    public int UpdateCount { get => updateCount; }
+    public int MaxUpdateCount { get => maxUpdateCount; }
+    public float PriceFactor { get => priceFactor; }
+    public bool AllowUpdate { get => allowUpdate; }
+
+    public void SetUpdate(int count)
+    {
+        if (!allowUpdate) return;
+        updateCount = Mathf.Clamp(count, 1, maxUpdateCount);
+        value = GetValue();
+    }
+
+    public void Update()
+    {
+        if (!allowUpdate) return;
+        updateCount = Mathf.Clamp(updateCount + 1, 1, maxUpdateCount);
+        value = GetValue();
+    }
+
+
+    private int GetValue()
+    {
+        float percent = updateCount * 100 / maxUpdateCount;
+        float coof = maxValue / 100f;
+        int totalValue = Mathf.RoundToInt(coof * percent);
+        return totalValue;
+    }
+
+}
+
+[System.Serializable]
+public class WeaponStatFloat
+{
+    [SerializeField] private bool allowUpdate = true;
+
+    [SerializeField] private float value;
+    [SerializeField] private float maxValue;
+
+    [SerializeField] private int updateCount = 0;
+    [SerializeField] private int maxUpdateCount = 10;
+
+    [SerializeField] private float priceFactor = 0.01f;
+
+    public float Value { get => GetValue(); }
+    public float MaxValue { get => maxValue; }
+
+    public int UpdateCount { get => updateCount; }
+    public int MaxUpdateCount { get => maxUpdateCount; }
+    public bool AllowUpdate { get => allowUpdate; }
+    public float PriceFactor { get => priceFactor; }
+
+    public void SetUpdate(int count)
+    {
+        if (!allowUpdate) return;
+        updateCount = Mathf.Clamp(count, 1, maxUpdateCount);
+        value = GetValue();
+    }
+
+    public void Update()
+    {
+        if (!allowUpdate) return;
+        updateCount = Mathf.Clamp(updateCount + 1, 1, maxUpdateCount);
+        value = GetValue();
+    }
+
+    private float GetValue()
+    {
+        float percent = updateCount * 100 / maxUpdateCount;
+        float coof = maxValue / 100f;
+        float totalValue = coof * percent;
+        return totalValue;
+    }
+
 }
 
 /// <summary>
@@ -82,38 +156,6 @@ public class Weapon : MonoBehaviour
     [SerializeField] protected bool free = false;
     [SerializeField] protected AudioClip clip;
     [SerializeField] protected AudioSource source;
-
-    [SerializeField] protected int currentUpdateNumber;
-
-
-    [Header("Максимальное количество улучшений для оружия")]
-    [SerializeField] protected int maxUpdateCount = 10;
-    [Header("Текущий номер улучшения")]
-    [SerializeField] protected int currentUpdateCount = 0;
-    [Header("Текущее улучшение оружия")]
-    [SerializeField] protected WeaponStat currentStat;
-    [Header("Максимальное")]
-    [SerializeField] protected WeaponStat fullStat;
-
-    public void SetUpdate(int count)
-    {
-        currentUpdateCount = count;
-        float percent = count * 100 / maxUpdateCount;
-
-        currentStat.AttackCount = Mathf.RoundToInt(GetUpdate(percent, fullStat.AttackCount));
-        currentStat.AttackSpeed = GetUpdate(percent, fullStat.AttackSpeed);
-        currentStat.ReloadSpeed = GetUpdate(percent, fullStat.ReloadSpeed);
-        currentStat.AttackDamage = GetUpdate(percent, fullStat.AttackDamage);
-    }
-
-    private float GetUpdate(float percent, float maxValue)
-    {
-        float coof = maxValue / 100f;
-        float totalValue = coof * percent;
-        return totalValue;
-    }
-
-
     [SerializeField] private WeaponCategory weaponCategory;
     [SerializeField] private WeaponType weaponType;
 
@@ -149,22 +191,5 @@ public class Weapon : MonoBehaviour
         source.Play();
 
     }
-
-    /// <summary>
-    /// Урон наносимый оружием
-    /// </summary>
-    public float AttackDamage { get => currentStat.AttackDamage; }
-    /// <summary>
-    /// Время перезарядки оружия
-    /// </summary>
     public bool Free { get => free; set => free = value; }
-    public float AttackSpeed { get => currentStat.AttackSpeed; }
-    public int AttackCount { get => currentStat.AttackCount; }
-    /// <summary>
-    /// Скорость перезарядки
-    /// </summary>
-    public float ReloadSpeed { get => currentStat.ReloadSpeed; }
-    public WeaponStat FullStat { get => fullStat; }
-    public int MaxUpdateCount { get => maxUpdateCount; }
-    public int CurrentUpdateCount { get => currentUpdateCount; }
 }

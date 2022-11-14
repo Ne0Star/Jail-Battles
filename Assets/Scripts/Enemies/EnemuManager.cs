@@ -2,13 +2,15 @@
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
-
+using YG;
 
 /// <summary>
 /// Спавн и цикл врагов
 /// </summary>
 public class EnemuManager : MonoBehaviour
 {
+    [SerializeField] private List<YG.WeaponData> weaponDatas = new List<YG.WeaponData>();
+
     [SerializeField] private float updateTime;
     [SerializeField] private int stepCount;
     [SerializeField] private CustomList<Enemu> allEnemies;
@@ -17,7 +19,6 @@ public class EnemuManager : MonoBehaviour
 
 
     [SerializeField] private List<Convict> allConvicts;
-
     [SerializeField] private List<Cleaner> allCleaners;
     [SerializeField] private List<Cook> allCook;
     [SerializeField] private List<Nurse> allNurse;
@@ -40,6 +41,7 @@ public class EnemuManager : MonoBehaviour
     /// </summary>
     public List<Nurse> AllNurse { get => allNurse; }
     public List<Defender> AllDefenders { get => allDefenders; }
+    public List<WeaponData> WeaponDatas { get => weaponDatas; }
 
     public T GetEntityByType<T>() where T : Enemu
     {
@@ -78,14 +80,24 @@ public class EnemuManager : MonoBehaviour
     }
     private void OnEnable()
     {
+        if (YG.YandexGame.savesData.enemuWeapons == null)
+        {
+            YG.YandexGame.savesData.enemuWeapons = GameManager.Instance.DefaultWeaponDatas.ToArray();
+            weaponDatas.Clear();
+            weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
+            YG.YandexGame.SaveProgress();
+        }
+        else
+        {
+            weaponDatas.Clear();
+            weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
+            YG.YandexGame.SaveProgress();
+        }
 
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>(true));
-
         StartCoroutine(Enabled());
-
         allEnemies.StartLife(this);
-
     }
 
     private IEnumerator Enabled()

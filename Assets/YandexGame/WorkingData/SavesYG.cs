@@ -26,33 +26,67 @@ namespace YG
         public string leggs = "1";
 
 
-        public WeaponPlayerData[] selectedWeapons = new WeaponPlayerData[1]
+        public WeaponData[] enemuWeapons = null;
+
+        public WeaponData[] selectedWeapons = new WeaponData[1]
         {
-            new WeaponPlayerData()
+            new WeaponData()
             {
-                counts = 1,
-                updateCount = 0,
-                wapon = WeaponType.None
+                weaponCount = 1,
+                weaponType = WeaponType.None
             }
         };
 
-        public WeaponPlayerData[] byuWeapons = new WeaponPlayerData[1]
+        public WeaponData[] byuWeapons = new WeaponData[1]
         {
-            new WeaponPlayerData()
+            new WeaponData()
             {
-                counts = 1,
-                updateCount = 0,
-                wapon = WeaponType.None
+                weaponCount = 1,
+                weaponType = WeaponType.None
             }
         };
     }
 
     [System.Serializable]
-    public struct WeaponPlayerData
+    public struct WeaponData
     {
-        public int counts;
-        public int updateCount;
-        public WeaponType wapon;
-    }
+        public int weaponCount;
 
+
+
+        /// <summary>
+        /// Дальность оружия
+        /// </summary>
+        public WeaponStatFloat attackDistance;
+        /// <summary>
+        /// Скорость перезарядки/ колдовн оружия
+        /// </summary>
+        public WeaponStatFloat reloadSpeed;
+        /// <summary>
+        /// Скорось ударов/выстрелов
+        /// </summary>
+        public WeaponStatFloat attackSpeed;
+        /// <summary>
+        /// Наносимый урон
+        /// </summary>
+        public WeaponStatFloat attackDamage;
+        /// <summary>
+        /// Количество патрон в магазине
+        /// </summary>
+        public WeaponStatInt patronCount;
+        /// <summary>
+        /// Количество атак ближним оружием
+        /// </summary>
+        public WeaponStatInt attackCount;
+        /// <summary>
+        /// Количество патрон которые можно хранить
+        /// </summary>
+        public WeaponStatInt patronStorage;
+        /// <summary>
+        /// Точность стрельбы
+        /// </summary>
+        public WeaponStatFloat shootingAccuracy;
+
+        public WeaponType weaponType;
+    }
 }
