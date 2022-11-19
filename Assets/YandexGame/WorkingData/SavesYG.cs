@@ -26,6 +26,20 @@ namespace YG
         public string leggs = "1";
 
 
+        public string[] byuBodies = new string[1]
+        {
+            "1"
+        };
+        public string[] byuHead = new string[1]
+        {
+            "1"
+        };
+        public string[] byuLeggs = new string[1]
+        {
+            "1"
+        };
+
+
         public WeaponData[] enemuWeapons = null;
 
         public WeaponData[] selectedWeapons = new WeaponData[1]

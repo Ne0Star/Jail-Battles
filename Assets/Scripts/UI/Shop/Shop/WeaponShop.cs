@@ -8,6 +8,14 @@ using YG;
 public class WeaponShop : Shop
 {
 
+
+    [SerializeField] private Vector3 lastPostion;
+    [SerializeField] private Quaternion lastRotation;
+    [SerializeField] private Quaternion playerRotation;
+    [SerializeField] private Vector3 playerPosition;
+    [SerializeField] private Transform player;
+
+
     [SerializeField] private GameObject notByuParent, fullUpdateParent, equpParent;
 
     [SerializeField] private GameObject mainView;
@@ -75,8 +83,21 @@ public class WeaponShop : Shop
         playerView.balance.text = YandexGame.savesData.money + " ";
     }
 
+
+    private void OnEnable()
+    {
+        lastRotation = player.transform.rotation;
+        lastPostion = player.transform.position;
+
+        player.transform.position = playerPosition;
+        player.transform.rotation = playerRotation;
+    }
+
+
     private void OnDisable()
     {
+        player.transform.position = lastPostion;
+        player.transform.rotation = lastRotation;
         mainView.SetActive(false);
     }
 
@@ -107,9 +128,6 @@ public class WeaponShop : Shop
                 }
             }
         }
-
-        //Debug.Log(weaponValue + " " + maxWeaponValue);
-
         Set(weaponView.ratingView, weaponValue, maxWeaponValue);
     }
 
@@ -135,7 +153,6 @@ public class WeaponShop : Shop
         LocalizerData textData = GameManager.Instance.GetValueByKey(item.NameKey);
         bool isByu = false, stackable = item.MaxWeaponCount > 1 ? true : false;
         mainView.SetActive(true);
-
         foreach (WeaponData m in YandexGame.savesData.byuWeapons)
         {
             if (m.weaponType == item.Weapon.WeaponType)
@@ -145,9 +162,7 @@ public class WeaponShop : Shop
                 break;
             }
         }
-
         SetWeaponView(item, weaponData, textData);
-
         byuData.btn.onClick?.RemoveAllListeners();
         byuData.btn.onClick?.AddListener(() =>
         {
@@ -197,7 +212,6 @@ public class WeaponShop : Shop
                 Debug.Log("Недостаточно средств для покупки");
             }
         });
-
         if (YandexGame.savesData.money - item.Price >= 0)
         {
             byuData.view.color = byuData.onByu;
@@ -206,9 +220,6 @@ public class WeaponShop : Shop
         {
             byuData.view.color = byuData.offByu;
         }
-
-        Debug.Log(isByu + " " + stackable);
-
         if (isByu && stackable) // Куплен, стакается
         {
             if (item.MaxWeaponCount == weaponData.weaponCount)
@@ -246,10 +257,8 @@ public class WeaponShop : Shop
             weaponUpdateData.parent.SetActive(false);
             equpParent.SetActive(false);
         }
-
         GetRating(item);
         onSelected?.Invoke(item);
-
     }
 
     public void SetCategory(int categoryIndex)
@@ -263,7 +272,6 @@ public class WeaponShop : Shop
                 AddItem(item);
             }
         }
-
         if (category == WeaponCategory.None)
         {
             LocalizerData data = GameManager.Instance.GetValueByKey("weaponShop");
@@ -278,7 +286,6 @@ public class WeaponShop : Shop
 
 
         }
-        Debug.Log(categoryLabel.text + " " + categoryLabel.font);
         playerView.balance.text = YandexGame.savesData.money + " ";
         onSwipeCategory?.Invoke(category);
     }
@@ -288,7 +295,7 @@ public class WeaponShop : Shop
         WeaponShopItem item = GetFreeItem();
         item.SetItem(itemType);
         item.gameObject.SetActive(true);
-        item.onByuAttemp += SetPreviewItem;
+        item.onSelect += SetPreviewItem;
     }
 
     public void RemoveAllItem()
@@ -312,7 +319,8 @@ public class WeaponShop : Shop
         return null;
     }
 
-    private WeaponShopItem CreateItem()
+
+    private ShopItem CreateItem()
     {
         WeaponShopItem item = null;
         if (itemPrefab)
@@ -329,7 +337,6 @@ public class WeaponShop : Shop
             item = go.AddComponent<WeaponShopItem>();
             allItems.Add(item);
         }
-
         return item;
     }
 

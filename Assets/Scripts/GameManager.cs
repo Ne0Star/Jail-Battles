@@ -1,11 +1,15 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using YG;
 
 public class GameManager : OneSingleton<GameManager>
 {
+
+
+
     [SerializeField] private Font resultFont;
     [SerializeField] private List<YG.WeaponData> defaultWeaponDatas = new List<YG.WeaponData>();
 
@@ -24,7 +28,28 @@ public class GameManager : OneSingleton<GameManager>
 
         YandexGame.SwitchLanguage(currentLang);
         YandexGame.SwitchLangEvent += ReLang;
+        QualitySettings.vSyncCount = 2;
+        //Application.targetFrameRate = 30;
+    }
 
+    public void SwitchScene(int index)
+    {
+        StartCoroutine(OpenSceneAsyncSingle(index));
+    }
+    public IEnumerator OpenSceneAsyncSingle(int index)
+    {
+        AsyncOperation time = SceneManager.LoadSceneAsync(index, LoadSceneMode.Single);
+        Scene scene = gameObject.scene;
+        //if (loadPage) uiManager.OpenPage(loadPage);
+        while (!time.isDone)
+        {
+            //if (loadText)
+            //{
+            //    float progress = Mathf.Clamp01(time.progress / 1.05f);
+            //    loadText.text = progress + "";
+            //}
+            yield return new WaitForFixedUpdate();
+        }
     }
 
     private void ReLang(string s)
@@ -71,9 +96,21 @@ public class GameManager : OneSingleton<GameManager>
     }
 
     [SerializeField] private YG.WeaponData stat;
-    [SerializeField] bool setAllStat;
+    [SerializeField] bool setAllStat, test;
+
+    public float start, end, current, t;
+
     private void OnDrawGizmos()
     {
+
+        if(test)
+        {
+
+            t = Mathf.InverseLerp(start, end, current);
+
+            test = false;
+        }
+
         if (setAllStat)
         {
             for (int i = 0; i < defaultWeaponDatas.Count; i++)

@@ -7,6 +7,9 @@ public class AttackTarget : AIAction
     [SerializeField] private Enemu executor;
     [SerializeField] private Entity target;
     [SerializeField] private float exitDistance;
+
+    [SerializeField] private YG.WeaponData gunData, meleData;
+
     public AttackTarget(Enemu executor, ref Entity target, bool fastAttack)
     {
         this.executor = executor;
@@ -23,6 +26,34 @@ public class AttackTarget : AIAction
 
             currentTime = 0f;
         }
+
+
+        if (executor.WeaponGun)
+        {
+            YG.WeaponData weaponData = new YG.WeaponData();
+            foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+            {
+                if (m.weaponType == executor.WeaponGun.WeaponType)
+                {
+                    weaponData = m;
+                    break;
+                }
+            }
+            gunData = weaponData;
+        }
+        if (executor.WeaponMele)
+        {
+            YG.WeaponData weaponData = new YG.WeaponData();
+            foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+            {
+                if (m.weaponType == executor.WeaponMele.WeaponType)
+                {
+                    weaponData = m;
+                    break;
+                }
+            }
+            meleData = weaponData;
+        }
     }
 
     [SerializeField] private float currentTime;
@@ -37,7 +68,7 @@ public class AttackTarget : AIAction
             if (!reached)
             {
                 GameUtils.LookAt2DSmooth(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset, Time.unscaledDeltaTime * (executor.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler));
-                    rotated = true;
+                rotated = true;
                 //rotated = true
                 //GameUtils.LookAt2D(executor.RotateParent, executor.Agent.transform.position + executor.Agent.velocity, executor.RotateOffset);
             }
@@ -71,24 +102,14 @@ public class AttackTarget : AIAction
         reached = true;
         executor.Agent.isStopped = true;
 
-        YG.WeaponData weaponData = new YG.WeaponData();
-        foreach(YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+        //Debug.Log(attackCount + " " + meleData.attackCount.Value + " " + meleData.weaponType);;
+        if (attackCount < Mathf.Clamp(meleData.attackCount.Value, 1, 9999))
         {
-            if(m.weaponType == w.WeaponType)
-            {
-                weaponData = m;
-                break;
-            }
-        }
-
-
-        if (attackCount <  weaponData.attackCount.Value)
-        {
-            if (attackTime >= weaponData.attackSpeed.Value)
+            if (attackTime >= meleData.attackSpeed.Value)
             {
 
                 executor.Animator.Play("attack");
-
+                //Debug.Log("ХУЙНЯ ЕБАНАЯ");
                 attackCount++;
                 attackTime = 0;
             }
@@ -96,7 +117,7 @@ public class AttackTarget : AIAction
         }
         else
         {
-            if (currentTime >= weaponData.reloadSpeed.Value)
+            if (currentTime >= meleData.reloadSpeed.Value)
             {
 
                 //executor.Animator.Play("reload");
@@ -117,20 +138,14 @@ public class AttackTarget : AIAction
             executor.SetWeapon(w);
             executor.Animator.Play("fightStance");
         }
+
+        Debug.Log("Ну до сюда доходит");
         reached = true;
         executor.Agent.isStopped = true;
-        YG.WeaponData weaponData = new YG.WeaponData();
-        foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+
+        if (attackCount < Mathf.Clamp(gunData.patronCount.Value, 1, 9999))
         {
-            if (m.weaponType == w.WeaponType)
-            {
-                weaponData = m;
-                break;
-            }
-        }
-        if (attackCount < weaponData.patronCount.Value)
-        {
-            if (attackTime >= weaponData.attackSpeed.Value)
+            if (attackTime >= gunData.attackSpeed.Value)
             {
 
                 executor.Animator.Play("attack");
@@ -142,7 +157,7 @@ public class AttackTarget : AIAction
         }
         else
         {
-            if (currentTime >= weaponData.reloadSpeed.Value)
+            if (currentTime >= gunData.reloadSpeed.Value)
             {
 
                 //executor.Animator.Play("reload");
@@ -157,9 +172,10 @@ public class AttackTarget : AIAction
 
     public System.Action onExitDistance;
     [SerializeField] private bool reached = false;
+    [SerializeField] float distance;
     public override void CustomUpdate()
     {
-        float distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
+        distance = Vector2.Distance(executor.Agent.transform.position, target.Agent.transform.position);
         if (!target || !target.gameObject.activeSelf)
         {
             OnComplete?.Invoke(this);
@@ -173,23 +189,15 @@ public class AttackTarget : AIAction
             return;
         }
 
-        YG.WeaponData weaponData = new YG.WeaponData();
-        foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
-        {
-            if (m.weaponType == executor.WeaponGun.WeaponType)
-            {
-                weaponData = m;
-                break;
-            }
-        }
         // Есть пушка
-        if (executor.WeaponGun && distance <= weaponData.attackSpeed.Value && distance >= executor.WeaponGun.NotAttackDistance && rotated)
+        if (executor.WeaponGun && distance <= gunData.attackDistance.Value && distance >= 2f && rotated)
         {
             SimulateWeapon((Gun)executor.WeaponGun);
         }
         // Есть дубинка
         else if (executor.WeaponMele && distance <= executor.Agent.radius + target.Agent.radius + 0.2f && rotated)
         {
+
             SimulateWeapon((Mele)executor.WeaponMele);
         }
         else

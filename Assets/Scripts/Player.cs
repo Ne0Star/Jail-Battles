@@ -6,14 +6,22 @@ using YG;
 
 public class Player : Enemu
 {
+
+    [SerializeField] public Joystick controller;
+
     [SerializeField] private PlayerController playerController;
-    public PlayerController PlayerController { get => playerController; }
+    //public PlayerController PlayerController { get => playerController; }
+
+
 
     private void Awake()
     {
-        playerController = new Controller_0(this, moveSpeed);
-
-
+        playerController = new Controller_1(this, ref moveSpeed, controller);
+        //#if UNITY_ANDROID
+        //        playerController = new Controller_1(this, moveSpeed, controller);
+        //#elif UNITY_WEBGL
+        //        playerController = new Controller_0(this, moveSpeed);
+        //#endif
 
 
 
@@ -42,12 +50,44 @@ public class Player : Enemu
     private void Start()
     {
         animator.Play("fightStance");
+        StartCoroutine(Life());
+    }
 
+    int index = 0;
+
+    private IEnumerator Life()
+    {
+        playerController.Update();
+        yield return new WaitForSeconds(0.03f);
+        StartCoroutine(Life());
+        yield return null;
     }
 
     private void Update()
     {
-        playerController.Update();
+
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+
+            if (index == 0)
+            {
+                playerController = new Controller_1(this, ref moveSpeed, controller);
+            }
+            if (index == 1)
+            {
+                playerController = new Controller_0(this, ref moveSpeed);
+            }
+
+            index++;
+            if (index >= 2)
+            {
+                index = 0;
+            }
+        }
+
+        //agent.velocity = (controller.Direction * (agent.speed * 3));
+        //GameUtils.LookAt2DSmooth(RotateParent, (agent.transform.position + (agent.velocity * -1)), RotateOffset, Time.unscaledDeltaTime * (Agent.speed * LevelManager.Instance.LevelData.RotateMultipler));
+
     }
 
 

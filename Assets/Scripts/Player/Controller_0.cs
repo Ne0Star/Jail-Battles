@@ -7,7 +7,7 @@ public class Controller_0 : PlayerController
 {
     [SerializeField] private Player player;
     [SerializeField] private Stat moveSpeed;
-    public Controller_0(Player player, Stat moveSpeed)
+    public Controller_0(Player player, ref Stat moveSpeed)
     {
         this.player = player;
         this.moveSpeed = moveSpeed;
@@ -34,7 +34,7 @@ public class Controller_0 : PlayerController
             rotated = true;
         });
 
-        if(Input.GetKey(KeyCode.LeftShift))
+        if (Input.GetKey(KeyCode.LeftShift))
         {
             moveSpeed.Buff(0.1f);
         }

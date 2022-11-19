@@ -64,8 +64,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: c640cd1568fffff419b8a6d246788be0, type: 3}
     - {fileID: 2800000, guid: 3f1c573710b6bb3478844bebff8572f7, type: 3}
     - {fileID: 2800000, guid: 643560c3cf3239c4bb605bce36648777, type: 3}
-    - {fileID: 2800000, guid: 73a8806c980ba0f40ace6e51b2a45d48, type: 3}
-    - {fileID: 2800000, guid: c99d8d3986313be4fa7ec093a9a799ee, type: 3}
     - {fileID: 2800000, guid: c92b7d3ef235ca54496cd430ca19bde1, type: 3}
     - {fileID: 2800000, guid: 6a08010ba056b2c4aad47c201a8085e9, type: 3}
     - {fileID: 2800000, guid: 4504c3a4fa48f514e82ebdc0d3c9b429, type: 3}
@@ -154,7 +152,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: f634fae8a215b504f92d617f56662fe4, type: 3}
   - {fileID: 21300000, guid: a22693393da42f14ba770a0fe9133229, type: 3}
   - {fileID: 21300000, guid: 8a7a28392a360e54d8b479681d879296, type: 3}
-  - {fileID: 21300000, guid: c99d8d3986313be4fa7ec093a9a799ee, type: 3}
   - {fileID: 21300000, guid: a69abff9b16acbe4289f945e49780112, type: 3}
   - {fileID: 21300000, guid: c40e7f0a274facc4ca4982021342c2dc, type: 3}
   - {fileID: 4411427759833275007, guid: 47c3322a65dfdf147af4258ff0b7325c, type: 3}
@@ -171,7 +168,6 @@ SpriteAtlas:
   - {fileID: 21300000, guid: 0f96bebbf3784de48b32afb7a82df012, type: 3}
   - {fileID: 21300000, guid: 7e0ef7db4c64b0241b462e869b60d844, type: 3}
   - {fileID: 21300000, guid: b7ee203cb0f359f42a77d6e11bc00b2c, type: 3}
-  - {fileID: 21300000, guid: 73a8806c980ba0f40ace6e51b2a45d48, type: 3}
   - {fileID: 21300000, guid: b26ef48cfaf119e43bd746be580d1a25, type: 3}
   - {fileID: 21300000, guid: 89a9158cdb5b85b4c9919df5dc491b74, type: 3}
   - {fileID: 21300000, guid: c131ecbc08cf02541a51c0bf6745f940, type: 3}
@@ -232,7 +228,6 @@ SpriteAtlas:
   - "\u041C\u0430\u043A\u0430\u0440\u043E\u0432 \u041F\u041C"
   - "\u041C\u0430\u0433\u0430\u0437\u0438\u043D \u0434\u043B\u044F \u041F\u041F-91"
   - "\u041A\u0440\u043E\u0441\u044B \u043E\u0445\u0440\u0430\u043D\u043D\u0438\u043A\u0430"
-  - Group 16686
   - "\u041E\u0431\u0440\u0435\u0437 \u0441\u0432\u0435\u0440\u0445\u0443"
   - "\u0413\u043E\u043B\u043E\u0432\u0430-1"
   - Group 15596_3
@@ -249,7 +244,6 @@ SpriteAtlas:
   - "\u0413\u043E\u043B\u043E\u0432\u0430"
   - "\u0410\u041A\u0421-74\u0423 (AKS-74Y)"
   - "\u041F\u041F-91 _\u041A\u0435\u0434\u0440_ \u0441\u0432\u0435\u0440\u0445\u0443"
-  - Group 16685
   - "\u041F\u0430\u043B\u043A\u0430 \u0434\u043B\u044F \u0448\u0432\u0430\u0431\u0440\u044B"
   - "\u0411\u0435\u043B\u044B\u0435 \u0432\u0430\u043B\u0435\u043D\u043A\u0438"
   - "\u0410\u041F\u0421 \u0441\u0432\u0435\u0440\u0445\u0443"

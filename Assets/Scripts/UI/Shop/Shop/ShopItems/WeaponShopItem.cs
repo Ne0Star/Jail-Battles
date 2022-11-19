@@ -5,7 +5,7 @@ using UnityEngine.UI;
 
 public class WeaponShopItem : ShopItem
 {
-    public event System.Action<WeaponItem> onByuAttemp;
+    public event System.Action<WeaponItem> onSelect;
     [SerializeField] private Button btn;
     [SerializeField] private WeaponItem item;
     [SerializeField] private Image ico;
@@ -15,7 +15,7 @@ public class WeaponShopItem : ShopItem
     private void Awake()
     {
         if (btn)
-            btn.onClick?.AddListener(() => onByuAttemp?.Invoke(item));
+            btn.onClick?.AddListener(() => onSelect?.Invoke(item));
     }
 
     public void SetItem(WeaponItem item)
@@ -35,7 +35,7 @@ public class WeaponShopItem : ShopItem
 
     private void OnDisable()
     {
-        onByuAttemp = null;
+        onSelect = null;
     }
 
     private void OnEnable()

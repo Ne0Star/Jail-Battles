@@ -12,10 +12,16 @@ public class Mover : MonoBehaviour
 
     public Vector3 Offset { get => offset; set => offset = value; }
 
-    private void LateUpdate()
+    private void Start()
     {
-        offset = LevelManager.Instance.Player.PlayerController.Direction();
-        transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, 0), interpolator.Evaluate(speed * timeStep));
+        StartCoroutine(Life());
     }
 
+    private IEnumerator Life()
+    {
+        offset = LevelManager.Instance.Player.controller.Direction;
+        transform.position = Vector3.Lerp(transform.position, new Vector3(target.position.x + offset.x, target.position.y + offset.y, 0), interpolator.Evaluate(speed * timeStep));
+        yield return new WaitForSeconds(0.004f);
+        StartCoroutine(Life());
+    }
 }

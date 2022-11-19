@@ -170,7 +170,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 32
+  m_RootOrder: 31
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &41746143
 GameObject:
@@ -398,6 +398,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -763,8 +768,10 @@ Transform:
   - {fileID: 1953955803}
   - {fileID: 966507212}
   - {fileID: 834427064}
+  - {fileID: 1022837262}
+  - {fileID: 1179364947}
   m_Father: {fileID: 0}
-  m_RootOrder: 35
+  m_RootOrder: 34
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &179221347
 GameObject:
@@ -797,6 +804,107 @@ Transform:
   m_Father: {fileID: 220369649}
   m_RootOrder: 3
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &182669801
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 182669802}
+  - component: {fileID: 182669804}
+  - component: {fileID: 182669803}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (5)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &182669802
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182669801}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 9.71, y: 0, z: -11.23}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &182669803
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182669801}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &182669804
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 182669801}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &192296797
 GameObject:
   m_ObjectHideFlags: 0
@@ -863,7 +971,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 44
+  m_RootOrder: 41
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &220369648
 GameObject:
@@ -1074,6 +1182,107 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 279344963}
   m_CullTransparentMesh: 1
+--- !u!1 &291623543
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 291623544}
+  - component: {fileID: 291623546}
+  - component: {fileID: 291623545}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (10)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &291623544
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291623543}
+  m_LocalRotation: {x: -0.7069329, y: -0.015679874, z: 0.015679874, w: -0.7069329}
+  m_LocalPosition: {x: 24.72, y: -0, z: -16.44}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 13
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -2.541}
+--- !u!114 &291623545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291623543}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &291623546
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 291623543}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &303130039
 GameObject:
   m_ObjectHideFlags: 0
@@ -1186,7 +1395,7 @@ PrefabInstance:
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
       propertyPath: m_RootOrder
-      value: 27
+      value: 26
       objectReference: {fileID: 0}
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
@@ -1345,7 +1554,7 @@ PrefabInstance:
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
       propertyPath: m_RootOrder
-      value: 26
+      value: 25
       objectReference: {fileID: 0}
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
@@ -1951,6 +2160,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2432,6 +2646,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2465,7 +2684,7 @@ PrefabInstance:
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_RootOrder
-      value: 19
+      value: 18
       objectReference: {fileID: 0}
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
@@ -2586,6 +2805,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -2785,6 +3009,208 @@ SpriteRenderer:
     type: 3}
   m_PrefabInstance: {fileID: 1333966388}
   m_PrefabAsset: {fileID: 0}
+--- !u!1 &544034365
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 544034366}
+  - component: {fileID: 544034368}
+  - component: {fileID: 544034367}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (8)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &544034366
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544034365}
+  m_LocalRotation: {x: -0.7069359, y: -0.015544386, z: 0.015544386, w: -0.7069359}
+  m_LocalPosition: {x: 17.24, y: 0, z: -11.250008}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 11
+  m_LocalEulerAnglesHint: {x: 89.98, y: 0, z: -2.519}
+--- !u!114 &544034367
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544034365}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &544034368
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 544034365}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
+--- !u!1 &574243084
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 574243085}
+  - component: {fileID: 574243087}
+  - component: {fileID: 574243086}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (3)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &574243085
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574243084}
+  m_LocalRotation: {x: -0.7069352, y: -0.01557443, z: 0.01557443, w: -0.7069352}
+  m_LocalPosition: {x: 2.4399993, y: 0, z: -6.0100327}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 6
+  m_LocalEulerAnglesHint: {x: 89.98, y: 0, z: -2.524}
+--- !u!114 &574243086
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574243084}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &574243087
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 574243084}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &576380606
 GameObject:
   m_ObjectHideFlags: 0
@@ -2832,6 +3258,107 @@ MonoBehaviour:
   surface: {fileID: 1367247753}
   areaType: 1
   size: {x: 24.5, y: 31.79, z: 0}
+--- !u!1 &598078660
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 598078661}
+  - component: {fileID: 598078663}
+  - component: {fileID: 598078662}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (1)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &598078661
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598078660}
+  m_LocalRotation: {x: -0.70665157, y: -0.025370106, z: 0.025370106, w: -0.70665157}
+  m_LocalPosition: {x: 2.439999, y: 0, z: -15.980026}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -4.112}
+--- !u!114 &598078662
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598078660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &598078663
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 598078660}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &602063969
 GameObject:
   m_ObjectHideFlags: 0
@@ -2947,7 +3474,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 38
+  m_RootOrder: 37
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &642462181
 MonoBehaviour:
@@ -3020,7 +3547,7 @@ MonoBehaviour:
     m_PostInfinity: 2
     m_RotationOrder: 4
   target: {fileID: 5625357654903758940}
-  speed: 8
+  speed: 16
   timeStep: 0.02
 --- !u!1 &664193211
 GameObject:
@@ -3057,7 +3584,7 @@ Transform:
   - {fileID: 822221372}
   - {fileID: 1901304318}
   m_Father: {fileID: 0}
-  m_RootOrder: 41
+  m_RootOrder: 38
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &664193213
 SpriteRenderer:
@@ -3185,6 +3712,7 @@ MonoBehaviour:
   GenerateRandomSkin: 1
   diedCount: 0
   damaged: 0
+  controller: {fileID: 0}
 --- !u!1 &684046964
 GameObject:
   m_ObjectHideFlags: 0
@@ -3242,6 +3770,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
@@ -3402,6 +3935,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -3589,7 +4127,7 @@ PrefabInstance:
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
       propertyPath: m_RootOrder
-      value: 25
+      value: 24
       objectReference: {fileID: 0}
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
@@ -3764,7 +4302,7 @@ PrefabInstance:
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 46
+      value: 44
       objectReference: {fileID: 0}
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
@@ -3825,6 +4363,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -3967,6 +4510,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b169a668392e8419e94e4715c9f229, type: 3}
+--- !u!1 &762806436
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 762806437}
+  - component: {fileID: 762806439}
+  - component: {fileID: 762806438}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (6)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &762806437
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762806436}
+  m_LocalRotation: {x: 0.70704097, y: -0.00964956, z: 0.00964956, w: 0.70704097}
+  m_LocalPosition: {x: 9.75, y: 0, z: -6.090006}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 9
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 1.564}
+--- !u!114 &762806438
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762806436}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &762806439
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 762806436}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &767135964
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -3974,6 +4618,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -4123,6 +4772,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -4659,6 +5313,107 @@ MonoBehaviour:
       type: 3}
     chance: 100
   allWeapons: []
+--- !u!1 &840568570
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 840568571}
+  - component: {fileID: 840568573}
+  - component: {fileID: 840568572}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (7)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &840568571
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840568570}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 17.28, y: -0, z: -16.19}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 10
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &840568572
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840568570}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &840568573
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 840568570}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &843687335
 GameObject:
   m_ObjectHideFlags: 0
@@ -4702,6 +5457,11 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 1
       objectReference: {fileID: 0}
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -4735,7 +5495,7 @@ PrefabInstance:
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_RootOrder
-      value: 21
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
@@ -4849,6 +5609,107 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 57b169a668392e8419e94e4715c9f229, type: 3}
+--- !u!1 &869893967
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 869893968}
+  - component: {fileID: 869893970}
+  - component: {fileID: 869893969}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (2)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &869893968
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869893967}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 2.4, y: 0, z: -10.79}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 5
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &869893969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869893967}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &869893970
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 869893967}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1001 &871102979
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -4939,7 +5800,7 @@ PrefabInstance:
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
       propertyPath: m_RootOrder
-      value: 22
+      value: 21
       objectReference: {fileID: 0}
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
@@ -5023,7 +5884,7 @@ PrefabInstance:
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 45
+      value: 43
       objectReference: {fileID: 0}
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
@@ -5296,9 +6157,946 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea0fb04a9440a94591319978a879523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  resultFont: {fileID: 0}
+  defaultWeaponDatas:
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 0
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 1
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 2
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 3
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 4
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 5
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 6
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 7
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 8
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 9
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 11
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 12
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 10
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 13
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 14
   currentLang: ru
   scvLanguages: {fileID: 0}
-  infoYg: {fileID: 0}
+  infoYg: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
+  stat:
+    weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 0
+  setAllStat: 0
+  test: 0
+  start: 0
+  end: 8
+  current: 4
+  t: 4
 --- !u!4 &1022837262
 Transform:
   m_ObjectHideFlags: 0
@@ -5306,13 +7104,13 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1022837260}
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 782.2756, y: 280.30045, z: -21.190594}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 780.2242, y: 280.99997, z: -21.190594}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
-  m_Father: {fileID: 0}
-  m_RootOrder: 40
+  m_Father: {fileID: 178247272}
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1001 &1027148218
 PrefabInstance:
@@ -5321,6 +7119,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -5504,7 +7307,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: 0.000061035156, y: 0.1930008}
+  m_AnchoredPosition: {x: 0.000061035156, y: 0.19299316}
   m_SizeDelta: {x: -0.000061035156, y: 0.386}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1044026118
@@ -5677,6 +7480,107 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!1 &1077275182
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1077275183}
+  - component: {fileID: 1077275185}
+  - component: {fileID: 1077275184}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (4)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1077275183
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077275182}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 9.75, y: -0, z: -16.06}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 7
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &1077275184
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077275182}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &1077275185
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077275182}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1082055612
 GameObject:
   m_ObjectHideFlags: 0
@@ -5712,7 +7616,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
-  m_AnchoredPosition: {x: -0.2427063, y: -0.1930008}
+  m_AnchoredPosition: {x: -0.2427063, y: -0.19299316}
   m_SizeDelta: {x: -0.48513895, y: -0.38604355}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1082055614
@@ -5790,6 +7694,107 @@ Transform:
   m_Father: {fileID: 1824292086}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1085781269
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1085781270}
+  - component: {fileID: 1085781272}
+  - component: {fileID: 1085781271}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (12)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1085781270
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085781269}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 24.68, y: -0, z: -6.04}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 15
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &1085781271
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085781269}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &1085781272
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1085781269}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1095501133
 GameObject:
   m_ObjectHideFlags: 0
@@ -5904,6 +7909,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -6082,6 +8092,107 @@ Transform:
   m_Father: {fileID: 220369649}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1160440315
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1160440316}
+  - component: {fileID: 1160440318}
+  - component: {fileID: 1160440317}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (11)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1160440316
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160440315}
+  m_LocalRotation: {x: 0.70676154, y: -0.022096079, z: 0.022096079, w: 0.70676154}
+  m_LocalPosition: {x: 24.64, y: 0, z: -11.380013}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 14
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: 3.581}
+--- !u!114 &1160440317
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160440315}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &1160440318
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1160440315}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1163669498
 GameObject:
   m_ObjectHideFlags: 0
@@ -6118,7 +8229,7 @@ PrefabInstance:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Modification:
-    m_TransformParent: {fileID: 0}
+    m_TransformParent: {fileID: 178247272}
     m_Modifications:
     - target: {fileID: 2211564899198745197, guid: caf9732433f4dc044845763962493607,
         type: 3}
@@ -6128,17 +8239,17 @@ PrefabInstance:
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_RootOrder
-      value: 39
+      value: 6
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: -2.0514002
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 0.6995316
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
@@ -6153,17 +8264,17 @@ PrefabInstance:
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_LocalRotation.x
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_LocalRotation.y
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
       propertyPath: m_LocalRotation.z
-      value: 0
+      value: -0
       objectReference: {fileID: 0}
     - target: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
         type: 3}
@@ -6182,6 +8293,12 @@ PrefabInstance:
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: caf9732433f4dc044845763962493607, type: 3}
+--- !u!4 &1179364947 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 2211564899198745199, guid: caf9732433f4dc044845763962493607,
+    type: 3}
+  m_PrefabInstance: {fileID: 1179364946}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &1187096439
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -6189,6 +8306,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -6352,6 +8474,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalScale.y
       value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
       objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
@@ -6580,7 +8707,7 @@ PrefabInstance:
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
       propertyPath: m_RootOrder
-      value: 29
+      value: 28
       objectReference: {fileID: 0}
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
@@ -26580,6 +28707,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -27163,7 +29295,7 @@ PrefabInstance:
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 48
+      value: 46
       objectReference: {fileID: 0}
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
@@ -27284,8 +29416,20 @@ Transform:
   - {fileID: 1656672089}
   - {fileID: 1394756726}
   - {fileID: 1290380937}
+  - {fileID: 598078661}
+  - {fileID: 869893968}
+  - {fileID: 574243085}
+  - {fileID: 1077275183}
+  - {fileID: 182669802}
+  - {fileID: 762806437}
+  - {fileID: 840568571}
+  - {fileID: 544034366}
+  - {fileID: 1569671045}
+  - {fileID: 291623544}
+  - {fileID: 1160440316}
+  - {fileID: 1085781270}
   m_Father: {fileID: 0}
-  m_RootOrder: 34
+  m_RootOrder: 33
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1375114506
 GameObject:
@@ -27392,6 +29536,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -27728,7 +29877,7 @@ PrefabInstance:
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
       propertyPath: m_RootOrder
-      value: 23
+      value: 22
       objectReference: {fileID: 0}
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
@@ -28098,7 +30247,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 33
+  m_RootOrder: 32
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1473979427
 GameObject:
@@ -28316,6 +30465,107 @@ Transform:
   m_Father: {fileID: 220369649}
   m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1569671044
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1569671045}
+  - component: {fileID: 1569671047}
+  - component: {fileID: 1569671046}
+  m_Layer: 0
+  m_Name: "\u0421\u0442\u043E\u043B (9)"
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1569671045
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569671044}
+  m_LocalRotation: {x: 0.7071065, y: 0.00071075343, z: -0.00071075343, w: 0.7071065}
+  m_LocalPosition: {x: 17.28, y: 0, z: -6.22}
+  m_LocalScale: {x: 0.55660003, y: 0.5566001, z: 0.5565999}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1367247754}
+  m_RootOrder: 12
+  m_LocalEulerAnglesHint: {x: 90, y: 0, z: -0.115}
+--- !u!114 &1569671046
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569671044}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1e3fdca004f2d45fe8abbed571a8abd5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_OverrideArea: 1
+  m_Area: 1
+  m_IgnoreFromBuild: 0
+  m_AffectedAgents: ffffffff
+--- !u!212 &1569671047
+SpriteRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1569671044}
+  m_Enabled: 1
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_DynamicOccludee: 1
+  m_StaticShadowCaster: 0
+  m_MotionVectors: 1
+  m_LightProbeUsage: 1
+  m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 0
+  m_RayTraceProcedural: 0
+  m_RenderingLayerMask: 1
+  m_RendererPriority: 0
+  m_Materials:
+  - {fileID: 2100000, guid: a97c105638bdf8b4a8650670310a4cd3, type: 2}
+  m_StaticBatchInfo:
+    firstSubMesh: 0
+    subMeshCount: 0
+  m_StaticBatchRoot: {fileID: 0}
+  m_ProbeAnchor: {fileID: 0}
+  m_LightProbeVolumeOverride: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_ReceiveGI: 1
+  m_PreserveUVs: 0
+  m_IgnoreNormalsForChartDetection: 0
+  m_ImportantGI: 0
+  m_StitchLightmapSeams: 1
+  m_SelectedEditorRenderState: 0
+  m_MinimumChartSize: 4
+  m_AutoUVMaxDistance: 0.5
+  m_AutoUVMaxAngle: 89
+  m_LightmapParameters: {fileID: 0}
+  m_SortingLayerID: 930472241
+  m_SortingLayer: 1
+  m_SortingOrder: 2
+  m_Sprite: {fileID: 21300000, guid: 645bcf08ed4c71d48ae76fa8f0bace5b, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_FlipX: 0
+  m_FlipY: 0
+  m_DrawMode: 0
+  m_Size: {x: 7.2353516, y: 4.550358}
+  m_AdaptiveModeThreshold: 0.5
+  m_SpriteTileMode: 0
+  m_WasSpriteAssigned: 1
+  m_MaskInteraction: 0
+  m_SpriteSortPoint: 0
 --- !u!1 &1579001845
 GameObject:
   m_ObjectHideFlags: 0
@@ -28385,6 +30635,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -28418,7 +30673,7 @@ PrefabInstance:
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_RootOrder
-      value: 20
+      value: 19
       objectReference: {fileID: 0}
     - target: {fileID: 6179713931030320301, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
@@ -28800,7 +31055,7 @@ Transform:
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 36
+  m_RootOrder: 35
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1717061166
 GameObject:
@@ -28892,6 +31147,125 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   target: {fileID: 5625357654752262695}
+--- !u!1001 &1736967130
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 2145446293}
+    m_Modifications:
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_Pivot.x
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_Pivot.y
+      value: 0.5
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchorMax.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchorMax.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchorMin.x
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchorMin.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_SizeDelta.x
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_SizeDelta.y
+      value: 256
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchoredPosition.x
+      value: -220
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_AnchoredPosition.y
+      value: 200
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2929252283123773939, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+        type: 3}
+      propertyPath: m_Name
+      value: Fixed Joystick
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: aaa2c939c0359ac4dbce3f49e8b90252, type: 3}
 --- !u!1001 &1737470321
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -28899,6 +31273,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -29053,6 +31432,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -29285,7 +31669,7 @@ PrefabInstance:
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
       propertyPath: m_RootOrder
-      value: 28
+      value: 27
       objectReference: {fileID: 0}
     - target: {fileID: 5243239449930032077, guid: 4fce87ac7ea18774389e78962dd75891,
         type: 3}
@@ -29416,7 +31800,7 @@ PrefabInstance:
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 47
+      value: 45
       objectReference: {fileID: 0}
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
@@ -29904,7 +32288,7 @@ TilemapRenderer:
   m_SortingLayer: 1
   m_SortingOrder: 3
   m_ChunkSize: {x: 32, y: 32, z: 32}
-  m_ChunkCullingBounds: {x: 0.00048828125, y: 0.00048828125, z: 0}
+  m_ChunkCullingBounds: {x: 0.0004887581, y: 0.00048828125, z: 0}
   m_MaxChunkCount: 16
   m_MaxFrameAge: 16
   m_SortOrder: 0
@@ -33147,6 +35531,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 5926655121202171833, guid: 57b169a668392e8419e94e4715c9f229,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 6179713930455283948, guid: 57b169a668392e8419e94e4715c9f229,
         type: 3}
       propertyPath: m_LocalRotation.w
@@ -33338,161 +35727,877 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 37787ddb040ec3c48a0f929cd59b926f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  defaultWeaponDatas:
-  - counts: 0
+  weaponDatas:
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     reloadSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackDamage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronStorage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
     shootingAccuracy:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     weaponType: 0
-  - counts: 0
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     reloadSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackDamage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronStorage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
     shootingAccuracy:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     weaponType: 1
-  - counts: 0
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     reloadSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackSpeed:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackDamage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     attackCount:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     patronStorage:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
     shootingAccuracy:
-      allowUpdate: 0
-      value: 0
-      maxValue: 0
-      updateCount: 0
-      maxUpdateCount: 0
-      priceFactor: 0
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
     weaponType: 2
-  weaponDatas: []
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 3
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 4
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 5
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 6
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 7
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 8
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 9
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 11
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 12
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 10
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 13
+  - weaponCount: 0
+    attackDistance:
+      allowUpdate: 1
+      value: 4
+      maxValue: 8
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    reloadSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackSpeed:
+      allowUpdate: 1
+      value: 0.1
+      maxValue: 0.01
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackDamage:
+      allowUpdate: 1
+      value: 1.2
+      maxValue: 6
+      updateCount: 2
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 12
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    attackCount:
+      allowUpdate: 1
+      value: 1
+      maxValue: 3
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    patronStorage:
+      allowUpdate: 1
+      value: 21
+      maxValue: 36
+      updateCount: 6
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    shootingAccuracy:
+      allowUpdate: 1
+      value: 1
+      maxValue: 2
+      updateCount: 1
+      maxUpdateCount: 10
+      priceFactor: 0.01
+    weaponType: 14
   updateTime: 0.03
   stepCount: 30
   allEnemies:
@@ -33748,7 +36853,7 @@ Transform:
   m_Children:
   - {fileID: 2004736996}
   m_Father: {fileID: 0}
-  m_RootOrder: 37
+  m_RootOrder: 36
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!212 &2013750643
 SpriteRenderer:
@@ -33910,7 +37015,7 @@ PrefabInstance:
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
       propertyPath: m_RootOrder
-      value: 24
+      value: 23
       objectReference: {fileID: 0}
     - target: {fileID: 8717434783371136867, guid: 874879f13e4c10442bd6abbded7f4d85,
         type: 3}
@@ -34335,6 +37440,24 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!224 &2139080569 stripped
+RectTransform:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773938, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1736967130}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &2139080570 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2929252283123773951, guid: aaa2c939c0359ac4dbce3f49e8b90252,
+    type: 3}
+  m_PrefabInstance: {fileID: 1736967130}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 45977bbae16431c46a013576a1aea384, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &2145446289
 GameObject:
   m_ObjectHideFlags: 0
@@ -34428,8 +37551,9 @@ RectTransform:
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 1814516674}
+  - {fileID: 2139080569}
   m_Father: {fileID: 0}
-  m_RootOrder: 43
+  m_RootOrder: 40
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
@@ -34448,6 +37572,31 @@ PrefabInstance:
       propertyPath: hitBar
       value: 
       objectReference: {fileID: 828468857}
+    - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: controller
+      value: 
+      objectReference: {fileID: 2139080570}
+    - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: moveSpeed.maxValue
+      value: 5
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: moveSpeed.minValue
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: moveSpeed.currentValue
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: moveSpeed.defaultValue
+      value: 4
+      objectReference: {fileID: 0}
     - target: {fileID: 4887201381604395802, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_Name
@@ -34456,7 +37605,7 @@ PrefabInstance:
     - target: {fileID: 4887201381604395803, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_RootOrder
-      value: 42
+      value: 39
       objectReference: {fileID: 0}
     - target: {fileID: 4887201381604395803, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
@@ -34508,6 +37657,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 6341448898371583771, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: avoidancePriority
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28777d8196a66443834299c25858ee5, type: 3}
 --- !u!1001 &4593529778404489273
@@ -34530,7 +37684,7 @@ PrefabInstance:
     - target: {fileID: 4593529778088766973, guid: db20898695ba2fc45a0234c2177d8371,
         type: 3}
       propertyPath: m_RootOrder
-      value: 31
+      value: 30
       objectReference: {fileID: 0}
     - target: {fileID: 4593529778088766973, guid: db20898695ba2fc45a0234c2177d8371,
         type: 3}
@@ -34616,7 +37770,7 @@ PrefabInstance:
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
       propertyPath: m_RootOrder
-      value: 18
+      value: 42
       objectReference: {fileID: 0}
     - target: {fileID: 142526744766243793, guid: ff96ef3227afc334daf77991d2f3057f,
         type: 3}
@@ -34692,7 +37846,7 @@ PrefabInstance:
     - target: {fileID: 2443156854066144133, guid: 2415f597bb6dd78449e1cd967d440ae7,
         type: 3}
       propertyPath: m_RootOrder
-      value: 30
+      value: 29
       objectReference: {fileID: 0}
     - target: {fileID: 2443156854066144133, guid: 2415f597bb6dd78449e1cd967d440ae7,
         type: 3}

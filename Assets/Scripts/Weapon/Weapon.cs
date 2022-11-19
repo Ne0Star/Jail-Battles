@@ -91,9 +91,8 @@ public class WeaponStatInt
 
     private int GetValue()
     {
-        float percent = updateCount * 100 / maxUpdateCount;
-        float coof = maxValue / 100f;
-        int totalValue = Mathf.RoundToInt(coof * percent);
+        float coof = Mathf.InverseLerp(0f, maxValue, value);
+        int totalValue = Mathf.FloorToInt(maxValue * coof);
         return totalValue;
     }
 
@@ -136,9 +135,8 @@ public class WeaponStatFloat
 
     private float GetValue()
     {
-        float percent = updateCount * 100 / maxUpdateCount;
-        float coof = maxValue / 100f;
-        float totalValue = coof * percent;
+        float coof = Mathf.InverseLerp(0f, maxValue, value);
+        float totalValue = maxValue * coof;
         return totalValue;
     }
 
