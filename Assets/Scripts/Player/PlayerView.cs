@@ -71,6 +71,13 @@ public class PlayerView : MonoBehaviour
                         label = s;
                         break;
                     }
+                } else if (category == "Глаза")
+                {
+                    if(s == YG.YandexGame.savesData.blink)
+                    {
+                        label = s;
+                        break;
+                    }
                 }
             }
             resolver.SetCategoryAndLabel(category, label);

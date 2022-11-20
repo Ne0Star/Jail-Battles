@@ -19,3 +19,4 @@ MonoBehaviour:
     type: 3}
   maxWeaponCount: 10
   m_Price: 5
+  m_UpdatePrice: 300

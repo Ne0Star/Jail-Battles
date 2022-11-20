@@ -52,7 +52,6 @@ public class WeaponManager : MonoBehaviour
         }
         return result;
     }
-
     public T GetRandomWeaponByType<T>() where T : Weapon
     {
         List<T> weapons = GetFreeWeapons<T>();

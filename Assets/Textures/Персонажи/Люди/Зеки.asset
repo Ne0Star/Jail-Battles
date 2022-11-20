@@ -39,7 +39,7 @@ MonoBehaviour:
       m_Sprite: {fileID: 21300000, guid: e2952a4a14051ee4093851407c9f77da, type: 3}
     - m_Name: 4
       m_Hash: -206169288
-      m_Sprite: {fileID: 21300000, guid: ac6ba018a7d02f74cac3d6b4ff7af79c, type: 3}
+      m_Sprite: {fileID: 21300000, guid: 362701160c1cbb841a5ad74393db2f78, type: 3}
   - m_Name: "\u041D\u043E\u0433\u0438"
     m_Hash: -181988446
     m_CategoryList:

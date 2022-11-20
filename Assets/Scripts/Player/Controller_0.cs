@@ -18,6 +18,7 @@ public class Controller_0 : PlayerController
     [SerializeField] private bool rotated;
     public override void Update()
     {
+
         currentPos = Camera.main.ScreenToWorldPoint(Input.mousePosition);
 
         if (!rotated)
@@ -29,7 +30,7 @@ public class Controller_0 : PlayerController
             moveSpeed.Normalize();
         }
 
-        GameUtils.LookAt2DSmooth(player.RotateParent, currentPos, player.RotateOffset, Time.unscaledDeltaTime * (player.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler), 0.01f, () =>
+        GameUtils.LookAt2DSmooth(player.RotateParent, currentPos, player.RotateOffset, Time.deltaTime * (player.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler), 0.01f, () =>
         {
             rotated = true;
         });
@@ -44,7 +45,7 @@ public class Controller_0 : PlayerController
             v = -(currentPos - player.Agent.transform.position).normalized;
 
             //Vector3 move = new Vector3(v.x / 2, v.y);
-            player.Agent.Move(v * moveSpeed.CurrentValue * 0.02f);
+            player.Agent.Move(v * moveSpeed.CurrentValue * Time.deltaTime);
         }
 
         if (Input.GetKeyUp(KeyCode.W))

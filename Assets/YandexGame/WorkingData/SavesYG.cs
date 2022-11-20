@@ -24,8 +24,15 @@ namespace YG
         /// Скин ноги
         /// </summary>
         public string leggs = "1";
+        /// <summary>
+        /// Скин глаза
+        /// </summary>
+        public string blink = "1";
 
-
+        public string[] byuBlinks = new string[1]
+        {
+            "1"
+        };
         public string[] byuBodies = new string[1]
         {
             "1"
@@ -42,14 +49,23 @@ namespace YG
 
         public WeaponData[] enemuWeapons = null;
 
-        public WeaponData[] selectedWeapons = new WeaponData[1]
-        {
-            new WeaponData()
-            {
-                weaponCount = 1,
-                weaponType = WeaponType.None
-            }
-        };
+        /// <summary>
+        /// Ближний бой
+        /// </summary>
+        public WeaponData mele;
+        /// <summary>
+        /// Пистолет
+        /// </summary>
+        public WeaponData gun;
+        /// <summary>
+        /// Стрелковое двуручное
+        /// </summary>
+        public WeaponData machine;
+        /// <summary>
+        /// Метательное
+        /// </summary>
+        public WeaponData missile;
+
 
         public WeaponData[] byuWeapons = new WeaponData[1]
         {
