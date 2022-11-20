@@ -3704,6 +3704,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   mele: {fileID: 0}
   gun: {fileID: 0}
+  machine: {fileID: 0}
   stackActions: []
   lifeActions: []
   currentAction: {fileID: 0}
@@ -36740,6 +36741,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   mele: {fileID: 0}
   gun: {fileID: 0}
+  machine: {fileID: 0}
   stackActions: []
   lifeActions: []
   currentAction: {fileID: 0}
@@ -37752,6 +37754,16 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 2443156853531444435, guid: 2415f597bb6dd78449e1cd967d440ae7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.14330873
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443156853531444435, guid: 2415f597bb6dd78449e1cd967d440ae7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.9896781
+      objectReference: {fileID: 0}
     - target: {fileID: 2443156854066144133, guid: 2415f597bb6dd78449e1cd967d440ae7,
         type: 3}
       propertyPath: m_RootOrder
@@ -37816,6 +37828,16 @@ PrefabInstance:
         type: 3}
       propertyPath: m_IsActive
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443156854458862114, guid: 2415f597bb6dd78449e1cd967d440ae7,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.87464607
+      objectReference: {fileID: 0}
+    - target: {fileID: 2443156854458862114, guid: 2415f597bb6dd78449e1cd967d440ae7,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4847621
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2415f597bb6dd78449e1cd967d440ae7, type: 3}

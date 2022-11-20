@@ -24,12 +24,21 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 6505556765432877664}
+<<<<<<< HEAD
+  m_LocalRotation: {x: -0, y: -0, z: 0.00097215164, w: 0.9999995}
+  m_LocalPosition: {x: 0.01052475, y: 0.3141656, z: 0}
+  m_LocalScale: {x: 0.52250016, y: 0.52250016, z: 0}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 8717434784421528961}
+=======
   m_LocalRotation: {x: 0, y: 0, z: -0.7071068, w: 0.7071068}
   m_LocalPosition: {x: 0.35, y: 0, z: 0}
   m_LocalScale: {x: 0.55, y: 0.55, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 8717434784716300754}
+>>>>>>> 018270ecc5e23456fdbeb82e4be7a3d246d91871
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -90}
 --- !u!212 &2102716236304224145
@@ -830,6 +839,7 @@ MonoBehaviour:
   weapon: {fileID: 0}
   mele: {fileID: 0}
   gun: {fileID: 0}
+  machine: {fileID: 0}
   stackActions: []
   lifeActions: []
   currentAction: {fileID: 0}
@@ -2056,7 +2066,8 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
-  m_Children: []
+  m_Children:
+  - {fileID: 7738749323297698712}
   m_Father: {fileID: 8717434782868394475}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
