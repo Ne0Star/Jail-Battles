@@ -24,10 +24,10 @@ MonoBehaviour:
     m_CategoryList:
     - m_Name: 1
       m_Hash: -2082672713
-      m_Sprite: {fileID: 21300000, guid: a35286d0c2a018f4f886824534d73cc9, type: 3}
+      m_Sprite: {fileID: 21300000, guid: 93e06649e93ade442941da7a23148cd3, type: 3}
     - m_Name: 2
       m_Hash: 450215437
-      m_Sprite: {fileID: 21300000, guid: 5f63ddcd2db9b8b4cb486f4a7223a77f, type: 3}
+      m_Sprite: {fileID: 21300000, guid: dce5c3fb485131f43bbf426dae97e9dd, type: 3}
   - m_Name: "\u041D\u043E\u0433\u0438"
     m_Hash: -181988446
     m_CategoryList:

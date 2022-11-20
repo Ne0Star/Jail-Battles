@@ -17,10 +17,10 @@ public class StandartBar : HitBar
     }
 
 
-    private void OnEnable()
-    {
-        SetFull();
-    }
+    //private void OnEnable()
+    //{
+    //    SetFull();
+    //}
 
     public override void UpdateData()
     {

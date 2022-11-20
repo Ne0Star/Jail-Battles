@@ -19,8 +19,10 @@ public class Enemu : Entity, ICustomListItem
 
 
     [SerializeField] protected Weapon weapon;
+
     [SerializeField] protected Mele mele;
     [SerializeField] protected Gun gun;
+    [SerializeField] protected Machine machine;
     public virtual void Attack()
     {
 
@@ -242,14 +244,20 @@ public class Enemu : Entity, ICustomListItem
 
     public int diedCount = 0;
     [SerializeField] private bool damaged = false;
+    private float attackTime = 0f;
     public void CustomUpdate()
     {
         if (damaged)
-            if (currentTime >= LevelManager.Instance.LevelData.HitBarDuration)
+        {
+            if (attackTime >= LevelManager.Instance.LevelData.HitBarDuration)
             {
                 HitBar.gameObject.SetActive(false);
                 damaged = false;
+                attackTime = 0f;
             }
+            attackTime += 0.02f;
+        }
+
 
         if (!gameObject.activeSelf)
         {

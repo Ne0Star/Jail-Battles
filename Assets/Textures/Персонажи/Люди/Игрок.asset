@@ -60,13 +60,19 @@ MonoBehaviour:
       m_Sprite: {fileID: 21300000, guid: 0f96bebbf3784de48b32afb7a82df012, type: 3}
     - m_Name: 4
       m_Hash: -206169288
-      m_Sprite: {fileID: 21300000, guid: ac6ba018a7d02f74cac3d6b4ff7af79c, type: 3}
+      m_Sprite: {fileID: 21300000, guid: efb7d3ca10b0485468258dc0693d3b24, type: 3}
     - m_Name: 5
       m_Hash: -2068763730
-      m_Sprite: {fileID: 21300000, guid: a35286d0c2a018f4f886824534d73cc9, type: 3}
+      m_Sprite: {fileID: 21300000, guid: 362701160c1cbb841a5ad74393db2f78, type: 3}
     - m_Name: 6
       m_Hash: 498629140
-      m_Sprite: {fileID: 21300000, guid: 5f63ddcd2db9b8b4cb486f4a7223a77f, type: 3}
+      m_Sprite: {fileID: 21300000, guid: 93e06649e93ade442941da7a23148cd3, type: 3}
+    - m_Name: 7
+      m_Hash: 1790921346
+      m_Sprite: {fileID: 21300000, guid: dce5c3fb485131f43bbf426dae97e9dd, type: 3}
+    - m_Name: 8
+      m_Hash: -100641005
+      m_Sprite: {fileID: 21300000, guid: c6a788c0eb6538949a21002092dd8d6f, type: 3}
   - m_Name: "\u041D\u043E\u0433\u0438"
     m_Hash: -181988446
     m_CategoryList:
@@ -88,4 +94,13 @@ MonoBehaviour:
     - m_Name: 6
       m_Hash: 498629140
       m_Sprite: {fileID: 21300000, guid: 8a7a28392a360e54d8b479681d879296, type: 3}
+  - m_Name: "\u0413\u043B\u0430\u0437\u0430"
+    m_Hash: -989214938
+    m_CategoryList:
+    - m_Name: 1
+      m_Hash: -2082672713
+      m_Sprite: {fileID: 21300000, guid: 90f7d28a86f2e2146a04522827668083, type: 3}
+    - m_Name: 2
+      m_Hash: 450215437
+      m_Sprite: {fileID: 21300000, guid: 7e9bda69073741d42ad2549e6244b77c, type: 3}
   m_ModificationHash: 0

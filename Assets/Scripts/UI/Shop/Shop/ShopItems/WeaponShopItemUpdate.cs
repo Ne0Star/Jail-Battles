@@ -65,8 +65,8 @@ public class WeaponShopItemUpdate : MonoBehaviour
         WeaponStatInt stat_ = stat;
         updateBTN.onClick?.RemoveAllListeners();
 
-        var total = item.Price * (stat.UpdateCount + 1);
-        var result = Mathf.RoundToInt((total - item.Price) * stat.MaxUpdateCount * stat.PriceFactor);
+        var total = item.UpdatePrice * (stat.UpdateCount + 1);
+        var result = Mathf.RoundToInt((total - item.UpdatePrice) * stat.MaxUpdateCount * stat.PriceFactor);
         byuPrice.text = result + " ";
 
         updateBTN.onClick?.AddListener(() =>
@@ -148,7 +148,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
         float precent = value * 100 / maxValue;
         float coof = startWidth / 100f;
         float totalWidth = coof * precent;
-        Debug.Log(precent + " " + coof + " " + totalWidth + " " + value + " " + maxValue);
+        //Debug.Log(precent + " " + coof + " " + totalWidth + " " + value + " " + maxValue);
         target.SetWidth(totalWidth);
     }
 
