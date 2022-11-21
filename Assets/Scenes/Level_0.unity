@@ -2487,11 +2487,11 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: -10
+  near clip plane: -40
   far clip plane: 20
   field of view: 60
   orthographic: 1
-  orthographic size: 4.574089
+  orthographic size: 3
   m_Depth: -1
   m_CullingMask:
     serializedVersion: 2
@@ -3769,872 +3769,632 @@ MonoBehaviour:
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 0
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 1
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 2
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 3
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 4
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 5
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 6
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 7
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 8
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 9
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 11
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 12
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 10
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 13
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 14
   currentLang: ru
   scvLanguages: {fileID: 0}
@@ -4643,60 +4403,44 @@ MonoBehaviour:
     weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 0
   setAllStat: 0
   test: 0
@@ -31047,872 +30791,632 @@ MonoBehaviour:
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 0
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 1
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 2
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
-      maxValue: 0.01
+      maxValue: 0.1
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 3
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 4
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 5
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 6
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 7
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 8
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 9
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 11
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 12
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 10
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 13
   - weaponCount: 0
     attackDistance:
       allowUpdate: 1
-      value: 4
       maxValue: 8
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     reloadSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackSpeed:
       allowUpdate: 1
-      value: 0.1
       maxValue: 0.01
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackDamage:
       allowUpdate: 1
-      value: 1.2
       maxValue: 6
-      updateCount: 2
+      updateCount: 4
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronCount:
       allowUpdate: 1
-      value: 1
       maxValue: 12
-      updateCount: 1
+      updateCount: 8
       maxUpdateCount: 10
-      priceFactor: 0.01
     attackCount:
       allowUpdate: 1
-      value: 1
       maxValue: 3
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     patronStorage:
       allowUpdate: 1
-      value: 21
       maxValue: 36
-      updateCount: 6
+      updateCount: 3
       maxUpdateCount: 10
-      priceFactor: 0.01
     shootingAccuracy:
       allowUpdate: 1
-      value: 1
       maxValue: 2
       updateCount: 1
       maxUpdateCount: 10
-      priceFactor: 0.01
     weaponType: 14
   updateTime: 0.03
   stepCount: 30
@@ -32730,6 +32234,11 @@ PrefabInstance:
       propertyPath: m_SpriteKey
       value: 0.0000012757314
       objectReference: {fileID: 0}
+    - target: {fileID: 2459309624136237456, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 286b4ce563293794e9978a62a4d981a1, type: 2}
     - target: {fileID: 4628832486661179397, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: hitBar
@@ -32740,12 +32249,82 @@ PrefabInstance:
       propertyPath: controller
       value: 
       objectReference: {fileID: 2139080570}
+    - target: {fileID: 4887201380264714787, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.9148716
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380264714787, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4037451
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380523788021, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.33057538
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380523788021, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.94377965
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380606734551, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: -0.605014
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380606734551, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.7962148
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380650318480, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.88791966
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380650318480, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.45999867
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380770162175, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.89946556
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201380770162175, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.4369917
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201381248937996, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8833895
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201381248937996, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.46863973
+      objectReference: {fileID: 0}
     - target: {fileID: 4887201381423516249, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_Sprite
       value: 
       objectReference: {fileID: 21300000, guid: 24903356386305c46aef191d49bd825f,
         type: 3}
+    - target: {fileID: 4887201381515585710, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.8986633
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201381515585710, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0.4386392
+      objectReference: {fileID: 0}
     - target: {fileID: 4887201381604395802, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_Name
@@ -32759,12 +32338,12 @@ PrefabInstance:
     - target: {fileID: 4887201381604395803, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_LocalPosition.x
-      value: 2.56
+      value: 5.49
       objectReference: {fileID: 0}
     - target: {fileID: 4887201381604395803, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
       propertyPath: m_LocalPosition.y
-      value: 1.39
+      value: -4.93
       objectReference: {fileID: 0}
     - target: {fileID: 4887201381604395803, guid: f28777d8196a66443834299c25858ee5,
         type: 3}
@@ -32806,6 +32385,16 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 4887201382112536410, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 0.89544743
+      objectReference: {fileID: 0}
+    - target: {fileID: 4887201382112536410, guid: f28777d8196a66443834299c25858ee5,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0.44516736
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: f28777d8196a66443834299c25858ee5, type: 3}
 --- !u!1 &1589791383754563399 stripped
@@ -32814,6 +32403,80 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 1589791383754563398}
   m_PrefabAsset: {fileID: 0}
+--- !u!1001 &3314712732824606051
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -1.31
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -3.77
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949618, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949619, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_Name
+      value: "\u0417\u0435\u043A"
+      objectReference: {fileID: 0}
+    - target: {fileID: 5483288209323949619, guid: 7e6a5d2d1da85c94db1bc8b642de4117,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 7e6a5d2d1da85c94db1bc8b642de4117, type: 3}
 --- !u!4 &5625357654903758940 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 6341448898371583770, guid: f28777d8196a66443834299c25858ee5,
@@ -32846,3 +32509,72 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   lib: {fileID: 0}
   resolvers: []
+--- !u!1001 &6611175945661402419
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 6611175946170430995, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_Name
+      value: "\u041F\u043E\u0432\u0430\u0440\u0438\u0445\u0430"
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 12
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 21.13
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: -4.71
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6611175946170430998, guid: d3115953312ebcc468206304973044c6,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: d3115953312ebcc468206304973044c6, type: 3}

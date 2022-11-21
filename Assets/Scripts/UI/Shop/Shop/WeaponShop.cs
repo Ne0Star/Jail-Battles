@@ -120,34 +120,36 @@ public class WeaponShop : Shop
         mainView.SetActive(false);
     }
 
-    private void Set(RectTransform target, float value, float maxValue)
+    private void Set(RectTransform target, float value, float maxValue, float minValue)
     {
-        float precent = value * 100 / maxValue;
-        float coof = startWidth / 100f;
-        float totalWidth = coof * precent;
-        target.SetWidth(Mathf.Clamp(totalWidth, 0f, startWidth));
+        float coof = Mathf.InverseLerp(minValue, maxValue, value);
+        float total = Mathf.Lerp(value, startWidth, coof);
+        target.SetWidth(total);
     }
 
     private void GetRating(WeaponItem item)
     {
         float weaponValue = float.MaxValue;
         float maxWeaponValue = 0f;
-        foreach (WeaponData m in GameManager.Instance.DefaultWeaponDatas)
+        float minWeaponValue = 999f;
+        foreach (WeaponData m in GameManager.Instance.PlayerWeaponData)
         {
-            float value = m.attackDamage.Value + m.shootingAccuracy.Value + m.attackCount.Value + m.patronCount.Value + m.reloadSpeed.Value + m.patronCount.Value;
+            float value = m.attackDamage.Value;
             if (m.weaponType == item.Weapon.WeaponType)
             {
                 weaponValue = value;
             }
-            else
+            if (value > maxWeaponValue)
             {
-                if (maxWeaponValue < value)
-                {
-                    maxWeaponValue = value;
-                }
+                maxWeaponValue = value;
+            }
+            if (value < minWeaponValue)
+            {
+                minWeaponValue = value;
             }
         }
-        Set(weaponView.ratingView, weaponValue, maxWeaponValue);
+        Debug.Log(" value = " + weaponValue + " minValue = " + minWeaponValue + " maxValue = " + maxWeaponValue);
+        Set(weaponView.ratingView, weaponValue, maxWeaponValue, minWeaponValue);
     }
 
     private void SetWeaponView(WeaponItem item, WeaponData weaponData, LocalizerData textData)
@@ -155,11 +157,11 @@ public class WeaponShop : Shop
         weaponView.ico.sprite = item.ShopIco;
         weaponView.name.text = item.UseTranslator ? textData.resultText : item.Weapon.name;
         weaponView.name.font = textData.resultFont;
-        weaponView.price.text = item.Price + " ";
+        weaponView.price.text = weaponData.price + " ";
         weaponView.price.font = textData.resultFont;
         weaponView.count.text = weaponData.weaponCount + " ";
         weaponView.count.font = textData.resultFont;
-        weaponView.maxCount.text = item.MaxWeaponCount + " ";
+        weaponView.maxCount.text = weaponData.maxWeaponCount + " ";
         weaponView.maxCount.font = textData.resultFont;
         playerView.balance.text = YandexGame.savesData.money + " ";
         playerView.balance.font = textData.resultFont;
@@ -180,7 +182,7 @@ public class WeaponShop : Shop
         currentItem = item;
         equpParent.onRemove += temp;
 
-        bool isByu = false, stackable = item.MaxWeaponCount > 1 ? true : false;
+        bool isByu = false, stackable = weaponData.maxWeaponCount > 1 ? true : false;
         mainView.SetActive(true);
         foreach (WeaponData m in YandexGame.savesData.byuWeapons)
         {
@@ -195,7 +197,7 @@ public class WeaponShop : Shop
         byuData.btn.onClick?.RemoveAllListeners();
         byuData.btn.onClick?.AddListener(() =>
         {
-            if (YandexGame.savesData.money - item.Price >= 0)
+            if (YandexGame.savesData.money - weaponData.price >= 0)
             {
                 if (isByu) // Если куплен, добавляем к максимальному количеству
                 {
@@ -204,23 +206,23 @@ public class WeaponShop : Shop
                         if (YandexGame.savesData.byuWeapons[i].weaponType == item.Weapon.WeaponType)
                         {
                             Debug.Log("Дамн дамн");
-                            YandexGame.savesData.byuWeapons[i].weaponCount = Mathf.Clamp(YandexGame.savesData.byuWeapons[i].weaponCount + 1, 0, item.MaxWeaponCount);
+                            YandexGame.savesData.byuWeapons[i].weaponCount = Mathf.Clamp(YandexGame.savesData.byuWeapons[i].weaponCount + 1, 0, weaponData.maxWeaponCount);
                         }
                     }
                 }
                 else // Некуплен
                 {
-                    if (YandexGame.savesData.money - item.Price >= 0)
+                    if (YandexGame.savesData.money - weaponData.price >= 0)
                     {
 
                         List<WeaponData> wdl = new List<WeaponData>();
                         wdl.AddRange(YandexGame.savesData.byuWeapons);
 
-                        WeaponData wd = GameManager.Instance.GetDefaultDataByType(item.Weapon.WeaponType);
-                        wd.weaponCount = Mathf.Clamp(wd.weaponCount + 1, 0, item.MaxWeaponCount);
+                        WeaponData wd = GameManager.Instance.GetDefaultPlayerDataByType(item.Weapon.WeaponType);
+                        wd.weaponCount = Mathf.Clamp(wd.weaponCount + 1, 0, weaponData.maxWeaponCount);
                         wdl.Add(wd);
 
-                        YandexGame.savesData.money -= item.Price;
+                        YandexGame.savesData.money -= weaponData.price;
                         YandexGame.savesData.byuWeapons = wdl.ToArray();
 
                     }
@@ -271,7 +273,7 @@ public class WeaponShop : Shop
             YandexGame.savesData.missile.weaponType != item.Weapon.WeaponType &&
             YandexGame.savesData.machine.weaponType != item.Weapon.WeaponType ? true : false;
 
-        if (YandexGame.savesData.money - item.Price >= 0)
+        if (YandexGame.savesData.money - weaponData.price >= 0)
         {
             byuData.view.color = byuData.onByu;
         }
@@ -282,7 +284,7 @@ public class WeaponShop : Shop
         SetEqupItems();
         if (isByu && stackable) // Куплен, стакается
         {
-            if (item.MaxWeaponCount == weaponData.weaponCount)
+            if (weaponData.maxWeaponCount == weaponData.weaponCount)
             {
                 byuData.btn.gameObject.SetActive(false);
             }

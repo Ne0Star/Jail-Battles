@@ -9,7 +9,6 @@ using YG;
 /// </summary>
 public class EnemuManager : MonoBehaviour
 {
-    [SerializeField] private List<YG.WeaponData> weaponDatas = new List<YG.WeaponData>();
 
     [SerializeField] private float updateTime;
     [SerializeField] private int stepCount;
@@ -41,7 +40,7 @@ public class EnemuManager : MonoBehaviour
     /// </summary>
     public List<Nurse> AllNurse { get => allNurse; }
     public List<Defender> AllDefenders { get => allDefenders; }
-    public List<WeaponData> WeaponDatas { get => weaponDatas; }
+    public List<WeaponData> WeaponDatas { get => GameManager.Instance.EnemiesWeaponData; }
 
     public T GetEntityByType<T>() where T : Enemu
     {
@@ -80,19 +79,19 @@ public class EnemuManager : MonoBehaviour
     }
     private void OnEnable()
     {
-        if (YG.YandexGame.savesData.enemuWeapons == null)
-        {
-            YG.YandexGame.savesData.enemuWeapons = GameManager.Instance.DefaultWeaponDatas.ToArray();
-            weaponDatas.Clear();
-            weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
-            YG.YandexGame.SaveProgress();
-        }
-        else
-        {
-            weaponDatas.Clear();
-            weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
-            YG.YandexGame.SaveProgress();
-        }
+        //if (YG.YandexGame.savesData.enemuWeapons == null)
+        //{
+        //    YG.YandexGame.savesData.enemuWeapons = GameManager.Instance.DefaultWeaponDatas.ToArray();
+        //    weaponDatas.Clear();
+        //    weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
+        //    YG.YandexGame.SaveProgress();
+        //}
+        //else
+        //{
+        //    weaponDatas.Clear();
+        //    weaponDatas.AddRange(YG.YandexGame.savesData.enemuWeapons);
+        //    YG.YandexGame.SaveProgress();
+        //}
 
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>(true));
@@ -142,6 +141,20 @@ public class EnemuManager : MonoBehaviour
             e.gameObject.SetActive(true);
             float time = Random.Range(0.05f, 0.15f);
             yield return new WaitForSeconds(time);
+        }
+
+        foreach (WeaponData data in WeaponDatas)
+        {
+            data.attackDistance.UpdateValue();
+            data.attackSpeed.UpdateValue();
+            data.reloadSpeed.UpdateValue();
+            data.patronStorage.UpdateValue();
+            data.shootingAccuracy.UpdateValue();
+
+            data.patronCount.UpdateValue();
+            data.attackCount.UpdateValue();
+            data.attackDamage.UpdateValue();
+
         }
 
     }

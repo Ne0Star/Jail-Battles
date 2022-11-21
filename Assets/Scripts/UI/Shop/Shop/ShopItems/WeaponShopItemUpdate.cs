@@ -39,7 +39,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
 
     }
 
-    public void SetStat(WeaponItem item, ref WeaponStatInt stat, string name)
+    public void SetStat(WeaponItem item, WeaponData data, ref WeaponStatInt stat, string name)
     {
         LocalizerData textData = GameManager.Instance.GetValueByKey(name);
         label.text = textData.resultText;
@@ -54,7 +54,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
             updateBTN.interactable = false;
             updateImage.sprite = fullUpdateIco;
 
-            Set(ratingRect, stat.Value, stat.MaxValue);
+            Set(ratingRect, stat.UpdateCount, stat.MaxUpdateCount);
             return;
         }
         updateBTN.interactable = true;
@@ -65,8 +65,8 @@ public class WeaponShopItemUpdate : MonoBehaviour
         WeaponStatInt stat_ = stat;
         updateBTN.onClick?.RemoveAllListeners();
 
-        var total = item.UpdatePrice * (stat.UpdateCount + 1);
-        var result = Mathf.RoundToInt((total - item.UpdatePrice) * stat.MaxUpdateCount * stat.PriceFactor);
+        var total = data.updatePrice * (stat.UpdateCount + 1);
+        var result = Mathf.RoundToInt((total - data.updatePrice) * stat.MaxUpdateCount);
         byuPrice.text = result + " ";
 
         updateBTN.onClick?.AddListener(() =>
@@ -80,7 +80,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
             {
                 stat_.Update();
                 YG.YandexGame.savesData.money -= result;
-                SetStat(item, ref stat_, name);
+                SetStat(item, data, ref stat_, name);
                 YG.YandexGame.SaveProgress();
             }
             else
@@ -88,10 +88,10 @@ public class WeaponShopItemUpdate : MonoBehaviour
                 Debug.Log("Недостаточно средств для покупки улучшения");
             }
         });
-        Set(ratingRect, stat_.Value, stat_.MaxValue);
+        Set(ratingRect, stat.UpdateCount, stat.MaxUpdateCount);
     }
 
-    public void SetStat(WeaponItem item, ref WeaponStatFloat stat, string name)
+    public void SetStat(WeaponItem item, WeaponData data, ref WeaponStatFloat stat, string name)
     {
         LocalizerData textData = GameManager.Instance.GetValueByKey(name);
         label.text = textData.resultText;
@@ -106,7 +106,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
             updateBTN.interactable = false;
             updateImage.sprite = fullUpdateIco;
 
-            Set(ratingRect, stat.Value, stat.MaxValue);
+            Set(ratingRect, stat.UpdateCount, stat.MaxUpdateCount);
             return;
         }
         updateBTN.interactable = true;
@@ -117,8 +117,8 @@ public class WeaponShopItemUpdate : MonoBehaviour
         WeaponStatFloat stat_ = stat;
         updateBTN.onClick?.RemoveAllListeners();
 
-        var total = item.Price * (stat.UpdateCount + 1);
-        var result = Mathf.RoundToInt((total - item.Price) * stat.MaxUpdateCount * stat.PriceFactor);
+        var total = data.updatePrice * (stat.UpdateCount + 1);
+        var result = Mathf.RoundToInt((total - data.updatePrice) * stat.MaxUpdateCount);
         byuPrice.text = result + " ";
 
         updateBTN.onClick?.AddListener(() =>
@@ -132,7 +132,7 @@ public class WeaponShopItemUpdate : MonoBehaviour
             {
                 stat_.Update();
                 YG.YandexGame.savesData.money -= result;
-                SetStat(item, ref stat_, name);
+                SetStat(item, data, ref stat_, name);
                 YG.YandexGame.SaveProgress();
             }
             else
@@ -140,16 +140,14 @@ public class WeaponShopItemUpdate : MonoBehaviour
                 Debug.Log("Недостаточно средств для покупки улучшения");
             }
         });
-        Set(ratingRect, stat.Value, stat.MaxValue);
+        Set(ratingRect, stat.UpdateCount, stat.MaxUpdateCount);
     }
 
     private void Set(RectTransform target, float value, float maxValue)
     {
-        float precent = value * 100 / maxValue;
-        float coof = startWidth / 100f;
-        float totalWidth = coof * precent;
-        //Debug.Log(precent + " " + coof + " " + totalWidth + " " + value + " " + maxValue);
-        target.SetWidth(totalWidth);
+        float coof = Mathf.InverseLerp(0f, maxValue, value);
+        float total = Mathf.Lerp(value, startWidth, coof);
+        target.SetWidth(total);
     }
 
     public Button UpdateBTN { get => updateBTN; }

@@ -1,4 +1,7 @@
 ﻿
+using System;
+using UnityEditor;
+
 namespace YG
 {
     [System.Serializable]
@@ -47,7 +50,7 @@ namespace YG
         };
 
 
-        public WeaponData[] enemuWeapons = null;
+        ///public WeaponData[] enemuWeapons = null;
 
         /// <summary>
         /// Ближний бой
@@ -80,8 +83,10 @@ namespace YG
     [System.Serializable]
     public struct WeaponData
     {
+        public int price;
+        public int updatePrice;
         public int weaponCount;
-
+        public int maxWeaponCount;
 
 
         /// <summary>
@@ -118,5 +123,6 @@ namespace YG
         public WeaponStatFloat shootingAccuracy;
 
         public WeaponType weaponType;
+
     }
 }

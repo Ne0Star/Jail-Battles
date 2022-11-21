@@ -59,25 +59,34 @@ public enum WeaponType
 [System.Serializable]
 public class WeaponStatInt
 {
+    public bool hiden = false;
+
+    [LabelOverride("Улучшаемый ? ")]
     [SerializeField] private bool allowUpdate = true;
-    [SerializeField] private int value;
+    private int value;
+    [LabelOverride("Максимум ")]
     [SerializeField] private int maxValue;
 
+    [LabelOverride("Текущее улучшение")]
     [SerializeField] private int updateCount = 0;
+    [LabelOverride("Максимальное улучшение")]
     [SerializeField] private int maxUpdateCount = 10;
 
-    [SerializeField] private float priceFactor = 0.01f;
-    public int Value { get => GetValue(); }
-    public int MaxValue { get => maxValue; }
-    public int UpdateCount { get => updateCount; }
-    public int MaxUpdateCount { get => maxUpdateCount; }
-    public float PriceFactor { get => priceFactor; }
-    public bool AllowUpdate { get => allowUpdate; }
+    public int Value { get => value; set => this.value = value; }
+    public int MaxValue { get => maxValue; set => this.maxValue = value; }
+    public int UpdateCount { get => updateCount; set => this.updateCount = value; }
+    public int MaxUpdateCount { get => maxUpdateCount; set => this.maxUpdateCount = value; }
+    public bool AllowUpdate { get => allowUpdate; set => this.allowUpdate = value; }
 
     public void SetUpdate(int count)
     {
         if (!allowUpdate) return;
         updateCount = Mathf.Clamp(count, 1, maxUpdateCount);
+        value = GetValue();
+    }
+
+    public void UpdateValue()
+    {
         value = GetValue();
     }
 
@@ -91,9 +100,9 @@ public class WeaponStatInt
 
     private int GetValue()
     {
-        float coof = Mathf.InverseLerp(0f, maxValue, value);
-        int totalValue = Mathf.FloorToInt(maxValue * coof);
-        return totalValue;
+        float coof = Mathf.InverseLerp(0f, maxUpdateCount, updateCount);
+        float total = Mathf.Lerp(value, maxValue, coof);
+        return Mathf.FloorToInt(total);
     }
 
 }
@@ -101,23 +110,24 @@ public class WeaponStatInt
 [System.Serializable]
 public class WeaponStatFloat
 {
-    [SerializeField] private bool allowUpdate = true;
+    public bool hiden = false;
 
-    [SerializeField] private float value;
+    [LabelOverride("Улучшаемый ? ")]
+    [SerializeField] private bool allowUpdate = true;
+    private float value;
+    [LabelOverride("Максимум ")]
     [SerializeField] private float maxValue;
 
+    [LabelOverride("Текущее улучшение")]
     [SerializeField] private int updateCount = 0;
+    [LabelOverride("Максимальное улучшение")]
     [SerializeField] private int maxUpdateCount = 10;
 
-    [SerializeField] private float priceFactor = 0.01f;
-
-    public float Value { get => GetValue(); }
-    public float MaxValue { get => maxValue; }
-
-    public int UpdateCount { get => updateCount; }
-    public int MaxUpdateCount { get => maxUpdateCount; }
-    public bool AllowUpdate { get => allowUpdate; }
-    public float PriceFactor { get => priceFactor; }
+    public float Value { get => value; set => this.value = value; }
+    public float MaxValue { get => maxValue; set => this.maxValue = value; }
+    public int UpdateCount { get => updateCount; set => this.updateCount = value; }
+    public int MaxUpdateCount { get => maxUpdateCount; set => this.maxUpdateCount = value; }
+    public bool AllowUpdate { get => allowUpdate; set => this.allowUpdate = value; }
 
     public void SetUpdate(int count)
     {
@@ -125,7 +135,10 @@ public class WeaponStatFloat
         updateCount = Mathf.Clamp(count, 1, maxUpdateCount);
         value = GetValue();
     }
-
+    public void UpdateValue()
+    {
+        value = GetValue();
+    }
     public void Update()
     {
         if (!allowUpdate) return;
@@ -135,9 +148,9 @@ public class WeaponStatFloat
 
     private float GetValue()
     {
-        float coof = Mathf.InverseLerp(0f, maxValue, value);
-        float totalValue = maxValue * coof;
-        return totalValue;
+        float coof = Mathf.InverseLerp(0f, maxUpdateCount, updateCount);
+        float total = Mathf.Lerp(value, maxValue, coof);
+        return total;
     }
 
 }

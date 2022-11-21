@@ -100,7 +100,4 @@ MonoBehaviour:
     - m_Name: 1
       m_Hash: -2082672713
       m_Sprite: {fileID: 21300000, guid: 90f7d28a86f2e2146a04522827668083, type: 3}
-    - m_Name: 2
-      m_Hash: 450215437
-      m_Sprite: {fileID: 21300000, guid: 7e9bda69073741d42ad2549e6244b77c, type: 3}
   m_ModificationHash: 0

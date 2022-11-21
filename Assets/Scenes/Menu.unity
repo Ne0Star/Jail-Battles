@@ -11996,170 +11996,6 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 11
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: -179.542}
---- !u!43 &1074763090
-Mesh:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_Name: 
-  serializedVersion: 10
-  m_SubMeshes:
-  - serializedVersion: 2
-    firstByte: 0
-    indexCount: 162
-    topology: 0
-    baseVertex: 0
-    firstVertex: 0
-    vertexCount: 56
-    localAABB:
-      m_Center: {x: 3.596768, y: 4.6497755, z: 0}
-      m_Extent: {x: 7.6917205, y: 7.8079643, z: 0}
-  m_Shapes:
-    vertices: []
-    shapes: []
-    channels: []
-    fullWeights: []
-  m_BindPose: []
-  m_BoneNameHashes: 
-  m_RootBoneNameHash: 0
-  m_BonesAABB: []
-  m_VariableBoneCountWeights:
-    m_Data: 
-  m_MeshCompression: 0
-  m_IsReadable: 1
-  m_KeepVertices: 1
-  m_KeepIndices: 1
-  m_IndexFormat: 0
-  m_IndexBuffer: 000001000200030001000000040001000300040005000100040006000500060004000700080009000a000b00090008000c0009000b000d0009000c000e0009000d0009000e000f000800100011000800120010000a0012000800130012000a0014001200130014001500120016001500140017001500160007001800060007001700180017001900150007001900170007001a0019001a0007001b0002001c00000000001d00030001001e00020005001f000100030020000400040021000700060022000500180023000600070024001b00080025000b00110026000800090027000a000f00280009000a00290013000b002a000c000c002b000d000d002c000e000e002d000f0010002e00110012002f0010001500300012001300310014001400320016001900330015001600340017001700350018001a00360019001b0037001a00
-  m_VertexData:
-    serializedVersion: 3
-    m_VertexCount: 56
-    m_Channels:
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 3
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 12
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 28
-      format: 0
-      dimension: 4
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    - stream: 0
-      offset: 0
-      format: 0
-      dimension: 0
-    m_DataSize: 2464
-    _typelessdata: 46f98440300615bf00000000feff7f3f9b4eaeb9000000800000008046f98440300615bf46f98440300615bf0cfb8440805c8d3d00000000b106e23ae8ff7f3f00000080000000800cfb8440805c8d3d0cfb8440805c8d3d29fa8440a05a83be00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d46f98440300615bf90707d40b6e7eabf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf94ee70402aa645c094ee70402aa645c0000000002ef17c3f9acc1dbe000000800000008094ee70402aa645c094ee70402aa645c06cd30940a06e943d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d0cfb8440805c8d3d000c1b3ec0809b3d00000000edff7f3f35c1c8ba0000008000000080000c1b3ec0809b3d000c1b3ec0809b3d002929be7cdb44c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c0da0983c0ce1044c00903064129ed48c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0a046be40c41f4ac0a427c040e076843d00000000799806bbdcff7f3f00000080000000801920b040805b823d302fd0404092863d302fd0404092863d00000000719806bbdcff7f3f0000008000000080302fd0404092863d302fd0404092863da046be40c41f4ac000000000d761fc3b0ffe7fbf0000008000000080a046be40c41f4ac0a046be40c41f4ac0b637b740047eefbf0000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0cc28b040007915bfcc28b040007915bf0000000073527cbf57f42cbe0000000000000080cc28b040007915bfcc28b040007915bf7224b040902d85be00000000e9ff7fbf510cd7ba0000000000000080cc28b040007915bf1920b040805b823d1920b040805b823d00000000e9ff7fbfe5dad6ba00000000000000801920b040805b823d1920b040805b823d34c03041446495400000000081e07f3f95eefdbc0000008000000080a69d3441e7524741c2e22c418eba47c0c2e22c418eba47c00000000081e07f3f94eefdbc0000008000000080c2e22c418eba47c0c2e22c418eba47c0a69d3441e752474100000000b36afdbb0bfe7f3f0000008000000080a69d3441e7524741a69d3441e7524741ee23d040e4b7874000000000000080bffd8dacb90000000000000080302fd0404092863dac18d040c0aa0641ac18d040c0aa064100000000000080bffc8dacb90000000000000080ac18d040c0aa0641ac18d040c0aa06414e8770405c64464100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541a69d3441e7524741b259554000aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641c020283e40a90641c020283e40a9064100000000f4507238000080bf0000008000000080c020283e40a90641c020283e40a906416096213e42e0874000000000edff7f3f37c1c8ba0000008000000080c020283e40a90641000c1b3ec0809b3dfc6771c0d1754541000000009af17fbfc8b7ab3c0000008000000080fc6771c0d1754541fc6771c0d1754541d8bd7bc09e719440000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0fc6771c0d1754541da0983c0ce1044c0000000002e4d4ebbadff7fbf0000000000000080da0983c0ce1044c0da0983c0ce1044c029fa8440a05a83be00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d46f98440300615bf46f98440300615bf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf46f98440300615bf0cfb8440805c8d3d00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d0cfb8440805c8d3d6cd30940a06e943d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d0cfb8440805c8d3d90707d40b6e7eabf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf94ee70402aa645c094ee70402aa645c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c094ee70402aa645c0000c1b3ec0809b3d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d000c1b3ec0809b3d6096213e42e0874000000000edff7f3f35c1c8ba0000008000000080c020283e40a90641000c1b3ec0809b3d002929be7cdb44c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c0da0983c0ce1044c00903064129ed48c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0a046be40c41f4ac0c2e22c418eba47c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0c2e22c418eba47c0a427c040e076843d00000000719806bbdcff7f3f00000080000000801920b040805b823d302fd0404092863d1920b040805b823d00000000799806bbdcff7f3f00000080000000801920b040805b823d1920b040805b823d302fd0404092863d00000000000080bffd8dacb90000000000000080302fd0404092863d302fd0404092863da046be40c41f4ac00000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0a046be40c41f4ac0b637b740047eefbf0000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0cc28b040007915bfcc28b040007915bf00000000e9ff7fbf510cd7ba0000000000000080cc28b040007915bfcc28b040007915bf7224b040902d85be00000000e9ff7fbfe5dad6ba0000000000000080cc28b040007915bf1920b040805b823d34c03041446495400000000081e07f3f94eefdbc0000008000000080a69d3441e7524741c2e22c418eba47c0a69d3441e75247410000000081e07f3f95eefdbc0000008000000080a69d3441e7524741a69d3441e75247414e8770405c64464100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541a69d3441e7524741ee23d040e4b7874000000000000080bffc8dacb90000000000000080302fd0404092863dac18d040c0aa0641ac18d040c0aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641ac18d040c0aa0641fc6771c0d175454100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541fc6771c0d1754541b259554000aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641c020283e40a90641c020283e40a9064100000000edff7f3f37c1c8ba0000008000000080c020283e40a90641c020283e40a90641d8bd7bc09e719440000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0fc6771c0d1754541da0983c0ce1044c0000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0da0983c0ce1044c0
-  m_CompressedMesh:
-    m_Vertices:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UV:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Normals:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Tangents:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Weights:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_NormalSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_TangentSigns:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_FloatColors:
-      m_NumItems: 0
-      m_Range: 0
-      m_Start: 0
-      m_Data: 
-      m_BitSize: 0
-    m_BoneIndices:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_Triangles:
-      m_NumItems: 0
-      m_Data: 
-      m_BitSize: 0
-    m_UVInfo: 0
-  m_LocalAABB:
-    m_Center: {x: 3.596768, y: 4.6497755, z: 0}
-    m_Extent: {x: 7.6917205, y: 7.8079643, z: 0}
-  m_MeshUsageFlags: 0
-  m_BakedConvexCollisionMesh: 
-  m_BakedTriangleCollisionMesh: 
-  m_MeshMetrics[0]: 1
-  m_MeshMetrics[1]: 1
-  m_MeshOptimizationFlags: 1
-  m_StreamData:
-    serializedVersion: 2
-    offset: 0
-    size: 0
-    path: 
 --- !u!1 &1079193180
 GameObject:
   m_ObjectHideFlags: 0
@@ -16738,8 +16574,8 @@ MonoBehaviour:
   - {x: 4.155429, y: -0.58212566, z: 0}
   - {x: 3.7645617, y: -3.0882668, z: 0}
   m_ShapePathHash: -1568802898
-  m_Mesh: {fileID: 1074763090}
-  m_InstanceId: 54376
+  m_Mesh: {fileID: 1795823109}
+  m_InstanceId: 40006
 --- !u!1 &1504912419
 GameObject:
   m_ObjectHideFlags: 0
@@ -19994,6 +19830,170 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1779528388}
   m_CullTransparentMesh: 1
+--- !u!43 &1795823109
+Mesh:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: 
+  serializedVersion: 10
+  m_SubMeshes:
+  - serializedVersion: 2
+    firstByte: 0
+    indexCount: 162
+    topology: 0
+    baseVertex: 0
+    firstVertex: 0
+    vertexCount: 56
+    localAABB:
+      m_Center: {x: 3.596768, y: 4.6497755, z: 0}
+      m_Extent: {x: 7.6917205, y: 7.8079643, z: 0}
+  m_Shapes:
+    vertices: []
+    shapes: []
+    channels: []
+    fullWeights: []
+  m_BindPose: []
+  m_BoneNameHashes: 
+  m_RootBoneNameHash: 0
+  m_BonesAABB: []
+  m_VariableBoneCountWeights:
+    m_Data: 
+  m_MeshCompression: 0
+  m_IsReadable: 1
+  m_KeepVertices: 1
+  m_KeepIndices: 1
+  m_IndexFormat: 0
+  m_IndexBuffer: 000001000200030001000000040001000300040005000100040006000500060004000700080009000a000b00090008000c0009000b000d0009000c000e0009000d0009000e000f000800100011000800120010000a0012000800130012000a0014001200130014001500120016001500140017001500160007001800060007001700180017001900150007001900170007001a0019001a0007001b0002001c00000000001d00030001001e00020005001f000100030020000400040021000700060022000500180023000600070024001b00080025000b00110026000800090027000a000f00280009000a00290013000b002a000c000c002b000d000d002c000e000e002d000f0010002e00110012002f0010001500300012001300310014001400320016001900330015001600340017001700350018001a00360019001b0037001a00
+  m_VertexData:
+    serializedVersion: 3
+    m_VertexCount: 56
+    m_Channels:
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 3
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 12
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 28
+      format: 0
+      dimension: 4
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    - stream: 0
+      offset: 0
+      format: 0
+      dimension: 0
+    m_DataSize: 2464
+    _typelessdata: 46f98440300615bf00000000feff7f3f9b4eaeb9000000800000008046f98440300615bf46f98440300615bf0cfb8440805c8d3d00000000b106e23ae8ff7f3f00000080000000800cfb8440805c8d3d0cfb8440805c8d3d29fa8440a05a83be00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d46f98440300615bf90707d40b6e7eabf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf94ee70402aa645c094ee70402aa645c0000000002ef17c3f9acc1dbe000000800000008094ee70402aa645c094ee70402aa645c06cd30940a06e943d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d0cfb8440805c8d3d000c1b3ec0809b3d00000000edff7f3f35c1c8ba0000008000000080000c1b3ec0809b3d000c1b3ec0809b3d002929be7cdb44c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c0da0983c0ce1044c00903064129ed48c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0a046be40c41f4ac0a427c040e076843d00000000799806bbdcff7f3f00000080000000801920b040805b823d302fd0404092863d302fd0404092863d00000000719806bbdcff7f3f0000008000000080302fd0404092863d302fd0404092863da046be40c41f4ac000000000d761fc3b0ffe7fbf0000008000000080a046be40c41f4ac0a046be40c41f4ac0b637b740047eefbf0000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0cc28b040007915bfcc28b040007915bf0000000073527cbf57f42cbe0000000000000080cc28b040007915bfcc28b040007915bf7224b040902d85be00000000e9ff7fbf510cd7ba0000000000000080cc28b040007915bf1920b040805b823d1920b040805b823d00000000e9ff7fbfe5dad6ba00000000000000801920b040805b823d1920b040805b823d34c03041446495400000000081e07f3f95eefdbc0000008000000080a69d3441e7524741c2e22c418eba47c0c2e22c418eba47c00000000081e07f3f94eefdbc0000008000000080c2e22c418eba47c0c2e22c418eba47c0a69d3441e752474100000000b36afdbb0bfe7f3f0000008000000080a69d3441e7524741a69d3441e7524741ee23d040e4b7874000000000000080bffd8dacb90000000000000080302fd0404092863dac18d040c0aa0641ac18d040c0aa064100000000000080bffc8dacb90000000000000080ac18d040c0aa0641ac18d040c0aa06414e8770405c64464100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541a69d3441e7524741b259554000aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641c020283e40a90641c020283e40a9064100000000f4507238000080bf0000008000000080c020283e40a90641c020283e40a906416096213e42e0874000000000edff7f3f37c1c8ba0000008000000080c020283e40a90641000c1b3ec0809b3dfc6771c0d1754541000000009af17fbfc8b7ab3c0000008000000080fc6771c0d1754541fc6771c0d1754541d8bd7bc09e719440000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0fc6771c0d1754541da0983c0ce1044c0000000002e4d4ebbadff7fbf0000000000000080da0983c0ce1044c0da0983c0ce1044c029fa8440a05a83be00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d46f98440300615bf46f98440300615bf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf46f98440300615bf0cfb8440805c8d3d00000000feff7f3f9b4eaeb900000080000000800cfb8440805c8d3d0cfb8440805c8d3d6cd30940a06e943d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d0cfb8440805c8d3d90707d40b6e7eabf000000002ef17c3f9acc1dbe000000800000008046f98440300615bf94ee70402aa645c094ee70402aa645c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c094ee70402aa645c0000c1b3ec0809b3d00000000b106e23ae8ff7f3f0000008000000080000c1b3ec0809b3d000c1b3ec0809b3d6096213e42e0874000000000edff7f3f35c1c8ba0000008000000080c020283e40a90641000c1b3ec0809b3d002929be7cdb44c0000000002e4d4ebbadff7fbf000000000000008094ee70402aa645c0da0983c0ce1044c00903064129ed48c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0a046be40c41f4ac0c2e22c418eba47c000000000d761fc3b0ffe7fbf0000008000000080c2e22c418eba47c0c2e22c418eba47c0a427c040e076843d00000000719806bbdcff7f3f00000080000000801920b040805b823d302fd0404092863d1920b040805b823d00000000799806bbdcff7f3f00000080000000801920b040805b823d1920b040805b823d302fd0404092863d00000000000080bffd8dacb90000000000000080302fd0404092863d302fd0404092863da046be40c41f4ac00000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0a046be40c41f4ac0b637b740047eefbf0000000073527cbf57f42cbe0000000000000080a046be40c41f4ac0cc28b040007915bfcc28b040007915bf00000000e9ff7fbf510cd7ba0000000000000080cc28b040007915bfcc28b040007915bf7224b040902d85be00000000e9ff7fbfe5dad6ba0000000000000080cc28b040007915bf1920b040805b823d34c03041446495400000000081e07f3f94eefdbc0000008000000080a69d3441e7524741c2e22c418eba47c0a69d3441e75247410000000081e07f3f95eefdbc0000008000000080a69d3441e7524741a69d3441e75247414e8770405c64464100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541a69d3441e7524741ee23d040e4b7874000000000000080bffc8dacb90000000000000080302fd0404092863dac18d040c0aa0641ac18d040c0aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641ac18d040c0aa0641fc6771c0d175454100000000b36afdbb0bfe7f3f0000008000000080fc6771c0d1754541fc6771c0d1754541b259554000aa064100000000f4507238000080bf0000008000000080ac18d040c0aa0641c020283e40a90641c020283e40a9064100000000edff7f3f37c1c8ba0000008000000080c020283e40a90641c020283e40a90641d8bd7bc09e719440000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0fc6771c0d1754541da0983c0ce1044c0000000009af17fbfc8b7ab3c0000008000000080da0983c0ce1044c0da0983c0ce1044c0
+  m_CompressedMesh:
+    m_Vertices:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UV:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Normals:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Tangents:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Weights:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_NormalSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_TangentSigns:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_FloatColors:
+      m_NumItems: 0
+      m_Range: 0
+      m_Start: 0
+      m_Data: 
+      m_BitSize: 0
+    m_BoneIndices:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_Triangles:
+      m_NumItems: 0
+      m_Data: 
+      m_BitSize: 0
+    m_UVInfo: 0
+  m_LocalAABB:
+    m_Center: {x: 3.596768, y: 4.6497755, z: 0}
+    m_Extent: {x: 7.6917205, y: 7.8079643, z: 0}
+  m_MeshUsageFlags: 0
+  m_BakedConvexCollisionMesh: 
+  m_BakedTriangleCollisionMesh: 
+  m_MeshMetrics[0]: 1
+  m_MeshMetrics[1]: 1
+  m_MeshOptimizationFlags: 1
+  m_StreamData:
+    serializedVersion: 2
+    offset: 0
+    size: 0
+    path: 
 --- !u!1 &1810379005
 GameObject:
   m_ObjectHideFlags: 0
@@ -20212,7 +20212,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!4 &1841851031
@@ -21344,946 +21344,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: eea0fb04a9440a94591319978a879523, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  weaponStat: {fileID: 11400000, guid: 29ec514910ee9f64c8c27641194dfd07, type: 2}
   resultFont: {fileID: 12800000, guid: ef0c687e723e9364eb8cfc71c772cc4b, type: 3}
-  defaultWeaponDatas:
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 0
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 1
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 2
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 3
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 4
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 5
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 6
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 7
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 8
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 9
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 11
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 12
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 10
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 13
-  - weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 14
   currentLang: ru
   scvLanguages: {fileID: 4900000, guid: b9f803fc350d46c4fb95d10ad6f10cd4, type: 3}
   infoYg: {fileID: 11400000, guid: 162644796a8b0d044bce3d6fda0641e3, type: 2}
-  stat:
-    weaponCount: 0
-    attackDistance:
-      allowUpdate: 1
-      value: 4
-      maxValue: 6
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    reloadSpeed:
-      allowUpdate: 1
-      value: 2
-      maxValue: 0.1
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackSpeed:
-      allowUpdate: 1
-      value: 0.1
-      maxValue: 0.2
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackDamage:
-      allowUpdate: 1
-      value: 2
-      maxValue: 5
-      updateCount: 4
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 12
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    attackCount:
-      allowUpdate: 1
-      value: 1
-      maxValue: 8
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    patronStorage:
-      allowUpdate: 1
-      value: 4
-      maxValue: 36
-      updateCount: 1
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    shootingAccuracy:
-      allowUpdate: 1
-      value: 1
-      maxValue: 5
-      updateCount: 0
-      maxUpdateCount: 10
-      priceFactor: 0.01
-    weaponType: 0
-  setAllStat: 0
-  test: 0
-  start: 0
-  end: 0
-  current: 0
-  t: 0
 --- !u!4 &1944652654
 Transform:
   m_ObjectHideFlags: 0

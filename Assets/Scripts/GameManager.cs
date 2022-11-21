@@ -7,17 +7,18 @@ using YG;
 
 public class GameManager : OneSingleton<GameManager>
 {
-
+    [SerializeField] private WeaponStat weaponStat;
 
 
     [SerializeField] private Font resultFont;
-    [SerializeField] private List<YG.WeaponData> defaultWeaponDatas = new List<YG.WeaponData>();
 
     [SerializeField] private string currentLang = "ru";
     [SerializeField] private TextAsset scvLanguages;
     [SerializeField] private InfoYG infoYg;
 
-    public List<WeaponData> DefaultWeaponDatas { get => defaultWeaponDatas; }
+    public List<WeaponData> PlayerWeaponData { get => weaponStat.playerWeapons; }
+    public List<WeaponData> EnemiesWeaponData { get => weaponStat.enemuWeapons; }
+
     public Font ResultFont { get => resultFont; set => resultFont = value; }
 
     private void Awake()
@@ -80,11 +81,15 @@ public class GameManager : OneSingleton<GameManager>
         }
         this.resultFont = resultFont;
     }
-
-    public WeaponData GetDefaultDataByType(WeaponType type)
+    /// <summary>
+    /// ¬озвращает данные оружи€ игрока по его типу
+    /// </summary>
+    /// <param name="type"></param>
+    /// <returns></returns>
+    public WeaponData GetDefaultPlayerDataByType(WeaponType type)
     {
         WeaponData result = new WeaponData();
-        foreach (WeaponData data in defaultWeaponDatas)
+        foreach (WeaponData data in PlayerWeaponData)
         {
             if (data.weaponType == type)
             {
@@ -95,40 +100,40 @@ public class GameManager : OneSingleton<GameManager>
         return result;
     }
 
-    [SerializeField] private YG.WeaponData stat;
-    [SerializeField] bool setAllStat, test;
+    //[SerializeField] private YG.WeaponData stat;
+    //[SerializeField] bool setAllStat, test;
 
-    public float start, end, current, t;
+    //public float start, end, current, t;
 
-    private void OnDrawGizmos()
-    {
+    //private void OnDrawGizmos()
+    //{
 
-        if(test)
-        {
+    //    if (test)
+    //    {
 
-            t = Mathf.InverseLerp(start, end, current);
+    //        t = Mathf.InverseLerp(start, end, current);
 
-            test = false;
-        }
+    //        test = false;
+    //    }
 
-        if (setAllStat)
-        {
-            for (int i = 0; i < defaultWeaponDatas.Count; i++)
-            {
-                YG.WeaponData data = defaultWeaponDatas[i];
+    //    if (setAllStat)
+    //    {
+    //        for (int i = 0; i < defaultWeaponDatas.Count; i++)
+    //        {
+    //            YG.WeaponData data = defaultWeaponDatas[i];
 
-                WeaponType type = data.weaponType;
-                data = stat;
-                data.patronCount.SetUpdate(Random.Range(0, 9));
-                data.patronStorage.SetUpdate(Random.Range(0, 9));
-                data.attackDamage.SetUpdate(Random.Range(0, 9));
-                data.weaponType = type;
+    //            WeaponType type = data.weaponType;
+    //            data = stat;
+    //            data.patronCount.SetUpdate(Random.Range(0, 9));
+    //            data.patronStorage.SetUpdate(Random.Range(0, 9));
+    //            data.attackDamage.SetUpdate(Random.Range(0, 9));
+    //            data.weaponType = type;
 
-                defaultWeaponDatas[i] = data;
-            }
-            setAllStat = false;
-        }
-    }
+    //            defaultWeaponDatas[i] = data;
+    //        }
+    //        setAllStat = false;
+    //    }
+    //}
 
     private int GetLangIndex(string lang)
     {

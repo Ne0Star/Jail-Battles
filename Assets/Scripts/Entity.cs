@@ -1,4 +1,5 @@
-﻿using System.Collections;
+﻿using System;
+using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
@@ -96,9 +97,21 @@ public struct EntityAnimationData
         }
     }
 
+    public void SetSource(AudioSource source)
+    {
+        if (this.source != null) return;
+        this.source = source;
+    }
+
     public AudioSource Source { get => source; }
     public Animator Animator { get => animator; }
     public EntityType EntityType { get => entityType; }
+
+    internal void SetAnimator(Animator animator)
+    {
+        if (this.animator != null) return;
+        this.animator = animator;
+    }
 }
 
 /// <summary>
@@ -152,7 +165,13 @@ public abstract class Entity : MonoBehaviour
     private void OnEnable()
     {
         if (!agent)
-            agent = gameObject.GetComponent<NavMeshAgent>();
+            agent = gameObject.GetComponentInChildren<NavMeshAgent>(true);
+        if (!hitBar)
+            hitBar = GetComponentInChildren<HitBar>(true);
+        if (!animator.Source)
+            animator.SetSource(GetComponentInChildren<AudioSource>(true));
+        if (!animator.Animator)
+            animator.SetAnimator(GetComponentInChildren<Animator>(true));
         if (agent)
         {
             agent.updateRotation = false;

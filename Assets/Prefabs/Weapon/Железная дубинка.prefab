@@ -111,7 +111,7 @@ Transform:
   m_GameObject: {fileID: 5226830854831182912}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1.1062427, y: 0.87755644, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 0}
   m_ConstrainProportionsScale: 0
   m_Children:
   - {fileID: 5226830854805296390}
@@ -133,48 +133,6 @@ MonoBehaviour:
   free: 1
   clip: {fileID: 8300000, guid: 29451f7a0651c6b4d8847c82110ef318, type: 3}
   source: {fileID: 5823073158569691813}
-  attackSpeed:
-    allowUpdate: 1
-    value: 1
-    maxValue: 5
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
-  attackDistance:
-    allowUpdate: 1
-    value: 1
-    maxValue: 5
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
-  reloadSpeed:
-    allowUpdate: 1
-    value: 1
-    maxValue: 5
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
-  attackDamage:
-    allowUpdate: 1
-    value: 1
-    maxValue: 5
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
-  patronCount:
-    allowUpdate: 1
-    value: 6
-    maxValue: 6
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
-  patronStorage:
-    allowUpdate: 1
-    value: 6
-    maxValue: 6
-    updateCount: 0
-    maxUpdateCount: 5
-    priceFactor: 0.01
   weaponCategory: 4
   weaponType: 3
   left: {fileID: 0}

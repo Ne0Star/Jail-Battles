@@ -101,15 +101,13 @@ public class AttackTarget : AIAction
         }
         reached = true;
         executor.Agent.isStopped = true;
-
-        //Debug.Log(attackCount + " " + meleData.attackCount.Value + " " + meleData.weaponType);;
         if (attackCount < Mathf.Clamp(meleData.attackCount.Value, 1, 9999))
         {
             if (attackTime >= meleData.attackSpeed.Value)
             {
 
                 executor.Animator.Play("attack");
-                //Debug.Log("’”…Ќя ≈ЅјЌјя");
+
                 attackCount++;
                 attackTime = 0;
             }
@@ -139,7 +137,6 @@ public class AttackTarget : AIAction
             executor.Animator.Play("fightStance");
         }
 
-        Debug.Log("Ќу до сюда доходит");
         reached = true;
         executor.Agent.isStopped = true;
 

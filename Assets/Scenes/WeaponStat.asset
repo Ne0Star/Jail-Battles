@@ -1,0 +1,1610 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 80fd66ea3a9192447a4a19663ff43598, type: 3}
+  m_Name: WeaponStat
+  m_EditorClassIdentifier: 
+  hideEnemiesData: 0
+  hidePlayerData: 0
+  hidenPlayerStat: 000000000000000000000000000000000000000000000000000000000000
+  hidenEnemiesStat: 000000000000000000000000000000000000000000000000000000000000
+  playerWeapons:
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 1
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 6
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 8
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 9
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 10
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 11
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 12
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 13
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 14
+  enemuWeapons:
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 0
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 1
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 2
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 3
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 4
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 5
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 6
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 7
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 8
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 9
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 10
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 11
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 12
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 13
+  - price: 0
+    updatePrice: 0
+    weaponCount: 0
+    maxWeaponCount: 0
+    attackDistance:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    reloadSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackSpeed:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackDamage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    attackCount:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    patronStorage:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    shootingAccuracy:
+      hiden: 0
+      allowUpdate: 1
+      maxValue: 0
+      updateCount: 0
+      maxUpdateCount: 10
+    weaponType: 14
