@@ -66,17 +66,19 @@ public class WeaponStatInt
     private int value;
     [LabelOverride("Максимум ")]
     [SerializeField] private int maxValue;
-
+    [LabelOverride("Минимум ")]
+    [SerializeField] private int minValue;
     [LabelOverride("Текущее улучшение")]
     [SerializeField] private int updateCount = 0;
     [LabelOverride("Максимальное улучшение")]
     [SerializeField] private int maxUpdateCount = 10;
 
-    public int Value { get => value; set => this.value = value; }
+    public int Value { get => value; }
     public int MaxValue { get => maxValue; set => this.maxValue = value; }
     public int UpdateCount { get => updateCount; set => this.updateCount = value; }
     public int MaxUpdateCount { get => maxUpdateCount; set => this.maxUpdateCount = value; }
     public bool AllowUpdate { get => allowUpdate; set => this.allowUpdate = value; }
+    public int MinValue { get => minValue; set => this.minValue = value; }
 
     public void SetUpdate(int count)
     {
@@ -101,7 +103,7 @@ public class WeaponStatInt
     private int GetValue()
     {
         float coof = Mathf.InverseLerp(0f, maxUpdateCount, updateCount);
-        float total = Mathf.Lerp(value, maxValue, coof);
+        float total = Mathf.Lerp(minValue, maxValue, coof);
         return Mathf.FloorToInt(total);
     }
 
@@ -117,17 +119,20 @@ public class WeaponStatFloat
     private float value;
     [LabelOverride("Максимум ")]
     [SerializeField] private float maxValue;
+    [LabelOverride("Минимум ")]
+    [SerializeField] private float minValue;
 
     [LabelOverride("Текущее улучшение")]
     [SerializeField] private int updateCount = 0;
     [LabelOverride("Максимальное улучшение")]
     [SerializeField] private int maxUpdateCount = 10;
 
-    public float Value { get => value; set => this.value = value; }
+    public float Value { get => value; }
     public float MaxValue { get => maxValue; set => this.maxValue = value; }
     public int UpdateCount { get => updateCount; set => this.updateCount = value; }
     public int MaxUpdateCount { get => maxUpdateCount; set => this.maxUpdateCount = value; }
     public bool AllowUpdate { get => allowUpdate; set => this.allowUpdate = value; }
+    public float MinValue { get => minValue; set => this.minValue = value; }
 
     public void SetUpdate(int count)
     {
@@ -149,7 +154,7 @@ public class WeaponStatFloat
     private float GetValue()
     {
         float coof = Mathf.InverseLerp(0f, maxUpdateCount, updateCount);
-        float total = Mathf.Lerp(value, maxValue, coof);
+        float total = Mathf.Lerp(minValue, maxValue, coof);
         return total;
     }
 

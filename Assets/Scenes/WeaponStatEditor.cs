@@ -164,9 +164,12 @@ public class WeaponStatEditor : Editor
         item.AllowUpdate = EditorGUILayout.ToggleLeft("Улучшаемый ? ", item.AllowUpdate);
         if (item.AllowUpdate)
         {
+            item.MinValue = EditorGUILayout.FloatField("Минимальное значение ", item.MinValue);
             item.MaxValue = EditorGUILayout.FloatField("Максимальное значение ", item.MaxValue);
             item.MaxUpdateCount = EditorGUILayout.IntField("Максимальное количество улучшенйи ", item.MaxUpdateCount);
             item.UpdateCount = EditorGUILayout.IntField("Количество улучшений ", Mathf.Clamp(item.UpdateCount, 0, item.MaxUpdateCount));
+            item.UpdateValue();
+            EditorGUILayout.LabelField("Значение учитывая улучшения: " + item.Value);
         }
     }
     private void DrawItem(ref WeaponStatInt item, string name)
@@ -174,9 +177,12 @@ public class WeaponStatEditor : Editor
         item.AllowUpdate = EditorGUILayout.ToggleLeft("Улучшаемый ? ", item.AllowUpdate);
         if (item.AllowUpdate)
         {
+            item.MinValue = EditorGUILayout.IntField("Минимальное значение ", item.MinValue);
             item.MaxValue = EditorGUILayout.IntField("Максимальное значение ", item.MaxValue);
             item.MaxUpdateCount = EditorGUILayout.IntField("Максимальное количество улучшенйи ", item.MaxUpdateCount);
             item.UpdateCount = EditorGUILayout.IntField("Количество улучшений ", Mathf.Clamp(item.UpdateCount, 0, item.MaxUpdateCount));
+            item.UpdateValue();
+            EditorGUILayout.LabelField("Значение учитывая улучшения: " + item.Value);
         }
     }
 

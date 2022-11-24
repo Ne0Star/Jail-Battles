@@ -123,6 +123,6 @@ namespace YG
         public WeaponStatFloat shootingAccuracy;
 
         public WeaponType weaponType;
-
+        public WeaponCategory weaponCategory;
     }
 }

@@ -23,6 +23,7 @@ public class EqupParent : MonoBehaviour
         YG.YandexGame.SaveProgress();
         missilesIco.gameObject.SetActive(false);
         onRemove?.Invoke();
+        onRemove = null;
     }
     public void RemoveMachine()
     {
@@ -30,6 +31,7 @@ public class EqupParent : MonoBehaviour
         YG.YandexGame.SaveProgress();
         machineIco.gameObject.SetActive(false);
         onRemove?.Invoke();
+        onRemove = null;
     }
     public void RemoveGun()
     {
@@ -37,6 +39,7 @@ public class EqupParent : MonoBehaviour
         YG.YandexGame.SaveProgress();
         gunIco.gameObject.SetActive(false);
         onRemove?.Invoke();
+        onRemove = null;
     }
     public void RemoveMele()
     {
@@ -44,6 +47,7 @@ public class EqupParent : MonoBehaviour
         YG.YandexGame.SaveProgress();
         meleIco.gameObject.SetActive(false);
         onRemove?.Invoke();
+        onRemove = null;
     }
 
     public void DisableAll()

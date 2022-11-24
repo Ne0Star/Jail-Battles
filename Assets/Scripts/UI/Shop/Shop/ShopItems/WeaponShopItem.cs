@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using YG;
 
 public class WeaponShopItem : ShopItem
 {
@@ -26,11 +27,9 @@ public class WeaponShopItem : ShopItem
 
     private void UpdateData()
     {
-        if (item)
-        {
+        if(item)
             if (ico)
                 ico.sprite = item.ShopIco;
-        }
     }
 
     private void OnDisable()

@@ -14,9 +14,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useTranslator: 0
   nameKey: 
-  shopIco: {fileID: 21300000, guid: b26ef48cfaf119e43bd746be580d1a25, type: 3}
+  shopIco: {fileID: 21300000, guid: a9149b4a053d6274bb449e37a8f54b6e, type: 3}
   m_Weapon: {fileID: 8613446731319640574, guid: 2e9b27be8e539f143a1e41af916a8a10,
     type: 3}
-  maxWeaponCount: 1
-  m_Price: 300
-  m_UpdatePrice: 150

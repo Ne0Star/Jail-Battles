@@ -14,4 +14,5 @@ public class WeaponStat : ScriptableObject
 
     public List<WeaponData> playerWeapons;
     public List<WeaponData> enemuWeapons;
+
 }
