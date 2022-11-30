@@ -9,7 +9,7 @@ public class WeaponUpdateManager : MonoBehaviour
     [SerializeField] private int batchCount = 20;
 
     [SerializeField] private Transform itemsParent;
-    [SerializeField] private WeaponShopItemUpdate itemPrefab;
+    [SerializeField] private WeaponShopItemUpdate itemPab;
     private WeaponShopItemUpdate[] items;
 
     private void Awake()
@@ -17,68 +17,135 @@ public class WeaponUpdateManager : MonoBehaviour
         items = new WeaponShopItemUpdate[batchCount];
         for (int i = 0; i < batchCount; i++)
         {
-            WeaponShopItemUpdate item = Instantiate(itemPrefab, itemsParent);
+            WeaponShopItemUpdate item = Instantiate(itemPab, itemsParent);
+            item.updateClick += ItemUpdated;
             item.gameObject.SetActive(false);
             items[i] = item;
         }
     }
 
+    private WeaponData weaponDatas;
 
-    public void SetItem(WeaponItem item, ref WeaponData data)
+
+    private void ItemUpdated(WeaponShopItemUpdate item)
+    {
+
+    }
+
+    public void SetItem(WeaponItem item, WeaponData data, ref WeaponData realData)
     {
         foreach (WeaponShopItemUpdate sp in items)
         {
             sp.gameObject.SetActive(false);
         }
-
         if (data.attackDistance.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.attackDistance, "attackRange");
+            shopItem.SetStat(item, data, ref realData, ref realData.attackDistance, "attackRange");
         }
         if (data.reloadSpeed.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.reloadSpeed, "reloadSpeed");
+            shopItem.SetStat(item, data, ref realData, ref realData.reloadSpeed, "reloadSpeed");
         }
         if (data.attackSpeed.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.attackSpeed, "attackSpeed");
+            shopItem.SetStat(item, data, ref realData, ref realData.attackSpeed, "attackSpeed");
         }
         if (data.attackDamage.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.attackDamage, "attackDamage");
+            shopItem.SetStat(item, data, ref realData, ref realData.attackDamage, "attackDamage");
         }
         if (data.patronCount.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.patronCount, "patronCount");
+            shopItem.SetStat(item, data, ref realData, ref realData.patronCount, "patronCount");
         }
         if (data.attackCount.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.attackCount, "attackCount");
+            shopItem.SetStat(item, data, ref realData, ref realData.attackCount, "attackCount");
         }
         if (data.patronStorage.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.patronStorage, "patronStorage");
+            shopItem.SetStat(item, data, ref realData, ref realData.patronStorage, "patronStorage");
         }
         if (data.shootingAccuracy.AllowUpdate)
         {
             WeaponShopItemUpdate shopItem = GetFreeItem();
             shopItem.gameObject.SetActive(true);
-            shopItem.SetStat(item, data, ref data.shootingAccuracy, "accuracy");
+            shopItem.SetStat(item, data, ref realData, ref realData.shootingAccuracy, "accuracy");
         }
+
+
+
+
+
+
+
+
+        //foreach (WeaponShopItemUpdate sp in items)
+        //{
+        //    sp.gameObject.SetActive(false);
+        //}
+        //if (data.attackDistance.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.attackDistance, "attackRange");
+        //}
+        //if (data.reloadSpeed.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.reloadSpeed, "reloadSpeed");
+        //}
+        //if (data.attackSpeed.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.attackSpeed, "attackSpeed");
+        //}
+        //if (data.attackDamage.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.attackDamage, "attackDamage");
+        //}
+        //if (data.patronCount.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.patronCount, "patronCount");
+        //}
+        //if (data.attackCount.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.attackCount, "attackCount");
+        //}
+        //if (data.patronStorage.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.patronStorage, "patronStorage");
+        //}
+        //if (data.shootingAccuracy.AllowUpdate)
+        //{
+        //    WeaponShopItemUpdate shopItem = GetFreeItem();
+        //    shopItem.gameObject.SetActive(true);
+        //    shopItem.SetStat(item, data, ref realData, ref realData.shootingAccuracy, "accuracy");
+        //}
     }
 
     private WeaponShopItemUpdate GetFreeItem()

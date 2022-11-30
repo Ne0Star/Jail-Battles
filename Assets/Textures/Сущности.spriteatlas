@@ -33,9 +33,7 @@ SpriteAtlas:
     variantMultiplier: 1
     packables:
     - {fileID: 2800000, guid: 96f01b876ff76554bba7788e0b21c128, type: 3}
-    - {fileID: 2800000, guid: a5d6b026071c8774fbf27aa4c8a2d131, type: 3}
     - {fileID: 2800000, guid: 62f902a673c84b04eb1cdbdb53c14fed, type: 3}
-    - {fileID: 2800000, guid: daac58ae6ba8ec3479cdf001a9010a0a, type: 3}
     - {fileID: 2800000, guid: ce3461c706b6302488ec06345d165d48, type: 3}
     - {fileID: 2800000, guid: 81e37154360cfaa4a8ebedbefd99ca3d, type: 3}
     - {fileID: 2800000, guid: 6d0a6a6284b2e37418d8a8253d59540a, type: 3}
@@ -45,13 +43,7 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 24903356386305c46aef191d49bd825f, type: 3}
     - {fileID: 2800000, guid: 8a7a28392a360e54d8b479681d879296, type: 3}
     - {fileID: 2800000, guid: 1fed22ab297e86d4a885d69eff855eb6, type: 3}
-    - {fileID: 2800000, guid: dce5c3fb485131f43bbf426dae97e9dd, type: 3}
-    - {fileID: 2800000, guid: c6a788c0eb6538949a21002092dd8d6f, type: 3}
-    - {fileID: 2800000, guid: 93e06649e93ade442941da7a23148cd3, type: 3}
-    - {fileID: 2800000, guid: 362701160c1cbb841a5ad74393db2f78, type: 3}
     - {fileID: 2800000, guid: 688aa54e46f3fef42a991cf439b8267f, type: 3}
-    - {fileID: 2800000, guid: b78f754a4f42e5c44a1681a9b3062969, type: 3}
-    - {fileID: 2800000, guid: efb7d3ca10b0485468258dc0693d3b24, type: 3}
     - {fileID: 2800000, guid: 9f3c244fc70201a429b0cd499e21e622, type: 3}
     - {fileID: 2800000, guid: 28252059e1ead544aa7556937588581b, type: 3}
     - {fileID: 2800000, guid: d97bfbe7f0ac1544ba5239e7cea787e9, type: 3}
@@ -59,9 +51,6 @@ SpriteAtlas:
     - {fileID: 2800000, guid: 89a9158cdb5b85b4c9919df5dc491b74, type: 3}
     - {fileID: 2800000, guid: d3c815862564f0149a491da47f332ae6, type: 3}
     - {fileID: 2800000, guid: 920553542eaaf114084c13eac1fc3d58, type: 3}
-    - {fileID: 2800000, guid: c40e7f0a274facc4ca4982021342c2dc, type: 3}
-    - {fileID: 2800000, guid: e2952a4a14051ee4093851407c9f77da, type: 3}
-    - {fileID: 2800000, guid: 0f96bebbf3784de48b32afb7a82df012, type: 3}
     - {fileID: 2800000, guid: 179fb7a8358ed04428ba371dc7a01b92, type: 3}
     bindAsDefault: 1
     isAtlasV2: 0
@@ -69,15 +58,12 @@ SpriteAtlas:
   m_MasterAtlas: {fileID: 0}
   m_PackedSprites:
   - {fileID: 21300000, guid: e5362060cb7558246a73bef315711333, type: 3}
-  - {fileID: 21300000, guid: c6a788c0eb6538949a21002092dd8d6f, type: 3}
   - {fileID: 21300000, guid: 711c24a1dcce107499e429ddfa728a71, type: 3}
   - {fileID: 21300000, guid: 6d0a6a6284b2e37418d8a8253d59540a, type: 3}
   - {fileID: 21300000, guid: e05726b25db2624498db6af726a6832e, type: 3}
   - {fileID: 21300000, guid: 81e37154360cfaa4a8ebedbefd99ca3d, type: 3}
   - {fileID: 21300000, guid: 920553542eaaf114084c13eac1fc3d58, type: 3}
   - {fileID: 21300000, guid: 0bd1a7150fa49d14487dee82b4654ba4, type: 3}
-  - {fileID: 21300000, guid: 362701160c1cbb841a5ad74393db2f78, type: 3}
-  - {fileID: 21300000, guid: a5d6b026071c8774fbf27aa4c8a2d131, type: 3}
   - {fileID: 21300000, guid: 24903356386305c46aef191d49bd825f, type: 3}
   - {fileID: 21300000, guid: d3c815862564f0149a491da47f332ae6, type: 3}
   - {fileID: 21300000, guid: 62f902a673c84b04eb1cdbdb53c14fed, type: 3}
@@ -86,30 +72,19 @@ SpriteAtlas:
   - {fileID: 21300000, guid: d97bfbe7f0ac1544ba5239e7cea787e9, type: 3}
   - {fileID: 21300000, guid: 179fb7a8358ed04428ba371dc7a01b92, type: 3}
   - {fileID: 21300000, guid: 8a7a28392a360e54d8b479681d879296, type: 3}
-  - {fileID: 21300000, guid: 93e06649e93ade442941da7a23148cd3, type: 3}
   - {fileID: 21300000, guid: 28252059e1ead544aa7556937588581b, type: 3}
-  - {fileID: 21300000, guid: c40e7f0a274facc4ca4982021342c2dc, type: 3}
-  - {fileID: 21300000, guid: b78f754a4f42e5c44a1681a9b3062969, type: 3}
-  - {fileID: 21300000, guid: e2952a4a14051ee4093851407c9f77da, type: 3}
-  - {fileID: 21300000, guid: efb7d3ca10b0485468258dc0693d3b24, type: 3}
   - {fileID: 21300000, guid: 1fed22ab297e86d4a885d69eff855eb6, type: 3}
-  - {fileID: 21300000, guid: 0f96bebbf3784de48b32afb7a82df012, type: 3}
-  - {fileID: 21300000, guid: dce5c3fb485131f43bbf426dae97e9dd, type: 3}
   - {fileID: 21300000, guid: 89a9158cdb5b85b4c9919df5dc491b74, type: 3}
   - {fileID: 21300000, guid: 688aa54e46f3fef42a991cf439b8267f, type: 3}
-  - {fileID: 21300000, guid: daac58ae6ba8ec3479cdf001a9010a0a, type: 3}
   - {fileID: 21300000, guid: 9f3c244fc70201a429b0cd499e21e622, type: 3}
   m_PackedSpriteNamesToIndex:
   - "\u0411\u0430\u0448\u043A\u0430 \u0441\u043F\u0435\u0446\u043D\u0430\u0437\u043E\u0432\u0446\u0430"
-  - Group 15625
   - "\u041C\u0435\u0434\u0441\u0435\u0441\u0442\u0440\u0430"
   - "\u041F\u043E\u0432\u0430\u0440"
   - "\u041D\u043E\u0432\u0438\u0447\u0451\u043A"
   - "\u0423\u0431\u043E\u0440\u0449\u0438\u0446\u0430"
   - "\u0412\u0435\u0442\u0435\u0440\u0430\u043D"
   - "\u041E\u0445\u0440\u0430\u043D\u043D\u0438\u043A"
-  - Group 15632
-  - "\u0423\u0431\u043E\u0440\u0449\u0438\u0446\u0430_1"
   - "\u041E\u0431\u044B\u0447\u043D\u044B\u0435 \u043A\u0440\u043E\u0441\u044B"
   - "\u0411\u0435\u043B\u044B\u0435 \u043A\u0440\u043E\u0441\u044B"
   - "\u041F\u043E\u0432\u0430\u0440\u0438\u0445\u0430"
@@ -119,19 +94,11 @@ SpriteAtlas:
     \u0448\u043B\u0435\u043C\u043E\u043C"
   - "\u0414\u044B\u0440\u043A\u0430"
   - "\u041A\u0440\u043E\u0441\u044B \u043E\u0445\u0440\u0430\u043D\u043D\u0438\u043A\u0430"
-  - Group 15628
   - "\u0411\u0430\u0448\u043A\u0430 \u0441 \u043E\u0431\u044B\u0447\u043D\u044B\u043C
     \u0448\u043B\u0435\u043C\u043E\u043C"
-  - "\u0413\u043E\u043B\u043E\u0432\u0430-1"
-  - "\u0411\u0430\u0448\u043A\u0430 \u0437\u0434\u043E\u0440\u043E\u0432\u044F\u043A\u0430"
-  - "\u0413\u043E\u043B\u043E\u0432\u0430-2"
-  - "\u0411\u0430\u0448\u043A\u0430 \u043C\u0430\u043D\u044C\u044F\u043A\u0430"
   - "\u0417\u0434\u043E\u0440\u043E\u0432\u044F\u043A"
-  - "\u0413\u043E\u043B\u043E\u0432\u0430"
-  - Group 935
   - "\u0411\u0435\u043B\u044B\u0435 \u0432\u0430\u043B\u0435\u043D\u043A\u0438"
   - "\u0411\u0430\u0431\u0443\u0441\u044F"
-  - "\u0421 \u0433\u043E\u043B\u044B\u043C \u0442\u043E\u0440\u0441\u043E\u043C"
   - "\u0411\u0430\u0448\u043A\u0430 \u043E\u0445\u0440\u0430\u043D\u043D\u0438\u043A\u0430
     \u0432 \u043A\u0435\u043F\u043A\u0435"
   m_RenderDataMap: {}

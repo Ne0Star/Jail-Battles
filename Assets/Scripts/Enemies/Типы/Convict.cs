@@ -85,7 +85,7 @@ public class Convict : Enemu
         if (target && weapon)
         {
             YG.WeaponData weaponData = new YG.WeaponData();
-            foreach (YG.WeaponData m in LevelManager.Instance.EnemuManager.WeaponDatas)
+            foreach (YG.WeaponData m in GameManager.Instance.EnemiesDefaultWeaponData)
             {
                 if (m.weaponType == weapon.WeaponType)
                 {

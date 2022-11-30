@@ -12,7 +12,13 @@ public class WeaponStat : ScriptableObject
     public List<bool> hidenPlayerStat;
     public List<bool> hidenEnemiesStat;
 
-    public List<WeaponData> playerWeapons;
-    public List<WeaponData> enemuWeapons;
+    public Data data;
+
+    [System.Serializable]
+    public struct Data
+    {
+        public List<WeaponData> playerWeapons;
+        public List<WeaponData> enemuWeapons;
+    }
 
 }

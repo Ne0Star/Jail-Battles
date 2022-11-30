@@ -5,13 +5,10 @@ using UnityEditor;
 #endif
 using UnityEngine;
 
-public class LabelOverride
-#if UNITY_EDITOR
-    : PropertyAttribute
-#endif
+public class LabelOverride : PropertyAttribute
 
 {
-#if UNITY_EDITOR
+
     public string label;
     public string description;
     public LabelOverride(string label)
@@ -19,7 +16,7 @@ public class LabelOverride
         this.label = label;
         this.description = label;
     }
-
+#if UNITY_EDITOR
     [CustomPropertyDrawer(typeof(LabelOverride))]
     public class ThisPropertyDrawer : PropertyDrawer
     {

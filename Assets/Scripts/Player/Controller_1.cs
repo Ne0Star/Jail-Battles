@@ -14,7 +14,7 @@ public class Controller_1 : PlayerController
         this.controller = controller;
     }
 
-    [SerializeField] private bool isWalk, isIdle, rotated;
+    [SerializeField] private bool isWalk, isIdle, rotated, dragabble;
     [SerializeField] private Vector3 lastPos;
     public override void Update()
     {
@@ -31,9 +31,11 @@ public class Controller_1 : PlayerController
 
         if (Input.GetMouseButtonUp(0))
         {
+            dragabble = false;
             lastPos = (player.Agent.transform.position + (player.Agent.velocity * -1));
         } else if (Input.GetMouseButton(0))
         {
+            dragabble=true;
             lastPos = (player.Agent.transform.position + (player.Agent.velocity * -1));
         }
 
@@ -59,7 +61,7 @@ public class Controller_1 : PlayerController
         //Debug.Log(controller.Direction);
 
         player.Agent.Move(controller.Direction.normalized * moveSpeed.CurrentValue * Time.deltaTime);
-        
+        if(dragabble)
         GameUtils.LookAt2DSmooth(player.RotateParent, lastPos, player.RotateOffset, Time.deltaTime * (player.Agent.speed * LevelManager.Instance.LevelData.RotateMultipler), 0.01f, () =>
         {
             rotated = true;

@@ -17,24 +17,23 @@ public class Player : Enemu
     private void Awake()
     {
         playerController = new Controller_1(this, ref moveSpeed, controller);
+        YG.YandexGame.GetDataEvent += DataGet;
         //#if UNITY_ANDROID
         //        playerController = new Controller_1(this, moveSpeed, controller);
         //#elif UNITY_WEBGL
         //        playerController = new Controller_0(this, moveSpeed);
         //#endif
 
-
-
-        Gun r = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Gun>();
-        SetGun(r);
-        Mele re = LevelManager.Instance.WeaponManager.GetRandomWeaponByType<Mele>();
-        SetMele(re);
     }
-    private void Start()
+
+    private void DataGet()
     {
-        mele = (Mele)LevelManager.Instance.WeaponManager.GetWeaponByType(YandexGame.savesData.mele.weaponType);
-        gun = (Gun)LevelManager.Instance.WeaponManager.GetWeaponByType(YandexGame.savesData.gun.weaponType);
-        machine = (Machine)LevelManager.Instance.WeaponManager.GetWeaponByType(YandexGame.savesData.machine.weaponType);
+        Gun r = (Gun)LevelManager.Instance.WeaponManager.GetWeaponByType(YandexGame.savesData.equpData.gun.weaponType);
+        SetGun(r);
+        Mele re = (Mele)LevelManager.Instance.WeaponManager.GetWeaponByType(YandexGame.savesData.equpData.mele.weaponType);
+        SetMele(re);
+
+
         animator.Play("fightStance");
     }
 

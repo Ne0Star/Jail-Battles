@@ -59,19 +59,28 @@ public enum WeaponType
 [System.Serializable]
 public class WeaponStatInt
 {
-    public bool hiden = false;
-
+    public bool hiden;
+    public float updatePriceMultipler;
     [LabelOverride("Улучшаемый ? ")]
-    [SerializeField] private bool allowUpdate = true;
+    [SerializeField] private bool allowUpdate;
     private int value;
     [LabelOverride("Максимум ")]
     [SerializeField] private int maxValue;
     [LabelOverride("Минимум ")]
     [SerializeField] private int minValue;
     [LabelOverride("Текущее улучшение")]
-    [SerializeField] private int updateCount = 0;
+    [SerializeField] private int updateCount;
     [LabelOverride("Максимальное улучшение")]
-    [SerializeField] private int maxUpdateCount = 10;
+    [SerializeField] private int maxUpdateCount;
+
+    //public WeaponStatInt(int updateCount, int maxUpdateCount) : this()
+    //{
+    //    hiden = false;
+    //    updateCount = 0;
+    //    allowUpdate = true;
+    //    maxUpdateCount = 10;
+    //}
+
 
     public int Value { get => value; }
     public int MaxValue { get => maxValue; set => this.maxValue = value; }
@@ -112,10 +121,11 @@ public class WeaponStatInt
 [System.Serializable]
 public class WeaponStatFloat
 {
-    public bool hiden = false;
+    public bool hiden;
+    public float updatePriceMultipler;
 
     [LabelOverride("Улучшаемый ? ")]
-    [SerializeField] private bool allowUpdate = true;
+    [SerializeField] private bool allowUpdate;
     private float value;
     [LabelOverride("Максимум ")]
     [SerializeField] private float maxValue;
@@ -123,10 +133,17 @@ public class WeaponStatFloat
     [SerializeField] private float minValue;
 
     [LabelOverride("Текущее улучшение")]
-    [SerializeField] private int updateCount = 0;
+    [SerializeField] private int updateCount;
     [LabelOverride("Максимальное улучшение")]
-    [SerializeField] private int maxUpdateCount = 10;
+    [SerializeField] private int maxUpdateCount;
 
+    //public WeaponStatFloat(float updateCount, float maxUpdateCount) : this()
+    //{
+    //    hiden = false;
+    //    updateCount = 0;
+    //    allowUpdate = true;
+    //    maxUpdateCount = 10;
+    //}
     public float Value { get => value; }
     public float MaxValue { get => maxValue; set => this.maxValue = value; }
     public int UpdateCount { get => updateCount; set => this.updateCount = value; }
@@ -149,6 +166,8 @@ public class WeaponStatFloat
         if (!allowUpdate) return;
         updateCount = Mathf.Clamp(updateCount + 1, 1, maxUpdateCount);
         value = GetValue();
+
+        Debug.Log("Mmmm" + value);
     }
 
     private float GetValue()

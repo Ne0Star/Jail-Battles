@@ -40,7 +40,6 @@ public class EnemuManager : MonoBehaviour
     /// </summary>
     public List<Nurse> AllNurse { get => allNurse; }
     public List<Defender> AllDefenders { get => allDefenders; }
-    public List<WeaponData> WeaponDatas { get => GameManager.Instance.EnemiesWeaponData; }
 
     public T GetEntityByType<T>() where T : Enemu
     {
@@ -143,18 +142,16 @@ public class EnemuManager : MonoBehaviour
             yield return new WaitForSeconds(time);
         }
 
-        foreach (WeaponData data in WeaponDatas)
+        foreach (WeaponData data in GameManager.Instance.EnemiesDefaultWeaponData)
         {
             data.attackDistance.UpdateValue();
             data.attackSpeed.UpdateValue();
             data.reloadSpeed.UpdateValue();
             data.patronStorage.UpdateValue();
             data.shootingAccuracy.UpdateValue();
-
             data.patronCount.UpdateValue();
             data.attackCount.UpdateValue();
             data.attackDamage.UpdateValue();
-
         }
 
     }

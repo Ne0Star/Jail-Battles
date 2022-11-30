@@ -15,10 +15,9 @@ public class PlayerView : MonoBehaviour
     {
         if (!lib) lib = GetComponent<SpriteLibrary>();
         resolvers = GetComponentsInChildren<SpriteResolver>(true);
-    }
-    private void Start()
-    {
-        UpdateSkins();
+
+        YG.YandexGame.GetDataEvent += UpdateSkins;
+
     }
 
     private void OnEnable()

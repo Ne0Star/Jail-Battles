@@ -6,6 +6,9 @@ using YG;
 
 public class WeaponShopItemUpdate : MonoBehaviour
 {
+
+    public event System.Action<WeaponShopItemUpdate> updateClick;
+
     public Sprite fullUpdateIco, updateIco;
     public Image updateImage;
 
@@ -20,7 +23,15 @@ public class WeaponShopItemUpdate : MonoBehaviour
     private void Awake()
     {
         startWidth = ratingRect.GetWidth();
+
     }
+
+    //private void ReLang(string lang)
+    //{
+    //    LocalizerData textData = GameManager.Instance.GetValueByKey(nameKey);
+    //    label.text = textData.resultText;
+    //    label.font = textData.resultFont;
+    //}
 
     private void Start()
     {
@@ -39,9 +50,27 @@ public class WeaponShopItemUpdate : MonoBehaviour
 
     }
 
-    public void SetStat(WeaponItem item, WeaponData data, ref WeaponStatInt stat, string name)
+
+    public void SetItem(float min, float max)
     {
-        LocalizerData textData = GameManager.Instance.GetValueByKey(name);
+        LocalizerData textData = GameManager.Instance.GetValueByKey(nameKey);
+        label.text = textData.resultText;
+        label.font = textData.resultFont;
+        updateBTN.onClick?.RemoveAllListeners();
+
+        updateBTN.onClick?.AddListener(() =>
+        {
+            updateClick?.Invoke(this);
+        });
+        Set(ratingRect, min, max);
+
+    }
+    [SerializeField] private string nameKey;
+    public void SetStat(WeaponItem item, WeaponData data, ref WeaponData realData, ref WeaponStatInt stat, string n)
+    {
+        currentIntStat = stat;
+        nameKey = n;
+        LocalizerData textData = GameManager.Instance.GetValueByKey(nameKey);
         label.text = textData.resultText;
         label.font = textData.resultFont;
 
@@ -62,11 +91,10 @@ public class WeaponShopItemUpdate : MonoBehaviour
         valueLabel.SetActive(true);
         valueIco.SetActive(true);
 
-        WeaponStatInt stat_ = stat;
         updateBTN.onClick?.RemoveAllListeners();
-
-        var total = data.updatePrice * (stat.UpdateCount + 1);
-        var result = Mathf.RoundToInt((total - data.updatePrice) * stat.MaxUpdateCount);
+        WeaponStatInt stat_ = stat;
+        WeaponData real = realData;
+        var result = Mathf.RoundToInt((stat.UpdateCount + 1) * data.updatePrice * stat.updatePriceMultipler);
         byuPrice.text = result + " ";
 
         updateBTN.onClick?.AddListener(() =>
@@ -78,10 +106,8 @@ public class WeaponShopItemUpdate : MonoBehaviour
             }
             if (YG.YandexGame.savesData.money - result >= 0)
             {
-                stat_.Update();
-                YG.YandexGame.savesData.money -= result;
-                SetStat(item, data, ref stat_, name);
-                YG.YandexGame.SaveProgress();
+                ApplyUpdate(result);
+                SetStat(item, data, ref real, ref stat_, n);
             }
             else
             {
@@ -91,9 +117,26 @@ public class WeaponShopItemUpdate : MonoBehaviour
         Set(ratingRect, stat.UpdateCount, stat.MaxUpdateCount);
     }
 
-    public void SetStat(WeaponItem item, WeaponData data, ref WeaponStatFloat stat, string name)
+    [SerializeField] private WeaponStatFloat currentFloatStat;
+    [SerializeField] private WeaponStatInt currentIntStat;
+    private void ApplyUpdate(int price)
     {
-        LocalizerData textData = GameManager.Instance.GetValueByKey(name);
+
+        currentFloatStat.Update();
+        currentIntStat.Update();
+        YG.YandexGame.savesData.money -= price;
+        YG.YandexGame.SaveProgress();
+
+        currentIntStat = new WeaponStatInt();
+        currentFloatStat = new WeaponStatFloat();
+    }
+
+    public void SetStat(WeaponItem item, WeaponData data, ref WeaponData realData, ref WeaponStatFloat stat, string n)
+    {
+        currentFloatStat = stat;
+        nameKey = n;
+        LocalizerData textData = GameManager.Instance.GetValueByKey(nameKey);
+
         label.text = textData.resultText;
         label.font = textData.resultFont;
 
@@ -114,11 +157,10 @@ public class WeaponShopItemUpdate : MonoBehaviour
         valueLabel.SetActive(true);
         valueIco.SetActive(true);
 
-        WeaponStatFloat stat_ = stat;
         updateBTN.onClick?.RemoveAllListeners();
-
-        var total = data.updatePrice * (stat.UpdateCount + 1);
-        var result = Mathf.RoundToInt((total - data.updatePrice) * stat.MaxUpdateCount);
+        WeaponStatFloat stat_ = stat;
+        WeaponData real = realData;
+        var result = Mathf.RoundToInt((stat.UpdateCount + 1) * data.updatePrice * stat.updatePriceMultipler);
         byuPrice.text = result + " ";
 
         updateBTN.onClick?.AddListener(() =>
@@ -130,10 +172,8 @@ public class WeaponShopItemUpdate : MonoBehaviour
             }
             if (YG.YandexGame.savesData.money - result >= 0)
             {
-                stat_.Update();
-                YG.YandexGame.savesData.money -= result;
-                SetStat(item, data, ref stat_, name);
-                YG.YandexGame.SaveProgress();
+                ApplyUpdate(result);
+                SetStat(item, data, ref real, ref stat_, n);
             }
             else
             {

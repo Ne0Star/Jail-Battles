@@ -55,7 +55,7 @@ MonoBehaviour:
     hi: 1
   fonts:
     defaultFont:
-    - {fileID: 12800000, guid: 17495f6ec4db40942b442e4fd3e50768, type: 3}
+    - {fileID: 12800000, guid: baac928db64fea24aac493058ff55e8d, type: 3}
     ru: []
     en: []
     tr: []

@@ -49,9 +49,21 @@ namespace YG
             "1"
         };
 
+        public PlayerEqupData equpData;
 
-        ///public WeaponData[] enemuWeapons = null;
+        public WeaponData[] byuWeapons = new WeaponData[1]
+        {
+            new WeaponData()
+            {
+                weaponCount = 1,
+                weaponType = WeaponType.None
+            }
+        };
+    }
 
+    [System.Serializable]
+    public struct PlayerEqupData
+    {
         /// <summary>
         /// Ближний бой
         /// </summary>
@@ -68,17 +80,8 @@ namespace YG
         /// Метательное
         /// </summary>
         public WeaponData missile;
-
-
-        public WeaponData[] byuWeapons = new WeaponData[1]
-        {
-            new WeaponData()
-            {
-                weaponCount = 1,
-                weaponType = WeaponType.None
-            }
-        };
     }
+
 
     [System.Serializable]
     public struct WeaponData

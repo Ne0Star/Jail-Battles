@@ -27,10 +27,28 @@ MonoBehaviour:
     m_CategoryList:
     - m_Name: 1
       m_Hash: -2082672713
-      m_Sprite: {fileID: 21300000, guid: 93e06649e93ade442941da7a23148cd3, type: 3}
+      m_Sprite: {fileID: 21300000, guid: a7538a5037d59f343b6beef6696ea181, type: 3}
     - m_Name: 2
       m_Hash: 450215437
-      m_Sprite: {fileID: 21300000, guid: dce5c3fb485131f43bbf426dae97e9dd, type: 3}
+      m_Sprite: {fileID: 21300000, guid: 37365ec74824e4642a25c2f8e8a79af7, type: 3}
+    - m_Name: 3
+      m_Hash: 1842515611
+      m_Sprite: {fileID: 21300000, guid: 44350635e3ff76f43bed92df945ee018, type: 3}
+    - m_Name: 4
+      m_Hash: -206169288
+      m_Sprite: {fileID: 21300000, guid: 6d94b68bdd717f246a8c02ce23e82e18, type: 3}
+    - m_Name: 5
+      m_Hash: -2068763730
+      m_Sprite: {fileID: 21300000, guid: 8e9b134c4c614f241b5138089eba206e, type: 3}
+    - m_Name: 6
+      m_Hash: 498629140
+      m_Sprite: {fileID: 21300000, guid: 18e64c93eaafc3f46a1b028eeae3a4c5, type: 3}
+    - m_Name: 7
+      m_Hash: 1790921346
+      m_Sprite: {fileID: 21300000, guid: a99d53692c0591e4fb29f8b5dcc2cdfa, type: 3}
+    - m_Name: 8
+      m_Hash: -100641005
+      m_Sprite: {fileID: 21300000, guid: 6ecc218c481a52141a2d098873f7fd53, type: 3}
   - m_Name: "\u041D\u043E\u0433\u0438"
     m_Hash: -181988446
     m_CategoryList:

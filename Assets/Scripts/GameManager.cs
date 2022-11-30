@@ -16,10 +16,11 @@ public class GameManager : OneSingleton<GameManager>
     [SerializeField] private TextAsset scvLanguages;
     [SerializeField] private InfoYG infoYg;
 
-    public List<WeaponData> PlayerWeaponData { get => weaponStat.playerWeapons; }
-    public List<WeaponData> EnemiesWeaponData { get => weaponStat.enemuWeapons; }
+    public List<WeaponData> PlayerDefaultWeaponData { get => weaponStat.data.playerWeapons; }
+    public List<WeaponData> EnemiesDefaultWeaponData { get => weaponStat.data.enemuWeapons; }
 
     public Font ResultFont { get => resultFont; set => resultFont = value; }
+    public string CurrentLang { get => currentLang; }
 
     private void Awake()
     {
@@ -55,6 +56,7 @@ public class GameManager : OneSingleton<GameManager>
 
     private void ReLang(string s)
     {
+        currentLang = s;
         Font[] fonts = infoYg.fonts.GetFontsByLanguageName(currentLang);
         Font resultFont = null;
         bool font = false;
@@ -89,7 +91,7 @@ public class GameManager : OneSingleton<GameManager>
     public WeaponData GetDefaultPlayerDataByType(WeaponType type)
     {
         WeaponData result = new WeaponData();
-        foreach (WeaponData data in PlayerWeaponData)
+        foreach (WeaponData data in PlayerDefaultWeaponData)
         {
             if (data.weaponType == type)
             {
@@ -216,25 +218,47 @@ public class GameManager : OneSingleton<GameManager>
             YandexGame.savesData.money += 1000;
             YandexGame.SaveProgress();
         }
-        if (Input.GetKeyDown(KeyCode.T))
-        {
-            Text[] texts = FindObjectsOfType<Text>();
-            foreach (Text text in texts)
-            {
-                text.text = text.text;
-            }
-        }
-        if (Input.GetKeyDown(KeyCode.Y))
-        {
-            Text[] texts = FindObjectsOfType<Text>();
-            foreach (Text text in texts)
-            {
-                text.font = text.font;
-            }
-        }
+        //if (Input.GetKeyDown(KeyCode.T))
+        //{
+        //    Text[] texts = FindObjectsOfType<Text>();
+        //    foreach (Text text in texts)
+        //    {
+        //        text.text = text.text;
+        //    }
+        //}
+        //if (Input.GetKeyDown(KeyCode.Y))
+        //{
+        //    Text[] texts = FindObjectsOfType<Text>();
+        //    foreach (Text text in texts)
+        //    {
+        //        text.font = text.font;
+        //    }
+        //}
         if (Input.GetKeyDown(KeyCode.R))
         {
             YandexGame.ResetSaveProgress();
+            foreach (WeaponData data in weaponStat.data.playerWeapons)
+            {
+                data.attackDistance.UpdateCount = 0;
+                data.attackSpeed.UpdateCount = 0;
+                data.reloadSpeed.UpdateCount = 0;
+                data.attackCount.UpdateCount = 0;
+                data.patronStorage.UpdateCount = 0;
+                data.shootingAccuracy.UpdateCount = 0;
+                data.attackDistance.UpdateCount = 0;
+                data.patronCount.UpdateCount = 0;
+            }
+            foreach (WeaponData data in weaponStat.data.playerWeapons)
+            {
+                data.attackDistance.UpdateCount = 0;
+                data.attackSpeed.UpdateCount = 0;
+                data.reloadSpeed.UpdateCount = 0;
+                data.attackCount.UpdateCount = 0;
+                data.patronStorage.UpdateCount = 0;
+                data.shootingAccuracy.UpdateCount = 0;
+                data.attackDistance.UpdateCount = 0;
+                data.patronCount.UpdateCount = 0;
+            }
         }
     }
 

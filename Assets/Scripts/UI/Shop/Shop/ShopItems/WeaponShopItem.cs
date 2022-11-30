@@ -13,12 +13,6 @@ public class WeaponShopItem : ShopItem
 
     public WeaponItem Item { get => item; set => item = value; }
 
-    private void Awake()
-    {
-        if (btn)
-            btn.onClick?.AddListener(() => onSelect?.Invoke(item));
-    }
-
     public void SetItem(WeaponItem item)
     {
         this.item = item;
@@ -27,6 +21,11 @@ public class WeaponShopItem : ShopItem
 
     private void UpdateData()
     {
+        onSelect = null;
+        btn.onClick.RemoveAllListeners();
+
+        if (btn)
+            btn.onClick?.AddListener(() => onSelect?.Invoke(item));
         if(item)
             if (ico)
                 ico.sprite = item.ShopIco;
@@ -34,11 +33,12 @@ public class WeaponShopItem : ShopItem
 
     private void OnDisable()
     {
-        onSelect = null;
+        UpdateData();
     }
 
     private void OnEnable()
     {
+
         UpdateData();
     }
 }
