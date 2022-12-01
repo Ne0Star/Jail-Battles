@@ -3,7 +3,7 @@ using UnityEngine;
 public class StandartBar : HitBar
 {
     [SerializeField] private bool destroyVisual;
-
+    [SerializeField] private SpriteRenderer fractionRenderer;
     [SerializeField] private Renderer mat;
 
     private void Awake()
@@ -16,6 +16,11 @@ public class StandartBar : HitBar
         UpdateData();
     }
 
+
+    public void SetFractionColor(Color color)
+    {
+        fractionRenderer.color = color;
+    }
 
     //private void OnEnable()
     //{

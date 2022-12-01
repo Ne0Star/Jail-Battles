@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class Convict : Enemu
 {
+
+
     [SerializeField] private bool isBegin = false;
     [SerializeField] private bool isIdle = false;
     [SerializeField] private bool isAttack = false;
@@ -12,6 +14,13 @@ public class Convict : Enemu
     public bool IsAttack { get => isAttack; }
     public bool IsIdle { get => isIdle; }
     public bool IsHealth { get => isHealth; }
+
+
+    public void SetFraction(Color color, string name)
+    {
+        StandartBar bar = (StandartBar)HitBar;
+        bar.SetFractionColor(color);
+    }
 
     private void Heal()
     {

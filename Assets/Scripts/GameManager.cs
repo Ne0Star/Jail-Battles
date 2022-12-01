@@ -16,8 +16,8 @@ public class GameManager : OneSingleton<GameManager>
     [SerializeField] private TextAsset scvLanguages;
     [SerializeField] private InfoYG infoYg;
 
-    public List<WeaponData> PlayerDefaultWeaponData { get => weaponStat.data.playerWeapons; }
-    public List<WeaponData> EnemiesDefaultWeaponData { get => weaponStat.data.enemuWeapons; }
+    public List<WeaponData> PlayerDefaultWeaponData { get => weaponStat.data.datas; }
+    public List<WeaponData> EnemiesDefaultWeaponData { get => weaponStat.data.datas; }
 
     public Font ResultFont { get => resultFont; set => resultFont = value; }
     public string CurrentLang { get => currentLang; }
@@ -237,7 +237,7 @@ public class GameManager : OneSingleton<GameManager>
         if (Input.GetKeyDown(KeyCode.R))
         {
             YandexGame.ResetSaveProgress();
-            foreach (WeaponData data in weaponStat.data.playerWeapons)
+            foreach (WeaponData data in weaponStat.data.datas)
             {
                 data.attackDistance.UpdateCount = 0;
                 data.attackSpeed.UpdateCount = 0;
@@ -248,7 +248,7 @@ public class GameManager : OneSingleton<GameManager>
                 data.attackDistance.UpdateCount = 0;
                 data.patronCount.UpdateCount = 0;
             }
-            foreach (WeaponData data in weaponStat.data.playerWeapons)
+            foreach (WeaponData data in weaponStat.data.datas)
             {
                 data.attackDistance.UpdateCount = 0;
                 data.attackSpeed.UpdateCount = 0;

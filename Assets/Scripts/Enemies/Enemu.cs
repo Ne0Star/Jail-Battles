@@ -5,6 +5,8 @@ using UnityEngine.U2D.Animation;
 
 public class Enemu : Entity, ICustomListItem
 {
+    [SerializeField] protected string fractionColor;
+
 
     [SerializeField] protected Entity target;
 

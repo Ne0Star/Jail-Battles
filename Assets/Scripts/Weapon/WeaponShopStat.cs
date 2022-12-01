@@ -3,13 +3,11 @@ using System.Collections.Generic;
 using UnityEngine;
 using YG;
 
-[CreateAssetMenu(fileName = "Оружие", menuName = "Оружие фракций")]
-public class WeaponStat : ScriptableObject
+[CreateAssetMenu(fileName = "Оружие", menuName = "Оружие для магазина")]
+public class WeaponShopStat : ScriptableObject
 {
     public bool hidePlayerData = false;
 
-    public List<float> chances;
-    public List<bool> allowWeapons;
     public List<bool> hidenPlayerStat;
 
     public Data data;
@@ -19,5 +17,4 @@ public class WeaponStat : ScriptableObject
     {
         public List<WeaponData> datas;
     }
-
 }

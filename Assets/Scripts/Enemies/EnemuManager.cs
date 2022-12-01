@@ -9,6 +9,9 @@ using YG;
 /// </summary>
 public class EnemuManager : MonoBehaviour
 {
+    [SerializeField] private Convict convictPrefab;
+    [SerializeField] private List<GroupFeatures> levelFeatures= new List<GroupFeatures>();
+
 
     [SerializeField] private float updateTime;
     [SerializeField] private int stepCount;
@@ -40,6 +43,9 @@ public class EnemuManager : MonoBehaviour
     /// </summary>
     public List<Nurse> AllNurse { get => allNurse; }
     public List<Defender> AllDefenders { get => allDefenders; }
+
+
+
 
     public T GetEntityByType<T>() where T : Enemu
     {
@@ -92,6 +98,11 @@ public class EnemuManager : MonoBehaviour
         //    YG.YandexGame.SaveProgress();
         //}
 
+
+
+
+
+
         allEnemies = new CustomList<Enemu>(updateTime, stepCount);
         allEnemies.RegisterRange(FindObjectsOfType<Enemu>(true));
         StartCoroutine(Enabled());
@@ -100,12 +111,19 @@ public class EnemuManager : MonoBehaviour
 
     private IEnumerator Enabled()
     {
+
+
+        foreach(GroupFeatures feature in levelFeatures)
+        {
+            for(int i =0; i < (int)feature.groupSize; i++)
+            {
+                Convict convict = Instantiate(convictPrefab);
+                allConvicts.Add(convict);
+            }
+        }
+
         foreach (Enemu e in allEnemies)
         {
-            if (e as Convict)
-            {
-                allConvicts.Add((Convict)e);
-            }
             if (e as Cleaner)
             {
                 allCleaners.Add((Cleaner)e);
