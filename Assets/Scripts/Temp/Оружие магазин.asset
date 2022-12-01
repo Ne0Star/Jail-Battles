@@ -99,37 +99,37 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       reloadSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 1.5
+        minValue: 1.5
         updateCount: 0
         maxUpdateCount: 0
       attackSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 0.47
+        minValue: 0.47
         updateCount: 0
         maxUpdateCount: 0
       attackDamage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 2
+        allowUpdate: 1
+        maxValue: 36
+        minValue: 32
+        updateCount: 2
+        maxUpdateCount: 2
       patronCount:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 1.25
+        allowUpdate: 1
+        maxValue: 18
+        minValue: 15
+        updateCount: 3
+        maxUpdateCount: 3
       attackCount:
         hiden: 0
         updatePriceMultipler: 0
@@ -139,13 +139,13 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       patronStorage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 1.8
+        allowUpdate: 1
+        maxValue: 72
+        minValue: 30
+        updateCount: 3
+        maxUpdateCount: 3
       shootingAccuracy:
         hiden: 0
         updatePriceMultipler: 0
@@ -169,37 +169,37 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       reloadSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 1.7
+        minValue: 1.7
         updateCount: 0
         maxUpdateCount: 0
       attackSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 0.1
+        minValue: 0.1
         updateCount: 0
         maxUpdateCount: 0
       attackDamage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        hiden: 1
+        updatePriceMultipler: 1.2
+        allowUpdate: 1
+        maxValue: 20
+        minValue: 17
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 3
       patronCount:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        hiden: 1
+        updatePriceMultipler: 1.4
+        allowUpdate: 1
+        maxValue: 30
+        minValue: 20
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 3
       attackCount:
         hiden: 0
         updatePriceMultipler: 0
@@ -209,13 +209,13 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       patronStorage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        hiden: 1
+        updatePriceMultipler: 1.5
+        allowUpdate: 1
+        maxValue: 60
+        minValue: 20
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 4
       shootingAccuracy:
         hiden: 0
         updatePriceMultipler: 0
@@ -231,23 +231,23 @@ MonoBehaviour:
       weaponCount: 0
       maxWeaponCount: 0
       attackDistance:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 0.8
+        minValue: 0.8
         updateCount: 0
         maxUpdateCount: 0
       reloadSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 1.3
+        minValue: 1.3
         updateCount: 0
         maxUpdateCount: 0
       attackSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
         maxValue: 0
@@ -255,11 +255,11 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       attackDamage:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 35
+        minValue: 35
         updateCount: 0
         maxUpdateCount: 0
       patronCount:
@@ -309,37 +309,37 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       reloadSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 1.35
+        minValue: 1.35
         updateCount: 0
         maxUpdateCount: 0
       attackSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 0.6
+        minValue: 0.6
         updateCount: 0
         maxUpdateCount: 0
       attackDamage:
         hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        updatePriceMultipler: 1.15
+        allowUpdate: 1
+        maxValue: 24
+        minValue: 20
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 2
       patronCount:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        hiden: 1
+        updatePriceMultipler: 1.1
+        allowUpdate: 1
+        maxValue: 12
+        minValue: 8
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 2
       attackCount:
         hiden: 0
         updatePriceMultipler: 0
@@ -349,13 +349,13 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       patronStorage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        hiden: 1
+        updatePriceMultipler: 1.25
+        allowUpdate: 1
+        maxValue: 36
+        minValue: 24
         updateCount: 0
-        maxUpdateCount: 0
+        maxUpdateCount: 3
       shootingAccuracy:
         hiden: 0
         updatePriceMultipler: 0
@@ -379,37 +379,37 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       reloadSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 1.5
+        minValue: 1.5
         updateCount: 0
         maxUpdateCount: 0
       attackSpeed:
-        hiden: 0
+        hiden: 1
         updatePriceMultipler: 0
         allowUpdate: 0
-        maxValue: 0
-        minValue: 0
+        maxValue: 0.47
+        minValue: 0.47
         updateCount: 0
         maxUpdateCount: 0
       attackDamage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 2
+        allowUpdate: 1
+        maxValue: 36
+        minValue: 32
+        updateCount: 2
+        maxUpdateCount: 2
       patronCount:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 1.25
+        allowUpdate: 1
+        maxValue: 18
+        minValue: 15
+        updateCount: 3
+        maxUpdateCount: 3
       attackCount:
         hiden: 0
         updatePriceMultipler: 0
@@ -419,13 +419,13 @@ MonoBehaviour:
         updateCount: 0
         maxUpdateCount: 0
       patronStorage:
-        hiden: 0
-        updatePriceMultipler: 0
-        allowUpdate: 0
-        maxValue: 0
-        minValue: 0
-        updateCount: 0
-        maxUpdateCount: 0
+        hiden: 1
+        updatePriceMultipler: 1.8
+        allowUpdate: 1
+        maxValue: 72
+        minValue: 30
+        updateCount: 3
+        maxUpdateCount: 3
       shootingAccuracy:
         hiden: 0
         updatePriceMultipler: 0
